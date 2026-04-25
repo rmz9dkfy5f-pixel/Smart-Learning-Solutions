@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Request a STEM workshop from Smart Learning Solutions — tell us about your group and we'll get back to you within one business day.">
+  <title>Request a Workshop — Smart Learning Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    .book-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: var(--space-16);
+      align-items: start;
+    }
+
+    .book-form-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-10);
+      box-shadow: var(--shadow-md);
+    }
+
+    .book-form-card h3 {
+      margin-bottom: var(--space-6);
+    }
+
+    .book-aside {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .aside-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      border: 1px solid var(--color-border);
+    }
+
+    .aside-card h4 { margin-bottom: var(--space-3); }
+    .aside-card p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: var(--leading-normal); }
+
+    .aside-contact a {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--space-3);
+      transition: color var(--transition-fast);
+    }
+    .aside-contact a:hover { color: var(--color-text); }
+
+    .form-success {
+      display: none;
+      padding: var(--space-8);
+      background: rgba(26,143,227,0.06);
+      border: 1px solid rgba(26,143,227,0.2);
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+
+    .form-success.visible { display: block; }
+
+    @media (max-width: 900px) {
+      .book-layout {
+        grid-template-columns: 1fr;
+      }
+      .book-aside { order: -1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="page-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Get in Touch</p>
+        <h1>Request a Workshop</h1>
+        <p>Tell us about your group and what you're looking for. We'll follow up within one business day to put together the perfect workshop experience.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="book-layout">
+
+          <div class="book-form-card">
+            <h3>Workshop Enquiry Form</h3>
+
+            <!-- Replace ACTION with your Formspree endpoint e.g. https://formspree.io/f/YOUR_ID -->
+            <form id="workshop-form" action="https://formspree.io/f/REPLACE_ME" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="New Workshop Enquiry — Smart Learning Solutions">
+              <input type="hidden" name="_next" value="">
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="first-name">First Name *</label>
+                  <input type="text" id="first-name" name="first_name" required autocomplete="given-name">
+                </div>
+                <div class="form-group">
+                  <label for="last-name">Last Name *</label>
+                  <input type="text" id="last-name" name="last_name" required autocomplete="family-name">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel">
+                </div>
+                <div class="form-group form-group--full">
+                  <label for="organisation">School / Organisation Name</label>
+                  <input type="text" id="organisation" name="organisation" autocomplete="organization">
+                </div>
+                <div class="form-group">
+                  <label for="program">Preferred Program *</label>
+                  <select id="program" name="program" required>
+                    <option value="" disabled selected>Select a program…</option>
+                    <option value="coding-with-robots">Coding with Robots</option>
+                    <option value="pstem">PSTEM</option>
+                    <option value="unsure">Not sure yet — help me choose</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="group-size">Approx. Group Size *</label>
+                  <select id="group-size" name="group_size" required>
+                    <option value="" disabled selected>Select a range…</option>
+                    <option value="1-10">1–10 students</option>
+                    <option value="11-20">11–20 students</option>
+                    <option value="21-30">21–30 students</option>
+                    <option value="31+">31+ students</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="age-range">Age / Grade Range *</label>
+                  <input type="text" id="age-range" name="age_range" placeholder="e.g. Ages 10–14, Grade 5–8" required>
+                </div>
+                <div class="form-group">
+                  <label for="dates">Preferred Date(s)</label>
+                  <input type="text" id="dates" name="preferred_dates" placeholder="e.g. Any weekday in May">
+                </div>
+                <div class="form-group form-group--full">
+                  <label for="location">Location / Venue</label>
+                  <input type="text" id="location" name="location" placeholder="School name, city, or general area" autocomplete="street-address">
+                </div>
+                <div class="form-group form-group--full">
+                  <label for="message">Anything else we should know?</label>
+                  <textarea id="message" name="message" placeholder="Special requirements, learning goals, questions…"></textarea>
+                </div>
+              </div>
+
+              <div style="margin-top: var(--space-6);">
+                <button type="submit" class="btn btn--primary btn--lg" style="width: 100%; justify-content: center;">
+                  Send Enquiry
+                </button>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-3); text-align: center;">
+                  We'll respond within one business day. No commitment required.
+                </p>
+              </div>
+            </form>
+
+            <div class="form-success" id="form-success">
+              <p style="font-size: 2rem; margin-bottom: var(--space-3);">✅</p>
+              <h4 style="margin-bottom: var(--space-2);">Enquiry received!</h4>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Thanks for getting in touch. We'll be in contact within one business day to discuss your workshop.</p>
+            </div>
+          </div>
+
+          <aside class="book-aside">
+            <div class="aside-card">
+              <h4>What happens next?</h4>
+              <p>After you submit your enquiry, one of our team will reach out to understand your group's needs and put together the right workshop plan — including program, session length, and any customisations.</p>
+            </div>
+
+            <div class="aside-card">
+              <h4>No pricing surprises</h4>
+              <p>Every workshop is quoted based on your group size and requirements. We'll provide a clear, itemised quote before anything is confirmed.</p>
+            </div>
+
+            <div class="aside-card aside-contact">
+              <h4>Prefer to reach us directly?</h4>
+              <p>We're happy to talk through your needs before you fill anything in.</p>
+              <a href="tel:18773657678">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+                1-877-365-SMRT (7678)
+              </a>
+              <a href="mailto:info@SmartLearningSolutions.org">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                info@SmartLearningSolutions.org
+              </a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="page-footer"></div>
+
+  <script type="module">
+    import { initPage } from '/src/js/components.js';
+    initPage({ activePage: 'book' });
+
+    // Formspree AJAX submission
+    const form = document.getElementById('workshop-form');
+    const success = document.getElementById('form-success');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.classList.add('visible');
+        } else {
+          alert('Something went wrong. Please email us directly at info@SmartLearningSolutions.org');
+        }
+      } catch {
+        alert('Something went wrong. Please email us directly at info@SmartLearningSolutions.org');
+      }
+    });
+  </script>
+</body>
+</html>

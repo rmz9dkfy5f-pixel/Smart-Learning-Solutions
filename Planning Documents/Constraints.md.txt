@@ -1,0 +1,2 @@
+Because you do not want a CMS, the information architecture should be compact and stable. That means fewer top-level pages, reusable page patterns, and content that can be managed as static source files rather than a sprawling content system.
+The current site already positions Smart Learning Solutions as a STEM education company using Edison and Whybricks in its programs, so the redesign should preserve those core relationships while making the user journey much simpler. 

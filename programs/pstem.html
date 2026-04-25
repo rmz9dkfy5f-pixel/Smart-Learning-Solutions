@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PSTEM — Physical Science, Technology, Engineering and Mathematics workshops powered by the Whybricks inquiry-based learning platform.">
+  <title>PSTEM — Smart Learning Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    .investigations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+      gap: var(--space-5);
+      margin-top: var(--space-10);
+    }
+
+    .investigation-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .investigation-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .investigation-number {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-2);
+    }
+
+    .investigation-card h4 { margin-bottom: var(--space-2); }
+    .investigation-card p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div id="page-header"></div>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Program · Ages 10–18</p>
+        <h1>PSTEM</h1>
+        <p>Physical Science, Technology, Engineering and Mathematics — explored through the questions students actually wonder about. Powered by the Whybricks inquiry-based learning platform.</p>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--color-surface);">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <p class="eyebrow">The Whybricks Approach</p>
+          <h2>Learning That Starts With "Why?"</h2>
+          <p>Every PSTEM investigation is built around a question students genuinely ask. Instead of presenting facts, we hand the agency of discovery over to the student — guided by our educators, but driven by their own curiosity.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">10 Investigation Modules</p>
+          <h2>What Students Explore</h2>
+          <p>Each module is a self-contained investigation — hands-on, inquiry-led, and connected to real-world phenomena students encounter every day.</p>
+        </div>
+
+        <div class="investigations-grid">
+          <div class="investigation-card">
+            <p class="investigation-number">Module 01</p>
+            <h4>Gears &amp; Motion</h4>
+            <p>"Why is riding a bicycle faster than running?"</p>
+          </div>
+          <div class="investigation-card">
+            <p class="investigation-number">Module 02</p>
+            <h4>Escape Ramps</h4>
+            <p>"Why do some roads have truck escape ramps?"</p>
+          </div>
+          <div class="investigation-card">
+            <p class="investigation-number">Module 03</p>
+            <h4>Friction</h4>
+            <p>"Why do objects slow down on their own?"</p>
+          </div>
+          <div class="investigation-card">
+            <p class="investigation-number">Module 04</p>
+            <h4>Snowboards</h4>
+            <p>"Why don't snowboards need wheels?"</p>
+          </div>
+          <div class="investigation-card">
+            <p class="investigation-number">Module 05</p>
+            <h4>Gravity</h4>
+            <p>"Why don't you float away when you jump?"</p>
+          </div>
+          <div class="investigation-card">
+            <p class="investigation-number">Module 06</p>
+            <h4>Elasticity</h4>
+            <p>"Why do rubber bands snap back?"</p>
+          </div>
+          <div class="investigation-card">
+            <p class="investigation-number">Module 07</p>
+            <h4>Levers</h4>
+            <p>"Why do swings swing?"</p>
+          </div>
+          <div class="investigation-card">
+            <p class="investigation-number">Module 08</p>
+            <h4>Structural Forces</h4>
+            <p>"Why don't bridges collapse under their own weight?"</p>
+          </div>
+          <div class="investigation-card">
+            <p class="investigation-number">Module 09</p>
+            <h4>Simple Machines</h4>
+            <p>"Why don't playgrounds use motors?"</p>
+          </div>
+          <div class="investigation-card">
+            <p class="investigation-number">Module 10</p>
+            <h4>Additional Investigations</h4>
+            <p>Extended modules available for longer programmes or returning groups.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-band-inner">
+        <h2>Bring PSTEM to Your Students</h2>
+        <p>We'll work with you to choose the right investigations for your group's age, curriculum alignment, and goals.</p>
+        <div class="btn-group" style="justify-content: center;">
+          <a href="/book.html" class="btn btn--outline-white btn--lg">Request a Workshop</a>
+          <a href="/contact.html" class="btn btn--outline-white btn--lg">Ask a Question</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="page-footer"></div>
+  <script type="module">
+    import { initPage } from '/src/js/components.js';
+    initPage({ activePage: 'programs' });
+  </script>
+</body>
+</html>
