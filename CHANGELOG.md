@@ -11,6 +11,26 @@ Versioning follows [Semantic Versioning](docs/strategy/version-number-system.md)
 
 ---
 
+## [2.0.0] — 2026-04-24
+
+### Summary
+Complete visual overhaul to a dark dramatic aesthetic paired with a production-grade GSAP animation system. No content or structure changes — purely design and motion.
+
+### Added
+- `src/js/animations.js` — GSAP animation module: lerp cursor with follower ring, hero word-split stagger on load, ScrollTrigger section reveals, `ScrollTrigger.batch()` card staggers, hero orb parallax scrub, magnetic button effect with elastic spring-back, CTA band orb pulse
+- Custom cursor (`#cursor` + `#cursor-follower`) — orange dot + trailing ring; expands on interactive element hover; disabled on touch devices
+- Hero background orbs (`.orb-1`, `.orb-2`, `.orb-3`) — blurred radial gradients with scroll parallax
+- Dot-grid texture on hero and process sections
+- `gradient-text` utility — orange → cyan gradient on hero headline accent word
+- GSAP CDN scripts (`gsap@3.12.5` + `ScrollTrigger@3.12.5`) added to `index.html`
+
+### Changed
+- `src/css/main.css` — Full rewrite: dark token system (`#060A14` base, glass cards, glow borders), Space Grotesk display font, eyebrow line-rule treatment, glow button variants with `box-shadow`, backdrop-filter glass header
+- `index.html` — Animation hook classes (`reveal-up`, `stagger-card`), cursor DOM elements, `initAnimations()` call
+- All pages — Google Fonts updated to include Space Grotesk alongside Inter
+
+---
+
 ## [1.1.0] — 2026-04-24
 
 ### Summary

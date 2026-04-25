@@ -1,6 +1,6 @@
 # Smart Learning Solutions
 
-**Version:** v1.1.0
+**Version:** v2.0.0
 **Status:** In Progress
 **Owner:** Smart Learning Solutions
 
