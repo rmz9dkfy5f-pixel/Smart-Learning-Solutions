@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/src/css/main.css">
+  <link rel="stylesheet" href="/src/css/main.css?v=visual-20260426-anim">
 </head>
 <body>
 
@@ -37,9 +37,41 @@
           <p class="eyebrow">STEM Workshops · In-Person · K–12</p>
           <h1>Hands-On STEM Workshops for <span class="gradient-text">Curious</span> New Learners</h1>
           <p>We bring robotics, coding, and physical science to life — with expert-led, inquiry-based workshop experiences designed for students who love to build, test, and explore.</p>
+          <div class="hero-proof" aria-label="Workshop highlights">
+            <span>Real robots</span>
+            <span>Guided builds</span>
+            <span>School-ready setup</span>
+          </div>
           <div class="btn-group hero-cta">
             <a href="/book.html" class="btn btn--primary btn--lg">Request a Workshop</a>
             <a href="/workshops.html" class="btn btn--outline btn--lg">Explore Workshops</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" role="img" aria-label="Illustration of a hands-on STEM workshop table">
+          <div class="workshop-board">
+            <div class="board-header">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="robot-track" aria-hidden="true">
+              <div class="track-line"></div>
+              <div class="robot-unit">
+                <span class="robot-eye"></span>
+                <span class="robot-eye"></span>
+              </div>
+            </div>
+            <div class="build-grid" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="hero-visual-note">
+            <strong>Build. Test. Refine.</strong>
+            <span>Students work through real challenges with expert facilitation.</span>
           </div>
         </div>
       </div>
@@ -350,7 +382,7 @@
 
   <script type="module">
     import { initPage }       from '/src/js/components.js';
-    import { initAnimations } from '/src/js/animations.js';
+    import { initAnimations } from '/src/js/animations.js?v=visual-20260426';
     initPage({ activePage: 'home' });
     initAnimations();
   </script>
