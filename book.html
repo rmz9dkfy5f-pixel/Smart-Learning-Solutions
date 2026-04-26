@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Request a STEM workshop from Smart Learning Solutions — tell us about your group and we'll get back to you within one business day.">
   <title>Request a Workshop — Smart Learning Solutions</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect width='28' height='28' rx='7' fill='%23E85D1A'/><path d='M8 18l6-8 6 8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><circle cx='14' cy='10' r='2' fill='white'/></svg>">
+  <link rel="canonical" href="https://www.smartlearningsolutions.org/book.html">
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Request a Workshop — Smart Learning Solutions">
+  <meta property="og:description" content="Request a STEM workshop from Smart Learning Solutions — tell us about your group and we'll get back to you within one business day.">
+  <meta property="og:url"         content="https://www.smartlearningsolutions.org/book.html">
+  <meta property="og:image"       content="https://www.smartlearningsolutions.org/src/images/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,11 +25,11 @@
     }
 
     .book-form-card {
-      background: var(--color-white);
-      border: 1px solid var(--color-border);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: var(--space-10);
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-card);
     }
 
     .book-form-card h3 {
@@ -36,25 +43,25 @@
     }
 
     .aside-card {
-      background: var(--color-surface);
+      background: var(--bg-card);
       border-radius: var(--radius-lg);
       padding: var(--space-6);
-      border: 1px solid var(--color-border);
+      border: 1px solid var(--border);
     }
 
     .aside-card h4 { margin-bottom: var(--space-3); }
-    .aside-card p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: var(--leading-normal); }
+    .aside-card p { font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-normal); }
 
     .aside-contact a {
       display: flex;
       align-items: center;
       gap: var(--space-2);
       font-size: var(--text-sm);
-      color: var(--color-text-muted);
+      color: var(--text-muted);
       margin-top: var(--space-3);
       transition: color var(--transition-fast);
     }
-    .aside-contact a:hover { color: var(--color-text); }
+    .aside-contact a:hover { color: var(--text); }
 
     .form-success {
       display: none;
@@ -90,7 +97,7 @@
 
     <section class="section">
       <div class="container">
-        <div class="book-layout">
+        <div class="book-layout reveal-up">
 
           <div class="book-form-card">
             <h3>Workshop Enquiry Form</h3>
@@ -162,16 +169,16 @@
                 <button type="submit" class="btn btn--primary btn--lg" style="width: 100%; justify-content: center;">
                   Send Enquiry
                 </button>
-                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-3); text-align: center;">
+                <p style="font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-3); text-align: center;">
                   We'll respond within one business day. No commitment required.
                 </p>
               </div>
             </form>
 
             <div class="form-success" id="form-success">
-              <p style="font-size: 2rem; margin-bottom: var(--space-3);">✅</p>
+              <div style="display:flex;justify-content:center;margin-bottom:var(--space-3)"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg></div>
               <h4 style="margin-bottom: var(--space-2);">Enquiry received!</h4>
-              <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Thanks for getting in touch. We'll be in contact within one business day to discuss your workshop.</p>
+              <p style="font-size: var(--text-sm); color: var(--text-muted);">Thanks for getting in touch. We'll be in contact within one business day to discuss your workshop.</p>
             </div>
           </div>
 
@@ -207,9 +214,15 @@
 
   <div id="page-footer"></div>
 
+  <!-- GSAP from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <script type="module">
-    import { initPage } from '/src/js/components.js';
+    import { initPage }       from '/src/js/components.js';
+    import { initAnimations } from '/src/js/animations.js';
     initPage({ activePage: 'book' });
+    initAnimations();
 
     // Formspree AJAX submission
     const form = document.getElementById('workshop-form');

@@ -5,9 +5,10 @@ Decisions pending owner input. Nothing in this list should be resolved by Claude
 ---
 
 ## OD-001 — Formspree Endpoint
-**Blocking:** v1.1.0 (form goes live)
+**Status:** Still open — owner confirmed not yet available (2026-04-24)
+**Blocking:** Forms going live — `REPLACE_ME` placeholder remains in both files
 **Question:** What is the Formspree form endpoint URL for the workshop enquiry form and contact form?
-**Action required:** Create a Formspree account at formspree.io, create a form, and replace `REPLACE_ME` in `book.html` and `contact.html` with the endpoint URL.
+**Action required:** Create a Formspree account at formspree.io, create a form, and replace `REPLACE_ME` in `book.html` and `contact.html` with the endpoint URL (e.g. `https://formspree.io/f/YOUR_ID`).
 **Files affected:** `book.html`, `contact.html`
 
 ---
@@ -31,10 +32,8 @@ Decisions pending owner input. Nothing in this list should be resolved by Claude
 ---
 
 ## OD-004 — Workshops Page Content
-**Blocking:** v1.3.0 (workshops page)
-**Question:** What content should appear on `workshops.html`?
-**Context:** The page is currently a placeholder shell. The wireframe described it as "overview of workshop formats, audiences, outcomes, duration options, and booking process."
-**Needed from owner:** Session lengths offered, group size range, any format variations (half-day, full-day, multi-session).
+**Status:** ✅ Resolved (2026-04-24)
+**Resolution:** Full page written with real content — session formats (half-day, full-day, programme series), audience sections, program selector cards, 3-step booking process, and CTA band. Content derived from existing site context; no new owner decisions required.
 
 ---
 
