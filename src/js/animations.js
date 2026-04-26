@@ -6,6 +6,8 @@ function initAnimations() {
   if (!gsap || !ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // ── Custom Cursor ─────────────────────────────────────────
   const cursor         = document.getElementById('cursor');
   const cursorFollower = document.getElementById('cursor-follower');
@@ -37,6 +39,18 @@ function initAnimations() {
     // Hide on leave / show on enter
     document.addEventListener('mouseleave', () => gsap.to([cursor, cursorFollower], { opacity: 0, duration: 0.3 }));
     document.addEventListener('mouseenter', () => gsap.to([cursor, cursorFollower], { opacity: 1, duration: 0.3 }));
+  }
+
+  if (reduceMotion) {
+    gsap.set([
+      '.hero-content .eyebrow',
+      '.hero-content p',
+      '.hero-proof',
+      '.hero-cta',
+      '.hero-visual',
+      '.scroll-indicator'
+    ], { opacity: 1, y: 0, clearProps: 'transform' });
+    return;
   }
 
   // ── Header nav entrance ──────────────────────────────────
@@ -96,17 +110,24 @@ function initAnimations() {
       y: '0%', duration: 0.9, stagger: 0.055, ease: 'power4.out'
     }, '-=0.4')
     .to('.hero-content p', {
-      opacity: 1, y: 0, duration: 0.7, ease: 'power3.out'
+      opacity: 1, y: 0, duration: 0.55, ease: 'power3.out'
     }, '-=0.5')
+    .to('.hero-proof', {
+      opacity: 1, y: 0, duration: 0.45, ease: 'power3.out'
+    }, '-=0.35')
     .to('.hero-cta', {
-      opacity: 1, y: 0, duration: 0.6, ease: 'power3.out'
-    }, '-=0.4')
+      opacity: 1, y: 0, duration: 0.5, ease: 'power3.out'
+    }, '-=0.3')
+    .to('.hero-visual', {
+      opacity: 1, y: 0, duration: 0.7, ease: 'power3.out'
+    }, '-=0.55')
     .to('.scroll-indicator', {
       opacity: 1, duration: 0.5
     }, '-=0.2');
 
   // Initial hidden states for hero elements
   gsap.set('.hero-content p', { y: 24 });
+  gsap.set('.hero-proof', { y: 16 });
   gsap.set('.hero-cta', { y: 20 });
 
   // Orb parallax on scroll
@@ -264,16 +285,13 @@ function initAnimations() {
     });
   });
 
-  // ── Magnetic buttons ──────────────────────────────────────
+  // ── Button feedback ───────────────────────────────────────
   document.querySelectorAll('.btn--primary, .btn--outline-accent, .btn--outline').forEach(btn => {
-    btn.addEventListener('mousemove', e => {
-      const rect = btn.getBoundingClientRect();
-      const x = (e.clientX - rect.left - rect.width  / 2) * 0.28;
-      const y = (e.clientY - rect.top  - rect.height / 2) * 0.28;
-      gsap.to(btn, { x, y, duration: 0.35, ease: 'power2.out' });
+    btn.addEventListener('mouseenter', () => {
+      gsap.to(btn, { y: -2, duration: 0.22, ease: 'power2.out' });
     });
     btn.addEventListener('mouseleave', () => {
-      gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
+      gsap.to(btn, { y: 0, duration: 0.28, ease: 'power2.out' });
     });
   });
 
