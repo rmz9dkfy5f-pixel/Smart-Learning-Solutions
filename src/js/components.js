@@ -20,8 +20,8 @@ function buildHeader(activePage = '') {
     `<a href="${href}" class="${key === activePage ? 'active' : ''}">${label}</a>`
   ).join('');
 
-  const mobileItems = NAV_LINKS.map(({ label, href }) =>
-    `<a href="${href}">${label}</a>`
+  const mobileItems = NAV_LINKS.map(({ label, href, key }) =>
+    `<a href="${href}" class="${key === activePage ? 'active' : ''}">${label}</a>`
   ).join('');
 
   return `
@@ -115,6 +115,18 @@ function buildFooter() {
 }
 
 function initPage({ activePage = '' } = {}) {
+  // Inject cursor elements if not already in the HTML
+  if (!document.getElementById('cursor')) {
+    const cursor = document.createElement('div');
+    cursor.id = 'cursor';
+    cursor.setAttribute('aria-hidden', 'true');
+    const follower = document.createElement('div');
+    follower.id = 'cursor-follower';
+    follower.setAttribute('aria-hidden', 'true');
+    document.body.prepend(follower);
+    document.body.prepend(cursor);
+  }
+
   // Inject header
   const headerEl = document.getElementById('page-header');
   if (headerEl) headerEl.innerHTML = buildHeader(activePage);

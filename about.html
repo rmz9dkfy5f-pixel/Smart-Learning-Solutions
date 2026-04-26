@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="About Smart Learning Solutions — a STEM education company staffed by engineers, coders, and educators, and a licensed partner with Microbric and Whybricks.">
   <title>About — Smart Learning Solutions</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect width='28' height='28' rx='7' fill='%23E85D1A'/><path d='M8 18l6-8 6 8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><circle cx='14' cy='10' r='2' fill='white'/></svg>">
+  <link rel="canonical" href="https://www.smartlearningsolutions.org/about.html">
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="About — Smart Learning Solutions">
+  <meta property="og:description" content="About Smart Learning Solutions — a STEM education company staffed by engineers, coders, and educators, and a licensed partner with Microbric and Whybricks.">
+  <meta property="og:url"         content="https://www.smartlearningsolutions.org/about.html">
+  <meta property="og:image"       content="https://www.smartlearningsolutions.org/src/images/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,7 +26,7 @@
 
     .about-intro p {
       font-size: var(--text-lg);
-      color: var(--color-text-muted);
+      color: var(--text-muted);
       line-height: var(--leading-normal);
       margin-bottom: var(--space-5);
     }
@@ -35,19 +42,19 @@
       align-items: flex-start;
       gap: var(--space-4);
       padding: var(--space-5);
-      background: var(--color-surface);
+      background: var(--bg-card);
       border-radius: var(--radius-md);
-      border: 1px solid var(--color-border);
+      border: 1px solid var(--border);
     }
 
     .credential-icon {
-      font-size: 1.5rem;
       flex-shrink: 0;
       margin-top: 2px;
+      color: var(--accent);
     }
 
     .credential-item h4 { margin-bottom: var(--space-1); }
-    .credential-item p { font-size: var(--text-sm); color: var(--color-text-muted); }
+    .credential-item p { font-size: var(--text-sm); color: var(--text-muted); }
 
     @media (max-width: 768px) {
       .about-intro { grid-template-columns: 1fr; gap: var(--space-8); }
@@ -68,7 +75,7 @@
     <section class="section">
       <div class="container">
         <div class="about-intro">
-          <div>
+          <div class="reveal-up">
             <h2>Built on Real Expertise</h2>
             <p>Smart Learning Solutions develops and delivers STEM education experiences for K–12 students. Our team is made up of professional and certified engineers, coders, and educators who have customised and expanded industry-leading curricula with state-aligned lessons and activities.</p>
             <p>We're an authorised partner with Microbric, using the Edison robotics platform and the Whybricks platform to deliver workshops that meet students where they are — and take them further than they expected.</p>
@@ -76,29 +83,37 @@
           </div>
 
           <div class="credentials-list">
-            <div class="credential-item">
-              <div class="credential-icon" aria-hidden="true">🤖</div>
+            <div class="credential-item stagger-card">
+              <div class="credential-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 10h8M8 14h4"/><circle cx="16" cy="14" r="2"/></svg>
+              </div>
               <div>
                 <h4>Licensed Edison Partner</h4>
                 <p>Authorised Microbric partner for the Edison robotics and coding platform — trusted globally for classroom robotics education.</p>
               </div>
             </div>
-            <div class="credential-item">
-              <div class="credential-icon" aria-hidden="true">🔬</div>
+            <div class="credential-item stagger-card">
+              <div class="credential-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
+              </div>
               <div>
                 <h4>Whybricks Certified</h4>
                 <p>Certified to deliver Whybricks PSTEM programs — an inquiry-based physical science curriculum used in schools worldwide.</p>
               </div>
             </div>
-            <div class="credential-item">
-              <div class="credential-icon" aria-hidden="true">🎓</div>
+            <div class="credential-item stagger-card">
+              <div class="credential-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
               <div>
                 <h4>Engineers, Coders &amp; Educators</h4>
                 <p>Our team combines technical depth with teaching expertise — every session is led by someone who genuinely lives and breathes STEM.</p>
               </div>
             </div>
-            <div class="credential-item">
-              <div class="credential-icon" aria-hidden="true">🌐</div>
+            <div class="credential-item stagger-card">
+              <div class="credential-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+              </div>
               <div>
                 <h4>Serving Students Worldwide</h4>
                 <p>State-aligned lessons and activities adapted to serve students in schools and communities across the globe.</p>
@@ -121,9 +136,15 @@
     </section>
   </main>
   <div id="page-footer"></div>
+  <!-- GSAP from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <script type="module">
-    import { initPage } from '/src/js/components.js';
+    import { initPage }       from '/src/js/components.js';
+    import { initAnimations } from '/src/js/animations.js';
     initPage({ activePage: 'about' });
+    initAnimations();
   </script>
 </body>
 </html>

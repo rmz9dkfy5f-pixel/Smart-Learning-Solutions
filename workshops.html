@@ -3,44 +3,298 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore Smart Learning Solutions STEM workshop formats — in-person, expert-led, tailored for schools, parents, and community groups.">
+  <meta name="description" content="Explore Smart Learning Solutions STEM workshop formats — in-person, expert-led sessions tailored for schools, parents, and community groups.">
   <title>Workshops — Smart Learning Solutions</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect width='28' height='28' rx='7' fill='%23E85D1A'/><path d='M8 18l6-8 6 8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><circle cx='14' cy='10' r='2' fill='white'/></svg>">
+  <link rel="canonical" href="https://www.smartlearningsolutions.org/workshops.html">
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Workshops — Smart Learning Solutions">
+  <meta property="og:description" content="Explore Smart Learning Solutions STEM workshop formats — in-person, expert-led sessions tailored for schools, parents, and community groups.">
+  <meta property="og:url"         content="https://www.smartlearningsolutions.org/workshops.html">
+  <meta property="og:image"       content="https://www.smartlearningsolutions.org/src/images/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/css/main.css">
+  <style>
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-10);
+    }
+
+    .format-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-8);
+      transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .format-card:hover {
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-card);
+    }
+
+    .format-duration {
+      display: inline-block;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--accent-dim);
+      color: var(--accent);
+      margin-bottom: var(--space-4);
+    }
+
+    .format-card h3 { margin-bottom: var(--space-3); font-size: var(--text-xl); }
+    .format-card p { font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-normal); }
+
+    .format-features {
+      list-style: none;
+      margin-top: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .format-features li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .format-features li svg { color: var(--accent); flex-shrink: 0; }
+
+    @media (max-width: 768px) {
+      .format-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
   <div id="page-header"></div>
   <main>
+
     <section class="page-hero">
       <div class="container">
         <p class="eyebrow">In-Person · Expert-Led</p>
         <h1>STEM Workshops That Work</h1>
-        <p>Hands-on experiences designed for the way students actually learn — by doing, building, and discovering.</p>
+        <p>Hands-on experiences designed for the way students actually learn — by doing, building, and discovering. Every workshop is tailored to your group.</p>
       </div>
     </section>
 
+    <!-- ── Session Formats ─────────────────────────────────── -->
     <section class="section">
       <div class="container">
-        <p style="color: var(--color-text-muted); font-size: var(--text-lg);">Full workshops page content coming soon. In the meantime, <a href="/book.html" style="color: var(--color-accent); font-weight: 600;">request a workshop</a> or explore our <a href="/programs/coding-with-robots.html" style="color: var(--color-accent); font-weight: 600;">programs</a>.</p>
-      </div>
-    </section>
+        <header class="section-header reveal-up">
+          <p class="eyebrow">Session Formats</p>
+          <h2>Built Around Your Schedule</h2>
+          <p>We offer three flexible formats — each delivering the same expert-led, hands-on quality, adapted to the time you have available.</p>
+        </header>
 
-    <section class="cta-band">
-      <div class="container cta-band-inner">
-        <h2>Ready to Book?</h2>
-        <p>Tell us about your group and we'll find the perfect fit.</p>
-        <div class="btn-group" style="justify-content: center;">
-          <a href="/book.html" class="btn btn--outline-white btn--lg">Request a Workshop</a>
+        <div class="format-grid">
+          <div class="format-card stagger-card">
+            <span class="format-duration">~2 Hours</span>
+            <h3>Half-Day Session</h3>
+            <p>A focused, high-energy workshop that introduces one program and takes students through a complete investigation or coding challenge from start to finish.</p>
+            <ul class="format-features">
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                One program: Coding with Robots or PSTEM
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Ideal for single-class groups
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Everything set up and packed down by our team
+              </li>
+            </ul>
+          </div>
+
+          <div class="format-card stagger-card">
+            <span class="format-duration">~4–5 Hours</span>
+            <h3>Full-Day Session</h3>
+            <p>A deeper dive that gives students time to explore, refine their thinking, and tackle more complex challenges — including a mix of both programs where group size allows.</p>
+            <ul class="format-features">
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                One or two programs across the day
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Ideal for whole-year or multi-class groups
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Structured breaks; pacing matched to student energy
+              </li>
+            </ul>
+          </div>
+
+          <div class="format-card stagger-card">
+            <span class="format-duration">Multiple Sessions</span>
+            <h3>Programme Series</h3>
+            <p>For schools and groups who want a sustained STEM experience — a series of sessions over weeks or a term, building skills and confidence progressively.</p>
+            <ul class="format-features">
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Curriculum-aligned and term-plan ready
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Progressive skill build across all four coding levels
+              </li>
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Ideal for schools with dedicated STEM time
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- ── Who It's For ──────────────────────────────────────── -->
+    <section class="section section--alt">
+      <div class="container">
+        <header class="section-header section-header--center reveal-up">
+          <p class="eyebrow">Who It's For</p>
+          <h2>Every Workshop is Tailored</h2>
+          <p>Whether you're booking as a parent, a teacher, or a community organiser — we build the workshop around your group's age, size, and goals.</p>
+        </header>
+
+        <div class="audience-grid">
+          <div class="audience-card stagger-card">
+            <div class="audience-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h3>Parents &amp; Families</h3>
+            <p>Book a workshop for your child or a group of young learners. We take care of everything — materials, setup, and expert facilitation included.</p>
+          </div>
+          <div class="audience-card stagger-card">
+            <div class="audience-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h3>Schools &amp; Educators</h3>
+            <p>Curriculum-aligned sessions that complement your teaching. Fully delivered by our team — no preparation required from you beyond booking and space.</p>
+          </div>
+          <div class="audience-card stagger-card">
+            <div class="audience-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            </div>
+            <h3>Community Groups</h3>
+            <p>Youth clubs, libraries, holiday programmes, and community organisations — we bring the workshop to any venue that works for your group.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Program Selector ──────────────────────────────────── -->
+    <section class="section programs-section">
+      <div class="container">
+        <header class="section-header section-header--center reveal-up">
+          <p class="eyebrow">Choose a Program</p>
+          <h2>Two Flagship Workshop Programs</h2>
+          <p>Both programs are hands-on, inquiry-based, and expert-led. Not sure which fits your group? Tell us a little about them and we'll recommend the right one.</p>
+        </header>
+
+        <div class="program-cards">
+          <article class="program-card program-card--cyan stagger-card">
+            <div class="program-card-top"></div>
+            <div class="program-card-body">
+              <div class="program-card-tags">
+                <span class="tag">Ages 5–18</span>
+                <span class="tag">Coding</span>
+                <span class="tag">Robotics</span>
+              </div>
+              <h3>Coding with Robots</h3>
+              <p class="program-outcome">Students build, program, and test real robots.</p>
+              <p>Powered by the Edison robotics platform. From barcode commands for beginners through to Python for advanced coders — four progressive levels, one workshop.</p>
+              <a href="/programs/coding-with-robots.html" class="btn btn--outline-accent">View Program</a>
+            </div>
+          </article>
+
+          <article class="program-card stagger-card">
+            <div class="program-card-top"></div>
+            <div class="program-card-body">
+              <div class="program-card-tags">
+                <span class="tag">Ages 10–18</span>
+                <span class="tag">Physical Science</span>
+                <span class="tag">Engineering</span>
+              </div>
+              <h3>PSTEM</h3>
+              <p class="program-outcome">Students investigate the science behind the world around them.</p>
+              <p>Built on the Whybricks inquiry-based learning platform. Students answer real "why" questions through hands-on investigation across 10 module themes.</p>
+              <a href="/programs/pstem.html" class="btn btn--outline-accent">View Program</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── How It Works ──────────────────────────────────────── -->
+    <section class="section process-section dot-grid section--alt">
+      <div class="container">
+        <header class="section-header section-header--center reveal-up">
+          <p class="eyebrow">How It Works</p>
+          <h2>Three Steps to Your Workshop</h2>
+          <p>We make the whole process simple — from choosing a program to the day your students walk in ready to explore.</p>
+        </header>
+
+        <div class="process-steps">
+          <div class="process-step stagger-card">
+            <div class="step-number" aria-hidden="true">1</div>
+            <h3>Tell Us About Your Group</h3>
+            <p>Submit a quick enquiry — age range, group size, preferred dates, and which program interests you. No commitment required.</p>
+          </div>
+          <div class="process-step stagger-card">
+            <div class="step-number" aria-hidden="true">2</div>
+            <h3>We Build Your Workshop Plan</h3>
+            <p>One of our team gets back to you within one business day with a tailored workshop plan — format, content focus, and a clear quote.</p>
+          </div>
+          <div class="process-step stagger-card">
+            <div class="step-number" aria-hidden="true">3</div>
+            <h3>We Handle Everything On the Day</h3>
+            <p>We arrive with all equipment, set up before students arrive, deliver the full session, and pack down after. Nothing required from you on the day.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Booking CTA ───────────────────────────────────────── -->
+    <section class="cta-band">
+      <div class="cta-band-orb" aria-hidden="true"></div>
+      <div class="container cta-band-inner">
+        <p class="eyebrow reveal-up" style="justify-content: center; margin-bottom: var(--space-5);">Ready to Book?</p>
+        <h2 class="reveal-up">Tell Us About Your Group</h2>
+        <p class="reveal-up">Fill in a quick enquiry and we'll respond within one business day with a tailored workshop plan and quote.</p>
+        <div class="btn-group reveal-up" style="justify-content: center;">
+          <a href="/book.html" class="btn btn--primary btn--lg">Request a Workshop</a>
+          <a href="/contact.html" class="btn btn--outline btn--lg">Ask a Question First</a>
+        </div>
+        <p class="microcopy reveal-up">No commitment required. Every workshop is customised — no off-the-shelf packages.</p>
+      </div>
+    </section>
+
   </main>
   <div id="page-footer"></div>
+
+  <!-- GSAP from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <script type="module">
-    import { initPage } from '/src/js/components.js';
+    import { initPage }       from '/src/js/components.js';
+    import { initAnimations } from '/src/js/animations.js';
     initPage({ activePage: 'workshops' });
+    initAnimations();
   </script>
 </body>
 </html>

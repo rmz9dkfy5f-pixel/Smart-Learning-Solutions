@@ -39,17 +39,51 @@ function initAnimations() {
     document.addEventListener('mouseenter', () => gsap.to([cursor, cursorFollower], { opacity: 1, duration: 0.3 }));
   }
 
+  // ── Header nav entrance ──────────────────────────────────
+  const navLinks = document.querySelectorAll('.site-nav a, .header-cta');
+  if (navLinks.length) {
+    gsap.from(navLinks, {
+      opacity: 0, y: -10, duration: 0.45, stagger: 0.06, ease: 'power2.out', delay: 0.25
+    });
+  }
+
   // ── Hero ─────────────────────────────────────────────────
   const heroHeading = document.querySelector('.hero-content h1');
 
   if (heroHeading) {
-    // Split h1 into word spans
-    const rawText = heroHeading.innerHTML;
-    const words = rawText.split(/(\s+)/);
-    heroHeading.innerHTML = words.map(chunk => {
-      if (/^\s+$/.test(chunk)) return chunk;
-      return `<span class="word-wrap"><span class="word-inner">${chunk}</span></span>`;
-    }).join('');
+    // Walk child nodes so inline elements (e.g. .gradient-text) are preserved intact
+    const wordInners = [];
+    const nodes = Array.from(heroHeading.childNodes);
+    heroHeading.innerHTML = '';
+
+    nodes.forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        node.textContent.split(/(\s+)/).forEach(chunk => {
+          if (/^\s+$/.test(chunk) || chunk === '') {
+            heroHeading.appendChild(document.createTextNode(chunk));
+          } else {
+            const wrap  = document.createElement('span');
+            const inner = document.createElement('span');
+            wrap.className  = 'word-wrap';
+            inner.className = 'word-inner';
+            inner.textContent = chunk;
+            wrap.appendChild(inner);
+            heroHeading.appendChild(wrap);
+            wordInners.push(inner);
+          }
+        });
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        // Wrap the whole element as one word unit (preserves gradient span, etc.)
+        const wrap  = document.createElement('span');
+        const inner = document.createElement('span');
+        wrap.className  = 'word-wrap';
+        inner.className = 'word-inner';
+        inner.appendChild(node.cloneNode(true));
+        wrap.appendChild(inner);
+        heroHeading.appendChild(wrap);
+        wordInners.push(inner);
+      }
+    });
   }
 
   const heroTl = gsap.timeline({ delay: 0.1 });
@@ -109,6 +143,18 @@ function initAnimations() {
     }
   });
 
+  // ── Interior page-hero entrance ───────────────────────────
+  const pageHero = document.querySelector('.page-hero');
+  if (pageHero) {
+    const eyebrow = pageHero.querySelector('.eyebrow');
+    const h1      = pageHero.querySelector('h1');
+    const p       = pageHero.querySelector('p');
+    const tl = gsap.timeline({ delay: 0.1 });
+    if (eyebrow) tl.from(eyebrow, { opacity: 0, y: 16, duration: 0.55, ease: 'power3.out' });
+    if (h1)      tl.from(h1,      { opacity: 0, y: 28, duration: 0.7,  ease: 'power3.out' }, '-=0.25');
+    if (p)       tl.from(p,       { opacity: 0, y: 16, duration: 0.55, ease: 'power3.out' }, '-=0.35');
+  }
+
   // ── Section reveals ───────────────────────────────────────
   gsap.utils.toArray('.reveal-up').forEach(el => {
     gsap.fromTo(el,
@@ -130,6 +176,16 @@ function initAnimations() {
     onEnter: batch => gsap.fromTo(batch,
       { y: 64, opacity: 0 },
       { y: 0, opacity: 1, stagger: 0.12, duration: 0.75, ease: 'power3.out' }
+    ),
+    once: true
+  });
+
+  // ── Step number bounce-in ─────────────────────────────────
+  ScrollTrigger.batch('.step-number', {
+    start: 'top 90%',
+    onEnter: batch => gsap.fromTo(batch,
+      { scale: 0.5, opacity: 0 },
+      { scale: 1, opacity: 1, stagger: 0.18, duration: 0.65, ease: 'back.out(1.7)' }
     ),
     once: true
   });
@@ -162,8 +218,54 @@ function initAnimations() {
     }
   );
 
+  // ── CTA band content ──────────────────────────────────────
+  gsap.utils.toArray('.cta-band').forEach(band => {
+    const children = band.querySelectorAll('h2, p, .btn-group, .eyebrow, .microcopy');
+    children.forEach((el, i) => {
+      if (!el.classList.contains('reveal-up')) {
+        gsap.from(el, {
+          opacity: 0, y: 22, duration: 0.65, ease: 'power3.out',
+          delay: i * 0.1,
+          scrollTrigger: {
+            trigger: band,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+          }
+        });
+      }
+    });
+  });
+
+  // ── Program card tags stagger ─────────────────────────────
+  gsap.utils.toArray('.program-card').forEach(card => {
+    const tags = card.querySelectorAll('.tag');
+    if (tags.length) {
+      gsap.from(tags, {
+        opacity: 0, x: -10, duration: 0.4, stagger: 0.07, ease: 'power2.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 86%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+  });
+
+  // ── Footer reveal ─────────────────────────────────────────
+  gsap.utils.toArray('.footer-brand, .footer-col').forEach((el, i) => {
+    gsap.from(el, {
+      opacity: 0, y: 28, duration: 0.65, ease: 'power3.out',
+      delay: i * 0.09,
+      scrollTrigger: {
+        trigger: '.site-footer',
+        start: 'top 92%',
+        toggleActions: 'play none none none'
+      }
+    });
+  });
+
   // ── Magnetic buttons ──────────────────────────────────────
-  document.querySelectorAll('.btn--primary, .btn--outline-accent').forEach(btn => {
+  document.querySelectorAll('.btn--primary, .btn--outline-accent, .btn--outline').forEach(btn => {
     btn.addEventListener('mousemove', e => {
       const rect = btn.getBoundingClientRect();
       const x = (e.clientX - rect.left - rect.width  / 2) * 0.28;

@@ -114,7 +114,7 @@ img, video { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; cursor: none; }
 ul, ol { list-style: none; }
 button { cursor: none; font-family: inherit; border: none; background: none; }
-input, textarea, select { font-family: inherit; }
+input, textarea, select, label, [role="button"] { font-family: inherit; cursor: none; }
 
 /* ============================================================
    Custom Cursor
@@ -158,7 +158,7 @@ body.cursor-hover #cursor-follower {
 
 @media (pointer: coarse) {
   #cursor, #cursor-follower { display: none; }
-  html, body, a, button { cursor: auto; }
+  html, body, a, button, input, textarea, select, label, [role="button"] { cursor: auto; }
 }
 
 /* ============================================================
@@ -250,10 +250,17 @@ h4, .h4 {
 .text-center  { text-align: center; }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--accent) 0%, #FF9A5C 50%, var(--cyan) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, #FF9A5C 40%, var(--cyan) 70%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
 }
 
 .section-header { max-width: 680px; }
@@ -795,7 +802,10 @@ h4, .h4 {
   border: 1px solid rgba(255,92,36,0.2);
   font-size: 1.75rem;
   margin-bottom: var(--space-5);
+  transition: transform var(--transition-base);
 }
+
+.audience-card:hover .audience-icon { transform: scale(1.1); }
 
 .audience-card h3 { margin-bottom: var(--space-3); font-size: var(--text-xl); }
 .audience-card p { font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-normal); }
@@ -835,10 +845,15 @@ h4, .h4 {
   border-radius: var(--radius-lg);
   padding: var(--space-8);
   position: relative;
-  transition: border-color var(--transition-base);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base),
+              transform var(--transition-slow);
 }
 
-.process-step:hover { border-color: var(--border-md); }
+.process-step:hover {
+  border-color: var(--border-md);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
 
 .step-number {
   display: inline-flex;
@@ -961,10 +976,15 @@ h4, .h4 {
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
-  transition: border-color var(--transition-base);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base),
+              transform var(--transition-slow);
 }
 
-.diff-item:hover { border-color: var(--border-md); }
+.diff-item:hover {
+  border-color: var(--border-md);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
 
 .diff-icon {
   display: inline-flex;
@@ -976,7 +996,10 @@ h4, .h4 {
   border: 1px solid var(--border-md);
   font-size: 1.5rem;
   flex-shrink: 0;
+  transition: transform var(--transition-base);
 }
+
+.diff-item:hover .diff-icon { transform: scale(1.1) rotate(4deg); }
 
 .diff-item h4 { font-size: var(--text-lg); }
 .diff-item p { font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-normal); }
@@ -1209,7 +1232,7 @@ h4, .h4 {
   .form-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
   html { cursor: auto; }
-  a, button { cursor: auto; }
+  a, button, input, textarea, select, label, [role="button"] { cursor: auto; }
   #cursor, #cursor-follower { display: none; }
 }
 
