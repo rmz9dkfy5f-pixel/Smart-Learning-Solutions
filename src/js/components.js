@@ -14,6 +14,7 @@ const BOOK_HREF = '/book.html';
 const PHONE    = '1-877-365-SMRT (7678)';
 const EMAIL    = 'info@SmartLearningSolutions.org';
 const YEAR     = new Date().getFullYear();
+const TRANSITION_DELAY_MS = 100;
 
 function buildHeader(activePage = '') {
   const navItems = NAV_LINKS.map(({ label, href, key }) =>
@@ -115,6 +116,14 @@ function buildFooter() {
 }
 
 function initPage({ activePage = '' } = {}) {
+  // Cover browser document swaps with the brand background during internal navigation.
+  if (!document.getElementById('page-transition')) {
+    const transition = document.createElement('div');
+    transition.id = 'page-transition';
+    transition.setAttribute('aria-hidden', 'true');
+    document.body.prepend(transition);
+  }
+
   // Inject cursor elements if not already in the HTML
   if (!document.getElementById('cursor')) {
     const cursor = document.createElement('div');
@@ -162,6 +171,32 @@ function initPage({ activePage = '' } = {}) {
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
   }
+
+  window.addEventListener('pageshow', () => {
+    document.body.classList.remove('is-navigating');
+    document.body.style.overflow = '';
+  });
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (link.target || link.hasAttribute('download')) return;
+
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+
+    const nextUrl = new URL(href, window.location.href);
+    if (nextUrl.origin !== window.location.origin) return;
+    if (nextUrl.href === window.location.href) return;
+
+    event.preventDefault();
+    document.body.classList.add('is-navigating');
+    document.body.style.overflow = 'hidden';
+    window.setTimeout(() => {
+      window.location.assign(nextUrl.href);
+    }, TRANSITION_DELAY_MS);
+  });
 }
 
 export { initPage };

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>html{background:#060A14;}body{background:#060A14;color:#EEF2FF;}</style>
   <meta name="description" content="PSTEM — Physical Science, Technology, Engineering and Mathematics workshops powered by the Whybricks inquiry-based learning platform.">
   <title>PSTEM — Smart Learning Solutions</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect width='28' height='28' rx='7' fill='%23E85D1A'/><path d='M8 18l6-8 6 8' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><circle cx='14' cy='10' r='2' fill='white'/></svg>">
@@ -11,11 +12,11 @@
   <meta property="og:title"       content="PSTEM — Smart Learning Solutions">
   <meta property="og:description" content="PSTEM — Physical Science, Technology, Engineering and Mathematics workshops powered by the Whybricks inquiry-based learning platform.">
   <meta property="og:url"         content="https://www.smartlearningsolutions.org/programs/pstem.html">
-  <meta property="og:image"       content="https://www.smartlearningsolutions.org/src/images/og-image.jpg">
+  <meta property="og:image"       content="https://www.smartlearningsolutions.org/src/images/og-image.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/src/css/main.css?v=visual-20260426-anim">
+  <link rel="stylesheet" href="/src/css/main.css?v=visual-20260428-navfix">
   <style>
     .investigations-grid {
       display: grid;
@@ -155,7 +156,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <script type="module">
-    import { initPage }       from '/src/js/components.js';
+    import { initPage }       from '/src/js/components.js?v=navfix-20260428';
     import { initAnimations } from '/src/js/animations.js?v=visual-20260426';
     initPage({ activePage: 'programs' });
     initAnimations();

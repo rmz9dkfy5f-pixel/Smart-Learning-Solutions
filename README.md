@@ -1,6 +1,6 @@
 # Smart Learning Solutions
 
-**Version:** v2.0.0
+**Version:** v2.3.0
 **Status:** In Progress
 **Owner:** Smart Learning Solutions
 
@@ -69,8 +69,8 @@ Then open `http://localhost:8080` (or whichever port is shown).
 
 ## Before Deploying
 1. Replace `REPLACE_ME` in `book.html` and `contact.html` with your Formspree form endpoint
-2. Add a hero image and any photography to `src/images/`
-3. Complete the `workshops.html` content (currently a placeholder shell)
+2. Add final hero and program photography to `src/images/`
+3. Resolve the internal navigation white-flash issue noted in `CHANGELOG.md`
 
 ## Contact
 - Phone: 1-877-365-SMRT (7678)

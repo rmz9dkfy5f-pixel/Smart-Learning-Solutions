@@ -110,6 +110,20 @@ body {
   overflow-x: hidden;
 }
 
+#page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+  background: var(--bg);
+  opacity: 0;
+  transition: opacity 90ms ease;
+}
+
+body.is-navigating #page-transition {
+  opacity: 1;
+}
+
 img, video { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; cursor: none; }
 ul, ol { list-style: none; }
