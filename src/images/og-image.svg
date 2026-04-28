@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Smart Learning Solutions</title>
+  <desc id="desc">Branded social preview image for hands-on STEM workshops.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="0.52" stop-color="#0d2030"/>
+      <stop offset="1" stop-color="#122c3e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f47b35"/>
+      <stop offset="1" stop-color="#e85d1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1000" cy="110" r="210" fill="#1a8fe3" opacity="0.18"/>
+  <circle cx="180" cy="520" r="240" fill="#e85d1a" opacity="0.16"/>
+  <path d="M92 466c120-72 245-100 374-84 96 12 184 48 264 108 91 68 196 82 315 42" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="4"/>
+  <g transform="translate(96 92)">
+    <rect width="86" height="86" rx="22" fill="url(#accent)"/>
+    <path d="M25 57l18-28 18 28" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="43" cy="30" r="8" fill="#fff"/>
+  </g>
+  <text x="96" y="250" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="800" letter-spacing="0">
+    Smart Learning Solutions
+  </text>
+  <text x="100" y="328" fill="#f47b35" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="3">
+    HANDS-ON STEM WORKSHOPS
+  </text>
+  <text x="100" y="408" fill="#d9e7ef" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="500">
+    Robotics, coding, and physical science for K-12 students.
+  </text>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.2" stroke-width="3">
+    <rect x="846" y="310" width="210" height="138" rx="18"/>
+    <circle cx="900" cy="448" r="28"/>
+    <circle cx="1002" cy="448" r="28"/>
+    <path d="M892 310v-48h118v48M890 360h122M918 396h66"/>
+  </g>
+</svg>

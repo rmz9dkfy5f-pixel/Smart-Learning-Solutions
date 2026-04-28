@@ -11,6 +11,76 @@ Versioning follows [Semantic Versioning](docs/strategy/version-number-system.md)
 
 ---
 
+## [2.3.0] — 2026-04-28
+
+### Summary
+Launch audit remediation and version alignment. Aligns local documentation with GitHub's current `v2.2.0` release, adds a real Open Graph fallback image, corrects a workflow-doc path mismatch, and records the current navigation first-paint investigation.
+
+### Added
+- `plans/2026-04-28-site-audit-remediation.md` — Audit remediation plan and validation notes
+- `src/images/og-image.svg` — Branded social preview fallback asset
+- Early inline dark paint guard on all HTML pages
+- Page transition overlay styles in `src/css/main.css` for internal navigation testing
+
+### Changed
+- `README.md` version updated to `v2.3.0`
+- Existing pre-launch polish release corrected from `2.1.0` to `2.2.0` to match GitHub
+- All page `og:image` references now point to `/src/images/og-image.svg`
+- All page stylesheet/module query strings bumped for cache refresh during local validation
+- `AGENTS.md` canonical workflow file reference corrected to `docs/workflow/claude-code-workflow.md`
+
+### Fixed
+- Missing Open Graph asset path that would have produced a 404
+- Stale local version docs that did not match the GitHub release history
+
+### Known Issues
+- `book.html` / `contact.html` — Formspree endpoint still `REPLACE_ME` (OD-001 open)
+- Internal navigation white flash is still under investigation and should be resolved before deploy
+
+---
+
+## [2.2.0] — 2026-04-27
+
+### Summary
+Pre-launch polish pass. Fixes broken CSS tokens on interior pages, wires GSAP animations to all pages, adds SEO infrastructure, completes the workshops page, and enriches hover and entrance animations across the site.
+
+### Added
+- `workshops.html` — Full page replacing placeholder stub: session formats, audience cards, program selector, 3-step process, CTA band
+- `404.html` — Branded error page with helpful navigation links
+- `sitemap.xml` — All 8 pages listed with priorities and change frequency
+- `robots.txt` — Crawler permissions with sitemap reference
+- SVG favicon (data-URI) on all pages
+- Open Graph meta tags (`og:type`, `og:title`, `og:description`, `og:url`, `og:image`) on all pages
+- Canonical `<link>` tags on all pages
+- GSAP + `initAnimations()` added to all interior pages (`workshops.html`, `programs/`, `resources.html`, `about.html`, `book.html`, `contact.html`)
+- Page-hero entrance animation (eyebrow → h1 → p stagger) on all interior pages
+- Footer column reveal animations on all pages
+- CTA band content reveal animations on all pages
+- Program card tag stagger animations
+- Animated gradient shimmer on `.gradient-text` (`gradientShift` keyframe, 6s loop)
+- Spring bounce-in entrance for `.step-number` elements (`back.out(1.7)` ease)
+- Header nav link entrance stagger on every page load
+
+### Changed
+- `.diff-item:hover` — upgraded from border-only to `translateY(-4px)` + shadow + icon scale/rotate
+- `.process-step:hover` — upgraded from border-only to `translateY(-4px)` + shadow
+- `.audience-icon` — micro-scale on parent hover
+- `src/js/components.js` — `initPage()` now injects `#cursor`/`#cursor-follower` on all pages (single source of truth)
+- Mobile nav active state now highlights the current page
+- Emoji icons replaced with inline SVGs in `index.html`, `about.html`, `resources.html`
+
+### Fixed
+- Broken CSS tokens (`--color-*`, `--shadow-sm`, `--shadow-md`) on 6 interior pages — cards were invisible on dark theme
+- Custom cursor disappeared on all interior pages
+- Native cursor leaked through on `input`, `textarea`, `select` form elements
+- Hardcoded cursor divs removed from `index.html` — `initPage()` is now sole injector
+
+### Known Placeholders
+- `book.html` / `contact.html` — Formspree endpoint still `REPLACE_ME` (OD-001 open)
+- `src/images/` — photography not yet added; og:image URL will 404 until resolved
+
+---
+
 ## [2.0.0] — 2026-04-24
 
 ### Summary
