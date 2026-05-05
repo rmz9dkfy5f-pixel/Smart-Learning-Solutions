@@ -5,6 +5,48 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.6.0 — Release Notes Code Names + Backfill
+**Tag:** `v2.6.0__release-notes-codenames__commit-1d5b48e`
+**Commit:** `1d5b48e` · 2026-05-05
+**Type:** `docs`
+
+**Summary:** docs: update RELEASE_NOTES with code names and backfill v2.1.0 + v2.4.0
+
+**Description:**
+Add snapshot code names and canonical tag strings to every version header
+in RELEASE_NOTES.md, aligning the file with the new tag naming standard.
+Backfills the two entries that were missing from the release log:
+v2.1.0 (animation-richness) and v2.4.0 (project-docs-baseline).
+
+**What changed:**
+- `RELEASE_NOTES.md` — code name + tag line added to all 7 version headers;
+  v2.1.0 and v2.4.0 entries written and inserted in correct order
+
+**Stats:** 1 file changed · 52 insertions · 5 deletions
+
+---
+
+## v2.5.0 — Commit Notes Baseline
+**Tag:** `v2.5.0__commit-notes-baseline__commit-c276b7a`
+**Commit:** `c276b7a` · 2026-05-05
+**Type:** `docs`
+
+**Summary:** docs: add COMMIT_NOTES.md with full commit history and tag reference
+
+**Description:**
+Establishes COMMIT_NOTES.md as the structured commit log for the project.
+Documents all commits on main — summary, description, file stats, and
+canonical tag per entry — with a tag reference table at the end covering
+v1.0.0 through v2.4.0 in the new snapshot-naming standard.
+
+**What changed:**
+- `COMMIT_NOTES.md` — new file, 158 lines; full history for 8 commits
+  plus tag reference table
+
+**Stats:** 1 file added · 158 insertions
+
+---
+
 ## v2.4.0 — Project Documents Library + Polish/SEO Task Plan
 **Tag:** `v2.4.0__project-docs-baseline__commit-3e0a2ee`
 **Commit:** `3e0a2ee` · 2026-05-05
@@ -149,6 +191,8 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
+| `v2.6.0__release-notes-codenames__commit-1d5b48e` | `1d5b48e` | 2026-05-05 |
+| `v2.5.0__commit-notes-baseline__commit-c276b7a` | `c276b7a` | 2026-05-05 |
 | `v2.4.0__project-docs-baseline__commit-3e0a2ee` | `3e0a2ee` | 2026-05-05 |
 | `v2.3.0__build-version-sync__commit-c9c9c4e` | `c9c9c4e` | 2026-04-27 |
 | `v2.2.0__hero-polish-cursor__commit-d650ed2` | `d650ed2` | 2026-04-26 |
