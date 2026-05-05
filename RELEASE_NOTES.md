@@ -2,11 +2,32 @@
 
 ---
 
-## v2.4.0 — 2026-05-05
-**Code name:** `project-docs-baseline`
-**Tag:** `v2.4.0__project-docs-baseline__commit-3e0a2ee`
+## v2.6.0 - 2026-05-05 - Chronicle
 
-**Project Documents Library + Polish/SEO Task Plan**
+**Tag:** `v2.6.0__release-notes-codenames__commit-1d5b48e`
+
+### Added
+- Code name and canonical tag line to every version header in `RELEASE_NOTES.md`
+- Backfilled v2.1.0 (Pulse) and v2.4.0 (Archive) entries which were missing from the release log
+
+### Changed
+- All version headers updated to include snapshot code name alongside version and date
+
+---
+
+## v2.5.0 - 2026-05-05 - Ledger
+
+**Tag:** `v2.5.0__commit-notes-baseline__commit-c276b7a`
+
+### Added
+- `COMMIT_NOTES.md` — structured commit log documenting all commits on `main`: summary, description, file stats, and canonical tag per entry
+- Tag reference table covering v1.0.0 through v2.4.0 in the snapshot-naming standard
+
+---
+
+## v2.4.0 - 2026-05-05 - Archive
+
+**Tag:** `v2.4.0__project-docs-baseline__commit-3e0a2ee`
 
 ### Added
 - `Documents/00 Core Documents/` — 11 Claude Code prompt files: run-first, repo planning, scaffolding, strategy, architecture, CLAUDE.md spec, workflow, plan template, versioning, first task, and Codex bridge
@@ -17,11 +38,9 @@
 
 ---
 
-## v2.3.0 — 2026-04-28
-**Code name:** `build-version-sync`
-**Tag:** `v2.3.0__build-version-sync__commit-c9c9c4e`
+## v2.3.0 - 2026-04-28 - Signal
 
-**Launch audit remediation + version alignment**
+**Tag:** `v2.3.0__build-version-sync__commit-c9c9c4e`
 
 ### Added
 - `plans/2026-04-28-site-audit-remediation.md` — focused remediation record for the external launch audit
@@ -44,11 +63,9 @@
 
 ---
 
-## v2.2.0 — 2026-04-27
-**Code name:** `hero-polish-cursor`
-**Tag:** `v2.2.0__hero-polish-cursor__commit-d650ed2`
+## v2.2.0 - 2026-04-27 - Orbit
 
-**Pre-launch polish + animation pass**
+**Tag:** `v2.2.0__hero-polish-cursor__commit-d650ed2`
 
 ### Added
 - `workshops.html` — full page replacing placeholder stub: session formats, audience selector, program cards, 3-step process, CTA band
@@ -70,11 +87,9 @@
 
 ---
 
-## v2.1.0 — 2026-04-25
-**Code name:** `animation-richness`
-**Tag:** `v2.1.0__animation-richness__commit-01cd06d`
+## v2.1.0 - 2026-04-25 - Pulse
 
-**Animation richness pass across all pages**
+**Tag:** `v2.1.0__animation-richness__commit-01cd06d`
 
 ### Added
 - Extended GSAP stagger sequences and scroll-triggered reveal coverage to all interior pages
@@ -86,14 +101,9 @@
 
 ---
 
-## v2.0.0 — 2026-04-24
-**Code name:** `dark-redesign-gsap`
+## v2.0.0 - 2026-04-24 - Obsidian
+
 **Tag:** `v2.0.0__dark-redesign-gsap__commit-e8ea95f`
-
-**Dark dramatic redesign + full GSAP motion system**
-
-### Summary
-Significant redesign. Complete visual overhaul to a dark dramatic aesthetic with a production-grade GSAP animation system. No content or structural changes — design and motion only.
 
 ### Added
 - `src/js/animations.js` — GSAP animation module: lerp cursor, hero word-split stagger, ScrollTrigger reveals, card batch staggers, orb parallax scrub, magnetic buttons, CTA pulse
@@ -110,14 +120,9 @@ Significant redesign. Complete visual overhaul to a dark dramatic aesthetic with
 
 ---
 
-## v1.1.0 — 2026-04-24
-**Code name:** `project-docs-infra`
+## v1.1.0 - 2026-04-24 - Blueprint
+
 **Tag:** `v1.1.0__project-docs-infra__commit-e8b2634`
-
-**Project documentation infrastructure**
-
-### Summary
-Project documentation infrastructure scaffolded from planning documents.
 
 ### Added
 - `CLAUDE.md`, `ARCHITECTURE.md`, `ROADMAP.md`, `DECISIONS.md`, `README.md`
@@ -131,14 +136,9 @@ Project documentation infrastructure scaffolded from planning documents.
 
 ---
 
-## v1.0.0 — 2026-04-24
-**Code name:** `initial-site-rebuild`
+## v1.0.0 - 2026-04-24 - Foundation
+
 **Tag:** `v1.0.0__initial-site-rebuild__commit-633602f`
-
-**Foundation — initial static site rebuild**
-
-### Summary
-Initial rebuild of smartlearningsolutions.org as a hand-coded static marketing site.
 
 ### Added
 - Full 8-page site: Home, Workshops, Programs (×2), Resources, About, Book, Contact
