@@ -15,6 +15,17 @@ const PHONE    = '1-877-365-SMRT (7678)';
 const EMAIL    = 'info@SmartLearningSolutions.org';
 const YEAR     = new Date().getFullYear();
 const TRANSITION_DELAY_MS = 100;
+const PLAUSIBLE_DOMAINS = 'smartlearningsolutions.org,www.smartlearningsolutions.org';
+
+function injectHeadAssets() {
+  if (!document.querySelector('script[data-domain="' + PLAUSIBLE_DOMAINS + '"]')) {
+    const plausible = document.createElement('script');
+    plausible.defer = true;
+    plausible.dataset.domain = PLAUSIBLE_DOMAINS;
+    plausible.src = 'https://plausible.io/js/script.js';
+    document.head.appendChild(plausible);
+  }
+}
 
 function buildHeader(activePage = '') {
   const navItems = NAV_LINKS.map(({ label, href, key }) =>
@@ -116,6 +127,8 @@ function buildFooter() {
 }
 
 function initPage({ activePage = '' } = {}) {
+  injectHeadAssets();
+
   // Cover browser document swaps with the brand background during internal navigation.
   if (!document.getElementById('page-transition')) {
     const transition = document.createElement('div');
