@@ -20,6 +20,7 @@ desktop.ini
 # Environment
 .env
 .env.*
+!.env.example
 
 # Node (precautionary)
 node_modules/
