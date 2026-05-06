@@ -2,6 +2,37 @@
 
 ---
 
+## v2.12.2 - 2026-05-05 - Chronicle
+
+**Tag:** `v2.12.2__commit-history-backfill__commit-545016b`
+
+### Added
+- Missing commit-log entries for `v2.12.1` and the untagged `619becc` history-maintenance commit added to `COMMIT_NOTES.md`
+
+### Changed
+- `COMMIT_NOTES.md` tag reference table refreshed through `v2.12.2`
+
+### Fixed
+- The structured commit backlog no longer skipped past commits that existed in Git history but were absent from `COMMIT_NOTES.md`
+
+---
+
+## v2.12.1 - 2026-05-05 - Compass
+
+**Tag:** `v2.12.1__release-record-sync__commit-541f575`
+
+### Added
+- `RELEASE_NOTES.md` entry for the `v2.12.0` Beacon release
+- Missing `v2.11.0` release-note entry so the file reflects the actual tagged history
+
+### Changed
+- `COMMIT_NOTES.md` updated to record `v2.12.0` using the real tagged commit hash
+
+### Fixed
+- Release-tracking docs no longer depended on placeholder or lagging hash references for `v2.12.0`
+
+---
+
 ## v2.12.0 - 2026-05-05 - Beacon
 
 **Tag:** `v2.12.0__polish-seo-analytics__commit-6c9a427`
