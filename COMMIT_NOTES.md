@@ -5,6 +5,27 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.12.1 — Release Record Sync
+**Tag:** `v2.12.1__release-record-sync__commit-541f575`
+**Commit:** `541f575` · 2026-05-05
+**Type:** `docs`
+
+**Summary:** docs(release): sync v2.12.0 notes with real commit hash
+
+**Description:**
+Backfill the release-tracking docs after the actual `v2.12.0` release commit
+was created so the human-readable history can reference the real tagged hash.
+Also adds the missing `v2.11.0` release-notes entry so release records match
+the tagged history on `main`.
+
+**What changed:**
+- `RELEASE_NOTES.md` — added v2.12.0 (Beacon) and the missing v2.11.0 entry
+- `COMMIT_NOTES.md` — added the v2.12.0 release entry with the real hash
+
+**Stats:** 2 files changed · 98 insertions
+
+---
+
 ## v2.12.0 — Polish, SEO & Analytics Completion
 **Tag:** `v2.12.0__polish-seo-analytics__commit-6c9a427`
 **Commit:** `6c9a427` · 2026-05-05
@@ -159,6 +180,27 @@ Remove redundant bold sub-headers — sections use ### only.
   Archive, Ledger, Chronicle
 
 **Stats:** 1 file changed · 37 insertions · 37 deletions
+
+---
+
+## Untagged — Commit Notes Backfill for v2.5.0 and v2.6.0
+**Tag:** _(none)_
+**Commit:** `619becc` · 2026-05-05
+**Type:** `docs`
+
+**Summary:** docs: backlog v2.5.0 and v2.6.0 entries into COMMIT_NOTES
+
+**Description:**
+Backfill the structured commit log with entries for the two commits that
+established `COMMIT_NOTES.md` and the release-notes code-name pass. Extends
+the tag reference table so the canonical tag list covered the first nine
+release snapshots in the repo.
+
+**What changed:**
+- `COMMIT_NOTES.md` — added entries for v2.5.0 and v2.6.0
+- `COMMIT_NOTES.md` — extended the tag reference table to cover nine tags
+
+**Stats:** 1 file changed · 44 insertions
 
 ---
 
@@ -348,6 +390,10 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
+| `v2.12.1__release-record-sync__commit-541f575` | `541f575` | 2026-05-05 |
+| `v2.12.0__polish-seo-analytics__commit-6c9a427` | `6c9a427` | 2026-05-05 |
+| `v2.11.0__release-notes-current__commit-ecb25ab` | `ecb25ab` | 2026-05-05 |
+| `v2.10.0__commit-notes-current__commit-3977f77` | `3977f77` | 2026-05-05 |
 | `v2.9.0__docs-scaffold-aligned__commit-b0a13f2` | `b0a13f2` | 2026-05-05 |
 | `v2.8.0__docs-scaffold-complete__commit-cb62d55` | `cb62d55` | 2026-05-05 |
 | `v2.7.0__release-notes-reform__commit-2600d9d` | `2600d9d` | 2026-05-05 |
