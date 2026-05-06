@@ -92,17 +92,23 @@ The repo was scaffolded via `00_RUN_FIRST.md` execution on 2026-05-05. The follo
 **Goal:** Create all missing scaffold files
 **Outcome:** 17 files created; 8 skipped (non-empty)
 
-### Slice 2: Strategy and Architecture Alignment
+### Slice 2: Strategy and Architecture Alignment ✅ COMPLETE
 **Goal:** Confirm `docs/STRATEGY.md` and `ARCHITECTURE.md` do not conflict
-**Validation:** Read both; flag any contradictions
+**Outcome:**
+- `docs/STRATEGY.md` ↔ `ARCHITECTURE.md` — no conflicts; complementary domains (strategy vs technical structure)
+- `docs/STRATEGY.md` ↔ `sls-project-context.md` — fully aligned; no contradictions
+- `docs/workflow/claude-code-workflow.md` — consistent with new structure; no updates needed
+- **Bug fixed:** `CHANGELOG.md` had a broken link to `docs/strategy/version-number-system.md` (file does not exist) — corrected to `docs/VERSIONING.md`
 
-### Slice 3: Open Decisions Cleanup
+### Slice 3: Open Decisions Cleanup ✅ COMPLETE
 **Goal:** Update `plans/open-decisions.md` with any unresolved decisions from the scaffold
-**Validation:** Each decision has owner, options, and can-work-continue flag
+**Outcome:**
+- OD-001 through OD-006 reviewed — all current and accurate
+- OD-007 (Testimonials) added — flagged during scaffold; trust signal section has no real content; fabrication prohibited
 
-### Slice 4: Changelog Update
+### Slice 4: Changelog Update ✅ COMPLETE
 **Goal:** Add a documentation scaffold entry to `CHANGELOG.md`
-**Validation:** Entry follows Keep a Changelog format
+**Outcome:** `[2.8.0] — 2026-05-05` entry added covering all 19 scaffold files, the alignment check results, and the open decisions update
 
 ## 10. Validation Plan
 
@@ -137,10 +143,23 @@ All created files are new (not overwrites). To roll back: delete the 17 new file
 
 Slice 1 is complete. Slices 2–4 require owner review and approval before proceeding.
 
-## 15. Completion Notes (Slice 1)
+## 15. Completion Notes
 
+### Slice 1 ✅
 **What changed:** Full documentation scaffold created per `00_RUN_FIRST.md` execution order
-**Files created:** 17 new files (see Current State section)
-**Files skipped:** 8 non-empty existing files (not overwritten per stop conditions)
-**Validation:** All files created; no existing files modified
-**Next recommended action:** Owner reviews new docs, approves Slice 2 (strategy/architecture alignment check)
+**Files created:** 17 new files | **Files skipped:** 8 non-empty existing files
+
+### Slice 2 ✅
+**What changed:** Alignment check across all strategy and architecture docs
+**Finding:** `CHANGELOG.md` had a broken link to a non-existent versioning file — corrected to `docs/VERSIONING.md`
+**No conflicts found** between any strategy, architecture, or workflow docs
+
+### Slice 3 ✅
+**What changed:** `plans/open-decisions.md` — OD-007 (Testimonials) added
+**Reviewed:** OD-001 through OD-006 confirmed current and accurate
+
+### Slice 4 ✅
+**What changed:** `CHANGELOG.md` — v2.8.0 entry added covering the full scaffold
+**Files changed:** `CHANGELOG.md`, `plans/open-decisions.md`, `plans/2026-05-05-initial-project-docs.md`
+**Validation:** All references correct; no duplicate source-of-truth; broken link fixed
+**Plan status:** COMPLETE — all 4 slices done

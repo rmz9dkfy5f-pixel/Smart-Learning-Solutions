@@ -3,11 +3,50 @@
 All notable changes to this project are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
-Versioning follows [Semantic Versioning](docs/strategy/version-number-system.md).
+Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
 ## [Unreleased]
+
+---
+
+## [2.8.0] — 2026-05-05
+
+### Summary
+Full project documentation library scaffolded via `Documents/00 Core Documents/00_RUN_FIRST.md`. Establishes authoritative reference docs for strategy, design, content, accessibility, performance, testing, deployment, and versioning so agents have complete source material before making content or code changes.
+
+### Added
+- `REPO_PLANNING.md` — repo strategy, documentation philosophy, source-of-truth map, file tree, duplicate prevention rules, agent execution rules
+- `CONTRIBUTING.md` — contributor guide with SLS-specific constraints (no virtual language, no pricing, nav changes via `components.js` only)
+- `.env.example` — documents that no server-side env vars exist; notes `REPLACE_ME` Formspree endpoint location
+- `docs/STRATEGY.md` — structured business strategy: goals, audiences, value proposition, CTA rules, content policy, brand direction, constraints, non-negotiables, open questions
+- `docs/DESIGN.md` — design system rules: token policy, typography, colour, component patterns, GSAP animation guidelines, responsive rules, iconography
+- `docs/CONTENT.md` — copy rules: tone, voice, CTA strategy, program names, claims policy, audience framing, metadata standards, placeholder policy
+- `docs/ACCESSIBILITY.md` — WCAG 2.1 AA expectations: semantic HTML rules, keyboard nav, focus management, ARIA usage, form error handling, motion rules
+- `docs/PERFORMANCE.md` — asset loading rules, third-party script policy, critical rendering, image rules when photography is added, known risks
+- `docs/TESTING.md` — manual QA checklist: pre-commit, per-component (header/footer, animations, forms, SEO), cross-browser, responsive, accessibility spot checks
+- `docs/DEPLOYMENT.md` — deploy process, pre-deploy checklist, hosting options (Netlify preferred), local dev requirements, rollback procedure
+- `docs/VERSIONING.md` — semver definitions, tag naming standard (`vX.Y.Z__snapshot__commit-HASH`), release code name conventions, agent rules
+- `design/README.md`, `design/wireframes/README.md`, `design/references/README.md` — design asset folder structure
+- `sample-data/README.md` — placeholder for dev sample content
+- `.github/PULL_REQUEST_TEMPLATE.md` — PR checklist with SLS-specific content and nav rules
+- `.github/ISSUE_TEMPLATE.md` — issue form with type, priority, and reproduction steps
+- `plans/2026-05-05-initial-project-docs.md` — task plan for this scaffolding work
+- `plans/open-decisions.md` — OD-007 (testimonials) added
+
+### Changed
+- `.gitignore` — added `!.env.example` exception so the template file is tracked despite the `.env.*` ignore rule
+- `CHANGELOG.md` — fixed broken versioning link (`docs/strategy/version-number-system.md` → `docs/VERSIONING.md`)
+- `plans/open-decisions.md` — OD-007 added for testimonials
+
+### Skipped (non-empty existing files, not overwritten)
+`ARCHITECTURE.md` · `CLAUDE.md` · `CHANGELOG.md` · `ROADMAP.md` · `README.md` · `plans/PLAN_TEMPLATE.md` · `plans/open-decisions.md` · `docs/workflow/claude-code-workflow.md`
+
+### Alignment Check Results (Slice 2)
+- `docs/STRATEGY.md` ↔ `ARCHITECTURE.md` — no conflicts; complementary domains
+- `docs/STRATEGY.md` ↔ `docs/strategy/sls-project-context.md` — fully aligned
+- `docs/workflow/claude-code-workflow.md` — active and consistent with new structure
 
 ---
 
