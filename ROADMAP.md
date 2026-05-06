@@ -13,47 +13,39 @@ A clean, fast, credible marketing site that converts visitors into workshop book
 
 ---
 
+## Current Baseline
+- Core page set is live in source: Home, Workshops, Programs, Resources, About, Book, and Contact
+- Shared navigation, footer injection, canonical tags, Open Graph tags, `robots.txt`, and `sitemap.xml` are in place
+- Plausible analytics is implemented centrally in `src/js/components.js`
+- The remaining launch blockers are operational and content decisions, not missing site structure
+
 ## Milestones
 
-### v1.0.0 — Foundation ✅ (2026-04-24)
-Homepage, all core pages, design system, shared header/footer, booking form shell.
+### Next — Launch Readiness
+- Replace Formspree `REPLACE_ME` in `book.html` and `contact.html` with the real endpoint
+- Choose the production deployment target and complete domain setup
+- Test navigation, forms, and metadata on the production host
 
-### v1.1.0 — Form Live
-- Replace Formspree `REPLACE_ME` with real endpoint in `book.html` and `contact.html`
-- Test end-to-end form submission
-- Confirm email delivery and auto-reply
+### Next — Imagery and Trust Signals
+- Add hero photography to the homepage and supporting imagery to program pages
+- Add team, venue, or workshop photography where approved
+- Publish real testimonials if owner-supplied quotes are available
 
-### v1.2.0 — Imagery
-- Add hero image to homepage
-- Add supporting photography to program pages
-- Update `about.html` with team or venue photography
-
-### v1.3.0 — Workshops Page Complete
-- Write full content for `workshops.html` (formats, session lengths, group sizes, booking process)
-- Align with confirmed decisions: in-person only, parent-primary framing, quote-only
-
-### v1.4.0 — Deployment
-- Choose deployment target: Netlify or GitHub Pages
-- Connect custom domain (smartlearningsolutions.org)
-- Confirm HTTPS, clean URLs, and redirect from www
-
-### v2.0.0 — First Major Update (TBD)
-Scope to be determined. Possible candidates:
-- Professional Development page (if content exists)
-- Testimonials section (if reviews are collected)
-- FAQ page
+### Next — Post-Launch Expansion
+- Add a Professional Development page if content is approved
+- Add an FAQ page if common booking questions emerge
+- Add footer social links if active accounts are confirmed
 
 ---
 
 ## Deferred
 - Professional Development standalone page — no content yet; defer until content confirmed
 - Social media links in footer — placeholder exists; defer until accounts confirmed
-- Analytics — not yet added; consider adding before v1.4.0 deployment
-- Sitemap.xml / robots.txt — needed before SEO matters; add at v1.4.0
 
 ## Blockers
-- Formspree endpoint not yet created (blocks v1.1.0)
-- Hero photography not yet sourced (blocks v1.2.0)
-- Deployment target not yet confirmed (blocks v1.4.0)
+- Formspree endpoint not yet created
+- Hero photography not yet sourced
+- Deployment target not yet confirmed
+- Testimonials are still pending owner-supplied quotes if social proof is required for launch
 
 See `plans/open-decisions.md` for the full list.
