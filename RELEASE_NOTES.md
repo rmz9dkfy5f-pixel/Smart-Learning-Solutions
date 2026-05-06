@@ -2,9 +2,71 @@
 
 ---
 
+## v2.10.0 - 2026-05-05 - Index
+
+**Tag:** `v2.10.0__commit-notes-current__commit-3977f77`
+
+### Added
+- `COMMIT_NOTES.md` — v2.7.0, v2.8.0, and v2.9.0 entries backlogged with full summary, description, and stats
+
+### Fixed
+- Stale pre-rewrite commit hashes corrected for v2.4.0, v2.5.0, and v2.6.0 entries and tag reference table in `COMMIT_NOTES.md`
+
+---
+
+## v2.9.0 - 2026-05-05 - Anchor
+
+**Tag:** `v2.9.0__docs-scaffold-aligned__commit-b0a13f2`
+
+### Changed
+- `CHANGELOG.md` — fixed broken versioning link (`docs/strategy/version-number-system.md` → `docs/VERSIONING.md`); added [2.8.0] entry covering all 19 scaffold files and alignment findings
+- `plans/open-decisions.md` — OD-007 (Testimonials) added; trust signal section flagged as needing real quotes; fabrication prohibited
+- `plans/2026-05-05-initial-project-docs.md` — Slices 2–4 marked complete
+
+### Fixed
+- Broken link in `CHANGELOG.md` pointing to a versioning file that does not exist
+
+---
+
+## v2.8.0 - 2026-05-05 - Atlas
+
+**Tag:** `v2.8.0__docs-scaffold-complete__commit-cb62d55`
+
+### Added
+- `docs/STRATEGY.md` — structured business strategy: goals, audiences, value proposition, CTA rules, claims policy, brand direction, constraints, non-negotiables, open questions
+- `docs/DESIGN.md` — design system rules: token policy, typography, colour, component patterns, GSAP animation guidelines, responsive rules, iconography
+- `docs/CONTENT.md` — copy rules: tone, voice, CTA strategy, program names, claims policy, audience framing, metadata standards, placeholder policy
+- `docs/ACCESSIBILITY.md` — WCAG 2.1 AA expectations: semantic HTML, keyboard nav, focus management, ARIA usage, form error handling, motion rules
+- `docs/PERFORMANCE.md` — asset loading rules, third-party script policy, critical rendering, image rules, known risks
+- `docs/TESTING.md` — manual QA checklist: pre-commit, per-component, cross-browser, responsive, accessibility spot checks
+- `docs/DEPLOYMENT.md` — deploy process, pre-deploy checklist, hosting options, local dev requirements, rollback procedure
+- `docs/VERSIONING.md` — semver definitions, tag naming standard, release code name conventions, agent rules
+- `REPO_PLANNING.md` — repo strategy, documentation philosophy, source-of-truth map, file tree, duplicate prevention rules, agent execution rules
+- `CONTRIBUTING.md` — contributor guide with SLS-specific constraints
+- `.env.example` — documents that no server-side env vars exist; notes `REPLACE_ME` Formspree endpoint location
+- `design/README.md`, `design/wireframes/README.md`, `design/references/README.md` — design asset folder structure
+- `sample-data/README.md` — placeholder for dev sample content
+- `.github/PULL_REQUEST_TEMPLATE.md` — PR checklist with SLS-specific content and nav rules
+- `.github/ISSUE_TEMPLATE.md` — issue form with type, priority, and reproduction steps
+- `plans/2026-05-05-initial-project-docs.md` — task plan for scaffolding work
+
+### Changed
+- `.gitignore` — added `!.env.example` exception so the template file is tracked
+
+---
+
+## v2.7.0 - 2026-05-05 - Reform
+
+**Tag:** `v2.7.0__release-notes-reform__commit-2600d9d`
+
+### Changed
+- `RELEASE_NOTES.md` — all version headers rewritten to `vX.Y.Z - YYYY-MM-DD - CodeName` format; slug-style code names replaced with single proper-word names across all 9 versions; v2.5.0 (Ledger) and v2.6.0 (Chronicle) entries added; redundant bold sub-headers removed
+
+---
+
 ## v2.6.0 - 2026-05-05 - Chronicle
 
-**Tag:** `v2.6.0__release-notes-codenames__commit-1d5b48e`
+**Tag:** `v2.6.0__release-notes-codenames__commit-b3f3bf3`
 
 ### Added
 - Code name and canonical tag line to every version header in `RELEASE_NOTES.md`
@@ -17,7 +79,7 @@
 
 ## v2.5.0 - 2026-05-05 - Ledger
 
-**Tag:** `v2.5.0__commit-notes-baseline__commit-c276b7a`
+**Tag:** `v2.5.0__commit-notes-baseline__commit-d19389d`
 
 ### Added
 - `COMMIT_NOTES.md` — structured commit log documenting all commits on `main`: summary, description, file stats, and canonical tag per entry
@@ -27,7 +89,7 @@
 
 ## v2.4.0 - 2026-05-05 - Archive
 
-**Tag:** `v2.4.0__project-docs-baseline__commit-3e0a2ee`
+**Tag:** `v2.4.0__project-docs-baseline__commit-9e87d2b`
 
 ### Added
 - `Documents/00 Core Documents/` — 11 Claude Code prompt files: run-first, repo planning, scaffolding, strategy, architecture, CLAUDE.md spec, workflow, plan template, versioning, first task, and Codex bridge
