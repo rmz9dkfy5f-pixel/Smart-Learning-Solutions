@@ -2,6 +2,21 @@
 
 ---
 
+## v2.12.3 - 2026-05-05 - Meridian
+
+**Tag:** `v2.12.3__version-narrative-alignment__commit-860c1df`
+
+### Changed
+- `README.md` version line updated from `v2.3.0` to `v2.12.2`
+- `ROADMAP.md` rewritten from stale `v1.x` milestone planning into a forward-looking roadmap based on the current shipped site baseline
+- `RELEASE_NOTES.md` extended so the top of the file reflects the current release sequence through `v2.12.2`
+
+### Fixed
+- Version narrative drift between `README.md`, `RELEASE_NOTES.md`, the Git tags, and `ROADMAP.md`
+- Stale roadmap items that still treated analytics, sitemap, robots, and workshops completion as future work
+
+---
+
 ## v2.12.2 - 2026-05-05 - Chronicle
 
 **Tag:** `v2.12.2__commit-history-backfill__commit-545016b`
