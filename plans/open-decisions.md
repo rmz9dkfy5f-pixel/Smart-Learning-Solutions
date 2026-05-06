@@ -50,3 +50,18 @@ Decisions pending owner input. Nothing in this list should be resolved by Claude
 **Question:** Should the site include analytics tracking before launch?
 **Context:** No analytics are currently implemented. Options include Google Analytics 4 (free), Plausible (paid, privacy-focused), or no tracking.
 **Action required:** Confirm preference.
+
+---
+
+## OD-007 — Testimonials
+**Status:** Open
+**Blocking:** Trust signal sections on homepage and program pages
+**Question:** Are real customer testimonials available to publish on the site?
+**Context:** `docs/CONTENT.md` and `docs/STRATEGY.md` both flag testimonials as a missing trust signal. Fabricated testimonials are prohibited. Program and homepage sections currently have no social proof. A placeholder is in place but the section has low impact without real quotes.
+**Options:**
+- Provide real quotes from parents, schools, or community groups
+- Use a "results pending" placeholder until quotes are collected
+- Remove the testimonials section until real content is available
+**Recommendation:** Collect 2–3 short real quotes with name, role, and context. Even a single genuine testimonial is stronger than a placeholder.
+**Action required:** Owner provides testimonial copy and approves attribution.
+**Can work continue without it:** Yes — placeholder remains in place.
