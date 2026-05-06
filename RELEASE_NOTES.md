@@ -2,6 +2,38 @@
 
 ---
 
+## v2.12.0 - 2026-05-05 - Beacon
+
+**Tag:** `v2.12.0__polish-seo-analytics__commit-6c9a427`
+
+### Added
+- Sitewide Plausible analytics injected from `src/js/components.js`, tracking both `smartlearningsolutions.org` and `www.smartlearningsolutions.org`
+- `twitter:card` metadata on all public pages
+- `plans/2026-05-06-polish-and-seo.md` — execution plan for the final polish, SEO, and analytics pass
+
+### Changed
+- `sitemap.xml` refreshed to `2026-05-06` and priorities aligned with the active SEO task plan
+- `404.html` recovery actions simplified to Home and Request a Workshop
+- `plans/open-decisions.md` — OD-006 resolved for Plausible analytics
+
+### Fixed
+- Sitewide analytics was still missing despite the SEO and polish pass already being in place
+- Social card coverage was incomplete because public pages were missing the Twitter summary card tag
+
+---
+
+## v2.11.0 - 2026-05-05 - Current
+
+**Tag:** `v2.11.0__release-notes-current__commit-ecb25ab`
+
+### Added
+- `RELEASE_NOTES.md` entries for v2.7.0 through v2.10.0 so the release log matches the current tagged history
+
+### Fixed
+- Stale pre-rewrite hashes on the v2.4.0, v2.5.0, and v2.6.0 tag lines in `RELEASE_NOTES.md`
+
+---
+
 ## v2.10.0 - 2026-05-05 - Index
 
 **Tag:** `v2.10.0__commit-notes-current__commit-3977f77`

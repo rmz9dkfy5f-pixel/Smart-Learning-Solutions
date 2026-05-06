@@ -5,6 +5,72 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.12.0 — Polish, SEO & Analytics Completion
+**Tag:** `v2.12.0__polish-seo-analytics__commit-6c9a427`
+**Commit:** `6c9a427` · 2026-05-05
+**Type:** `feat`
+
+**Summary:** feat(seo): complete polish, analytics, and metadata pass
+
+**Description:**
+Ship the remaining polish pass for the marketing site. Adds sitewide
+Plausible analytics, completes Twitter card coverage, refreshes sitemap
+metadata, simplifies the 404 recovery path, and closes the analytics open
+decision in planning docs.
+
+**What changed:**
+- `src/js/components.js` — injects Plausible once per page for both apex and
+  `www` domains
+- Public HTML pages — Twitter summary card metadata added where missing
+- `sitemap.xml` and `404.html` — refreshed SEO metadata and streamlined
+  recovery paths
+- `CHANGELOG.md`, `plans/open-decisions.md`, and
+  `plans/2026-05-06-polish-and-seo.md` — release record and planning updates
+
+**Stats:** 14 files changed · 105 insertions · 19 deletions
+
+---
+
+## v2.11.0 — Release Notes Current
+**Tag:** `v2.11.0__release-notes-current__commit-ecb25ab`
+**Commit:** `ecb25ab` · 2026-05-05
+**Type:** `docs`
+
+**Summary:** docs: update RELEASE_NOTES with v2.7.0–v2.10.0 and fix stale hashes
+
+**Description:**
+Bring RELEASE_NOTES.md back in sync with the tagged history. Adds the four
+missing release entries for v2.7.0 through v2.10.0 and corrects stale
+pre-rewrite hashes on older tag lines.
+
+**What changed:**
+- `RELEASE_NOTES.md` — added v2.7.0, v2.8.0, v2.9.0, and v2.10.0 entries
+- `RELEASE_NOTES.md` — corrected stale hashes for v2.4.0, v2.5.0, and v2.6.0
+
+**Stats:** 1 file changed · 65 insertions · 3 deletions
+
+---
+
+## v2.10.0 — Commit Notes Current
+**Tag:** `v2.10.0__commit-notes-current__commit-3977f77`
+**Commit:** `3977f77` · 2026-05-05
+**Type:** `docs`
+
+**Summary:** docs: backlog v2.7.0–v2.9.0 into COMMIT_NOTES and fix stale hashes
+
+**Description:**
+Backfill the structured commit log with the missing v2.7.0, v2.8.0, and
+v2.9.0 entries. Also correct stale pre-rewrite hashes so the canonical tag
+references match the actual tagged history.
+
+**What changed:**
+- `COMMIT_NOTES.md` — added entries for v2.7.0, v2.8.0, and v2.9.0
+- `COMMIT_NOTES.md` — corrected stale hashes for v2.4.0, v2.5.0, and v2.6.0
+
+**Stats:** 1 file changed · 103 insertions · 9 deletions
+
+---
+
 ## v2.9.0 — Doc Scaffold Alignment + Open Decisions + Changelog
 **Tag:** `v2.9.0__docs-scaffold-aligned__commit-b0a13f2`
 **Commit:** `b0a13f2` · 2026-05-05
