@@ -11,6 +11,21 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.12.0] — 2026-05-06
+
+### Summary
+Final polish, SEO, and analytics pass for the static marketing site. Adds sitewide Plausible analytics, completes social card metadata coverage, refreshes sitemap metadata, tightens the 404 recovery path, and records the analytics decision in project planning docs.
+
+### Added
+- `plans/2026-05-06-polish-and-seo.md` — execution plan for the final polish, SEO, and analytics pass
+- Plausible analytics injected sitewide from `src/js/components.js`, tracking both `smartlearningsolutions.org` and `www.smartlearningsolutions.org`
+- Twitter summary card metadata on all public pages
+
+### Changed
+- `sitemap.xml` `lastmod` values refreshed to `2026-05-06` and priorities aligned with `TASK-polish-and-seo.md`
+- `404.html` recovery actions simplified to Home and Request a Workshop
+- `plans/open-decisions.md` — OD-006 marked resolved for Plausible analytics
+
 ## [2.8.0] — 2026-05-05
 
 ### Summary

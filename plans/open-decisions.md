@@ -46,10 +46,10 @@ Decisions pending owner input. Nothing in this list should be resolved by Claude
 ---
 
 ## OD-006 — Analytics
-**Blocking:** v1.4.0 (go live)
-**Question:** Should the site include analytics tracking before launch?
-**Context:** No analytics are currently implemented. Options include Google Analytics 4 (free), Plausible (paid, privacy-focused), or no tracking.
-**Action required:** Confirm preference.
+**Status:** ✅ Resolved (2026-05-06)
+**Resolution:** Use Plausible analytics.
+**Context:** Analytics is implemented centrally via `src/js/components.js` and tracks both `smartlearningsolutions.org` and `www.smartlearningsolutions.org`.
+**Files affected:** `src/js/components.js`
 
 ---
 
