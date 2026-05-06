@@ -5,9 +5,100 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.9.0 — Doc Scaffold Alignment + Open Decisions + Changelog
+**Tag:** `v2.9.0__docs-scaffold-aligned__commit-b0a13f2`
+**Commit:** `b0a13f2` · 2026-05-05
+**Type:** `docs`
+
+**Summary:** docs: complete doc scaffold alignment check, open decisions, and changelog
+
+**Description:**
+Slices 2–4 of plans/2026-05-05-initial-project-docs.md. Alignment check
+confirmed no conflicts across strategy, architecture, and workflow docs.
+Fixed a broken versioning link in CHANGELOG.md. Added OD-007 (Testimonials)
+to open decisions. Added the v2.8.0 changelog entry.
+
+**What changed:**
+- `CHANGELOG.md` — fixed broken link (`docs/strategy/version-number-system.md`
+  → `docs/VERSIONING.md`); added [2.8.0] entry covering all 19 scaffold files
+- `plans/open-decisions.md` — OD-007 (Testimonials) added
+- `plans/2026-05-05-initial-project-docs.md` — Slices 2–4 marked complete
+
+**Stats:** 3 files changed · 85 insertions · 12 deletions
+
+---
+
+## v2.8.0 — Full Documentation Scaffold
+**Tag:** `v2.8.0__docs-scaffold-complete__commit-cb62d55`
+**Commit:** `cb62d55` · 2026-05-05
+**Type:** `docs`
+
+**Summary:** docs: scaffold full project documentation library from 00_RUN_FIRST.md
+
+**Description:**
+Execute the 10-step setup controller in Documents/00 Core Documents.
+Creates the complete reference documentation set so agents have
+authoritative source material before making content or code changes.
+19 files changed; 8 non-empty existing files preserved per stop conditions.
+
+**What changed:**
+- `docs/STRATEGY.md` — structured business strategy: goals, audiences,
+  value proposition, CTA rules, claims policy, brand direction
+- `docs/DESIGN.md` — design system rules: tokens, typography, colour,
+  GSAP animation guidelines, responsive rules
+- `docs/CONTENT.md` — copy rules: tone, CTA strategy, claims policy,
+  program names, metadata standards, placeholder policy
+- `docs/ACCESSIBILITY.md` — WCAG 2.1 AA expectations: semantic HTML,
+  keyboard nav, focus management, ARIA, form error handling
+- `docs/PERFORMANCE.md` — asset loading rules, third-party script policy,
+  critical rendering, image rules, known risks
+- `docs/TESTING.md` — manual QA checklist: pre-commit, per-component,
+  cross-browser, responsive, accessibility spot checks
+- `docs/DEPLOYMENT.md` — deploy process, pre-deploy checklist, hosting
+  options, local dev requirements, rollback procedure
+- `docs/VERSIONING.md` — semver definitions, tag naming standard, release
+  code name conventions, agent rules
+- `REPO_PLANNING.md` — repo strategy, doc philosophy, source-of-truth map,
+  file tree, duplicate prevention, agent execution rules
+- `CONTRIBUTING.md` — contributor guide with SLS-specific constraints
+- `.env.example` — documents no server-side env vars; notes REPLACE_ME location
+- `.gitignore` — added `!.env.example` exception
+- `design/README.md`, `design/wireframes/README.md`,
+  `design/references/README.md` — design asset folder structure
+- `sample-data/README.md` — placeholder for dev sample content
+- `.github/PULL_REQUEST_TEMPLATE.md` — PR checklist with SLS rules
+- `.github/ISSUE_TEMPLATE.md` — issue form with type and priority
+- `plans/2026-05-05-initial-project-docs.md` — task plan for this work
+
+**Stats:** 19 files changed · 1,259 insertions
+
+---
+
+## v2.7.0 — Release Notes Reform
+**Tag:** `v2.7.0__release-notes-reform__commit-2600d9d`
+**Commit:** `2600d9d` · 2026-05-05
+**Type:** `docs`
+
+**Summary:** docs: reformat RELEASE_NOTES to GitHub style with proper code names
+
+**Description:**
+Rewrite all version headers to `vX.Y.Z - YYYY-MM-DD - CodeName` format.
+Replace slug-style code names with single proper-word names across all
+9 versions. Add missing v2.5.0 (Ledger) and v2.6.0 (Chronicle) entries.
+Remove redundant bold sub-headers — sections use ### only.
+
+**What changed:**
+- `RELEASE_NOTES.md` — all 9 version headers reformatted; code names
+  assigned: Foundation, Blueprint, Obsidian, Pulse, Orbit, Signal,
+  Archive, Ledger, Chronicle
+
+**Stats:** 1 file changed · 37 insertions · 37 deletions
+
+---
+
 ## v2.6.0 — Release Notes Code Names + Backfill
-**Tag:** `v2.6.0__release-notes-codenames__commit-1d5b48e`
-**Commit:** `1d5b48e` · 2026-05-05
+**Tag:** `v2.6.0__release-notes-codenames__commit-b3f3bf3`
+**Commit:** `b3f3bf3` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: update RELEASE_NOTES with code names and backfill v2.1.0 + v2.4.0
@@ -27,8 +118,8 @@ v2.1.0 (animation-richness) and v2.4.0 (project-docs-baseline).
 ---
 
 ## v2.5.0 — Commit Notes Baseline
-**Tag:** `v2.5.0__commit-notes-baseline__commit-c276b7a`
-**Commit:** `c276b7a` · 2026-05-05
+**Tag:** `v2.5.0__commit-notes-baseline__commit-d19389d`
+**Commit:** `d19389d` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: add COMMIT_NOTES.md with full commit history and tag reference
@@ -48,8 +139,8 @@ v1.0.0 through v2.4.0 in the new snapshot-naming standard.
 ---
 
 ## v2.4.0 — Project Documents Library + Polish/SEO Task Plan
-**Tag:** `v2.4.0__project-docs-baseline__commit-3e0a2ee`
-**Commit:** `3e0a2ee` · 2026-05-05
+**Tag:** `v2.4.0__project-docs-baseline__commit-9e87d2b`
+**Commit:** `9e87d2b` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: add project Documents library and polish/SEO task plan
@@ -191,9 +282,12 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
-| `v2.6.0__release-notes-codenames__commit-1d5b48e` | `1d5b48e` | 2026-05-05 |
-| `v2.5.0__commit-notes-baseline__commit-c276b7a` | `c276b7a` | 2026-05-05 |
-| `v2.4.0__project-docs-baseline__commit-3e0a2ee` | `3e0a2ee` | 2026-05-05 |
+| `v2.9.0__docs-scaffold-aligned__commit-b0a13f2` | `b0a13f2` | 2026-05-05 |
+| `v2.8.0__docs-scaffold-complete__commit-cb62d55` | `cb62d55` | 2026-05-05 |
+| `v2.7.0__release-notes-reform__commit-2600d9d` | `2600d9d` | 2026-05-05 |
+| `v2.6.0__release-notes-codenames__commit-b3f3bf3` | `b3f3bf3` | 2026-05-05 |
+| `v2.5.0__commit-notes-baseline__commit-d19389d` | `d19389d` | 2026-05-05 |
+| `v2.4.0__project-docs-baseline__commit-9e87d2b` | `9e87d2b` | 2026-05-05 |
 | `v2.3.0__build-version-sync__commit-c9c9c4e` | `c9c9c4e` | 2026-04-27 |
 | `v2.2.0__hero-polish-cursor__commit-d650ed2` | `d650ed2` | 2026-04-26 |
 | `v2.1.0__animation-richness__commit-01cd06d` | `01cd06d` | 2026-04-25 |
