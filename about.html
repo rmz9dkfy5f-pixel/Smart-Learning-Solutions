@@ -47,7 +47,10 @@
       background: var(--bg-card);
       border-radius: var(--radius-md);
       border: 1px solid var(--border);
+      transition: border-color var(--transition-base);
     }
+
+    .credential-item:hover { border-color: var(--border-accent); }
 
     .credential-icon {
       flex-shrink: 0;
@@ -66,11 +69,22 @@
 <body>
   <div id="page-header"></div>
   <main>
-    <section class="page-hero">
-      <div class="container">
-        <p class="eyebrow">Who We Are</p>
-        <h1>About Smart Learning Solutions</h1>
-        <p>A team of engineers, coders, and educators — bringing serious STEM expertise into the classroom, in the most hands-on way possible.</p>
+    <!-- Split photo hero -->
+    <section class="split-hero" aria-label="About Smart Learning Solutions">
+      <div class="split-hero-content">
+        <p class="eyebrow reveal-up">Who We Are</p>
+        <h1 class="reveal-up">About Smart Learning Solutions</h1>
+        <p class="reveal-up">A team of engineers, coders, and educators — bringing serious STEM expertise into classrooms and communities, in the most hands-on way possible.</p>
+        <div class="btn-group reveal-up">
+          <a href="/book.html" class="btn btn--primary">Request a Workshop</a>
+          <a href="/contact.html" class="btn btn--outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="split-hero-photo">
+        <img src="/src/images/people-classroom-teacher-children-800.webp"
+             alt="Educator guiding a diverse group of young students in a hands-on classroom session"
+             loading="eager" fetchpriority="high"
+             width="800" height="533">
       </div>
     </section>
 
@@ -85,40 +99,60 @@
           </div>
 
           <div class="credentials-list">
-            <div class="credential-item stagger-card">
-              <div class="credential-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 10h8M8 14h4"/><circle cx="16" cy="14" r="2"/></svg>
+            <div class="credential-item credential-item--photo stagger-card">
+              <div class="credential-photo">
+                <img src="/src/images/product-edison-robot.webp" alt="" loading="lazy">
               </div>
-              <div>
-                <h4>Licensed Edison Partner</h4>
-                <p>Authorised Microbric partner for the Edison robotics and coding platform — trusted globally for classroom robotics education.</p>
-              </div>
-            </div>
-            <div class="credential-item stagger-card">
-              <div class="credential-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
-              </div>
-              <div>
-                <h4>Whybricks Certified</h4>
-                <p>Certified to deliver Whybricks PSTEM programs — an inquiry-based physical science curriculum used in schools worldwide.</p>
+              <div class="credential-item-body">
+                <div class="credential-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 10h8M8 14h4"/><circle cx="16" cy="14" r="2"/></svg>
+                </div>
+                <div>
+                  <h4>Licensed Edison Partner</h4>
+                  <p>Authorised Microbric partner for the Edison robotics platform — trusted globally for classroom robotics education.</p>
+                </div>
               </div>
             </div>
-            <div class="credential-item stagger-card">
-              <div class="credential-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <div class="credential-item credential-item--photo stagger-card">
+              <div class="credential-photo">
+                <img src="/src/images/program-pstem-whybricks.avif" alt="" loading="lazy">
               </div>
-              <div>
-                <h4>Engineers, Coders &amp; Educators</h4>
-                <p>Our team combines technical depth with teaching expertise — every session is led by someone who genuinely lives and breathes STEM.</p>
+              <div class="credential-item-body">
+                <div class="credential-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
+                </div>
+                <div>
+                  <h4>Whybricks Certified</h4>
+                  <p>Certified to deliver Whybricks PSTEM programs — an inquiry-based physical science curriculum used in schools worldwide.</p>
+                </div>
               </div>
             </div>
-            <div class="credential-item stagger-card">
-              <div class="credential-icon" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            <div class="credential-item credential-item--photo stagger-card">
+              <div class="credential-photo">
+                <img src="/src/images/people-teens-collaborating.webp" alt="" loading="lazy">
               </div>
-              <div>
-                <h4>Serving Students Worldwide</h4>
-                <p>State-aligned lessons and activities adapted to serve students in schools and communities across the globe.</p>
+              <div class="credential-item-body">
+                <div class="credential-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <div>
+                  <h4>Engineers, Coders &amp; Educators</h4>
+                  <p>Our team combines technical depth with teaching expertise — every session is led by someone who genuinely lives and breathes STEM.</p>
+                </div>
+              </div>
+            </div>
+            <div class="credential-item credential-item--photo stagger-card">
+              <div class="credential-photo">
+                <img src="/src/images/people-teens-outdoor-study.webp" alt="" loading="lazy">
+              </div>
+              <div class="credential-item-body">
+                <div class="credential-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+                </div>
+                <div>
+                  <h4>Serving Students Worldwide</h4>
+                  <p>State-aligned lessons and activities adapted to serve students in schools and communities across the globe.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -126,7 +160,52 @@
       </div>
     </section>
 
+    <!-- What Makes Our Workshops Different — photo strip -->
+    <section class="section section--alt" aria-labelledby="about-proof-heading">
+      <div class="container">
+        <header class="section-header section-header--center">
+          <p class="eyebrow">What We Bring</p>
+          <h2 id="about-proof-heading">Real Engineers. Real Equipment. Real Results.</h2>
+          <p>Every workshop is delivered by qualified educators and engineers, using industry-recognised platforms, with outcomes students carry beyond the session.</p>
+        </header>
+        <div class="about-proof-grid">
+          <div class="about-proof-item stagger-card">
+            <img src="/src/images/people-classroom-teacher-children-800.webp"
+                 alt="Expert educator working with young students in a hands-on session"
+                 loading="lazy">
+            <div class="about-proof-caption">
+              <span>Our team</span>
+              <strong>Real Engineers &amp; Educators</strong>
+            </div>
+          </div>
+          <div class="about-proof-item stagger-card">
+            <img src="/src/images/product-edison-robot.webp"
+                 alt="Edison robot — the platform used in Coding with Robots workshops"
+                 loading="lazy"
+                 style="object-fit: contain; background: #F8FAFC; padding: 2rem;">
+            <div class="about-proof-caption">
+              <span>Our platforms</span>
+              <strong>Industry-Recognised Equipment</strong>
+            </div>
+          </div>
+          <div class="about-proof-item stagger-card">
+            <img src="/src/images/people-teens-studying-together.webp"
+                 alt="Students engaged and collaborating during a learning session"
+                 loading="lazy">
+            <div class="about-proof-caption">
+              <span>Student outcomes</span>
+              <strong>Genuine STEM Confidence</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="cta-band">
+      <div class="cta-band-orb" aria-hidden="true"></div>
+      <div class="cta-band-photo-bg" aria-hidden="true">
+        <img src="/src/images/people-classroom-hands-raised.webp" alt="" loading="lazy">
+      </div>
       <div class="container cta-band-inner">
         <h2>Let's Bring STEM to Your Students</h2>
         <p>Request a workshop enquiry and one of our team will be in touch within one business day.</p>
