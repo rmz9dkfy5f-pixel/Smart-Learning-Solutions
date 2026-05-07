@@ -24,6 +24,7 @@ desktop.ini
 
 # Node (precautionary)
 node_modules/
+.imgtemp/
 
 # Logs
 *.log
