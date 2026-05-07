@@ -2,6 +2,98 @@
 
 ---
 
+## v2.13.5 - 2026-05-07 - Frame
+
+**Tag:** `v2.13.5__workshops-photo-cards__commit-b5fa45e`
+
+### Changed
+- Format cards now use `.format-card-photo-bg` at 9% opacity, lifting to 15% on hover:
+  - Half-Day — `people-children-thinking.webp`
+  - Full-Day — `people-classroom-teacher-children-800.webp`
+  - Programme Series — `people-teens-outdoor-tutoring.webp`
+- Audience cards receive the same `.audience-photo-bg` low-opacity treatment as the homepage audience section
+- CTA band gains photo background consistent with all other pages
+
+---
+
+## v2.13.4 - 2026-05-07 - Depth
+
+**Tag:** `v2.13.4__program-pages-photography__commit-d19873c`
+
+### Changed
+- **Coding with Robots** (`programs/coding-with-robots.html`): hero media column now stacks a student proof photo below the Edison robot product shot; full-width photo section break added above the levels grid; CTA band gains photo background
+- **PSTEM** (`programs/pstem.html`): hero media column stacks a focused-student photo below the Whybricks product shot; "Learning That Starts With Why?" section restructured as a two-column grid with the children-thinking photo alongside the copy; CTA band gains photo background
+
+---
+
+## v2.13.3 - 2026-05-07 - Portrait
+
+**Tag:** `v2.13.3__about-photo-redesign__commit-56fc29d`
+
+### Added
+- New three-column "What We Bring" visual proof strip before the CTA band — Real Engineers & Educators / Industry-Recognised Equipment / Genuine STEM Confidence — each column a photo with overlay caption
+
+### Changed
+- Hero replaced with a split-panel layout: narrative text left, full-height classroom photo right with left-edge gradient feathering into the dark panel
+- All four credential cards restructured to lead with a photo header — product shots for platform cards, people photos for team and reach cards
+- CTA band gains photo background consistent with all other pages
+
+---
+
+## v2.13.2 - 2026-05-07 - Exposure
+
+**Tag:** `v2.13.2__homepage-photo-redesign__commit-1f44b7f`
+
+### Added
+- New "Real Workshops. Real Students." four-photo mosaic section inserted before the activities grid — the site's primary social proof moment
+- Trust strip: Edison and Whybricks trust items now display product image thumbnails (`.trust-item-thumb`) instead of generic SVG icons
+
+### Changed
+- Hero: CSS illustration replaced with a full-bleed classroom photo; dark gradient overlay preserves headline legibility; Pexels photo credit strip added
+- Program cards: student proof photo strip added below each product shot
+- Audience cards: low-opacity photo backgrounds added — each segment (Parents, Schools, Community) shows relevant students through the card surface
+- Differentiators section replaced with a three-photo visual proof band, each panel captioned with the claim it supports (Expert-Led / Hands-On / Engaged)
+- CTA band gains classroom hands-raised photo background with orange radial gradient overlay
+
+---
+
+## v2.13.1 - 2026-05-07 - Overlay
+
+**Tag:** `v2.13.1__photo-css-utilities__commit-251e80e`
+
+### Added
+- `src/css/main.css` — 14 new layout and overlay utility classes supporting the photo-driven redesign:
+  - `.hero--photo` / `.hero-photo-bg` — full-bleed photo hero variant with gradient overlay
+  - `.split-hero` — two-column hero layout (text panel + full-height photo panel)
+  - `.page-hero-media-stack` / `.page-hero-proof-photo` — stacked media column for program heroes
+  - `.pstem-approach-grid` — two-column inquiry approach section
+  - `.photo-proof-grid` / `.photo-proof-item` / `.photo-proof-caption` — three-column visual proof band
+  - `.photo-mosaic` / `.photo-mosaic-item--large` / `.photo-mosaic-footer` — four-photo asymmetric mosaic
+  - `.audience-photo-bg` — low-opacity photo background for audience cards
+  - `.program-card-proof` — student proof photo strip below program card product images
+  - `.format-card-photo-bg` — low-opacity background for workshops format cards
+  - `.cta-band-photo-bg` — photo background layer for CTA band sections
+  - `.about-proof-grid` / `.about-proof-item` / `.about-proof-caption` — about page three-photo proof strip
+  - `.credential-item--photo` / `.credential-photo` / `.credential-item-body` — photo-headed credential cards
+  - `.trust-item-thumb` — product image thumbnail variant for trust strip icons
+  - `.program-section-break` — full-width photo break image within program pages
+- Responsive overrides at 1024px, 768px, and 480px breakpoints for all new components
+
+---
+
+## v2.13.0 - 2026-05-07 - Gallery
+
+**Tag:** `v2.13.0__webp-photo-library__commit-7754187`
+
+### Added
+- 11 optimised WebP images to `src/images/` for the photo-driven redesign:
+  - Hero images at two widths for `srcset` delivery: `people-classroom-teacher-children-1920.webp` (158 KB) and `people-classroom-teacher-children-800.webp` (41 KB)
+  - Supporting people images (all under 100 KB): `people-children-floor-activity.webp`, `people-children-thinking.webp`, `people-classroom-hands-raised.webp`, `people-teens-collaborating.webp`, `people-teens-outdoor-study.webp`, `people-teens-outdoor-tutoring.webp`, `people-teens-studying-focused.webp`, `people-teens-studying-together.webp`
+  - Product image: `product-edison-robot.webp` (31 KB)
+- `.imgtemp/` added to `.gitignore` to prevent temporary Sharp conversion artefacts from being tracked
+
+---
+
 ## v2.12.6 - 2026-05-06 - Spotlight
 
 **Tag:** `v2.12.6__program-prominence-visuals__commit-7edcdfc`
