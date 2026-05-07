@@ -11,6 +11,145 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.13.6] — 2026-05-07
+
+**Tag:** `v2.13.6__release-notes-v2-13__commit-ca9beb7`
+
+### Summary
+Release notes documentation for the full v2.13.x photo-driven redesign block. Adds six entries (Gallery → Overlay → Exposure → Portrait → Depth → Frame) to RELEASE_NOTES.md so the release log matches the tagged history.
+
+### Added
+- `RELEASE_NOTES.md` — v2.13.0 through v2.13.5 entries with canonical tag hashes, Changed/Added sections, and photography-themed code names
+
+---
+
+## [2.13.5] — 2026-05-07
+
+**Tag:** `v2.13.5__workshops-photo-cards__commit-b5fa45e`
+
+### Summary
+Photo-layered format and audience cards on the Workshops page, completing the sitewide photo-driven redesign.
+
+### Changed
+- Format cards: `.format-card-photo-bg` elements at 9% opacity (15% on hover) — Half-Day uses `people-children-thinking.webp`, Full-Day uses `people-classroom-teacher-children-800.webp`, Programme Series uses `people-teens-outdoor-tutoring.webp`
+- Audience cards: `.audience-photo-bg` low-opacity treatment consistent with homepage
+- CTA band: photo background added consistent with all other pages
+
+---
+
+## [2.13.4] — 2026-05-07
+
+**Tag:** `v2.13.4__program-pages-photography__commit-d19873c`
+
+### Summary
+Student proof photography on both program detail pages, which previously showed only a single product shot each.
+
+### Changed
+- **Coding with Robots** (`programs/coding-with-robots.html`): hero media column stacks a student proof photo below the Edison robot product shot; full-width photo section break added above the levels grid; CTA band gains photo background
+- **PSTEM** (`programs/pstem.html`): hero media column stacks a focused-student photo below the Whybricks product shot; "Learning That Starts With Why?" restructured as a two-column grid with children-thinking photo alongside the copy; CTA band gains photo background
+
+---
+
+## [2.13.3] — 2026-05-07
+
+**Tag:** `v2.13.3__about-photo-redesign__commit-56fc29d`
+
+### Summary
+About page redesigned from a text-only page to a visually credible split-panel layout with photographic credential cards.
+
+### Added
+- New three-column "What We Bring" visual proof strip — Real Engineers & Educators / Industry-Recognised Equipment / Genuine STEM Confidence — each column a photo with overlay caption
+
+### Changed
+- Hero: replaced plain text block with split-panel layout — narrative text left, full-height classroom photo right with left-edge gradient feathering
+- All four credential cards restructured to lead with a photo header (product shots for platform cards, people photos for team and reach cards)
+- CTA band: photo background added consistent with other pages
+
+---
+
+## [2.13.2] — 2026-05-07
+
+**Tag:** `v2.13.2__homepage-photo-redesign__commit-1f44b7f`
+
+### Summary
+Homepage hero and supporting sections redesigned around photography — replacing the CSS illustration with a full-bleed classroom photo and adding social proof throughout.
+
+### Added
+- New "Real Workshops. Real Students." four-photo mosaic section before the activities grid — primary social proof moment
+- Trust strip: Edison and Whybricks items now display `.trust-item-thumb` product image thumbnails instead of generic SVG icons
+
+### Changed
+- Hero: CSS illustration replaced with full-bleed classroom photo; dark gradient overlay; Pexels photo credit strip added
+- Program cards: student-in-use proof photo strip added below each product shot
+- Audience cards: low-opacity photo backgrounds — each segment (Parents, Schools, Community) shows relevant students
+- Differentiators section replaced with a three-photo visual proof band (Expert-Led / Hands-On / Engaged)
+- CTA band: classroom photo background with orange radial gradient overlay
+
+---
+
+## [2.13.1] — 2026-05-07
+
+**Tag:** `v2.13.1__photo-css-utilities__commit-251e80e`
+
+### Summary
+Design system extended with new photo composition utility classes required by the photo-driven redesign across all pages.
+
+### Added
+- `src/css/main.css` — new utility classes: `.hero--photo`, `.hero-photo-bg`, `.split-hero`, `.page-hero-media-stack`, `.page-hero-proof-photo`, `.pstem-approach-grid`, `.photo-proof-grid`, `.photo-proof-item`, `.photo-proof-caption`, `.photo-mosaic`, `.photo-mosaic-item--large`, `.photo-mosaic-footer`, `.audience-photo-bg`, `.program-card-proof`, `.format-card-photo-bg`, `.cta-band-photo-bg`, `.about-proof-grid`, `.about-proof-item`, `.about-proof-caption`, `.credential-item--photo`, `.credential-photo`, `.credential-item-body`, `.trust-item-thumb`, `.program-section-break`
+- Responsive overrides at 1024px, 768px, and 480px breakpoints for all new components
+
+---
+
+## [2.13.0] — 2026-05-07
+
+**Tag:** `v2.13.0__webp-photo-library__commit-7754187`
+
+### Summary
+Optimised WebP photo library added to `src/images/` — 11 images sourced from Pexels and one Edison product shot, forming the asset layer for the entire photo-driven redesign.
+
+### Added
+- `src/images/people-classroom-teacher-children-1920.webp` — hero photo, 1920px wide, 158 KB
+- `src/images/people-classroom-teacher-children-800.webp` — hero photo, 800px srcset fallback, 41 KB
+- `src/images/people-classroom-hands-raised.webp`, `people-children-floor-activity.webp`, `people-children-thinking.webp`, `people-teens-collaborating.webp`, `people-teens-outdoor-study.webp`, `people-teens-outdoor-tutoring.webp`, `people-teens-studying-focused.webp`, `people-teens-studying-together.webp` — supporting images, all under 100 KB
+- `src/images/product-edison-robot.webp` — Edison robot product image, 31 KB
+- `.imgtemp/` added to `.gitignore` to exclude temporary Sharp conversion artefacts
+
+---
+
+## [2.12.9] — 2026-05-07
+
+**Tag:** `v2.12.9__planning-doc-extensions__commit-e4b9855`
+
+### Summary
+Planning document filenames normalised from stray `.txt` extensions to clean `.md` Markdown extensions.
+
+### Changed
+- `Planning Documents/` — 10 files renamed to `.md`: Acceptance Criteria, Component Map, Constraints, Homepage wireframe, IA sitemap, Implementation Roadmap, Recommended minimal docs, Technical Architecture, UX Content Model (content unchanged in all files)
+
+---
+
+## [2.12.8] — 2026-05-07
+
+**Tag:** `v2.12.8__reference-doc-filename__commit-3bc8887`
+
+### Changed
+- `Planning Documents/` — "Recommended minimal docs and where to place them" reference file renamed to remove stray colon and extra spacing from filename (content unchanged)
+
+---
+
+## [2.12.7] — 2026-05-06
+
+**Tag:** `v2.12.7__release-record-sync__commit-67cad9f`
+
+### Changed
+- `RELEASE_NOTES.md` — v2.12.6 tag reference updated from provisional to real annotated tag hash
+- `CHANGELOG.md` — v2.12.6 tag reference corrected to match
+
+### Added
+- `COMMIT_NOTES.md` — v2.12.6 entry added with full summary, description, and file stats using the real commit hash
+
+---
+
 ## [2.12.6] — 2026-05-06
 
 **Tag:** `v2.12.6__program-prominence-visuals__commit-7edcdfc`
@@ -30,7 +169,78 @@ Program prominence and live asset placement pass for the two flagship offerings.
 
 ---
 
+## [2.12.5] — 2026-05-05
+
+**Tag:** `v2.12.5__source-image-library__commit-3e445a0`
+
+### Summary
+Curated source image library added to `pics/` — Edison, Whybricks, Logo, and 20 Pexels workshop photography references staged for future site imagery work.
+
+### Added
+- `pics/Edison/` — 10 Edison robotics platform reference images
+- `pics/Whybricks/` — 2 Whybricks PSTEM platform images (AVIF)
+- `pics/Logo/` — Logo asset (AVIF)
+- `pics/` — 20 curated Pexels STEM workshop photography references (students, educators, hands-on science and coding scenes)
+
+---
+
+## [2.12.4] — 2026-05-05
+
+**Tag:** `v2.12.4__release-notes-v2-12-3__commit-b8c246a`
+
+### Added
+- `RELEASE_NOTES.md` — v2.12.3 entry added using the real tag and commit hash
+
+---
+
+## [2.12.3] — 2026-05-05
+
+**Tag:** `v2.12.3__version-narrative-alignment__commit-860c1df`
+
+### Changed
+- `README.md` — version line updated from `v2.3.0` to `v2.12.2`
+- `ROADMAP.md` — rewritten from stale v1.x milestone planning into a forward-looking roadmap from the current shipped baseline
+- `RELEASE_NOTES.md` — extended to reflect the current release sequence through v2.12.2
+
+### Fixed
+- Version narrative drift between `README.md`, `RELEASE_NOTES.md`, Git tags, and `ROADMAP.md`
+- Stale roadmap items treating analytics, sitemap, and workshops as future work
+
+---
+
+## [2.12.2] — 2026-05-05
+
+**Tag:** `v2.12.2__commit-history-backfill__commit-545016b`
+
+### Added
+- `COMMIT_NOTES.md` — missing entries for v2.12.1 and untagged commit `619becc`
+
+### Changed
+- `COMMIT_NOTES.md` — tag reference table refreshed through v2.12.2
+
+### Fixed
+- Structured commit backlog no longer skipped commits present in Git history but absent from `COMMIT_NOTES.md`
+
+---
+
+## [2.12.1] — 2026-05-05
+
+**Tag:** `v2.12.1__release-record-sync__commit-541f575`
+
+### Added
+- `RELEASE_NOTES.md` — entries for v2.12.0 (Beacon) and v2.11.0 (Current)
+
+### Changed
+- `COMMIT_NOTES.md` — v2.12.0 recorded using the real tagged commit hash
+
+### Fixed
+- Release-tracking docs no longer depended on placeholder hash references for v2.12.0
+
+---
+
 ## [2.12.0] — 2026-05-06
+
+**Tag:** `v2.12.0__polish-seo-analytics__commit-6c9a427`
 
 ### Summary
 Final polish, SEO, and analytics pass for the static marketing site. Adds sitewide Plausible analytics, completes social card metadata coverage, refreshes sitemap metadata, tightens the 404 recovery path, and records the analytics decision in project planning docs.
@@ -45,7 +255,49 @@ Final polish, SEO, and analytics pass for the static marketing site. Adds sitewi
 - `404.html` recovery actions simplified to Home and Request a Workshop
 - `plans/open-decisions.md` — OD-006 marked resolved for Plausible analytics
 
+---
+
+## [2.11.0] — 2026-05-05
+
+**Tag:** `v2.11.0__release-notes-current__commit-ecb25ab`
+
+### Added
+- `RELEASE_NOTES.md` — entries for v2.7.0 through v2.10.0
+
+### Fixed
+- Stale pre-rewrite hashes on v2.4.0, v2.5.0, and v2.6.0 tag lines in `RELEASE_NOTES.md`
+
+---
+
+## [2.10.0] — 2026-05-05
+
+**Tag:** `v2.10.0__commit-notes-current__commit-3977f77`
+
+### Added
+- `COMMIT_NOTES.md` — v2.7.0, v2.8.0, and v2.9.0 entries backlogged with full summary, description, and stats
+
+### Fixed
+- Stale pre-rewrite commit hashes corrected for v2.4.0, v2.5.0, and v2.6.0 entries and the tag reference table in `COMMIT_NOTES.md`
+
+---
+
+## [2.9.0] — 2026-05-05
+
+**Tag:** `v2.9.0__docs-scaffold-aligned__commit-b0a13f2`
+
+### Changed
+- `CHANGELOG.md` — fixed broken versioning link (`docs/strategy/version-number-system.md` → `docs/VERSIONING.md`); added [2.8.0] entry
+- `plans/open-decisions.md` — OD-007 (Testimonials) added
+- `plans/2026-05-05-initial-project-docs.md` — Slices 2–4 marked complete
+
+### Fixed
+- Broken link in `CHANGELOG.md` pointing to a non-existent versioning file
+
+---
+
 ## [2.8.0] — 2026-05-05
+
+**Tag:** `v2.8.0__docs-scaffold-complete__commit-cb62d55`
 
 ### Summary
 Full project documentation library scaffolded via `Documents/00 Core Documents/00_RUN_FIRST.md`. Establishes authoritative reference docs for strategy, design, content, accessibility, performance, testing, deployment, and versioning so agents have complete source material before making content or code changes.
@@ -81,6 +333,50 @@ Full project documentation library scaffolded via `Documents/00 Core Documents/0
 - `docs/STRATEGY.md` ↔ `ARCHITECTURE.md` — no conflicts; complementary domains
 - `docs/STRATEGY.md` ↔ `docs/strategy/sls-project-context.md` — fully aligned
 - `docs/workflow/claude-code-workflow.md` — active and consistent with new structure
+
+---
+
+## [2.7.0] — 2026-05-05
+
+**Tag:** `v2.7.0__release-notes-reform__commit-2600d9d`
+
+### Changed
+- `RELEASE_NOTES.md` — all version headers rewritten to `vX.Y.Z - YYYY-MM-DD - CodeName` format; proper-word code names applied across all versions; v2.5.0 (Ledger) and v2.6.0 (Chronicle) entries added; redundant bold sub-headers removed
+
+---
+
+## [2.6.0] — 2026-05-05
+
+**Tag:** `v2.6.0__release-notes-codenames__commit-b3f3bf3`
+
+### Added
+- `RELEASE_NOTES.md` — code name and canonical tag line added to every version header; backfilled v2.1.0 (Pulse) and v2.4.0 (Archive) entries which were missing from the release log
+
+### Changed
+- All version headers updated to include snapshot code name alongside version and date
+
+---
+
+## [2.5.0] — 2026-05-05
+
+**Tag:** `v2.5.0__commit-notes-baseline__commit-d19389d`
+
+### Added
+- `COMMIT_NOTES.md` — structured commit log documenting all commits on `main`: summary, description, file stats, and canonical tag per entry
+- Tag reference table covering v1.0.0 through v2.4.0 in the snapshot-naming standard
+
+---
+
+## [2.4.0] — 2026-05-05
+
+**Tag:** `v2.4.0__project-docs-baseline__commit-9e87d2b`
+
+### Added
+- `Documents/00 Core Documents/` — 11 Claude Code prompt files: run-first, repo planning, scaffolding, strategy, architecture, CLAUDE.md spec, workflow, plan template, versioning, first task, and Codex bridge
+- `Documents/01 Reference Documents/` — versioning guide, doc placement reference, and full project-planning-stack template (16 doc types)
+- `Documents/03 Optional Documents/` — Codex and Claude implementation bridge
+- `Documents/# Snapshot Info.md` — repo snapshot metadata
+- `TASK-polish-and-seo.md` — scoped task plan for the next site pass (analytics, SEO, favicon, nav fix, CSS cleanup, 404 page)
 
 ---
 
@@ -151,6 +447,23 @@ Pre-launch polish pass. Fixes broken CSS tokens on interior pages, wires GSAP an
 ### Known Placeholders
 - `book.html` / `contact.html` — Formspree endpoint still `REPLACE_ME` (OD-001 open)
 - `src/images/` — photography not yet added; og:image URL will 404 until resolved
+
+---
+
+## [2.1.0] — 2026-04-25
+
+**Tag:** `v2.1.0__animation-richness__commit-01cd06d`
+
+### Summary
+Animation system enriched with extended stagger sequences and scroll-triggered reveals across all interior pages.
+
+### Added
+- Extended GSAP stagger sequences and scroll-triggered reveal coverage to all interior pages
+- `workshops.html` — structured content sections with program and audience blocks
+
+### Changed
+- Refined animation timing, easing curves, and entrance delays across the motion system introduced in v2.0.0
+- `src/js/components.js` — shared header updated with additional nav refinements
 
 ---
 
