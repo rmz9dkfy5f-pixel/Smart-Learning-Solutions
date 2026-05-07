@@ -4,7 +4,7 @@
 
 ## v2.12.6 - 2026-05-06 - Spotlight
 
-**Tag:** Pending release tag
+**Tag:** `v2.12.6__program-prominence-visuals__commit-7edcdfc`
 
 ### Added
 - `src/images/program-coding-edison.jpg` and `src/images/program-pstem-whybricks.avif` added as live site assets for the two flagship programs
