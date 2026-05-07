@@ -11,6 +11,25 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.12.6] — 2026-05-06
+
+**Tag:** Pending release tag
+
+### Summary
+Program prominence and live asset placement pass for the two flagship offerings. Makes Coding with Robots and PSTEM easier to find across the site, adds selected Edison and Whybricks visuals to live site assets, and points shared Programs navigation to a neutral program selector.
+
+### Added
+- `src/images/program-coding-edison.jpg` — Edison robot image for Coding with Robots cards and hero
+- `src/images/program-pstem-whybricks.avif` — Whybricks kit image for PSTEM cards and hero
+- `plans/2026-05-06-program-prominence-assets.md` — approved implementation plan for program prominence and asset placement
+
+### Changed
+- Homepage and workshops program cards now include program-specific visuals
+- Coding with Robots and PSTEM program page heroes now include product visuals
+- Shared Programs navigation now targets `/workshops.html#programs`
+
+---
+
 ## [2.12.0] — 2026-05-06
 
 ### Summary

@@ -4,7 +4,7 @@
 const NAV_LINKS = [
   { label: 'Home',       href: '/index.html',     key: 'home' },
   { label: 'Workshops',  href: '/workshops.html',  key: 'workshops' },
-  { label: 'Programs',   href: '/programs/coding-with-robots.html', key: 'programs' },
+  { label: 'Programs',   href: '/workshops.html#programs', key: 'programs' },
   { label: 'Resources',  href: '/resources.html',  key: 'resources' },
   { label: 'About',      href: '/about.html',      key: 'about' },
   { label: 'Contact',    href: '/contact.html',    key: 'contact' },
