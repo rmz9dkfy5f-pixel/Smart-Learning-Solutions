@@ -880,6 +880,70 @@ h4, .h4 {
 }
 
 /* ============================================================
+   Hero — Photo variant
+   ============================================================ */
+.hero-photo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-photo-bg picture,
+.hero-photo-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% center;
+  display: block;
+}
+
+/* Dark gradient overlay: heavy left for legibility, lighter right for depth */
+.hero-photo-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(105deg, rgba(6,10,20,0.92) 0%, rgba(6,10,20,0.72) 48%, rgba(6,10,20,0.28) 100%),
+    linear-gradient(to top, rgba(6,10,20,0.70) 0%, transparent 38%);
+  z-index: 1;
+}
+
+/* Subtle orange brand tint */
+.hero-photo-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,92,36,0.07);
+  z-index: 1;
+}
+
+.hero--photo .hero-orb { opacity: 0; pointer-events: none; }
+.hero--photo::before { opacity: 0.2; }
+
+.hero--photo .hero-inner {
+  grid-template-columns: 1fr;
+}
+
+.hero--photo .hero-content {
+  max-width: 760px;
+  padding-block: var(--space-24);
+}
+
+.hero-photo-credit {
+  position: absolute;
+  bottom: calc(var(--space-10) + 12px);
+  right: var(--container-px);
+  font-size: 0.6rem;
+  color: rgba(238,242,255,0.18);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ============================================================
    Trust Strip
    ============================================================ */
 .trust-strip {
@@ -920,6 +984,21 @@ h4, .h4 {
   background: var(--accent-dim);
   color: var(--accent);
   flex-shrink: 0;
+}
+
+.trust-item-thumb {
+  width: 32px; height: 32px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+}
+.trust-item-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 3px;
 }
 
 .trust-divider {
@@ -1354,6 +1433,443 @@ h4, .h4 {
 .cta-band .microcopy { margin-top: var(--space-5); font-size: var(--text-sm); color: var(--text-subtle); }
 
 /* ============================================================
+   Photo Proof Band — 3-column visual evidence strip
+   ============================================================ */
+.photo-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.photo-proof-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  height: 300px;
+}
+
+.photo-proof-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.photo-proof-item:hover img { transform: scale(1.04); }
+
+.photo-proof-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6,10,20,0.92) 0%, rgba(6,10,20,0.18) 55%, transparent 100%);
+  z-index: 1;
+}
+
+.photo-proof-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: var(--space-5) var(--space-6);
+  z-index: 2;
+}
+
+.photo-proof-caption .eyebrow {
+  font-size: 0.65rem;
+  color: var(--accent);
+  margin-bottom: var(--space-2);
+  justify-content: flex-start;
+}
+
+.photo-proof-caption p {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  font-family: var(--font-display);
+  color: #EEF2FF;
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+/* ============================================================
+   Workshop Mosaic — 4-photo "Real Workshops" section
+   ============================================================ */
+.photo-mosaic {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  grid-template-rows: 220px 220px;
+  gap: var(--space-3);
+}
+
+.photo-mosaic-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.photo-mosaic-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.photo-mosaic-item:hover img { transform: scale(1.04); }
+
+.photo-mosaic-item--large {
+  grid-row: 1 / 3;
+}
+
+.photo-mosaic-item--large img {
+  object-position: 65% center;
+}
+
+.photo-mosaic-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.photo-mosaic-footer p {
+  color: var(--text-muted);
+  font-size: var(--text-base);
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ============================================================
+   Audience Card — photo background
+   ============================================================ */
+.audience-photo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.audience-photo-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.10;
+  transition: opacity var(--transition-base);
+}
+
+.audience-card:hover .audience-photo-bg img { opacity: 0.17; }
+
+.audience-card .audience-icon,
+.audience-card h3,
+.audience-card p { position: relative; z-index: 1; }
+
+/* ============================================================
+   Program Card — student proof photo strip
+   ============================================================ */
+.program-card-proof {
+  height: 80px;
+  overflow: hidden;
+  position: relative;
+}
+
+.program-card-proof img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.program-card:hover .program-card-proof img { transform: scale(1.04); }
+
+.program-card-proof::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(6,10,20,0.22);
+}
+
+/* ============================================================
+   Format card — photo background (workshops page)
+   ============================================================ */
+.format-card-photo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.format-card-photo-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.09;
+  transition: opacity var(--transition-base);
+}
+
+.format-card:hover .format-card-photo-bg img { opacity: 0.15; }
+
+/* ============================================================
+   Program page — media stack (product + student proof photo)
+   ============================================================ */
+.page-hero-media-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.page-hero-proof-photo {
+  height: 180px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.page-hero-proof-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.page-hero-proof-photo:hover img { transform: scale(1.04); }
+
+.page-hero-proof-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(6,10,20,0.18);
+}
+
+/* Full-width photo strip used as visual section break */
+.program-section-break {
+  height: 180px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-10);
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.program-section-break img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.program-section-break::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(6,10,20,0.18);
+}
+
+/* PSTEM approach section — 2-column layout */
+.pstem-approach-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.pstem-approach-photo {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 320px;
+  border: 1px solid var(--border);
+}
+
+.pstem-approach-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .pstem-approach-grid {
+    grid-template-columns: 1fr;
+  }
+  .pstem-approach-photo { height: 220px; }
+}
+
+/* ============================================================
+   Split Hero — about page pattern
+   ============================================================ */
+.split-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  min-height: 100svh;
+}
+
+.split-hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: calc(var(--header-height) + var(--space-16));
+  padding-bottom: var(--space-16);
+  padding-inline: var(--container-px);
+  position: relative;
+  z-index: 1;
+}
+
+.split-hero-content h1 {
+  font-size: clamp(var(--text-3xl), 4.5vw, 3.5rem);
+  margin-bottom: var(--space-5);
+}
+
+.split-hero-content .eyebrow { margin-bottom: var(--space-5); }
+
+.split-hero-content p {
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  max-width: 520px;
+  margin-bottom: var(--space-8);
+  line-height: var(--leading-normal);
+}
+
+.split-hero-photo {
+  position: relative;
+  overflow: hidden;
+}
+
+.split-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% center;
+  display: block;
+}
+
+/* Feather left edge of photo to blend into dark text panel */
+.split-hero-photo::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 140px;
+  background: linear-gradient(to right, var(--bg), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Credential items — photo header variant
+   ============================================================ */
+.credential-item--photo {
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.credential-photo {
+  height: 150px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.credential-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.credential-item--photo:hover .credential-photo img { transform: scale(1.04); }
+
+.credential-item-body {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+/* ============================================================
+   About proof strip — 3-photo "What Makes Us Different"
+   ============================================================ */
+.about-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-10);
+}
+
+.about-proof-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  height: 240px;
+}
+
+.about-proof-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.about-proof-item:hover img { transform: scale(1.04); }
+
+.about-proof-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6,10,20,0.92) 0%, transparent 55%);
+  z-index: 1;
+}
+
+.about-proof-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: var(--space-4) var(--space-5);
+  z-index: 2;
+}
+
+.about-proof-caption strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: #EEF2FF;
+  margin-bottom: var(--space-1);
+}
+
+.about-proof-caption span {
+  font-size: var(--text-xs);
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   CTA Band — photo background variant
+   ============================================================ */
+.cta-band-photo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.cta-band-photo-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.11;
+  object-position: center 35%;
+}
+
+/* ============================================================
    Footer
    ============================================================ */
 .site-footer {
@@ -1601,6 +2117,9 @@ h4, .h4 {
   .page-hero-media {
     max-width: 520px;
   }
+  .hero--photo .hero-photo-bg img {
+    object-position: center center;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1661,6 +2180,36 @@ h4, .h4 {
   .page-hero-media {
     max-width: none;
   }
+  .hero--photo .hero-photo-bg img {
+    object-position: 55% center;
+  }
+  .hero--photo .hero-photo-bg::before {
+    background:
+      rgba(6,10,20,0.82),
+      linear-gradient(to top, rgba(6,10,20,0.70) 0%, transparent 38%);
+  }
+  .hero--photo .hero-content {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-8);
+  }
+  .hero-photo-credit { display: none; }
+  .split-hero { grid-template-columns: 1fr; min-height: auto; }
+  .split-hero-photo { height: 280px; order: -1; }
+  .split-hero-photo::before { display: none; }
+  .split-hero-content {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+  }
+  .about-proof-grid { grid-template-columns: 1fr; }
+  .about-proof-item { height: 200px; }
+  .photo-proof-grid { grid-template-columns: 1fr; }
+  .photo-proof-item { height: 240px; }
+  .photo-mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 180px 180px;
+  }
+  .photo-mosaic-item--large { grid-row: auto; }
+  .photo-mosaic-footer { flex-direction: column; align-items: flex-start; }
   .scroll-indicator { display: none; }
   .footer-grid { grid-template-columns: 1fr; gap: var(--space-6); }
   .form-grid { grid-template-columns: 1fr; }
@@ -1678,6 +2227,9 @@ h4, .h4 {
   .build-grid { grid-template-columns: repeat(2, 1fr); }
   .trust-divider { display: none; }
   .trust-strip-inner { gap: var(--space-4) var(--space-6); }
+  .photo-mosaic { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .photo-mosaic-item { height: 200px; }
+  .photo-mosaic-item--large { height: 240px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
