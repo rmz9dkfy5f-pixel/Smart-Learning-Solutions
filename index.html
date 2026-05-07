@@ -29,10 +29,22 @@
     <!-- ====================================================
          1. Hero
          ==================================================== -->
-    <section class="hero" aria-label="Introduction">
-      <div class="hero-orb orb-1" aria-hidden="true"></div>
-      <div class="hero-orb orb-2" aria-hidden="true"></div>
-      <div class="hero-orb orb-3" aria-hidden="true"></div>
+    <section class="hero hero--photo" aria-label="Introduction">
+
+      <!-- Photo background -->
+      <div class="hero-photo-bg" aria-hidden="true">
+        <picture>
+          <source
+            srcset="/src/images/people-classroom-teacher-children-1920.webp 1920w,
+                    /src/images/people-classroom-teacher-children-800.webp 800w"
+            sizes="100vw"
+            type="image/webp">
+          <img src="/src/images/people-classroom-teacher-children-1920.webp"
+               alt=""
+               width="1920" height="1280"
+               loading="eager" fetchpriority="high">
+        </picture>
+      </div>
 
       <div class="container hero-inner">
         <div class="hero-content">
@@ -49,39 +61,14 @@
             <a href="/workshops.html" class="btn btn--outline btn--lg">Explore Workshops</a>
           </div>
         </div>
-
-        <div class="hero-visual" role="img" aria-label="Illustration of a hands-on STEM workshop table">
-          <div class="workshop-board">
-            <div class="board-header">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <div class="robot-track" aria-hidden="true">
-              <div class="track-line"></div>
-              <div class="robot-unit">
-                <span class="robot-eye"></span>
-                <span class="robot-eye"></span>
-              </div>
-            </div>
-            <div class="build-grid" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-          <div class="hero-visual-note">
-            <strong>Build. Test. Refine.</strong>
-            <span>Students work through real challenges with expert facilitation.</span>
-          </div>
-        </div>
       </div>
 
       <div class="scroll-indicator" aria-hidden="true">
         <span class="scroll-line"></span>
         <span>Scroll</span>
       </div>
+
+      <p class="hero-photo-credit" aria-hidden="true">Photo: Pexels</p>
     </section>
 
     <!-- ====================================================
@@ -90,15 +77,15 @@
     <div class="trust-strip" aria-label="Key credentials">
       <div class="trust-strip-inner container">
         <div class="trust-item">
-          <div class="trust-item-icon" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="trust-item-thumb" aria-hidden="true">
+            <img src="/src/images/product-edison-robot.webp" alt="" loading="lazy">
           </div>
           Edison Robotics Platform
         </div>
         <div class="trust-divider" aria-hidden="true"></div>
         <div class="trust-item">
-          <div class="trust-item-icon" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <div class="trust-item-thumb" aria-hidden="true">
+            <img src="/src/images/program-pstem-whybricks.avif" alt="" loading="lazy">
           </div>
           Whybricks / PSTEM
         </div>
@@ -135,6 +122,9 @@
             <div class="program-card-media program-card-media--product">
               <img src="/src/images/program-coding-edison.jpg" alt="Edison robot used in Coding with Robots workshops" loading="lazy" width="510" height="510">
             </div>
+            <div class="program-card-proof">
+              <img src="/src/images/people-children-floor-activity.webp" alt="" loading="lazy">
+            </div>
             <div class="program-card-body">
               <div class="program-card-tags">
                 <span class="tag">Ages 5–18</span>
@@ -152,6 +142,9 @@
           <article class="program-card stagger-card">
             <div class="program-card-media program-card-media--product">
               <img src="/src/images/program-pstem-whybricks.avif" alt="Whybricks kit used in PSTEM physical science workshops" loading="lazy">
+            </div>
+            <div class="program-card-proof">
+              <img src="/src/images/people-teens-studying-focused.webp" alt="" loading="lazy">
             </div>
             <div class="program-card-body">
               <div class="program-card-tags">
@@ -183,6 +176,9 @@
 
         <div class="audience-grid">
           <div class="audience-card stagger-card">
+            <div class="audience-photo-bg" aria-hidden="true">
+              <img src="/src/images/people-teens-studying-together.webp" alt="" loading="lazy">
+            </div>
             <div class="audience-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </div>
@@ -190,6 +186,9 @@
             <p>Book a workshop experience for your child or a group of young learners. We handle everything — you watch them thrive.</p>
           </div>
           <div class="audience-card stagger-card">
+            <div class="audience-photo-bg" aria-hidden="true">
+              <img src="/src/images/people-classroom-hands-raised.webp" alt="" loading="lazy">
+            </div>
             <div class="audience-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
@@ -197,6 +196,9 @@
             <p>Curriculum-aligned STEM sessions that complement your teaching — fully delivered by our team, with no setup required from you.</p>
           </div>
           <div class="audience-card stagger-card">
+            <div class="audience-photo-bg" aria-hidden="true">
+              <img src="/src/images/people-children-thinking.webp" alt="" loading="lazy">
+            </div>
             <div class="audience-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
             </div>
@@ -309,53 +311,84 @@
     </section>
 
     <!-- ====================================================
-         8. Differentiators
+         8. Visual Proof Band (replaces text-only differentiators)
          ==================================================== -->
-    <section class="section differentiators-section section--alt" aria-labelledby="diff-heading">
+    <section class="section section--alt" aria-labelledby="proof-heading">
       <div class="container">
         <header class="section-header section-header--center">
           <p class="eyebrow">Why Smart Learning Solutions</p>
-          <h2 id="diff-heading">Expert-Led. Hands-On. Built to Last.</h2>
-          <p>We don't deliver generic STEM activities. Every workshop is grounded in proven pedagogy, trusted platforms, and genuine expertise.</p>
+          <h2 id="proof-heading">Expert-Led. Hands-On. Built to Last.</h2>
+          <p>Every workshop is grounded in proven pedagogy, trusted platforms, and genuine expertise — here's what that looks like in practice.</p>
         </header>
 
-        <div class="diff-grid">
-          <div class="diff-item stagger-card">
-            <div class="diff-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-            <div>
-              <h4>Expert-Led Experiences</h4>
-              <p>Our team of engineers, coders, and educators brings professional depth to every session — not just enthusiasm.</p>
-            </div>
-          </div>
-          <div class="diff-item stagger-card">
-            <div class="diff-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-            </div>
-            <div>
-              <h4>Hands-On, Every Time</h4>
-              <p>No slideshows, no passive listening. Every student is active, building, testing, and thinking throughout the entire workshop.</p>
+        <div class="photo-proof-grid">
+          <div class="photo-proof-item stagger-card">
+            <img src="/src/images/people-classroom-teacher-children-800.webp"
+                 alt="Educator guiding young students in a hands-on session"
+                 loading="lazy">
+            <div class="photo-proof-caption">
+              <p class="eyebrow">Expert-Led</p>
+              <p>Professional engineers &amp; educators, not volunteers</p>
             </div>
           </div>
-          <div class="diff-item stagger-card">
-            <div class="diff-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-            </div>
-            <div>
-              <h4>Tailored to Your Group</h4>
-              <p>We adapt to your students' ages, abilities, and goals — so every workshop feels designed specifically for them.</p>
-            </div>
-          </div>
-          <div class="diff-item stagger-card">
-            <div class="diff-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <div>
-              <h4>Trusted Program Foundations</h4>
-              <p>Built on Edison robotics and Whybricks — internationally recognised platforms with proven educational outcomes.</p>
+          <div class="photo-proof-item stagger-card">
+            <img src="/src/images/people-children-thinking.webp"
+                 alt="Children actively thinking through a problem together"
+                 loading="lazy">
+            <div class="photo-proof-caption">
+              <p class="eyebrow">Hands-On, Every Time</p>
+              <p>Every student builds, tests, and discovers</p>
             </div>
           </div>
+          <div class="photo-proof-item stagger-card">
+            <img src="/src/images/people-teens-studying-together.webp"
+                 alt="Students engaged and smiling during collaborative learning"
+                 loading="lazy">
+            <div class="photo-proof-caption">
+              <p class="eyebrow">Real Engagement</p>
+              <p>Curiosity-first sessions that students remember</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         8b. Workshop Mosaic — social proof
+         ==================================================== -->
+    <section class="section" aria-labelledby="mosaic-heading">
+      <div class="container">
+        <header class="section-header section-header--center">
+          <p class="eyebrow">Real Workshops</p>
+          <h2 id="mosaic-heading">Real Students. Real Learning.</h2>
+        </header>
+
+        <div class="photo-mosaic">
+          <div class="photo-mosaic-item photo-mosaic-item--large stagger-card">
+            <img src="/src/images/people-classroom-teacher-children-800.webp"
+                 alt="Educator working with a diverse group of young students in a classroom"
+                 loading="lazy">
+          </div>
+          <div class="photo-mosaic-item stagger-card">
+            <img src="/src/images/people-classroom-hands-raised.webp"
+                 alt="Students enthusiastically raising hands during a lesson"
+                 loading="lazy">
+          </div>
+          <div class="photo-mosaic-item stagger-card">
+            <img src="/src/images/people-children-thinking.webp"
+                 alt="Young children focused and thinking at a table"
+                 loading="lazy">
+          </div>
+          <div class="photo-mosaic-item stagger-card">
+            <img src="/src/images/people-children-floor-activity.webp"
+                 alt="Children engaged in a hands-on activity on the floor"
+                 loading="lazy">
+          </div>
+        </div>
+
+        <div class="photo-mosaic-footer reveal-up">
+          <p>Hands-on, in-person workshops tailored to your students — from ages 5 to 18. Every session is expertly facilitated, fully resourced, and ready to run.</p>
+          <a href="/book.html" class="btn btn--primary">Request a Workshop</a>
         </div>
       </div>
     </section>
@@ -365,6 +398,9 @@
          ==================================================== -->
     <section class="cta-band" aria-labelledby="cta-heading">
       <div class="cta-band-orb" aria-hidden="true"></div>
+      <div class="cta-band-photo-bg" aria-hidden="true">
+        <img src="/src/images/people-classroom-hands-raised.webp" alt="" loading="lazy">
+      </div>
       <div class="container cta-band-inner">
         <p class="eyebrow reveal-up" style="justify-content: center; margin-bottom: var(--space-5);">Get Started</p>
         <h2 class="reveal-up" id="cta-heading">Ready to Bring a STEM Workshop to Your Students?</h2>
