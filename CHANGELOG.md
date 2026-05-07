@@ -13,7 +13,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.12.6] — 2026-05-06
 
-**Tag:** Pending release tag
+**Tag:** `v2.12.6__program-prominence-visuals__commit-7edcdfc`
 
 ### Summary
 Program prominence and live asset placement pass for the two flagship offerings. Makes Coding with Robots and PSTEM easier to find across the site, adds selected Edison and Whybricks visuals to live site assets, and points shared Programs navigation to a neutral program selector.

@@ -5,6 +5,34 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.12.6 — Program Prominence Visuals
+**Tag:** `v2.12.6__program-prominence-visuals__commit-7edcdfc`
+**Commit:** `7edcdfc` · 2026-05-06
+**Type:** `feat`
+
+**Summary:** feat(programs): spotlight flagship offerings with visuals
+
+**Description:**
+Make Coding with Robots and PSTEM more prominent across the marketing site by
+adding selected Edison and Whybricks visuals to the homepage, workshops page,
+and dedicated program heroes. Update shared Programs navigation to target the
+neutral workshops program selector, and record the approved program prominence
+implementation in release notes, changelog, and planning docs.
+
+**What changed:**
+- `index.html` and `workshops.html` — program cards now include Edison and
+  Whybricks visuals for the two flagship offerings
+- `programs/coding-with-robots.html` and `programs/pstem.html` — page heroes
+  now include matching product visuals
+- `src/css/main.css` and `src/js/components.js` — responsive visual card/hero
+  styling and neutral Programs navigation target
+- `CHANGELOG.md`, `RELEASE_NOTES.md`, and
+  `plans/2026-05-06-program-prominence-assets.md` — release and planning records
+
+**Stats:** 11 files changed · 289 insertions · 14 deletions
+
+---
+
 ## v2.12.1 — Release Record Sync
 **Tag:** `v2.12.1__release-record-sync__commit-541f575`
 **Commit:** `541f575` · 2026-05-05
