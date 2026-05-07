@@ -2,6 +2,43 @@
 
 ---
 
+## v2.12.6 - 2026-05-06 - Spotlight
+
+**Tag:** Pending release tag
+
+### Added
+- `src/images/program-coding-edison.jpg` and `src/images/program-pstem-whybricks.avif` added as live site assets for the two flagship programs
+- `plans/2026-05-06-program-prominence-assets.md` added for the approved program prominence and asset placement slice
+
+### Changed
+- Coding with Robots and PSTEM made more prominent across the homepage, workshops page, and dedicated program pages
+- Homepage and workshops program cards updated with program-specific Edison and Whybricks visuals
+- Coding with Robots and PSTEM program page heroes updated with product visuals
+- Shared Programs navigation now points to the neutral workshops program selector
+
+---
+
+## v2.12.5 - 2026-05-06 - Prism
+
+**Tag:** `v2.12.5__source-image-library__commit-3e445a0`
+
+### Added
+- `pics/Edison/` — 10 Edison robotics platform reference images
+- `pics/Whybricks/` — 2 Whybricks PSTEM platform images (AVIF)
+- `pics/Logo/` — Logo asset (AVIF)
+- `pics/` — 20 curated Pexels STEM workshop photography references (students, educators, hands-on science and coding scenes) for future homepage, program page, and brand imagery work
+
+---
+
+## v2.12.4 - 2026-05-05 - Meridian
+
+**Tag:** `v2.12.4__release-notes-v2-12-3__commit-b8c246a`
+
+### Added
+- `RELEASE_NOTES.md` — v2.12.3 entry added using the real tag and commit hash so the release log matches the current tagged history
+
+---
+
 ## v2.12.3 - 2026-05-05 - Meridian
 
 **Tag:** `v2.12.3__version-narrative-alignment__commit-860c1df`
