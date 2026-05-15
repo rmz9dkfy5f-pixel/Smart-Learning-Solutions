@@ -2,6 +2,52 @@
 
 ---
 
+## v2.14.1 - 2026-05-15 - Templates
+
+**Tag:** `v2.14.1__prompts-workflow-templates__commit-9457ab9`
+
+### Added
+- `prompts/` directory with three saved workflow instruction files:
+  `Commit notes`, `Update.md`, `Snapshot`
+
+---
+
+## v2.14.0 - 2026-05-15 - Anchor
+
+**Tag:** `v2.14.0__programs-launch-site-hardening__commit-fcdfda6`
+
+### Added
+- `programs/index.html` — Programs landing page as a proper `/programs/` route
+- `sitemap.xml` — `/programs/` entry with `changefreq: monthly`, `priority: 0.9`
+
+### Changed
+- `src/js/components.js` — Programs nav updated to `/programs/`; same-page hash links now skip the page-transition overlay
+- `src/js/animations.js` — Custom cursor only activates on fine-pointer devices via `.custom-cursor-enabled` body class
+- `src/css/main.css` — `cursor: none` moved inside `.custom-cursor-enabled`; default pointer cursor restored
+- `book.html` / `contact.html` — `novalidate` removed; `maxlength` added to all fields; submission blocked when Formspree endpoint is unconfigured
+- `docs/DEPLOYMENT.md` — Nginx security headers, staging noindex config, expanded pre-deploy checklist
+- `docs/TESTING.md` — Programs nav, CDN graceful fallback, form validation, and staging header checks
+
+---
+
+## v2.13.7 - 2026-05-07 - Archive
+
+**Tag:** `v2.13.7__changelog-backfill__commit-aaa3399`
+
+### Changed
+- `CHANGELOG.md` — backfilled all missing entries v2.1.0–v2.13.6
+
+---
+
+## v2.13.6 - 2026-05-07 - Record
+
+**Tag:** `v2.13.6__release-notes-v2-13__commit-aded593`
+
+### Changed
+- `RELEASE_NOTES.md` — added v2.13.0–v2.13.5 entries with canonical tag hashes and photography-themed code names
+
+---
+
 ## v2.13.5 - 2026-05-07 - Frame
 
 **Tag:** `v2.13.5__workshops-photo-cards__commit-b5fa45e`

@@ -5,6 +5,199 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.14.1 — Prompts Workflow Templates
+**Tag:** `v2.14.1__prompts-workflow-templates__commit-9457ab9`
+**Commit:** `9457ab9` · 2026-05-15
+**Type:** `chore`
+
+**Summary:** chore(prompts): add saved prompt templates for commit and update workflows
+
+**Description:**
+Add `prompts/` directory with three reusable instruction files that capture the
+project's standard workflows: "Commit notes" for GitHub commit-style notes,
+"Update.md" for updating release docs, and "Snapshot" for repo backups.
+
+**Stats:** 3 files added · 14 insertions
+
+---
+
+## v2.14.0 — Programs Launch & Site Hardening
+**Tag:** `v2.14.0__programs-launch-site-hardening__commit-fcdfda6`
+**Commit:** `fcdfda6` · 2026-05-15
+**Type:** `feat`
+
+**Summary:** feat(site): programs page, form hardening, cursor and nav fixes
+
+**Description:**
+Add `/programs/` landing page as a proper route replacing the old anchor-only link.
+Update nav in `components.js` to `/programs/` and add sitemap entry at priority 0.9.
+Harden book and contact forms: remove `novalidate`, add `maxlength` on all fields,
+block submission when Formspree endpoint contains placeholder.
+Fix custom cursor to only activate on fine-pointer devices by gating `cursor: none`
+and element visibility behind a `.custom-cursor-enabled` body class set by
+`animations.js` at runtime.
+Fix same-page hash navigation to skip the page-transition overlay, preventing
+it from getting stuck on anchor-only links.
+Expand `DEPLOYMENT.md` with Nginx security headers and staging noindex config.
+Update `TESTING.md` to cover Programs nav, CDN graceful fallback, form field
+validation, and staging header checks.
+
+**Stats:** 11 files changed · 299 insertions · 22 deletions
+
+---
+
+## v2.13.7 — Changelog Backfill
+**Tag:** `v2.13.7__changelog-backfill__commit-aaa3399`
+**Commit:** `aaa3399` · 2026-05-07
+**Type:** `docs`
+
+**Summary:** docs(changelog): backfill all missing entries v2.1.0–v2.13.6
+
+**Description:**
+Adds all missing `CHANGELOG.md` entries from v2.1.0 through v2.13.6 so the
+human-readable history matches the full tagged history on main.
+
+---
+
+## v2.13.6 — Release Notes v2.13
+**Tag:** `v2.13.6__release-notes-v2-13__commit-aded593`
+**Commit:** `aded593` · 2026-05-07
+**Type:** `docs`
+
+**Summary:** docs(release): add v2.13.0–v2.13.5 release notes
+
+**Description:**
+Adds six release-note entries (Gallery → Overlay → Exposure → Portrait →
+Depth → Frame) to `RELEASE_NOTES.md` so the release log matches the tagged history.
+
+---
+
+## v2.13.5 — Workshops Photo Cards
+**Tag:** `v2.13.5__workshops-photo-cards__commit-e75b131`
+**Commit:** `e75b131` · 2026-05-07
+**Type:** `feat`
+
+**Summary:** feat(workshops): photo-layered format cards and audience section
+
+**Description:**
+Format cards use `.format-card-photo-bg` at 9% opacity (15% on hover). Audience
+cards get `.audience-photo-bg` treatment consistent with the homepage. CTA band
+gains a photo background consistent with all other pages.
+
+---
+
+## v2.13.4 — Program Pages Photography
+**Tag:** `v2.13.4__program-pages-photography__commit-8693b15`
+**Commit:** `8693b15` · 2026-05-07
+**Type:** `feat`
+
+**Summary:** feat(programs): student proof photography on program detail pages
+
+**Description:**
+Coding with Robots hero stacks a student proof photo below the Edison product
+shot; full-width photo section break added above the levels grid; CTA band gains
+photo background. PSTEM hero stacks a focused-student photo below Whybricks;
+"Learning That Starts With Why?" restructured as two-column grid with
+children-thinking photo; CTA band gains photo background.
+
+---
+
+## v2.13.3 — About Photo Redesign
+**Tag:** `v2.13.3__about-photo-redesign__commit-962def2`
+**Commit:** `962def2` · 2026-05-07
+**Type:** `feat`
+
+**Summary:** feat(about): split-panel hero and photographic credential cards
+
+**Description:**
+Hero replaced with split-panel layout: text left, full-height classroom photo
+right with left-edge gradient feathering. All four credential cards restructured
+to lead with a photo header. Three-column "What We Bring" visual proof strip
+added before the CTA band. CTA band gains photo background.
+
+---
+
+## v2.13.2 — Homepage Photo Redesign
+**Tag:** `v2.13.2__homepage-photo-redesign__commit-9b478f5`
+**Commit:** `9b478f5` · 2026-05-07
+**Type:** `feat`
+
+**Summary:** feat(homepage): photo-driven hero, mosaic proof strip, visual credentialing
+
+**Description:**
+Hero replaces CSS illustration with full-bleed classroom photo and dark gradient
+overlay. Four-photo mosaic "Real Workshops. Real Students." proof section added.
+Trust strip gains product image thumbnails. Audience cards get low-opacity photo
+backgrounds. Differentiators section replaced with three-photo visual proof band.
+CTA band gains photo background.
+
+---
+
+## v2.13.1 — Photo CSS Utilities
+**Tag:** `v2.13.1__photo-css-utilities__commit-fbbd35b`
+**Commit:** `fbbd35b` · 2026-05-07
+**Type:** `feat`
+
+**Summary:** feat(css): add photo composition utilities to design system
+
+**Description:**
+Adds photo background, overlay, mosaic grid, and proof-strip utility classes to
+`main.css` in preparation for the sitewide photo-driven redesign.
+
+---
+
+## v2.13.0 — WebP Photo Library
+**Tag:** `v2.13.0__webp-photo-library__commit-1a0c2d5`
+**Commit:** `1a0c2d5` · 2026-05-07
+**Type:** `feat`
+
+**Summary:** feat(assets): add optimised WebP photo library for visual redesign
+
+**Description:**
+Adds the full set of optimised WebP images to `src/images/` for use across hero
+sections, program pages, audience cards, format cards, and proof strips.
+
+---
+
+## v2.12.9 — Planning Doc Extensions
+**Tag:** `v2.12.9__planning-doc-extensions__commit-e4b9855`
+**Commit:** `e4b9855` · 2026-05-07
+**Type:** `docs`
+
+**Summary:** docs(planning): normalize planning document extensions
+
+**Description:**
+Normalizes file extensions on planning documents for consistent tooling across
+the project.
+
+---
+
+## v2.12.8 — Reference Doc Filename
+**Tag:** `v2.12.8__reference-doc-filename__commit-3bc8887`
+**Commit:** `3bc8887` · 2026-05-07
+**Type:** `docs`
+
+**Summary:** docs(reference): normalize minimal docs filename
+
+**Description:**
+Renames or normalizes a reference document filename for consistency with the
+rest of the docs directory.
+
+---
+
+## v2.12.7 — Release Record Sync
+**Tag:** `v2.12.7__release-record-sync__commit-67cad9f`
+**Commit:** `67cad9f` · 2026-05-06
+**Type:** `docs`
+
+**Summary:** docs(release): sync v2.12.6 records with real tag
+
+**Description:**
+Backfills the release tracking docs after the actual v2.12.6 release commit was
+created so the human-readable history references the real tagged hash.
+
+---
+
 ## v2.12.6 — Program Prominence Visuals
 **Tag:** `v2.12.6__program-prominence-visuals__commit-7edcdfc`
 **Commit:** `7edcdfc` · 2026-05-06
@@ -418,6 +611,23 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
+| `v2.14.1__prompts-workflow-templates__commit-9457ab9` | `9457ab9` | 2026-05-15 |
+| `v2.14.0__programs-launch-site-hardening__commit-fcdfda6` | `fcdfda6` | 2026-05-15 |
+| `v2.13.7__changelog-backfill__commit-aaa3399` | `aaa3399` | 2026-05-07 |
+| `v2.13.6__release-notes-v2-13__commit-aded593` | `aded593` | 2026-05-07 |
+| `v2.13.5__workshops-photo-cards__commit-e75b131` | `e75b131` | 2026-05-07 |
+| `v2.13.4__program-pages-photography__commit-8693b15` | `8693b15` | 2026-05-07 |
+| `v2.13.3__about-photo-redesign__commit-962def2` | `962def2` | 2026-05-07 |
+| `v2.13.2__homepage-photo-redesign__commit-9b478f5` | `9b478f5` | 2026-05-07 |
+| `v2.13.1__photo-css-utilities__commit-fbbd35b` | `fbbd35b` | 2026-05-07 |
+| `v2.13.0__webp-photo-library__commit-1a0c2d5` | `1a0c2d5` | 2026-05-07 |
+| `v2.12.9__planning-doc-extensions__commit-e4b9855` | `e4b9855` | 2026-05-07 |
+| `v2.12.8__reference-doc-filename__commit-3bc8887` | `3bc8887` | 2026-05-07 |
+| `v2.12.7__release-record-sync__commit-67cad9f` | `67cad9f` | 2026-05-06 |
+| `v2.12.6__program-prominence-visuals__commit-7edcdfc` | `7edcdfc` | 2026-05-06 |
+| `v2.12.4__release-notes-v2-12-3__commit-b8c246a` | `b8c246a` | 2026-05-05 |
+| `v2.12.3__version-narrative-alignment__commit-860c1df` | `860c1df` | 2026-05-05 |
+| `v2.12.2__commit-history-backfill__commit-545016b` | `545016b` | 2026-05-05 |
 | `v2.12.1__release-record-sync__commit-541f575` | `541f575` | 2026-05-05 |
 | `v2.12.0__polish-seo-analytics__commit-6c9a427` | `6c9a427` | 2026-05-05 |
 | `v2.11.0__release-notes-current__commit-ecb25ab` | `ecb25ab` | 2026-05-05 |

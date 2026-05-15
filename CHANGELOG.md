@@ -11,6 +11,55 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.14.1] — 2026-05-15
+
+**Tag:** `v2.14.1__prompts-workflow-templates__commit-9457ab9`
+
+### Summary
+Add `prompts/` directory with three saved workflow instruction files for
+commit, update, and snapshot tasks.
+
+### Added
+- `prompts/Commit notes` — GitHub commit-style notes workflow prompt
+- `prompts/Update.md` — release docs update workflow prompt
+- `prompts/Snapshot` — repo snapshot workflow prompt
+
+---
+
+## [2.14.0] — 2026-05-15
+
+**Tag:** `v2.14.0__programs-launch-site-hardening__commit-fcdfda6`
+
+### Summary
+Launch `/programs/` as a proper landing page, harden both booking forms,
+fix custom cursor for non-mouse devices, and fix same-page hash navigation overlay.
+
+### Added
+- `programs/index.html` — Programs landing page at `/programs/`
+- `sitemap.xml` — `/programs/` entry (priority 0.9)
+
+### Changed
+- `src/js/components.js` — nav → `/programs/`; same-page hash links skip overlay
+- `src/js/animations.js` — cursor gated on `.custom-cursor-enabled` (fine pointer only)
+- `src/css/main.css` — `cursor: none` moved to `.custom-cursor-enabled` class
+- `book.html` / `contact.html` — `novalidate` removed; `maxlength` added; placeholder endpoint blocked
+- `docs/DEPLOYMENT.md` — security headers, staging noindex, expanded checklist
+- `docs/TESTING.md` — Programs nav, CDN fallback, form validation, staging header checks
+
+---
+
+## [2.13.7] — 2026-05-07
+
+**Tag:** `v2.13.7__changelog-backfill__commit-aaa3399`
+
+### Summary
+Changelog backfill — all missing entries v2.1.0–v2.13.6 added.
+
+### Changed
+- `CHANGELOG.md` — all missing entries added
+
+---
+
 ## [2.13.6] — 2026-05-07
 
 **Tag:** `v2.13.6__release-notes-v2-13__commit-ca9beb7`
