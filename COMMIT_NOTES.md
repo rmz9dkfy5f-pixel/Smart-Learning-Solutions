@@ -5,6 +5,50 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.14.3 — Audit Doc and Docs Sync
+**Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028`
+**Commit:** `f8f8028` · 2026-05-15
+**Type:** `docs`
+
+**Summary:** docs(audit): add site audit and bring docs current to v2.14.3
+
+**Description:**
+Add `AUDIT.md` — full diagnostic audit covering all 10 pages, JS, CSS,
+sitemap, and robots.txt. Findings: 2 critical defects (Formspree endpoint
+unconfigured; ungated .btn cursor: none CSS rule), 4 high risks (/programs/
+routing dependency, no SRI on GSAP CDN scripts, Plausible mutable URL,
+page transition overlay no timeout fallback), 9 medium issues, 6 low
+findings, and 4 unverified items.
+Update `prompts/Update.md`: snapshot instruction line added, trailing
+newline fixed.
+Sync RELEASE_NOTES.md, COMMIT_NOTES.md, and CHANGELOG.md with v2.14.2
+and v2.14.3 entries. Update PROGRESS_NOTE.md to v2.14.3. Add audit
+completion to ROADMAP.md Completed section.
+
+**Stats:** 7 files changed
+
+---
+
+## v2.14.2 — Docs Current to v2.14.1
+**Tag:** `v2.14.2__docs-current-to-v2-14-1__commit-179f16a`
+**Commit:** `179f16a` · 2026-05-15
+**Type:** `docs`
+
+**Summary:** docs(release): bring all docs current to v2.14.1
+
+**Description:**
+Sync RELEASE_NOTES.md, COMMIT_NOTES.md, and CHANGELOG.md with the full
+tagged history through v2.14.1. Entries added: v2.12.7–v2.14.1 in
+COMMIT_NOTES, v2.13.6–v2.14.1 in RELEASE_NOTES, v2.13.7–v2.14.1 in
+CHANGELOG.
+Update ROADMAP.md: move completed milestones to a new Completed section;
+remove resolved blockers.
+Create PROGRESS_NOTE.md as current-state snapshot.
+
+**Stats:** 5 files changed · 344 insertions · 2 deletions
+
+---
+
 ## v2.14.1 — Prompts Workflow Templates
 **Tag:** `v2.14.1__prompts-workflow-templates__commit-9457ab9`
 **Commit:** `9457ab9` · 2026-05-15
@@ -611,6 +655,8 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
+| `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028` | `f8f8028` | 2026-05-15 |
+| `v2.14.2__docs-current-to-v2-14-1__commit-179f16a` | `179f16a` | 2026-05-15 |
 | `v2.14.1__prompts-workflow-templates__commit-9457ab9` | `9457ab9` | 2026-05-15 |
 | `v2.14.0__programs-launch-site-hardening__commit-fcdfda6` | `fcdfda6` | 2026-05-15 |
 | `v2.13.7__changelog-backfill__commit-aaa3399` | `aaa3399` | 2026-05-07 |

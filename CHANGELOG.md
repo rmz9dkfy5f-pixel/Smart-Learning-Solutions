@@ -11,6 +11,41 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.14.3] — 2026-05-15
+
+**Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028`
+
+### Summary
+Add full site audit document and sync all release docs to v2.14.3.
+
+### Added
+- `AUDIT.md` — full diagnostic audit: 2 critical, 4 high, 9 medium, 6 low,
+  4 unverified findings across all 10 pages, JS, CSS, sitemap, and robots.txt
+
+### Changed
+- `prompts/Update.md` — snapshot instruction added; trailing newline fixed
+- `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `CHANGELOG.md` — synced to v2.14.3
+- `PROGRESS_NOTE.md` — updated to v2.14.3
+- `ROADMAP.md` — audit added to Completed section
+
+---
+
+## [2.14.2] — 2026-05-15
+
+**Tag:** `v2.14.2__docs-current-to-v2-14-1__commit-179f16a`
+
+### Summary
+Sync all release documentation with the full tagged history through v2.14.1.
+
+### Changed
+- `RELEASE_NOTES.md` — v2.13.6–v2.14.1 entries added
+- `COMMIT_NOTES.md` — v2.12.7–v2.14.1 entries and tag table rows added
+- `CHANGELOG.md` — v2.13.7–v2.14.1 entries added
+- `ROADMAP.md` — Completed section added; resolved blockers removed
+- `PROGRESS_NOTE.md` — created as current-state snapshot
+
+---
+
 ## [2.14.1] — 2026-05-15
 
 **Tag:** `v2.14.1__prompts-workflow-templates__commit-9457ab9`
