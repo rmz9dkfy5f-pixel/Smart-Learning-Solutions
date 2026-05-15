@@ -13,6 +13,7 @@ function initAnimations() {
   const cursorFollower = document.getElementById('cursor-follower');
 
   if (cursor && cursorFollower && window.matchMedia('(pointer: fine)').matches) {
+    document.body.classList.add('custom-cursor-enabled');
     let mouseX = 0, mouseY = 0;
     let followerX = 0, followerY = 0;
 

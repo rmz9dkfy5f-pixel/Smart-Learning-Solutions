@@ -118,20 +118,20 @@
           <div class="contact-card">
             <h3>Send a Message</h3>
             <!-- Replace ACTION with your Formspree endpoint -->
-            <form id="contact-form" action="https://formspree.io/f/REPLACE_ME" method="POST" novalidate>
+            <form id="contact-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
               <input type="hidden" name="_subject" value="Message via Contact Page — Smart Learning Solutions">
               <div class="form-grid">
                 <div class="form-group">
                   <label for="c-name">Your Name *</label>
-                  <input type="text" id="c-name" name="name" required autocomplete="name">
+                  <input type="text" id="c-name" name="name" required autocomplete="name" maxlength="120">
                 </div>
                 <div class="form-group">
                   <label for="c-email">Email Address *</label>
-                  <input type="email" id="c-email" name="email" required autocomplete="email">
+                  <input type="email" id="c-email" name="email" required autocomplete="email" maxlength="254">
                 </div>
                 <div class="form-group form-group--full">
                   <label for="c-message">Message *</label>
-                  <textarea id="c-message" name="message" required placeholder="What can we help with?"></textarea>
+                  <textarea id="c-message" name="message" required placeholder="What can we help with?" maxlength="1000"></textarea>
                 </div>
               </div>
               <div style="margin-top: var(--space-6);">
@@ -201,6 +201,14 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      if (form.action.includes('REPLACE_ME')) {
+        alert('This form is not configured yet. Please email us directly at info@SmartLearningSolutions.org');
+        return;
+      }
       const data = new FormData(form);
       try {
         const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });

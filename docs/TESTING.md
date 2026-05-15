@@ -30,6 +30,8 @@ Before committing any change to an HTML page, CSS file, or `components.js`:
 - [ ] Footer renders on all pages after any `components.js` change
 - [ ] Mobile nav toggle works (open/close)
 - [ ] Active page is correctly highlighted in nav
+- [ ] Programs nav opens `/programs/` from desktop and mobile navigation
+- [ ] Same-page hash links do not leave the page-transition overlay visible
 
 **Animations (`animations.js`):**
 - [ ] No JS errors thrown on page load
@@ -37,9 +39,14 @@ Before committing any change to an HTML page, CSS file, or `components.js`:
 - [ ] Custom cursor renders and tracks mouse (desktop only)
 - [ ] ScrollTrigger reveals work on scroll
 - [ ] Touch devices: custom cursor not shown
+- [ ] If GSAP or cdnjs is blocked, the native cursor remains visible and the page remains usable
+- [ ] If Plausible is blocked, navigation and forms still work
 
 **Forms (`book.html`, `contact.html`):**
 - [ ] Form fields render correctly
+- [ ] Empty required fields block submission
+- [ ] Invalid email addresses block submission
+- [ ] Overlong values are constrained by field limits
 - [ ] Form does not submit to `REPLACE_ME` endpoint in production
 - [ ] Submit button shows a loading/sent state
 - [ ] Error message shown if submission fails
@@ -51,6 +58,9 @@ Before committing any change to an HTML page, CSS file, or `components.js`:
 - [ ] Open Graph tags present (`og:title`, `og:description`, `og:image`)
 - [ ] `<link rel="canonical">` present
 - [ ] `sitemap.xml` and `robots.txt` accessible at root
+- [ ] `/programs/` is listed in `sitemap.xml`
+- [ ] Staging responses send `X-Robots-Tag: noindex, nofollow, noarchive`
+- [ ] Production responses do not send staging noindex headers
 
 ## 4. Cross-Browser / Responsive
 

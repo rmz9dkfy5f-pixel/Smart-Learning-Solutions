@@ -13,7 +13,8 @@ This is a static site — no build step required. The repo root is the deploy ro
 | Environment | Method |
 |---|---|
 | Local dev | `npx serve .` or VS Code Live Server |
-| Production | Deploy root folder to Netlify or GitHub Pages |
+| Staging | Deploy root folder to the staging host |
+| Production | Deploy root folder to Netlify, GitHub Pages, or Nginx static hosting |
 
 ## 2. Local Development
 
@@ -34,9 +35,12 @@ Before deploying to production:
 
 - [ ] Formspree endpoint in `book.html` and `contact.html` is replaced (search for `REPLACE_ME`)
 - [ ] All nav links resolve (no 404s)
+- [ ] `/programs/` serves `programs/index.html`
 - [ ] `sitemap.xml` URLs match the production domain
 - [ ] `<link rel="canonical">` URLs match the production domain
 - [ ] Open Graph image path is correct for the production domain
+- [ ] Production is indexable, and staging is blocked from indexing at the server level
+- [ ] Security headers are present on staging/production responses
 - [ ] No `console.log` or debug statements left in `animations.js` or `components.js`
 - [ ] Test the booking form end-to-end on staging/production
 
@@ -53,6 +57,11 @@ Before deploying to production:
 - Clean URLs require a `_config.yml` or redirect rules
 - Custom domain requires CNAME file and DNS configuration
 
+**Nginx static hosting:**
+- Serve the repo root as the site root.
+- Ensure directory index files are enabled so `/programs/` serves `programs/index.html`.
+- Apply security and staging-indexing headers in the Nginx site config, not in individual HTML files.
+
 ## 5. Environment Variables
 
 This site has no server-side environment variables. The only sensitive value is the Formspree endpoint URL, which is embedded in HTML source. Keep it out of public-facing documentation.
@@ -65,7 +74,37 @@ This site has no server-side environment variables. The only sensitive value is 
 - Update `sitemap.xml` and canonical URLs if the domain changes
 - Update Open Graph `og:url` if the domain changes
 
-## 7. Rollback
+## 7. Nginx Security Headers
+
+Apply security headers in the Nginx site config for both staging and production. Start CSP in report-only mode because the current static pages still use inline styles and inline module scripts.
+
+Example baseline:
+
+```nginx
+add_header X-Content-Type-Options "nosniff" always;
+add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()" always;
+add_header X-Frame-Options "SAMEORIGIN" always;
+add_header Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://plausible.io 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io https://plausible.io; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'self'" always;
+```
+
+Only add HSTS after HTTPS is final and working for the canonical production domain:
+
+```nginx
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+```
+
+## 8. Staging Indexing
+
+Staging domains should not appear in search results. Keep `robots.txt` production-oriented in the repo, and add this header only on staging:
+
+```nginx
+add_header X-Robots-Tag "noindex, nofollow, noarchive" always;
+```
+
+Production must not send the staging `X-Robots-Tag` header.
+
+## 9. Rollback
 
 There is no build or database to roll back. To revert a broken deploy:
 
@@ -81,10 +120,12 @@ git checkout <tag>
 git push origin main --force
 ```
 
-## 8. Known Risks
+## 10. Known Risks
 
 | Risk | Impact | Mitigation |
 |---|---|---|
 | `REPLACE_ME` Formspree endpoint deployed | Contact and booking forms silently fail | Pre-deploy checklist item |
 | Canonical URLs pointing to wrong domain | SEO impact | Update before domain switch |
 | ES module path differences between local and production | Components fail to load | Always test on a local server, not `file://` |
+| Staging indexed by search engines | Duplicate unfinished pages may appear in search | Send staging-only `X-Robots-Tag: noindex, nofollow, noarchive` |
+| Missing security headers | Reduced browser-side protection | Apply Nginx headers before collecting user data |
