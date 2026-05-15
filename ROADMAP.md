@@ -27,7 +27,6 @@ A clean, fast, credible marketing site that converts visitors into workshop book
 - Test navigation, forms, and metadata on the production host
 
 ### Next — Imagery and Trust Signals
-- Add hero photography to the homepage and supporting imagery to program pages
 - Add team, venue, or workshop photography where approved
 - Publish real testimonials if owner-supplied quotes are available
 
@@ -38,13 +37,21 @@ A clean, fast, credible marketing site that converts visitors into workshop book
 
 ---
 
+## Completed
+- Hero photography added sitewide — home, workshops, programs, about (v2.13.0–v2.13.5)
+- `/programs/` landing page launched; nav and sitemap updated (v2.14.0)
+- Book and contact forms hardened: validation, maxlength, placeholder guard (v2.14.0)
+- Custom cursor graceful degradation — fine-pointer devices only (v2.14.0)
+- Full SEO and analytics pass: canonical tags, Open Graph, Plausible (v2.12.0)
+
+---
+
 ## Deferred
 - Professional Development standalone page — no content yet; defer until content confirmed
 - Social media links in footer — placeholder exists; defer until accounts confirmed
 
 ## Blockers
 - Formspree endpoint not yet created
-- Hero photography not yet sourced
 - Deployment target not yet confirmed
 - Testimonials are still pending owner-supplied quotes if social proof is required for launch
 
