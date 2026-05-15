@@ -43,6 +43,7 @@ A clean, fast, credible marketing site that converts visitors into workshop book
 - Book and contact forms hardened: validation, maxlength, placeholder guard (v2.14.0)
 - Custom cursor graceful degradation — fine-pointer devices only (v2.14.0)
 - Full SEO and analytics pass: canonical tags, Open Graph, Plausible (v2.12.0)
+- Full site diagnostic audit completed — findings recorded in `AUDIT.md` (v2.14.3)
 
 ---
 

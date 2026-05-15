@@ -2,6 +2,36 @@
 
 ---
 
+## v2.14.3 - 2026-05-15 - Audit
+
+**Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028`
+
+### Added
+- `AUDIT.md` — full diagnostic audit of the static site covering all 10 pages,
+  JS, CSS, sitemap, and robots.txt. 2 critical defects, 4 high risks,
+  9 medium issues, 6 low findings, 4 unverified items.
+
+### Changed
+- `prompts/Update.md` — snapshot instruction added; trailing newline fixed
+- `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `CHANGELOG.md` — synced to v2.14.3
+- `PROGRESS_NOTE.md` — updated to v2.14.3
+- `ROADMAP.md` — audit added to Completed section
+
+---
+
+## v2.14.2 - 2026-05-15 - Sync
+
+**Tag:** `v2.14.2__docs-current-to-v2-14-1__commit-179f16a`
+
+### Changed
+- `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `CHANGELOG.md` — synced with full
+  tagged history through v2.14.1; entries added for v2.12.7–v2.14.1
+- `ROADMAP.md` — completed milestones moved to Completed section; resolved
+  blockers removed
+- `PROGRESS_NOTE.md` — created as current-state snapshot
+
+---
+
 ## v2.14.1 - 2026-05-15 - Templates
 
 **Tag:** `v2.14.1__prompts-workflow-templates__commit-9457ab9`
