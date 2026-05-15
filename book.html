@@ -105,30 +105,30 @@
             <h3>Workshop Enquiry Form</h3>
 
             <!-- Replace ACTION with your Formspree endpoint e.g. https://formspree.io/f/YOUR_ID -->
-            <form id="workshop-form" action="https://formspree.io/f/REPLACE_ME" method="POST" novalidate>
+            <form id="workshop-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
               <input type="hidden" name="_subject" value="New Workshop Enquiry — Smart Learning Solutions">
               <input type="hidden" name="_next" value="">
 
               <div class="form-grid">
                 <div class="form-group">
                   <label for="first-name">First Name *</label>
-                  <input type="text" id="first-name" name="first_name" required autocomplete="given-name">
+                  <input type="text" id="first-name" name="first_name" required autocomplete="given-name" maxlength="80">
                 </div>
                 <div class="form-group">
                   <label for="last-name">Last Name *</label>
-                  <input type="text" id="last-name" name="last_name" required autocomplete="family-name">
+                  <input type="text" id="last-name" name="last_name" required autocomplete="family-name" maxlength="80">
                 </div>
                 <div class="form-group">
                   <label for="email">Email Address *</label>
-                  <input type="email" id="email" name="email" required autocomplete="email">
+                  <input type="email" id="email" name="email" required autocomplete="email" maxlength="254">
                 </div>
                 <div class="form-group">
                   <label for="phone">Phone Number</label>
-                  <input type="tel" id="phone" name="phone" autocomplete="tel">
+                  <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="40">
                 </div>
                 <div class="form-group form-group--full">
                   <label for="organisation">School / Organisation Name</label>
-                  <input type="text" id="organisation" name="organisation" autocomplete="organization">
+                  <input type="text" id="organisation" name="organisation" autocomplete="organization" maxlength="120">
                 </div>
                 <div class="form-group">
                   <label for="program">Preferred Program *</label>
@@ -151,19 +151,19 @@
                 </div>
                 <div class="form-group">
                   <label for="age-range">Age / Grade Range *</label>
-                  <input type="text" id="age-range" name="age_range" placeholder="e.g. Ages 10–14, Grade 5–8" required>
+                  <input type="text" id="age-range" name="age_range" placeholder="e.g. Ages 10–14, Grade 5–8" required maxlength="80">
                 </div>
                 <div class="form-group">
                   <label for="dates">Preferred Date(s)</label>
-                  <input type="text" id="dates" name="preferred_dates" placeholder="e.g. Any weekday in May">
+                  <input type="text" id="dates" name="preferred_dates" placeholder="e.g. Any weekday in May" maxlength="120">
                 </div>
                 <div class="form-group form-group--full">
                   <label for="location">Location / Venue</label>
-                  <input type="text" id="location" name="location" placeholder="School name, city, or general area" autocomplete="street-address">
+                  <input type="text" id="location" name="location" placeholder="School name, city, or general area" autocomplete="street-address" maxlength="160">
                 </div>
                 <div class="form-group form-group--full">
                   <label for="message">Anything else we should know?</label>
-                  <textarea id="message" name="message" placeholder="Special requirements, learning goals, questions…"></textarea>
+                  <textarea id="message" name="message" placeholder="Special requirements, learning goals, questions…" maxlength="1000"></textarea>
                 </div>
               </div>
 
@@ -232,6 +232,14 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      if (form.action.includes('REPLACE_ME')) {
+        alert('This form is not configured yet. Please email us directly at info@SmartLearningSolutions.org');
+        return;
+      }
       const data = new FormData(form);
       try {
         const res = await fetch(form.action, {

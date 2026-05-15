@@ -29,3 +29,7 @@ node_modules/
 # Logs
 *.log
 npm-debug.log*
+
+# Browser test profiles
+.tmp-edge-profile-qa/
+.tmp-chrome-profile-qa/

@@ -4,7 +4,7 @@
 const NAV_LINKS = [
   { label: 'Home',       href: '/index.html',     key: 'home' },
   { label: 'Workshops',  href: '/workshops.html',  key: 'workshops' },
-  { label: 'Programs',   href: '/workshops.html#programs', key: 'programs' },
+  { label: 'Programs',   href: '/programs/', key: 'programs' },
   { label: 'Resources',  href: '/resources.html',  key: 'resources' },
   { label: 'About',      href: '/about.html',      key: 'about' },
   { label: 'Contact',    href: '/contact.html',    key: 'contact' },
@@ -202,6 +202,11 @@ function initPage({ activePage = '' } = {}) {
     const nextUrl = new URL(href, window.location.href);
     if (nextUrl.origin !== window.location.origin) return;
     if (nextUrl.href === window.location.href) return;
+    if (
+      nextUrl.pathname === window.location.pathname &&
+      nextUrl.search === window.location.search &&
+      nextUrl.hash
+    ) return;
 
     event.preventDefault();
     document.body.classList.add('is-navigating');
