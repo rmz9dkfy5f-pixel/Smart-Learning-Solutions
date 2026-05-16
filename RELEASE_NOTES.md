@@ -2,6 +2,48 @@
 
 ---
 
+## v2.14.7 - 2026-05-16 - Docs Sync
+
+**Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72`
+
+### Changed
+- `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `CHANGELOG.md` — synced to v2.14.7
+- `PROGRESS_NOTE.md` — updated to v2.14.7
+- `ROADMAP.md` — CONTEXT.md and STATUS.md creation added to Completed section
+
+---
+
+## v2.14.6 - 2026-05-16 - Session Progress Note
+
+**Tag:** `v2.14.6__session-progress-note__commit-431f540`
+
+### Changed
+- `PROGRESS_NOTE.md` — full session log for v2.14.3–v2.14.5 work
+
+---
+
+## v2.14.5 - 2026-05-15 - Reference Docs
+
+**Tag:** `v2.14.5__context-and-status-docs__commit-c4a7d9d`
+
+### Added
+- `CONTEXT.md` — stable project background: identity, programs, audiences,
+  confirmed decisions, tech stack, architecture, page inventory, content rules
+- `STATUS.md` — present state: version, done list, launch blockers, audit
+  findings, next actions table, deferred items
+
+---
+
+## v2.14.4 - 2026-05-15 - Gitignore
+
+**Tag:** `v2.14.4__ignore-claude-local-settings__commit-1055fd7`
+
+### Changed
+- `.gitignore` — added `.claude/` to prevent Claude Code local settings from
+  appearing as untracked files in GitHub Desktop
+
+---
+
 ## v2.14.3 - 2026-05-15 - Audit
 
 **Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028`
