@@ -5,6 +5,72 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.14.7 — Docs Sync v2.14.4–v2.14.7
+**Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72`
+**Commit:** `894bc72` · 2026-05-16
+**Type:** `docs`
+
+**Summary:** docs(release): sync all docs to v2.14.7
+
+**Description:**
+Sync RELEASE_NOTES.md, COMMIT_NOTES.md, and CHANGELOG.md with entries for
+v2.14.4 through v2.14.7. Update PROGRESS_NOTE.md version line to v2.14.7.
+Add CONTEXT.md and STATUS.md creation to ROADMAP.md Completed section.
+
+**Stats:** 5 files changed
+
+---
+
+## v2.14.6 — Session Progress Note
+**Tag:** `v2.14.6__session-progress-note__commit-431f540`
+**Commit:** `431f540` · 2026-05-16
+**Type:** `docs`
+
+**Summary:** docs(session): progress note for v2.14.3–v2.14.5 session
+
+**Description:**
+Overwrite PROGRESS_NOTE.md with a structured session log covering v2.14.3
+through v2.14.5: tasks completed, commits table, tags table, files changed
+table, and next milestone.
+
+**Stats:** 1 file changed · 83 insertions · 46 deletions
+
+---
+
+## v2.14.5 — Context and Status Docs
+**Tag:** `v2.14.5__context-and-status-docs__commit-c4a7d9d`
+**Commit:** `c4a7d9d` · 2026-05-15
+**Type:** `docs`
+
+**Summary:** docs: add CONTEXT.md and STATUS.md root reference files
+
+**Description:**
+Add two root-level reference files to make the repo self-documenting.
+CONTEXT.md covers stable background — project identity, programs, audiences,
+confirmed decisions, tech stack, architecture, page inventory, and content rules.
+STATUS.md covers present state — current version, done list, launch blockers
+table, audit findings summary, next actions table, and deferred items.
+
+**Stats:** 2 files added · 188 insertions
+
+---
+
+## v2.14.4 — Ignore .claude/ Local Settings
+**Tag:** `v2.14.4__ignore-claude-local-settings__commit-1055fd7`
+**Commit:** `1055fd7` · 2026-05-15
+**Type:** `chore`
+
+**Summary:** chore(git): ignore .claude/ local settings directory
+
+**Description:**
+Add `.claude/` to `.gitignore` so Claude Code local settings files
+(tool permissions, session state) are never staged or committed. Prevents
+the directory from appearing as untracked in GitHub Desktop.
+
+**Stats:** 1 file changed · 1 insertion
+
+---
+
 ## v2.14.3 — Audit Doc and Docs Sync
 **Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028`
 **Commit:** `f8f8028` · 2026-05-15
@@ -655,6 +721,10 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
+| `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72` | `894bc72` | 2026-05-16 |
+| `v2.14.6__session-progress-note__commit-431f540` | `431f540` | 2026-05-16 |
+| `v2.14.5__context-and-status-docs__commit-c4a7d9d` | `c4a7d9d` | 2026-05-15 |
+| `v2.14.4__ignore-claude-local-settings__commit-1055fd7` | `1055fd7` | 2026-05-15 |
 | `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028` | `f8f8028` | 2026-05-15 |
 | `v2.14.2__docs-current-to-v2-14-1__commit-179f16a` | `179f16a` | 2026-05-15 |
 | `v2.14.1__prompts-workflow-templates__commit-9457ab9` | `9457ab9` | 2026-05-15 |

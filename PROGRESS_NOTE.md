@@ -1,3 +1,5 @@
+**Updated:** v2.14.7 · 2026-05-16
+
 # Progress Note — Session 2026-05-15 / 2026-05-16
 
 ## Milestone

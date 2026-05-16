@@ -11,6 +11,57 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.14.7] — 2026-05-16
+
+**Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72`
+
+### Summary
+Sync all release documentation with entries for v2.14.4 through v2.14.7.
+
+### Changed
+- `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `CHANGELOG.md` — synced to v2.14.7
+- `PROGRESS_NOTE.md` — updated to v2.14.7
+- `ROADMAP.md` — CONTEXT.md and STATUS.md creation added to Completed section
+
+---
+
+## [2.14.6] — 2026-05-16
+
+**Tag:** `v2.14.6__session-progress-note__commit-431f540`
+
+### Summary
+Session log for the v2.14.3–v2.14.5 work block.
+
+### Changed
+- `PROGRESS_NOTE.md` — structured session log: tasks, commits, tags, files, next milestone
+
+---
+
+## [2.14.5] — 2026-05-15
+
+**Tag:** `v2.14.5__context-and-status-docs__commit-c4a7d9d`
+
+### Summary
+Add root-level reference files: stable background (CONTEXT.md) and present state (STATUS.md).
+
+### Added
+- `CONTEXT.md` — project identity, programs, audiences, decisions, tech stack, architecture
+- `STATUS.md` — current version, done list, blockers, audit findings, next actions
+
+---
+
+## [2.14.4] — 2026-05-15
+
+**Tag:** `v2.14.4__ignore-claude-local-settings__commit-1055fd7`
+
+### Summary
+Stop tracking Claude Code local settings in git.
+
+### Changed
+- `.gitignore` — `.claude/` directory added
+
+---
+
 ## [2.14.3] — 2026-05-15
 
 **Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028`
