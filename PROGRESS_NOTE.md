@@ -1,46 +1,83 @@
-# Progress Note — 2026-05-15
+# Progress Note — Session 2026-05-15 / 2026-05-16
 
-## Current Version
-v2.14.3 · commit `f8f8028`
+## Milestone
+v2.14.3 through v2.14.5 — Audit publication, repo hygiene, and reference docs.
+This session resumed mid-execution from the previous context window, which had
+stalled after editing only RELEASE_NOTES.md during the v2.14.3 commit run.
 
-## Site Status
-The static marketing site for Smart Learning Solutions is feature-complete
-for pre-launch. All pages are built, navigation is correct, and the design
-system is consistent across the full page set. A full diagnostic audit has
-been completed and documented in AUDIT.md.
+---
 
-## What Is Done
-- Full 8-page site: Home, Workshops, Programs (×2 detail + 1 landing),
-  Resources, About, Book, Contact
-- Photo-driven redesign sitewide — hero, program pages, about, workshops (v2.13.x)
-- Programs landing page at `/programs/` with sitemap and nav wired up (v2.14.0)
-- Both booking forms hardened: validation, maxlength constraints, placeholder guard (v2.14.0)
-- Custom cursor gracefully degrades on touch/pointer-only devices (v2.14.0)
-- SEO pass complete: canonical tags, Open Graph, `robots.txt`, `sitemap.xml`, Plausible analytics
-- Security headers and staging noindex documented in `docs/DEPLOYMENT.md`
-- Full site diagnostic audit completed — findings in `AUDIT.md` (v2.14.3)
-- All release docs (RELEASE_NOTES, COMMIT_NOTES, CHANGELOG) current to v2.14.3
+## Tasks Completed
 
-## Remaining Launch Blockers
-1. **Formspree endpoint** — `book.html` and `contact.html` still contain
-   `REPLACE_ME`; forms will not submit until replaced
-2. **Deployment target** — Production host not yet confirmed; domain not yet pointed
-3. **Testimonials** — Still pending owner-supplied quotes (optional for launch)
+- Resumed interrupted v2.14.3 execution: edited COMMIT_NOTES.md, CHANGELOG.md,
+  PROGRESS_NOTE.md, and ROADMAP.md (four files that had not yet been updated)
+- Staged all seven v2.14.3 files and committed; resolved hash self-reference via
+  a two-round amend cycle (initial commit → substitute hash → amend → substitute
+  amended hash → amend again)
+- Recovered from a PowerShell encoding regression: restoring files from git and
+  using the Edit tool for targeted replacements preserved UTF-8 encoding
+- Force-pushed main to resolve a diverged remote (an intermediate amend commit
+  had landed on origin during the session)
+- Created and pushed annotated tag v2.14.3; created Robocopy snapshot
+- Added `.claude/` to `.gitignore` so Claude Code local settings no longer appear
+  as untracked files in GitHub Desktop (v2.14.4)
+- Committed, tagged, pushed, and snapshotted v2.14.4
+- Created `CONTEXT.md` — stable project background: identity, programs, audiences,
+  confirmed decisions, tech stack, architecture, page inventory, content rules (v2.14.5)
+- Created `STATUS.md` — present state: current version, done list, launch blockers
+  table, audit findings summary, next actions table, deferred list (v2.14.5)
+- Committed, tagged, pushed, and snapshotted v2.14.5
 
-## Audit Findings Summary (see AUDIT.md for full detail)
-- **Critical:** Formspree unconfigured (C-1); `.btn { cursor: none }` ungated (C-2)
-- **High:** `/programs/` routing server dependency (H-1); no SRI on GSAP (H-2);
-  Plausible mutable URL (H-3); overlay no timeout fallback (H-4)
-- **Medium:** SVG OG image (M-1); programs title hyphen (M-2); PSTEM img dimensions (M-3);
-  inline style blocks (M-4); stale CSS query strings (M-5); tel: format (M-6);
-  empty _next (M-7); email casing (M-8); no robots meta (M-9)
+---
 
-## Next Actions
-1. Fix C-2: gate `.btn { cursor: none }` behind `.custom-cursor-enabled`
-2. Create Formspree account and replace `REPLACE_ME` in both forms (C-1)
-3. Confirm `/programs/` routing on target host (H-1)
-4. Add SRI hashes to GSAP CDN script tags (H-2)
-5. Convert `og-image.svg` to PNG/JPEG 1200×630 (M-1)
-6. Fix title em-dash on programs page (M-2)
-7. Add `width`/`height` to PSTEM product image (M-3)
-8. Fix `tel:` prefix to `+18773657678` (M-6)
+## Commits
+
+| Hash | Message |
+|---|---|
+| `3dfc603` | docs(audit): add site audit and bring docs current to v2.14.3 |
+| `1055fd7` | chore(git): ignore .claude/ local settings directory |
+| `c4a7d9d` | docs: add CONTEXT.md and STATUS.md root reference files |
+
+---
+
+## Tags Applied
+
+| Tag | Commit |
+|---|---|
+| `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028` | `3dfc603` |
+| `v2.14.4__ignore-claude-local-settings__commit-1055fd7` | `1055fd7` |
+| `v2.14.5__context-and-status-docs__commit-c4a7d9d` | `c4a7d9d` |
+
+---
+
+## Files Changed
+
+| File | Change |
+|---|---|
+| `AUDIT.md` | Created |
+| `CONTEXT.md` | Created |
+| `STATUS.md` | Created |
+| `PROGRESS_NOTE.md` | Updated |
+| `RELEASE_NOTES.md` | Updated |
+| `COMMIT_NOTES.md` | Updated |
+| `CHANGELOG.md` | Updated |
+| `ROADMAP.md` | Updated |
+| `prompts/Update.md` | Updated |
+| `.gitignore` | Updated |
+
+---
+
+## What's Next
+
+**Next milestone: Launch Readiness**
+
+Remaining blockers before the site can go live:
+
+1. Fix C-2 — gate `.btn { cursor: none }` behind `body.custom-cursor-enabled`
+   in `src/css/main.css` (one-line fix, no blockers)
+2. Configure Formspree — create account, replace `REPLACE_ME` in `book.html`
+   and `contact.html` (C-1, hard launch blocker)
+3. Choose deployment host and confirm `/programs/` directory routing works (H-1)
+4. Add SRI hashes to GSAP `<script>` tags (H-2)
+
+Full audit findings and next actions are tracked in `STATUS.md` and `AUDIT.md`.
