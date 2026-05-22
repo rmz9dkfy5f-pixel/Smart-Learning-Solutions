@@ -2,6 +2,15 @@
 
 ---
 
+## v2.14.8 - 2026-05-16 - Prompt List
+
+**Tag:** `v2.14.8__prompts-update-file-list__commit-cc88cfd`
+
+### Changed
+- `prompts/Update.md` — update workflow file list expanded to include both `PROGRESS_NOTE.md` and `PROGRESS_NOTES.md`, aligning the prompt with the intended current-session and cumulative progress records
+
+---
+
 ## v2.14.7 - 2026-05-16 - Docs Sync
 
 **Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72`
