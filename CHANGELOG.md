@@ -11,6 +11,18 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.14.8] — 2026-05-16
+
+**Tag:** `v2.14.8__prompts-update-file-list__commit-cc88cfd`
+
+### Summary
+Update the release-documentation workflow prompt so it names both progress-note files expected by the documentation sync process.
+
+### Changed
+- `prompts/Update.md` — file list now includes both `PROGRESS_NOTE.md` and `PROGRESS_NOTES.md`
+
+---
+
 ## [2.14.7] — 2026-05-16
 
 **Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72`

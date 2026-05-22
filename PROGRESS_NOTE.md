@@ -1,54 +1,35 @@
-**Updated:** v2.14.7 · 2026-05-16
+**Updated:** v2.14.8 · 2026-05-16
 
-# Progress Note — Session 2026-05-15 / 2026-05-16
+# Progress Note — Current Session
 
 ## Milestone
-v2.14.3 through v2.14.5 — Audit publication, repo hygiene, and reference docs.
-This session resumed mid-execution from the previous context window, which had
-stalled after editing only RELEASE_NOTES.md during the v2.14.3 commit run.
+Documentation sync through v2.14.8 — release records and progress-note structure.
 
 ---
 
 ## Tasks Completed
 
-- Resumed interrupted v2.14.3 execution: edited COMMIT_NOTES.md, CHANGELOG.md,
-  PROGRESS_NOTE.md, and ROADMAP.md (four files that had not yet been updated)
-- Staged all seven v2.14.3 files and committed; resolved hash self-reference via
-  a two-round amend cycle (initial commit → substitute hash → amend → substitute
-  amended hash → amend again)
-- Recovered from a PowerShell encoding regression: restoring files from git and
-  using the Edit tool for targeted replacements preserved UTF-8 encoding
-- Force-pushed main to resolve a diverged remote (an intermediate amend commit
-  had landed on origin during the session)
-- Created and pushed annotated tag v2.14.3; created Robocopy snapshot
-- Added `.claude/` to `.gitignore` so Claude Code local settings no longer appear
-  as untracked files in GitHub Desktop (v2.14.4)
-- Committed, tagged, pushed, and snapshotted v2.14.4
-- Created `CONTEXT.md` — stable project background: identity, programs, audiences,
-  confirmed decisions, tech stack, architecture, page inventory, content rules (v2.14.5)
-- Created `STATUS.md` — present state: current version, done list, launch blockers
-  table, audit findings summary, next actions table, deferred list (v2.14.5)
-- Committed, tagged, pushed, and snapshotted v2.14.5
+- Confirmed `main` is clean and aligned with `origin/main` at `v2.14.8`
+- Added missing v2.14.8 entries to `RELEASE_NOTES.md`, `CHANGELOG.md`, and `COMMIT_NOTES.md`
+- Updated `ROADMAP.md` Completed section with the documentation workflow prompt cleanup
+- Created `PROGRESS_NOTES.md` as the cumulative progress log requested by the update workflow
+- Preserved `PROGRESS_NOTE.md` as the focused current-session progress note
 
 ---
 
-## Commits
+## Current Baseline
 
 | Hash | Message |
 |---|---|
-| `3dfc603` | docs(audit): add site audit and bring docs current to v2.14.3 |
-| `1055fd7` | chore(git): ignore .claude/ local settings directory |
-| `c4a7d9d` | docs: add CONTEXT.md and STATUS.md root reference files |
+| `cc88cfd` | chore(prompts): add PROGRESS_NOTES.md to Update.md file list |
 
 ---
 
-## Tags Applied
+## Current Tag
 
 | Tag | Commit |
 |---|---|
-| `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028` | `3dfc603` |
-| `v2.14.4__ignore-claude-local-settings__commit-1055fd7` | `1055fd7` |
-| `v2.14.5__context-and-status-docs__commit-c4a7d9d` | `c4a7d9d` |
+| `v2.14.8__prompts-update-file-list__commit-cc88cfd` | `cc88cfd` |
 
 ---
 
@@ -56,30 +37,28 @@ stalled after editing only RELEASE_NOTES.md during the v2.14.3 commit run.
 
 | File | Change |
 |---|---|
-| `AUDIT.md` | Created |
-| `CONTEXT.md` | Created |
-| `STATUS.md` | Created |
-| `PROGRESS_NOTE.md` | Updated |
-| `RELEASE_NOTES.md` | Updated |
-| `COMMIT_NOTES.md` | Updated |
-| `CHANGELOG.md` | Updated |
-| `ROADMAP.md` | Updated |
-| `prompts/Update.md` | Updated |
-| `.gitignore` | Updated |
+| `RELEASE_NOTES.md` | Added v2.14.8 entry |
+| `CHANGELOG.md` | Added v2.14.8 entry |
+| `COMMIT_NOTES.md` | Added v2.14.8 entry |
+| `ROADMAP.md` | Added v2.14.8 workflow cleanup to Completed |
+| `PROGRESS_NOTE.md` | Updated current-session state |
+| `PROGRESS_NOTES.md` | Created cumulative progress log |
 
 ---
 
 ## What's Next
 
-**Next milestone: Launch Readiness**
+**Next milestone: v2.14.9 documentation sync commit**
 
-Remaining blockers before the site can go live:
+- Commit this documentation sync as `docs(release): sync docs through v2.14.8`
+- Tag the commit as `v2.14.9__docs-sync-v2-14-8__commit-<actual-short-hash>`
+- Push `main` and the new tag
+- Create the matching snapshot in `/Users/ant/WorkSync/Projects/RepoBackups/Smart Learning Solutions`
 
-1. Fix C-2 — gate `.btn { cursor: none }` behind `body.custom-cursor-enabled`
-   in `src/css/main.css` (one-line fix, no blockers)
-2. Configure Formspree — create account, replace `REPLACE_ME` in `book.html`
-   and `contact.html` (C-1, hard launch blocker)
-3. Choose deployment host and confirm `/programs/` directory routing works (H-1)
-4. Add SRI hashes to GSAP `<script>` tags (H-2)
+**Launch readiness remains blocked by owner/ops items:**
+
+1. Configure Formspree — create account, replace `REPLACE_ME` in `book.html` and `contact.html`
+2. Choose deployment host and confirm `/programs/` directory routing works
+3. Add SRI hashes to GSAP `<script>` tags
 
 Full audit findings and next actions are tracked in `STATUS.md` and `AUDIT.md`.

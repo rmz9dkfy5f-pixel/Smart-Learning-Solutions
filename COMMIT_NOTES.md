@@ -5,6 +5,22 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.14.8 — Prompts Update File List
+**Tag:** `v2.14.8__prompts-update-file-list__commit-cc88cfd`
+**Commit:** `cc88cfd` · 2026-05-16
+**Type:** `chore`
+
+**Summary:** chore(prompts): add PROGRESS_NOTES.md to Update.md file list
+
+**Description:**
+Update the release-documentation workflow prompt so it names both progress-note
+files used by the project: `PROGRESS_NOTE.md` for the current focused session
+record and `PROGRESS_NOTES.md` for the cumulative progress log.
+
+**Stats:** 1 file changed · 1 insertion · 1 deletion
+
+---
+
 ## v2.14.7 — Docs Sync v2.14.4–v2.14.7
 **Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72`
 **Commit:** `894bc72` · 2026-05-16

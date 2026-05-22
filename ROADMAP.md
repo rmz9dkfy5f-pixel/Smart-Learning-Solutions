@@ -45,6 +45,7 @@ A clean, fast, credible marketing site that converts visitors into workshop book
 - Full SEO and analytics pass: canonical tags, Open Graph, Plausible (v2.12.0)
 - Full site diagnostic audit completed — findings recorded in `AUDIT.md` (v2.14.3)
 - Root reference docs created: `CONTEXT.md` (stable background) and `STATUS.md` (present state) (v2.14.5)
+- Documentation workflow prompt updated to track both current-session and cumulative progress note files (v2.14.8)
 
 ---
 
