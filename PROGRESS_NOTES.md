@@ -8,7 +8,7 @@ remains the focused current-session note and may be overwritten as work advances
 ## v2.15.0 — 2026-05-22 — Docs Sync and Tag Format Cleanup
 
 **Tag:** `v2.15.0`
-**Commit:** `1a8fdd8`
+**Commit:** `b192aff`
 
 ### Summary
 All six release-tracking documentation files synced to v2.15.0. Tag format

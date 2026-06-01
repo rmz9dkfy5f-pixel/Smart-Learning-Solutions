@@ -7,7 +7,7 @@ commit hash, date, summary, and description.
 
 ## v2.15.0 — Docs Sync
 **Tag:** `v2.15.0`
-**Commit:** `1a8fdd8` · 2026-05-22
+**Commit:** `b192aff` · 2026-05-22
 **Type:** `docs`
 
 **Summary:** docs(release): sync all docs to v2.15.0
