@@ -5,6 +5,25 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.15.0 — 2026-05-22 — Docs Sync and Tag Format Cleanup
+
+**Tag:** `v2.15.0`
+**Commit:** `1a8fdd8`
+
+### Summary
+All six release-tracking documentation files synced to v2.15.0. Tag format
+switched from verbose slug style to clean semver (`vX.Y.Z`) going forward.
+
+### Files
+- `CHANGELOG.md`
+- `RELEASE_NOTES.md`
+- `COMMIT_NOTES.md`
+- `PROGRESS_NOTE.md`
+- `PROGRESS_NOTES.md`
+- `ROADMAP.md`
+
+---
+
 ## v2.14.8 — 2026-05-16 — Update Workflow File List
 
 **Tag:** `v2.14.8__prompts-update-file-list__commit-cc88cfd`

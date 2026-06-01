@@ -1,19 +1,24 @@
-**Updated:** v2.14.8 · 2026-05-16
+**Updated:** v2.15.0 · 2026-05-22
 
 # Progress Note — Current Session
 
 ## Milestone
-Documentation sync through v2.14.8 — release records and progress-note structure.
+Documentation sync to v2.15.0 — all six release-tracking files updated.
+Tag format switched to clean semver going forward.
 
 ---
 
 ## Tasks Completed
 
-- Confirmed `main` is clean and aligned with `origin/main` at `v2.14.8`
-- Added missing v2.14.8 entries to `RELEASE_NOTES.md`, `CHANGELOG.md`, and `COMMIT_NOTES.md`
-- Updated `ROADMAP.md` Completed section with the documentation workflow prompt cleanup
-- Created `PROGRESS_NOTES.md` as the cumulative progress log requested by the update workflow
-- Preserved `PROGRESS_NOTE.md` as the focused current-session progress note
+- Updated `CHANGELOG.md` with v2.15.0 entry
+- Updated `RELEASE_NOTES.md` with v2.15.0 entry
+- Updated `COMMIT_NOTES.md` with v2.15.0 entry (real hash added after commit)
+- Updated `PROGRESS_NOTE.md` for current session
+- Appended v2.15.0 entry to `PROGRESS_NOTES.md`
+- Updated `ROADMAP.md` Completed section
+- Tagged commit as `v2.15.0` (clean semver — no slug or hash in tag name)
+- Pushed `main` and `v2.15.0` tag to origin
+- Created snapshot at `v2.15.0` in WorkSync RepoBackups
 
 ---
 
@@ -21,7 +26,7 @@ Documentation sync through v2.14.8 — release records and progress-note structu
 
 | Hash | Message |
 |---|---|
-| `cc88cfd` | chore(prompts): add PROGRESS_NOTES.md to Update.md file list |
+| `1a8fdd8` | docs(release): sync all docs to v2.15.0 |
 
 ---
 
@@ -29,7 +34,7 @@ Documentation sync through v2.14.8 — release records and progress-note structu
 
 | Tag | Commit |
 |---|---|
-| `v2.14.8__prompts-update-file-list__commit-cc88cfd` | `cc88cfd` |
+| `v2.15.0` | `1a8fdd8` |
 
 ---
 
@@ -37,28 +42,22 @@ Documentation sync through v2.14.8 — release records and progress-note structu
 
 | File | Change |
 |---|---|
-| `RELEASE_NOTES.md` | Added v2.14.8 entry |
-| `CHANGELOG.md` | Added v2.14.8 entry |
-| `COMMIT_NOTES.md` | Added v2.14.8 entry |
-| `ROADMAP.md` | Added v2.14.8 workflow cleanup to Completed |
+| `CHANGELOG.md` | Added v2.15.0 entry |
+| `RELEASE_NOTES.md` | Added v2.15.0 entry |
+| `COMMIT_NOTES.md` | Added v2.15.0 entry |
 | `PROGRESS_NOTE.md` | Updated current-session state |
-| `PROGRESS_NOTES.md` | Created cumulative progress log |
+| `PROGRESS_NOTES.md` | Appended v2.15.0 cumulative entry |
+| `ROADMAP.md` | Added tag format cleanup to Completed |
 
 ---
 
 ## What's Next
 
-**Next milestone: v2.14.9 documentation sync commit**
-
-- Commit this documentation sync as `docs(release): sync docs through v2.14.8`
-- Tag the commit as `v2.14.9__docs-sync-v2-14-8__commit-<actual-short-hash>`
-- Push `main` and the new tag
-- Create the matching snapshot in `/Users/ant/WorkSync/Projects/RepoBackups/Smart Learning Solutions`
-
-**Launch readiness remains blocked by owner/ops items:**
+**Launch blockers (owner/ops items):**
 
 1. Configure Formspree — create account, replace `REPLACE_ME` in `book.html` and `contact.html`
 2. Choose deployment host and confirm `/programs/` directory routing works
 3. Add SRI hashes to GSAP `<script>` tags
+4. Fix `.btn { cursor: none }` — prefix with `body.custom-cursor-enabled` in `main.css`
 
-Full audit findings and next actions are tracked in `STATUS.md` and `AUDIT.md`.
+Full audit findings and next actions tracked in `STATUS.md` and `AUDIT.md`.

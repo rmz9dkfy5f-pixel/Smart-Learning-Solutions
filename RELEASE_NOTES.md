@@ -2,6 +2,22 @@
 
 ---
 
+## v2.15.0 - 2026-05-22 - Docs Sync
+
+**Tag:** `v2.15.0`
+
+### Summary
+Documentation sync through v2.15.0. All six release-tracking files updated.
+Tag format simplified from verbose slug style to clean semver.
+
+### Changed
+- `CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md` — synced to v2.15.0
+- `PROGRESS_NOTE.md` — current session record updated
+- `PROGRESS_NOTES.md` — cumulative log appended
+- `ROADMAP.md` — tag format cleanup marked completed
+
+---
+
 ## v2.14.8 - 2026-05-16 - Prompt List
 
 **Tag:** `v2.14.8__prompts-update-file-list__commit-cc88cfd`
