@@ -11,6 +11,24 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.15.0] — 2026-05-22
+
+**Tag:** `v2.15.0`
+
+### Summary
+Sync all release documentation to v2.15.0. Switch tag format from verbose slug
+style to clean semver (`vX.Y.Z`).
+
+### Changed
+- `CHANGELOG.md` — added v2.15.0 entry
+- `RELEASE_NOTES.md` — added v2.15.0 entry
+- `COMMIT_NOTES.md` — added v2.15.0 entry
+- `PROGRESS_NOTE.md` — updated for current session
+- `PROGRESS_NOTES.md` — appended v2.15.0 cumulative entry
+- `ROADMAP.md` — added tag format cleanup to Completed
+
+---
+
 ## [2.14.8] — 2026-05-16
 
 **Tag:** `v2.14.8__prompts-update-file-list__commit-cc88cfd`

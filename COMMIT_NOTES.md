@@ -5,6 +5,28 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.15.0 — Docs Sync
+**Tag:** `v2.15.0`
+**Commit:** `1a8fdd8` · 2026-05-22
+**Type:** `docs`
+
+**Summary:** docs(release): sync all docs to v2.15.0
+
+**Description:**
+Update six documentation files to reflect the v2.15.0 release and switch tag
+format from verbose slug style (`vX.Y.Z__slug__commit-hash`) to clean semver
+(`vX.Y.Z`) going forward.
+
+**Files changed:**
+- `CHANGELOG.md`
+- `RELEASE_NOTES.md`
+- `COMMIT_NOTES.md`
+- `PROGRESS_NOTE.md`
+- `PROGRESS_NOTES.md`
+- `ROADMAP.md`
+
+---
+
 ## v2.14.8 — Prompts Update File List
 **Tag:** `v2.14.8__prompts-update-file-list__commit-cc88cfd`
 **Commit:** `cc88cfd` · 2026-05-16
