@@ -8,7 +8,7 @@ remains the focused current-session note and may be overwritten as work advances
 ## v2.15.1 — 2026-05-22 — Hash Correction and Docs Sync
 
 **Tag:** `v2.15.1`
-**Commit:** `04875a3` (tagged) + `452812d` (docs update)
+**Commit:** `04875a3` (tagged) + `967ba07` (docs update)
 
 ### Summary
 Tagged the untagged hash-correction commit `04875a3` as `v2.15.1` and synced
