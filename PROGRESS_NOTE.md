@@ -23,7 +23,7 @@ Docs update v2.15.1 — tag and document the untagged hash-correction commit `04
 
 | Hash | Message |
 |---|---|
-| `452812d` | docs(release): sync all docs to v2.15.1 |
+| `967ba07` | docs(release): sync all docs to v2.15.1 |
 
 ---
 
@@ -32,7 +32,7 @@ Docs update v2.15.1 — tag and document the untagged hash-correction commit `04
 | Tag | Commit |
 |---|---|
 | `v2.15.1` | `04875a3` (prior hash-correction) |
-| `v2.15.1` (docs) | `452812d` |
+| `v2.15.1` (docs) | `967ba07` |
 
 ---
 
