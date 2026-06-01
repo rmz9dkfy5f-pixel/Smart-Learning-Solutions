@@ -46,7 +46,7 @@ A clean, fast, credible marketing site that converts visitors into workshop book
 - Full site diagnostic audit completed — findings recorded in `AUDIT.md` (v2.14.3)
 - Root reference docs created: `CONTEXT.md` (stable background) and `STATUS.md` (present state) (v2.14.5)
 - Documentation workflow prompt updated to track both current-session and cumulative progress note files (v2.14.8)
-- Tag format simplified to clean semver (`vX.Y.Z`) going forward; all six release docs synced (v2.15.0)
+- Tag format simplified to clean semver (`vX.Y.Z`) going forward; all six release docs synced (v2.15.0–v2.15.1)
 
 ---
 

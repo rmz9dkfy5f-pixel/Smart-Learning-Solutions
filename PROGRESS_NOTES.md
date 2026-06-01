@@ -5,6 +5,25 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.15.1 — 2026-05-22 — Hash Correction and Docs Sync
+
+**Tag:** `v2.15.1`
+**Commit:** `04875a3` (tagged) + `452812d` (docs update)
+
+### Summary
+Tagged the untagged hash-correction commit `04875a3` as `v2.15.1` and synced
+all six release-tracking files to document it.
+
+### Files
+- `CHANGELOG.md`
+- `RELEASE_NOTES.md`
+- `COMMIT_NOTES.md`
+- `PROGRESS_NOTE.md`
+- `PROGRESS_NOTES.md`
+- `ROADMAP.md`
+
+---
+
 ## v2.15.0 — 2026-05-22 — Docs Sync and Tag Format Cleanup
 
 **Tag:** `v2.15.0`

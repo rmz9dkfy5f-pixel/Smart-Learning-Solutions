@@ -11,6 +11,20 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.15.1] — 2026-05-22
+
+**Tag:** `v2.15.1`
+
+### Summary
+Correct v2.15.0 commit hash reference in release records after amend shifted the hash.
+
+### Changed
+- `COMMIT_NOTES.md` — updated v2.15.0 commit hash to `b192aff`
+- `PROGRESS_NOTE.md` — updated v2.15.0 commit hash to `b192aff`
+- `PROGRESS_NOTES.md` — updated v2.15.0 commit hash to `b192aff`
+
+---
+
 ## [2.15.0] — 2026-05-22
 
 **Tag:** `v2.15.0`
