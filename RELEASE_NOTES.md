@@ -2,6 +2,18 @@
 
 ---
 
+## v2.15.1 - 2026-05-22 - Hash Correction
+
+**Tag:** `v2.15.1`
+
+### Summary
+Correct v2.15.0 commit hash in three release-record files after amend changed the hash.
+
+### Changed
+- `COMMIT_NOTES.md`, `PROGRESS_NOTE.md`, `PROGRESS_NOTES.md` — hash updated to `b192aff`
+
+---
+
 ## v2.15.0 - 2026-05-22 - Docs Sync
 
 **Tag:** `v2.15.0`

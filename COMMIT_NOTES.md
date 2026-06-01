@@ -5,6 +5,25 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.15.1 — Hash Correction
+**Tag:** `v2.15.1`
+**Commit:** `04875a3` · 2026-05-22
+**Type:** `chore`
+
+**Summary:** chore(docs): set v2.15.0 commit hash to b192aff in release records
+
+**Description:**
+After amending the v2.15.0 docs-sync commit, the commit hash shifted. This
+follow-up corrects the hash reference to `b192aff` in COMMIT_NOTES.md,
+PROGRESS_NOTE.md, and PROGRESS_NOTES.md.
+
+**Files changed:**
+- `COMMIT_NOTES.md`
+- `PROGRESS_NOTE.md`
+- `PROGRESS_NOTES.md`
+
+---
+
 ## v2.15.0 — Docs Sync
 **Tag:** `v2.15.0`
 **Commit:** `b192aff` · 2026-05-22

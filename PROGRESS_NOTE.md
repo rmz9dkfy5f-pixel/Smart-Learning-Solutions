@@ -1,24 +1,21 @@
-**Updated:** v2.15.0 · 2026-05-22
+**Updated:** v2.15.1 · 2026-05-22
 
 # Progress Note — Current Session
 
 ## Milestone
-Documentation sync to v2.15.0 — all six release-tracking files updated.
-Tag format switched to clean semver going forward.
+Docs update v2.15.1 — tag and document the untagged hash-correction commit `04875a3`.
 
 ---
 
 ## Tasks Completed
 
-- Updated `CHANGELOG.md` with v2.15.0 entry
-- Updated `RELEASE_NOTES.md` with v2.15.0 entry
-- Updated `COMMIT_NOTES.md` with v2.15.0 entry (real hash added after commit)
-- Updated `PROGRESS_NOTE.md` for current session
-- Appended v2.15.0 entry to `PROGRESS_NOTES.md`
-- Updated `ROADMAP.md` Completed section
-- Tagged commit as `v2.15.0` (clean semver — no slug or hash in tag name)
-- Pushed `main` and `v2.15.0` tag to origin
-- Created snapshot at `v2.15.0` in WorkSync RepoBackups
+- Identified `04875a3` as pushed but untagged from the prior session
+- Added v2.15.1 entries to `CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md`
+- Updated `PROGRESS_NOTE.md` and `PROGRESS_NOTES.md`
+- Updated `ROADMAP.md` Completed line
+- Tagged `04875a3` as `v2.15.1` (clean semver)
+- Pushed `main` and `v2.15.1` tag to origin
+- Created snapshot at `v2.15.1` in WorkSync RepoBackups
 
 ---
 
@@ -26,7 +23,7 @@ Tag format switched to clean semver going forward.
 
 | Hash | Message |
 |---|---|
-| `b192aff` | docs(release): sync all docs to v2.15.0 |
+| `452812d` | docs(release): sync all docs to v2.15.1 |
 
 ---
 
@@ -34,7 +31,8 @@ Tag format switched to clean semver going forward.
 
 | Tag | Commit |
 |---|---|
-| `v2.15.0` | `b192aff` |
+| `v2.15.1` | `04875a3` (prior hash-correction) |
+| `v2.15.1` (docs) | `452812d` |
 
 ---
 
@@ -42,12 +40,12 @@ Tag format switched to clean semver going forward.
 
 | File | Change |
 |---|---|
-| `CHANGELOG.md` | Added v2.15.0 entry |
-| `RELEASE_NOTES.md` | Added v2.15.0 entry |
-| `COMMIT_NOTES.md` | Added v2.15.0 entry |
+| `CHANGELOG.md` | Added v2.15.1 entry |
+| `RELEASE_NOTES.md` | Added v2.15.1 entry |
+| `COMMIT_NOTES.md` | Added v2.15.1 entry |
 | `PROGRESS_NOTE.md` | Updated current-session state |
-| `PROGRESS_NOTES.md` | Appended v2.15.0 cumulative entry |
-| `ROADMAP.md` | Added tag format cleanup to Completed |
+| `PROGRESS_NOTES.md` | Appended v2.15.1 cumulative entry |
+| `ROADMAP.md` | Updated Completed line |
 
 ---
 
@@ -55,9 +53,7 @@ Tag format switched to clean semver going forward.
 
 **Launch blockers (owner/ops items):**
 
-1. Configure Formspree — create account, replace `REPLACE_ME` in `book.html` and `contact.html`
+1. Configure Formspree — replace `REPLACE_ME` in `book.html` and `contact.html`
 2. Choose deployment host and confirm `/programs/` directory routing works
 3. Add SRI hashes to GSAP `<script>` tags
 4. Fix `.btn { cursor: none }` — prefix with `body.custom-cursor-enabled` in `main.css`
-
-Full audit findings and next actions tracked in `STATUS.md` and `AUDIT.md`.
