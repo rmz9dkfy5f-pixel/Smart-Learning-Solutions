@@ -26,7 +26,7 @@ Tag format switched to clean semver going forward.
 
 | Hash | Message |
 |---|---|
-| `1a8fdd8` | docs(release): sync all docs to v2.15.0 |
+| `b192aff` | docs(release): sync all docs to v2.15.0 |
 
 ---
 
@@ -34,7 +34,7 @@ Tag format switched to clean semver going forward.
 
 | Tag | Commit |
 |---|---|
-| `v2.15.0` | `1a8fdd8` |
+| `v2.15.0` | `b192aff` |
 
 ---
 
