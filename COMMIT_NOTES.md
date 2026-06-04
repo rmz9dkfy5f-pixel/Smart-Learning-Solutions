@@ -5,6 +5,24 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.15.4 — File Responsibility Map
+**Tag:** `v2.15.4`
+**Commit:** `28a8ae6` · 2026-06-04
+**Type:** `docs`
+
+**Summary:** docs: add file responsibility map
+
+**Description:**
+Create FILE_MAP.md — full inventory of every tracked file with purpose, owner
+(Dev / Owner / Both / Auto), and edit frequency. Grouped by: site pages, core
+assets, root reference docs, v2 planning system docs, release tracking docs,
+config files, docs/, plans/, prompts/, and legacy directories.
+Update PLAN.md to reference FILE_MAP.md.
+
+**Stats:** 2 files changed (1 created)
+
+---
+
 ## v2.15.3 — Gate 1 Launch-Readiness Fixes
 **Tag:** `v2.15.3`
 **Commit:** `b378f03` · 2026-06-04
@@ -816,6 +834,7 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
+| `v2.15.4` | `28a8ae6` | 2026-06-04 |
 | `v2.15.3` | `b378f03` | 2026-06-04 |
 | `v2.15.2` | `505a500` | 2026-06-04 |
 | `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72` | `894bc72` | 2026-05-16 |
