@@ -1,6 +1,15 @@
-**Updated:** v2.15.5 · 2026-06-04
+**Updated:** v2.15.6 · 2026-06-04
 
 # Progress Note — Current Session
+
+## v2.15.6 — Migration Decision Update and Checklist (2026-06-04)
+Updated ADR-008 in DECISION_LOG.md to reflect completed migration: added
+Completed date (v2.15.5 · 2026-06-04), full files-added list (including FILE_MAP.md),
+files-updated list (CLAUDE.md, AGENTS.md, STATUS.md, PROGRESS_NOTE.md, COMMIT_NOTES.md,
+ROADMAP.md, PROJECT_BRIEF.md, BACKLOG.md, PLAN.md), and Gate 1 fixes note.
+Created MIGRATION_CHECKLIST.md — permanent verification record confirming all 18
+required v2 files exist, mandatory files preserved, no app code changed, Gate 0
+defined, file responsibilities enforced. Result: PASS.
 
 ## v2.15.5 — File Responsibility Cleanup (2026-06-04)
 Enforced single-responsibility boundaries across planning docs (step 8 migration).

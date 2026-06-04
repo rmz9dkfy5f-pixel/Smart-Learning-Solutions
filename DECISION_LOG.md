@@ -9,6 +9,7 @@ New decisions from v2.15.0 onward are recorded here.
 
 ## ADR-008 — Adopt v2 Project-Control Planning System
 **Date:** 2026-05-16
+**Completed:** v2.15.5 · 2026-06-04
 **Decision:** Migrate the repo's planning and documentation to the v2 project-control system.
 **Context:** The repo had grown to 15+ root-level docs files with overlapping purposes,
 no phase gates, no backlog, no lessons-learned record, and no formal decision log.
@@ -23,7 +24,11 @@ post-launch adds it to an already-live maintenance burden.
 - Negative: more files to maintain; some overlap between old and new docs during transition
 - Risk: doc maintenance burden if update discipline lapses
 **Files added:** PROJECT_BRIEF.md, PLAN.md, PHASE_GATES.md, BACKLOG.md, DECISION_LOG.md,
-SLICE_REVIEWS.md, LESSONS_LEARNED.md, PROGRESS_NOTES.md
+SLICE_REVIEWS.md, LESSONS_LEARNED.md, PROGRESS_NOTES.md, FILE_MAP.md
+**Files updated:** CLAUDE.md, AGENTS.md, STATUS.md, PROGRESS_NOTE.md, COMMIT_NOTES.md,
+ROADMAP.md, PROJECT_BRIEF.md, BACKLOG.md, PLAN.md
+**Gate 1 fixes (v2.15.3):** C-2 cursor CSS gate, H-2 GSAP SRI hashes, M-2 title em-dash,
+M-3 PSTEM image dimensions, M-6 tel: + prefix — all resolved during migration window
 
 ---
 

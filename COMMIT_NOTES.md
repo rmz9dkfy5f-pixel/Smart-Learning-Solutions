@@ -5,6 +5,24 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.15.6 — Migration Decision Update and Checklist
+**Tag:** `v2.15.6`
+**Commit:** `41cb585` · 2026-06-04
+**Type:** `docs`
+
+**Summary:** docs: migration decision update and checklist (steps 9-10)
+
+**Description:**
+Update ADR-008 in DECISION_LOG.md to reflect completed migration state (v2.15.5):
+add Completed date, full files-added list, files-updated list, Gate 1 fixes note.
+Create MIGRATION_CHECKLIST.md — permanent verification record confirming all 18
+required v2 files exist, mandatory files preserved, no app code changed, Gate 0
+defined, file responsibilities enforced. Result: PASS.
+
+**Stats:** 6 files changed
+
+---
+
 ## v2.15.5 — File Responsibility Cleanup
 **Tag:** `v2.15.5`
 **Commit:** `b2b5e05` · 2026-06-04
@@ -854,6 +872,7 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
+| `v2.15.6` | `41cb585` | 2026-06-04 |
 | `v2.15.5` | `b2b5e05` | 2026-06-04 |
 | `v2.15.4` | `28a8ae6` | 2026-06-04 |
 | `v2.15.3` | `b378f03` | 2026-06-04 |
