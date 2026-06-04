@@ -91,3 +91,19 @@ A task is not done until:
 - No regressions introduced in `components.js` (header/footer)
 - Changed files are listed
 - The user has been given a clear summary of what changed and what's next
+
+## Planning System
+
+This repo uses the v2 project-control planning system (adopted v2.15.0).
+
+| File | Role |
+|---|---|
+| `PHASE_GATES.md` | Phase gate criteria and current gate status |
+| `BACKLOG.md` | Prioritised work items: launch blockers, high priority, deferred |
+| `DECISION_LOG.md` | Canonical decision log from v2.15.0 onward |
+| `DECISIONS.md` | Historical ADRs (ADR-001–ADR-007) — preserved, not replaced |
+| `PLAN.md` | Index of the `plans/` directory |
+| `SLICE_REVIEWS.md` | Slice review records |
+| `LESSONS_LEARNED.md` | Process, technical, and tooling lessons |
+| `PROGRESS_NOTES.md` | Session log index (active log is `PROGRESS_NOTE.md`) |
+| `PROJECT_BRIEF.md` | One-page project summary |

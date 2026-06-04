@@ -5,6 +5,25 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.15.2 — v2 Planning Migration
+**Tag:** `v2.15.2`
+**Commit:** `505a500` · 2026-06-04
+**Type:** `docs`
+
+**Summary:** docs: migrate project planning system to v2
+
+**Description:**
+Add missing v2 project-control planning files: PROJECT_BRIEF.md, PLAN.md,
+PHASE_GATES.md, BACKLOG.md, DECISION_LOG.md, SLICE_REVIEWS.md, LESSONS_LEARNED.md.
+Update CLAUDE.md and AGENTS.md with v2 planning system pointers.
+Update STATUS.md and PROGRESS_NOTE.md to reflect v2.15.2.
+Update PROGRESS_NOTES.md with v2.15.2 session entry.
+No application code changed. No existing content deleted. No files renamed.
+
+**Stats:** 12 files changed
+
+---
+
 ## v2.15.1 — Hash Correction
 **Tag:** `v2.15.1`
 **Commit:** `04875a3` · 2026-05-22
@@ -778,6 +797,7 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
+| `v2.15.2` | `505a500` | 2026-06-04 |
 | `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72` | `894bc72` | 2026-05-16 |
 | `v2.14.6__session-progress-note__commit-431f540` | `431f540` | 2026-05-16 |
 | `v2.14.5__context-and-status-docs__commit-c4a7d9d` | `c4a7d9d` | 2026-05-15 |

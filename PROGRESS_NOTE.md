@@ -1,9 +1,17 @@
-**Updated:** v2.15.1 · 2026-05-22
+**Updated:** v2.15.2 · 2026-06-04
 
 # Progress Note — Current Session
 
+## v2.15.2 — v2 Planning Migration (2026-06-04)
+Migrated project planning docs to the v2 project-control system. Added 7 missing
+required files: PROJECT_BRIEF.md, PLAN.md, PHASE_GATES.md, BACKLOG.md, DECISION_LOG.md,
+SLICE_REVIEWS.md, LESSONS_LEARNED.md. Updated CLAUDE.md, AGENTS.md, STATUS.md,
+PROGRESS_NOTE.md, PROGRESS_NOTES.md, and COMMIT_NOTES.md. No application code changed.
+
+---
+
 ## Milestone
-Docs update v2.15.1 — tag and document the untagged hash-correction commit `04875a3`.
+v2.15.2 — v2 planning migration (resumed from stash after remote sync conflict resolved).
 
 ---
 
