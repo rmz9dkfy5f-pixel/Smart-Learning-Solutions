@@ -55,15 +55,4 @@ These must be resolved before the site can go live.
 
 ---
 
-## Resolved / Closed
-
-| ID | Item | Resolution |
-|---|---|---|
-| OD-004 | Workshops page content | Resolved 2026-04-24 — full page written |
-| OD-006 | Analytics platform | Resolved 2026-05-06 — Plausible selected and implemented |
-| OD-002 | Hero photography | Resolved 2026-05-07 — WebP photo library added sitewide |
-| C-2 | Gate `.btn { cursor: none }` behind `body.custom-cursor-enabled` | Resolved 2026-06-04 — v2.15.3 |
-| H-2 | SRI hashes on GSAP CDN `<script>` tags | Resolved 2026-06-04 — v2.15.3 |
-| M-2 | `programs/index.html` title hyphen → em-dash | Resolved 2026-06-04 — v2.15.3 |
-| M-3 | PSTEM product image `width`/`height` | Resolved 2026-06-04 — v2.15.3 |
-| M-6 | `tel:` href missing `+` prefix | Resolved 2026-06-04 — v2.15.3 |
+See `CHANGELOG.md` for resolved items.

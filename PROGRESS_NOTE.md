@@ -1,6 +1,14 @@
-**Updated:** v2.15.4 · 2026-06-04
+**Updated:** v2.15.5 · 2026-06-04
 
 # Progress Note — Current Session
+
+## v2.15.5 — File Responsibility Cleanup (2026-06-04)
+Enforced single-responsibility boundaries across planning docs (step 8 migration).
+ROADMAP.md: removed Completed/Deferred/Blockers sections, replaced with pointers.
+PROJECT_BRIEF.md: condensed Programs/Audiences/Decisions/Tech Stack tables to summaries,
+deferred detail to CONTEXT.md. BACKLOG.md: removed Resolved/Closed section, replaced
+with pointer to CHANGELOG.md. STATUS.md: condensed Audit Findings to one line, removed
+Deferred section. PLAN.md: replaced plan-index structure with Current State prose.
 
 ## v2.15.4 — File Responsibility Map (2026-06-04)
 Created `FILE_MAP.md` — full inventory of every tracked file with purpose, owner

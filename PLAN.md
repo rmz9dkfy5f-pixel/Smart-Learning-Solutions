@@ -1,19 +1,23 @@
-# Plan Index
+# Plan
 
-Active task plans and completed plan history live in the `plans/` directory.
+## Current State
 
-For open (unresolved) decisions, see `plans/open-decisions.md`.
-For the long-term direction, see `ROADMAP.md`.
-For the current backlog, see `BACKLOG.md`.
-For the full file inventory and owner map, see `FILE_MAP.md`.
+**Phase:** Gate 1 — Launch Readiness (in progress)
 
----
+All dev-executable items for Gate 1 are complete (v2.15.3). The remaining blockers
+are owner-gated and cannot advance without external input:
 
-## Active Plans
+| Blocker | Owner action required |
+|---|---|
+| C-1 — Formspree endpoint | Owner creates Formspree account; provides endpoint URL |
+| H-1 — Deployment host | Owner chooses host (Netlify or GitHub Pages); confirms `/programs/` routing |
 
-| File | Status | Summary |
-|---|---|---|
-| `plans/open-decisions.md` | Active | Owner decisions pending (OD-001 Formspree, OD-003 host, OD-005 social, OD-007 testimonials) |
+No active dev sprint. Next task triggers when the owner provides the Formspree
+endpoint or confirms a deployment host.
+
+See `BACKLOG.md` for the full prioritised work queue.
+See `PHASE_GATES.md` for Gate 1 criteria.
+See `plans/open-decisions.md` for all pending owner decisions.
 
 ---
 
@@ -35,3 +39,5 @@ Use `plans/PLAN_TEMPLATE.md` for new task plans. Name files `YYYY-MM-DD-task-nam
 
 Every plan should include: Objective, Current State, Files to Review, Files to Change,
 Slice Plan, Validation, Risks, Open Questions.
+
+For the full file inventory and owner map, see `FILE_MAP.md`.
