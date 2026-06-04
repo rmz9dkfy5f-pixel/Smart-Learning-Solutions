@@ -5,6 +5,7 @@ Active task plans and completed plan history live in the `plans/` directory.
 For open (unresolved) decisions, see `plans/open-decisions.md`.
 For the long-term direction, see `ROADMAP.md`.
 For the current backlog, see `BACKLOG.md`.
+For the full file inventory and owner map, see `FILE_MAP.md`.
 
 ---
 

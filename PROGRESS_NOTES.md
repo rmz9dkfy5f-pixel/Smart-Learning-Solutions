@@ -5,6 +5,27 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.15.4 — 2026-06-04 — File Responsibility Map
+
+**Tag:** `v2.15.4`
+**Commit:** `28a8ae6`
+
+### Summary
+Created `FILE_MAP.md` — a full inventory of every tracked file in the repo, grouped by
+category (site pages, core assets, planning docs, release tracking, config, docs/, plans/,
+prompts/, legacy). Each entry records purpose, owner, and edit frequency. Updated PLAN.md
+to reference it.
+
+### Files
+- `FILE_MAP.md` — Created
+- `PLAN.md` — Updated (pointer to FILE_MAP.md)
+- `STATUS.md` — Updated (version to v2.15.4, FILE_MAP entry in Done)
+- `PROGRESS_NOTE.md` — Updated (v2.15.4 session entry)
+- `PROGRESS_NOTES.md` — Updated (v2.15.4 cumulative entry)
+- `COMMIT_NOTES.md` — Updated (v2.15.4 entry)
+
+---
+
 ## v2.15.3 — 2026-06-04 — Gate 1 Launch-Readiness Fixes
 
 **Tag:** `v2.15.3`

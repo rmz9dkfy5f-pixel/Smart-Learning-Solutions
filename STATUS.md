@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.15.3 · 2026-06-04
+**Current Version:** v2.15.4 · 2026-06-04
 
 ---
 
@@ -24,6 +24,7 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 - `.claude/` added to `.gitignore` (v2.14.4)
 - v2 project-control planning system adopted — 7 new docs, CLAUDE.md + AGENTS.md updated (v2.15.2)
 - Gate 1 dev-executable fixes: C-2 cursor gate, H-2 SRI hashes, M-2 title, M-3 img dimensions, M-6 tel: (v2.15.3)
+- File responsibility map created — `FILE_MAP.md` (v2.15.4)
 - All release docs (RELEASE_NOTES, COMMIT_NOTES, CHANGELOG) current to v2.14.4
 
 ---

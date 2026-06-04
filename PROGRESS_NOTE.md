@@ -1,6 +1,10 @@
-**Updated:** v2.15.3 · 2026-06-04
+**Updated:** v2.15.4 · 2026-06-04
 
 # Progress Note — Current Session
+
+## v2.15.4 — File Responsibility Map (2026-06-04)
+Created `FILE_MAP.md` — full inventory of every tracked file with purpose, owner
+(Dev / Owner / Both / Auto), and edit frequency. Updated PLAN.md to reference it.
 
 ## v2.15.3 — Gate 1 Launch-Readiness Fixes (2026-06-04)
 Executed all dev-executable Gate 1 items. Fixed C-2 (removed ungated `cursor: none`
