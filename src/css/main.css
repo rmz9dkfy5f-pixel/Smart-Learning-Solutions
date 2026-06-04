@@ -1120,7 +1120,7 @@ h4, .h4 {
 }
 
 .program-card-media--product::after {
-  background: linear-gradient(to bottom, transparent 58%, rgba(6,10,20,0.08));
+  background: linear-gradient(to bottom, transparent 50%, rgba(6,10,20,0.55));
 }
 
 .program-card-media--product img {
@@ -1579,33 +1579,6 @@ h4, .h4 {
 .audience-card .audience-icon,
 .audience-card h3,
 .audience-card p { position: relative; z-index: 1; }
-
-/* ============================================================
-   Program Card — student proof photo strip
-   ============================================================ */
-.program-card-proof {
-  height: 80px;
-  overflow: hidden;
-  position: relative;
-}
-
-.program-card-proof img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 25%;
-  display: block;
-  transition: transform var(--transition-slow);
-}
-
-.program-card:hover .program-card-proof img { transform: scale(1.04); }
-
-.program-card-proof::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(6,10,20,0.22);
-}
 
 /* ============================================================
    Format card — photo background (workshops page)

@@ -5,6 +5,24 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.15.7 — Remove Program Card Proof Strip
+**Tag:** `v2.15.7`
+**Commit:** `f96228c` · 2026-06-04
+**Type:** `fix`
+
+**Summary:** fix(programs): remove student proof strip from program cards
+
+**Description:**
+Remove the 80px student photo strip (.program-card-proof) from both cards
+on programs/index.html and index.html. Each card now shows only the product
+photo. Remove corresponding CSS block from main.css. Strengthen the bottom
+gradient on .program-card-media--product::after (0.08 → 0.55) so the light
+product area fades into the dark card body rather than cutting hard.
+
+**Stats:** 3 files changed
+
+---
+
 ## v2.15.6 — Migration Decision Update and Checklist
 **Tag:** `v2.15.6`
 **Commit:** `41cb585` · 2026-06-04
@@ -872,6 +890,7 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
+| `v2.15.7` | `f96228c` | 2026-06-04 |
 | `v2.15.6` | `41cb585` | 2026-06-04 |
 | `v2.15.5` | `b2b5e05` | 2026-06-04 |
 | `v2.15.4` | `28a8ae6` | 2026-06-04 |
