@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.14.4 · 2026-05-15
+**Current Version:** v2.15.2 · 2026-06-04
 
 ---
 
@@ -22,6 +22,7 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 - Security headers and staging noindex documented in `docs/DEPLOYMENT.md`
 - Full site diagnostic audit — findings in `AUDIT.md` (v2.14.3)
 - `.claude/` added to `.gitignore` (v2.14.4)
+- v2 project-control planning system adopted — 7 new docs, CLAUDE.md + AGENTS.md updated (v2.15.2)
 - All release docs (RELEASE_NOTES, COMMIT_NOTES, CHANGELOG) current to v2.14.4
 
 ---

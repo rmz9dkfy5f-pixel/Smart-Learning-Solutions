@@ -5,6 +5,34 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.15.2 — 2026-06-04 — v2 Planning Migration
+
+**Tag:** `v2.15.2`
+**Commit:** `505a500`
+
+### Summary
+Completed the v2 project-control planning system migration. Added 7 missing required
+files and updated existing docs with planning system pointers. Resolved a remote sync
+conflict (remote had advanced to v2.15.1 while migration was in progress) by rebasing
+stashed changes onto the synced remote and updating version references to v2.15.2.
+
+### Files
+- `PROJECT_BRIEF.md` — Created
+- `PLAN.md` — Created
+- `PHASE_GATES.md` — Created
+- `BACKLOG.md` — Created
+- `DECISION_LOG.md` — Created
+- `SLICE_REVIEWS.md` — Created
+- `LESSONS_LEARNED.md` — Created
+- `CLAUDE.md` — Updated (Planning System section appended)
+- `AGENTS.md` — Updated (Planning System section appended)
+- `STATUS.md` — Updated (version to v2.15.2, migration entry added)
+- `PROGRESS_NOTE.md` — Updated (v2.15.2 session entry)
+- `PROGRESS_NOTES.md` — Updated (v2.15.2 cumulative entry)
+- `COMMIT_NOTES.md` — Updated (v2.15.2 entry prepended, conflict resolved)
+
+---
+
 ## v2.15.1 — 2026-05-22 — Hash Correction and Docs Sync
 
 **Tag:** `v2.15.1`
