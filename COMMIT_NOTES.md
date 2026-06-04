@@ -5,6 +5,25 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.15.3 — Gate 1 Launch-Readiness Fixes
+**Tag:** `v2.15.3`
+**Commit:** `b378f03` · 2026-06-04
+**Type:** `fix`
+
+**Summary:** fix: gate 1 launch-readiness fixes (C-2 H-2 M-2 M-3 M-6)
+
+**Description:**
+Gate .btn cursor: none behind body.custom-cursor-enabled (C-2).
+Add SRI integrity hashes to GSAP 3.12.5 CDN script tags on all 9 pages (H-2).
+Fix programs/index.html title: hyphen to em-dash (M-2).
+Add width/height to PSTEM product image card on programs/index.html (M-3).
+Fix tel: href to include + prefix in book.html, contact.html, components.js (M-6).
+No content changes. No structural changes.
+
+**Stats:** 13 files changed
+
+---
+
 ## v2.15.2 — v2 Planning Migration
 **Tag:** `v2.15.2`
 **Commit:** `505a500` · 2026-06-04
@@ -797,6 +816,7 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
+| `v2.15.3` | `b378f03` | 2026-06-04 |
 | `v2.15.2` | `505a500` | 2026-06-04 |
 | `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72` | `894bc72` | 2026-05-16 |
 | `v2.14.6__session-progress-note__commit-431f540` | `431f540` | 2026-05-16 |

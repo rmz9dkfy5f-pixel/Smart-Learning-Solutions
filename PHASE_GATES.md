@@ -40,9 +40,9 @@ The site is ready to go live. All launch blockers are resolved.
 
 ### Criteria to Meet
 - [ ] Formspree endpoint configured — `REPLACE_ME` replaced in `book.html` and `contact.html` (C-1)
-- [ ] `.btn { cursor: none }` gated behind `body.custom-cursor-enabled` in `main.css` (C-2)
+- [x] `.btn { cursor: none }` gated behind `body.custom-cursor-enabled` in `main.css` (C-2)
 - [ ] Deployment host confirmed and `/programs/` directory routing verified (H-1)
-- [ ] SRI hashes added to GSAP CDN `<script>` tags (H-2)
+- [x] SRI hashes added to GSAP CDN `<script>` tags (H-2)
 - [ ] Production domain pointed and SSL confirmed
 - [ ] Forms tested end-to-end on production URL
 - [ ] Navigation tested on production URL
