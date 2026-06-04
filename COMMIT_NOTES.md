@@ -5,6 +5,26 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.15.5 — File Responsibility Cleanup
+**Tag:** `v2.15.5`
+**Commit:** `b2b5e05` · 2026-06-04
+**Type:** `docs`
+
+**Summary:** docs: clean file responsibilities per step 8 migration
+
+**Description:**
+Enforce single-responsibility boundaries across planning docs.
+ROADMAP.md: remove Completed/Deferred/Blockers sections, replace with pointers.
+PROJECT_BRIEF.md: condense duplicated tables to summaries, defer detail to CONTEXT.md.
+BACKLOG.md: remove Resolved/Closed section, replace with pointer to CHANGELOG.md.
+STATUS.md: condense Audit Findings to one line, remove Deferred section.
+PLAN.md: replace plan-index structure with Current State prose.
+No content deleted. No application code changed.
+
+**Stats:** 5 files changed (content cleanup)
+
+---
+
 ## v2.15.4 — File Responsibility Map
 **Tag:** `v2.15.4`
 **Commit:** `28a8ae6` · 2026-06-04
@@ -834,6 +854,7 @@ Repository initialisation commit. Empty baseline before site work began.
 
 | Tag | Commit | Date |
 |-----|--------|------|
+| `v2.15.5` | `b2b5e05` | 2026-06-04 |
 | `v2.15.4` | `28a8ae6` | 2026-06-04 |
 | `v2.15.3` | `b378f03` | 2026-06-04 |
 | `v2.15.2` | `505a500` | 2026-06-04 |

@@ -5,6 +5,26 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.15.5 — 2026-06-04 — File Responsibility Cleanup
+
+**Tag:** `v2.15.5`
+**Commit:** `b2b5e05`
+
+### Summary
+Enforced single-responsibility boundaries across planning docs per step 8 of the v2
+migration guide. No content deleted — overlapping sections replaced with pointers to
+canonical files. No application code changed.
+
+### Files
+- `ROADMAP.md` — Removed Completed/Deferred/Blockers sections; added pointers to CHANGELOG.md, BACKLOG.md, STATUS.md
+- `PROJECT_BRIEF.md` — Condensed Programs/Audiences/Decisions/Tech Stack tables to summaries; deferred detail to CONTEXT.md
+- `BACKLOG.md` — Removed Resolved/Closed section; added pointer to CHANGELOG.md
+- `STATUS.md` — Condensed Audit Findings to one line; removed Deferred section
+- `PLAN.md` — Replaced plan-index structure with Current State prose
+- `STATUS.md`, `PROGRESS_NOTE.md`, `PROGRESS_NOTES.md`, `COMMIT_NOTES.md` — version bump and session records
+
+---
+
 ## v2.15.4 — 2026-06-04 — File Responsibility Map
 
 **Tag:** `v2.15.4`

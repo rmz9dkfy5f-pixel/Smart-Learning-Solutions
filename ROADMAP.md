@@ -37,26 +37,8 @@ A clean, fast, credible marketing site that converts visitors into workshop book
 
 ---
 
-## Completed
-- Hero photography added sitewide — home, workshops, programs, about (v2.13.0–v2.13.5)
-- `/programs/` landing page launched; nav and sitemap updated (v2.14.0)
-- Book and contact forms hardened: validation, maxlength, placeholder guard (v2.14.0)
-- Custom cursor graceful degradation — fine-pointer devices only (v2.14.0)
-- Full SEO and analytics pass: canonical tags, Open Graph, Plausible (v2.12.0)
-- Full site diagnostic audit completed — findings recorded in `AUDIT.md` (v2.14.3)
-- Root reference docs created: `CONTEXT.md` (stable background) and `STATUS.md` (present state) (v2.14.5)
-- Documentation workflow prompt updated to track both current-session and cumulative progress note files (v2.14.8)
-- Tag format simplified to clean semver (`vX.Y.Z`) going forward; all six release docs synced (v2.15.0–v2.15.1)
+See `CHANGELOG.md` for completed version history.
 
----
+See `BACKLOG.md` for deferred items and the full work queue.
 
-## Deferred
-- Professional Development standalone page — no content yet; defer until content confirmed
-- Social media links in footer — placeholder exists; defer until accounts confirmed
-
-## Blockers
-- Formspree endpoint not yet created
-- Deployment target not yet confirmed
-- Testimonials are still pending owner-supplied quotes if social proof is required for launch
-
-See `plans/open-decisions.md` for the full list.
+See `STATUS.md` for current blockers.

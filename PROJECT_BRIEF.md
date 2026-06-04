@@ -6,37 +6,19 @@ Smart Learning Solutions is a STEM education company delivering expert-led, hand
 
 ## Programs
 
-| Program | Platform | Ages | Structure |
-|---|---|---|---|
-| **Coding with Robots** | Edison (Microbric) | 5–18 | 4 coding levels: Barcode → EdBlocks → EdScratch → EdPy |
-| **PSTEM** | Whybricks | 10–18 | 10 inquiry-based physical science investigation modules |
+Two flagship in-person programs: **Coding with Robots** (Edison robotics, ages 5–18) and **PSTEM** (Whybricks physical science, ages 10–18). See `CONTEXT.md` for the full program breakdown.
 
 ## Audiences
 
-- **Parents (primary)** — booking for their child or a group; need safety, quality, and educational confidence
-- **Schools and Educators** — curriculum-aligned STEM enrichment; need credibility and easy organisation
-- **Community Groups** — youth clubs, libraries, holiday programmes
+Primary booker: parents. Secondary: schools and community groups. See `CONTEXT.md` for audience detail.
 
 ## Confirmed Business Decisions
 
-| Decision | Answer |
-|---|---|
-| Delivery format | In-person only — no virtual language |
-| Primary booker | Parents |
-| Pricing | Quote only — no prices on site |
-| Booking flow | Enquiry form → email follow-up (Formspree) |
-| CMS | None — hand-coded static HTML |
+In-person only, quote-based pricing, Formspree booking enquiry flow, no CMS. See `CONTEXT.md` and `DECISIONS.md` for the full decision record.
 
 ## Tech Stack
 
-| Layer | Choice |
-|---|---|
-| Pages | Static HTML — no build tool, no framework, no CMS |
-| Shared components | ES modules (`src/js/components.js`) |
-| Animations | GSAP 3.12.5 (cdnjs CDN) |
-| Forms | Formspree (endpoint not yet configured) |
-| Analytics | Plausible (injected via components.js) |
-| Deployment | Netlify or GitHub Pages (not yet confirmed) |
+Static HTML, GSAP 3.12.5, Formspree forms, Plausible analytics, ES module components. See `CONTEXT.md` for the full tech stack.
 
 ## Site Structure
 
