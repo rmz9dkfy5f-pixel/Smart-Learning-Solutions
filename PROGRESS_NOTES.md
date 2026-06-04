@@ -5,6 +5,28 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.15.6 — 2026-06-04 — Migration Decision Update and Checklist
+
+**Tag:** `v2.15.6`
+**Commit:** `41cb585`
+
+### Summary
+Updated ADR-008 in DECISION_LOG.md to reflect completed migration state (v2.15.5):
+added Completed date, full files-added list, files-updated list, and Gate 1 fixes note.
+Created MIGRATION_CHECKLIST.md — permanent verification record confirming all 18 required
+v2 files exist, no app code changed, mandatory files preserved, Gate 0 defined, and file
+responsibilities enforced. Result: PASS. Migration complete.
+
+### Files
+- `DECISION_LOG.md` — ADR-008 updated with Completed date and full file lists
+- `MIGRATION_CHECKLIST.md` — Created
+- `STATUS.md` — Version bump to v2.15.6, migration entry added to Done
+- `PROGRESS_NOTE.md` — v2.15.6 session entry prepended
+- `PROGRESS_NOTES.md` — v2.15.6 cumulative entry added
+- `COMMIT_NOTES.md` — v2.15.6 entry prepended
+
+---
+
 ## v2.15.5 — 2026-06-04 — File Responsibility Cleanup
 
 **Tag:** `v2.15.5`

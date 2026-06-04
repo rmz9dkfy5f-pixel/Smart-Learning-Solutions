@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.15.5 · 2026-06-04
+**Current Version:** v2.15.6 · 2026-06-04
 
 ---
 
@@ -26,6 +26,7 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 - Gate 1 dev-executable fixes: C-2 cursor gate, H-2 SRI hashes, M-2 title, M-3 img dimensions, M-6 tel: (v2.15.3)
 - File responsibility map created — `FILE_MAP.md` (v2.15.4)
 - File responsibility cleanup — overlapping content removed from ROADMAP, PROJECT_BRIEF, BACKLOG, STATUS, PLAN (v2.15.5)
+- Migration complete — ADR-008 updated, MIGRATION_CHECKLIST.md created, result: PASS (v2.15.6)
 - All release docs (RELEASE_NOTES, COMMIT_NOTES, CHANGELOG) current to v2.14.4
 
 ---
