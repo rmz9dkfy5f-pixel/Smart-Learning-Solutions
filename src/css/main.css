@@ -327,7 +327,6 @@ h4, .h4 {
   text-transform: uppercase;
   border: 1px solid transparent;
   white-space: nowrap;
-  cursor: none;
   position: relative;
   overflow: hidden;
   transition: box-shadow var(--transition-base), background var(--transition-base),

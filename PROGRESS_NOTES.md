@@ -5,6 +5,25 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.15.3 — 2026-06-04 — Gate 1 Launch-Readiness Fixes
+
+**Tag:** `v2.15.3`
+**Commit:** `b378f03`
+
+### Summary
+Executed all dev-executable Gate 1 launch-readiness items. No owner-gated items (Formspree,
+deployment host) are included. Five audit findings resolved: C-2 cursor CSS gate, H-2 GSAP
+SRI hashes, M-2 title em-dash, M-3 PSTEM image dimensions, M-6 tel: + prefix.
+
+### Files
+- `src/css/main.css` — C-2: removed ungated `cursor: none` from `.btn`
+- `about.html`, `book.html`, `contact.html`, `index.html`, `resources.html`, `workshops.html`, `programs/coding-with-robots.html`, `programs/index.html`, `programs/pstem.html` — H-2: SRI hashes on GSAP scripts
+- `programs/index.html` — M-2: title hyphen → em-dash; M-3: PSTEM image width/height
+- `book.html`, `contact.html`, `src/js/components.js` — M-6: tel: + prefix
+- `BACKLOG.md`, `PHASE_GATES.md`, `STATUS.md`, `PROGRESS_NOTE.md`, `PROGRESS_NOTES.md`, `COMMIT_NOTES.md` — planning docs updated
+
+---
+
 ## v2.15.2 — 2026-06-04 — v2 Planning Migration
 
 **Tag:** `v2.15.2`

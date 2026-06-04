@@ -15,7 +15,6 @@ These must be resolved before the site can go live.
 | ID | Item | Owner | Files |
 |---|---|---|---|
 | C-1 | Configure Formspree endpoint — replace `REPLACE_ME` in both forms | Owner (account creation required) | `book.html`, `contact.html` |
-| C-2 | Gate `.btn { cursor: none }` behind `body.custom-cursor-enabled` in `main.css` | Dev | `src/css/main.css` |
 | H-1 | Confirm `/programs/` directory routing on chosen host | Owner (host decision required) | Server config |
 | — | Choose and configure production host; point domain | Owner | — |
 
@@ -25,11 +24,7 @@ These must be resolved before the site can go live.
 
 | ID | Item | Notes |
 |---|---|---|
-| H-2 | Add SRI hashes to GSAP CDN `<script>` tags | Security hardening; no owner input needed |
 | M-1 | Convert `og-image.svg` to PNG/JPEG 1200×630 | Social share previews will not render until resolved |
-| M-2 | Fix `<title>` on `programs/index.html` — hyphen → em-dash | Minor copy consistency fix |
-| M-3 | Add `width`/`height` to PSTEM product image | Performance / layout stability |
-| M-6 | Fix `tel:` href to `+18773657678` | Missing `+` prefix |
 | OD-001 | Formspree endpoint (owner must create account) | Blocks C-1 above |
 | OD-003 | Deployment target decision (Netlify or GitHub Pages) | Blocks host setup |
 
@@ -67,3 +62,8 @@ These must be resolved before the site can go live.
 | OD-004 | Workshops page content | Resolved 2026-04-24 — full page written |
 | OD-006 | Analytics platform | Resolved 2026-05-06 — Plausible selected and implemented |
 | OD-002 | Hero photography | Resolved 2026-05-07 — WebP photo library added sitewide |
+| C-2 | Gate `.btn { cursor: none }` behind `body.custom-cursor-enabled` | Resolved 2026-06-04 — v2.15.3 |
+| H-2 | SRI hashes on GSAP CDN `<script>` tags | Resolved 2026-06-04 — v2.15.3 |
+| M-2 | `programs/index.html` title hyphen → em-dash | Resolved 2026-06-04 — v2.15.3 |
+| M-3 | PSTEM product image `width`/`height` | Resolved 2026-06-04 — v2.15.3 |
+| M-6 | `tel:` href missing `+` prefix | Resolved 2026-06-04 — v2.15.3 |

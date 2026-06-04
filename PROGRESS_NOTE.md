@@ -1,6 +1,12 @@
-**Updated:** v2.15.2 · 2026-06-04
+**Updated:** v2.15.3 · 2026-06-04
 
 # Progress Note — Current Session
+
+## v2.15.3 — Gate 1 Launch-Readiness Fixes (2026-06-04)
+Executed all dev-executable Gate 1 items. Fixed C-2 (removed ungated `cursor: none`
+from `.btn`), H-2 (SRI hashes on GSAP CDN scripts, all 9 pages), M-2 (title em-dash on
+programs/index.html), M-3 (width/height on PSTEM product image), M-6 (tel: + prefix in
+book.html, contact.html, components.js). Updated BACKLOG.md, PHASE_GATES.md, STATUS.md.
 
 ## v2.15.2 — v2 Planning Migration (2026-06-04)
 Migrated project planning docs to the v2 project-control system. Added 7 missing
