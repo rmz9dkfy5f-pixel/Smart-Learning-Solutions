@@ -5,6 +5,26 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.15.7 — 2026-06-04 — Remove Program Card Proof Strip
+
+**Tag:** `v2.15.7`
+**Commit:** `f96228c`
+
+### Summary
+Removed the 80px student photo strip (.program-card-proof) from both program cards
+on programs/index.html and index.html. Each card now shows only the product photo.
+Removed the corresponding CSS block from main.css. Strengthened the bottom gradient
+on .program-card-media--product::after so the light product area fades into the dark
+card body rather than cutting hard.
+
+### Files
+- `programs/index.html` — proof strip removed from both cards
+- `index.html` — proof strip removed from both cards
+- `src/css/main.css` — .program-card-proof block removed; ::after gradient strengthened
+- `STATUS.md`, `PROGRESS_NOTE.md`, `PROGRESS_NOTES.md`, `COMMIT_NOTES.md` — version records updated
+
+---
+
 ## v2.15.6 — 2026-06-04 — Migration Decision Update and Checklist
 
 **Tag:** `v2.15.6`

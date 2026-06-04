@@ -1,6 +1,13 @@
-**Updated:** v2.15.6 · 2026-06-04
+**Updated:** v2.15.7 · 2026-06-04
 
 # Progress Note — Current Session
+
+## v2.15.7 — Remove Program Card Proof Strip (2026-06-04)
+Removed the 80px student photo strip (.program-card-proof) from both program
+cards on programs/index.html and index.html. Each card now shows only the
+product photo. Removed the corresponding CSS block from main.css. Strengthened
+the .program-card-media--product::after bottom gradient (opacity 0.08 → 0.55)
+to fade the light product area into the dark card body.
 
 ## v2.15.6 — Migration Decision Update and Checklist (2026-06-04)
 Updated ADR-008 in DECISION_LOG.md to reflect completed migration: added
