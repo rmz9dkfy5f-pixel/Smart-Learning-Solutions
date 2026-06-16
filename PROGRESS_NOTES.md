@@ -8,7 +8,7 @@ remains the focused current-session note and may be overwritten as work advances
 ## v2.16.0 — 2026-06-16 — Add Project Starter Kit v3.3 and Push Workflow Prompts
 
 **Tag:** `v2.16.0`
-**Commit:** TBD
+**Commit:** `8dc05d7`
 
 ### Summary
 Added project-starter-kit-v3.3/ reference library and two push workflow prompt files
