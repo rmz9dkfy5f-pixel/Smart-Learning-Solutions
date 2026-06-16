@@ -5,6 +5,23 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.16.0 — Add Project Starter Kit v3.3 and Push Workflow Prompts
+**Tag:** `v2.16.0`
+**Commit:** TBD · 2026-06-16
+**Type:** `chore`
+
+**Summary:** chore(tooling): add project starter kit v3.3 and push workflow prompts
+
+**Description:**
+Add project-starter-kit-v3.3/ reference library containing 4 root files and a
+subdirectory with quality gates, subagent workflows, and templates. Add two push
+workflow prompt files under prompts/. No site code changed. Tooling and workflow
+reference only.
+
+**Stats:** 29 files added
+
+---
+
 ## v2.15.7 — Remove Program Card Proof Strip
 **Tag:** `v2.15.7`
 **Commit:** `f96228c` · 2026-06-04

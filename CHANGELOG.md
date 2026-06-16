@@ -11,6 +11,20 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.16.0] — 2026-06-16
+
+**Tag:** `v2.16.0`
+
+### Summary
+Add project starter kit v3.3 reference library and push workflow prompt files. No site code changed.
+
+### Added
+- `project-starter-kit-v3.3/` — full v3.3 starter kit library (root files + quality gates subdirectory)
+- `prompts/repo_push_handoff_snapshot_tag_prompt.md` — push/handoff/snapshot/tag workflow prompt
+- `prompts/_repo_push_handoff_snapshot_tag_prompt_post_check.md` — post-check verification prompt
+
+---
+
 ## [2.15.1] — 2026-05-22
 
 **Tag:** `v2.15.1`
