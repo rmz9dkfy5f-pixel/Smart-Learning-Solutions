@@ -7,7 +7,7 @@ commit hash, date, summary, and description.
 
 ## v2.16.0 — Add Project Starter Kit v3.3 and Push Workflow Prompts
 **Tag:** `v2.16.0`
-**Commit:** TBD · 2026-06-16
+**Commit:** `8dc05d7` · 2026-06-16
 **Type:** `chore`
 
 **Summary:** chore(tooling): add project starter kit v3.3 and push workflow prompts
