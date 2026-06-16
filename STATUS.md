@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.15.7 · 2026-06-04
+**Current Version:** v2.16.0 · 2026-06-16
 
 ---
 
@@ -28,7 +28,9 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 - File responsibility cleanup — overlapping content removed from ROADMAP, PROJECT_BRIEF, BACKLOG, STATUS, PLAN (v2.15.5)
 - Migration complete — ADR-008 updated, MIGRATION_CHECKLIST.md created, result: PASS (v2.15.6)
 - Program card proof strip removed — product photo only on programs/index.html and index.html (v2.15.7)
-- All release docs (RELEASE_NOTES, COMMIT_NOTES, CHANGELOG) current to v2.14.4
+- Project starter kit v3.3 added — tooling reference library under project-starter-kit-v3.3/ (v2.16.0)
+- Push workflow prompts added under prompts/ (v2.16.0)
+- All release docs (RELEASE_NOTES, COMMIT_NOTES, CHANGELOG) current to v2.16.0
 
 ---
 

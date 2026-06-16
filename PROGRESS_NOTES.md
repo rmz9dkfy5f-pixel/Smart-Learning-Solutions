@@ -5,6 +5,27 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.16.0 — 2026-06-16 — Add Project Starter Kit v3.3 and Push Workflow Prompts
+
+**Tag:** `v2.16.0`
+**Commit:** TBD
+
+### Summary
+Added project-starter-kit-v3.3/ reference library and two push workflow prompt files
+to the repo. No site code changed.
+
+### Files
+- `project-starter-kit-v3.3/` — full v3.3 starter kit library (4 root files + subdirectory)
+- `prompts/repo_push_handoff_snapshot_tag_prompt.md` — push/handoff/snapshot workflow prompt
+- `prompts/_repo_push_handoff_snapshot_tag_prompt_post_check.md` — post-check verification prompt
+- `STATUS.md`, `PROGRESS_NOTES.md`, `COMMIT_NOTES.md`, `CHANGELOG.md`, `RELEASE_NOTES.md` — version records updated
+
+### Notes for Next Agent
+Formspree REPLACE_ME and deployment host remain the two hard launch blockers.
+No site code changed in this push — tooling files only.
+
+---
+
 ## v2.15.7 — 2026-06-04 — Remove Program Card Proof Strip
 
 **Tag:** `v2.15.7`

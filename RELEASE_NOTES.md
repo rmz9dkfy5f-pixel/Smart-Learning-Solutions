@@ -2,6 +2,20 @@
 
 ---
 
+## v2.16.0 - 2026-06-16 - Toolkit
+
+**Tag:** `v2.16.0`
+
+### Summary
+Add project starter kit v3.3 reference library and push workflow prompts. No site code changed.
+
+### Added
+- `project-starter-kit-v3.3/` — full v3.3 starter kit library
+- `prompts/repo_push_handoff_snapshot_tag_prompt.md` — push/handoff/snapshot workflow prompt
+- `prompts/_repo_push_handoff_snapshot_tag_prompt_post_check.md` — post-check verification prompt
+
+---
+
 ## v2.15.1 - 2026-05-22 - Hash Correction
 
 **Tag:** `v2.15.1`
