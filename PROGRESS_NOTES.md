@@ -8,7 +8,7 @@ remains the focused current-session note and may be overwritten as work advances
 ## v2.17.0 — 2026-06-17 — Full Production-Readiness Audit
 
 **Tag:** `v2.17.0`
-**Commit:** TBD (filled after commit)
+**Commit:** `c002cd2`
 
 ### Summary
 Read-only production-readiness audit of the full site. Audit confirms the site is content-complete and Gate 0 passed. Gate 1 (Launch Readiness) remains blocked on two owner-gated decisions: Formspree endpoint and production domain DNS. All dev work is otherwise done. Audit documented in `plans/2026-06-17-website-status-audit.md` for cross-machine access.
