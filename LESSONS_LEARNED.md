@@ -4,6 +4,27 @@ Observations, failures, and improvements captured during the project.
 
 ---
 
+## Deployment
+
+### L-002 — Static nginx sites need `$uri.html` in `try_files` for clean URLs
+**Context:** v2.16.1 — staging VPS showed nginx 404 for clean URLs like `/workshops`.
+**What happened:** nginx `try_files $uri $uri/` could not match `workshops` as a file or
+directory, so it returned 404 — even though `workshops.html` existed at the root.
+Adding `$uri.html` as a third candidate resolves this without any other changes.
+**Rule:** For static HTML sites on nginx, always use:
+`try_files $uri $uri/ $uri.html =404;`
+Also add `error_page 404 /404.html; location = /404.html { internal; }` or the custom
+404 page won't be used.
+
+### L-003 — A GitHub Desktop pull is not a VPS deployment
+**Context:** v2.16.1 — "Mac mini shows 404 after pull" was actually a VPS nginx routing issue.
+**What happened:** The repo was already correctly deployed. The Mac mini browser was hitting
+the production domain, not opening a local file. The GitHub Desktop pull was irrelevant.
+**Rule:** When a browser shows `nginx/x.x.x (Ubuntu) 404`, the issue is always on the server,
+never in the local repo checkout. Diagnose the server first.
+
+---
+
 ## Process
 
 ### L-001 — Hash self-reference requires a two-round amend cycle

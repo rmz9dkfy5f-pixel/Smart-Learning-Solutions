@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.16.0 · 2026-06-16
+**Current Version:** v2.16.1 · 2026-06-17
 
 ---
 
@@ -31,6 +31,9 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 - Project starter kit v3.3 added — tooling reference library under project-starter-kit-v3.3/ (v2.16.0)
 - Push workflow prompts added under prompts/ (v2.16.0)
 - All release docs (RELEASE_NOTES, COMMIT_NOTES, CHANGELOG) current to v2.16.0
+- VPS nginx routing fixed: `$uri.html` added to `try_files`, custom 404 page wired — clean URLs now work (v2.16.1)
+- SSH public key added to VPS (74.208.9.49) for direct Claude Code access (v2.16.1)
+- nginx 404 root cause documented in `docs/debug/nginx-404-debug.md` (v2.16.1)
 
 ---
 
@@ -39,14 +42,14 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 | # | Blocker | File(s) | Required? |
 |---|---|---|---|
 | 1 | **Formspree endpoint** — `REPLACE_ME` still in form action; forms cannot submit | `book.html`, `contact.html` | Yes |
-| 2 | **Deployment target** — production host not confirmed; domain not pointed | — | Yes |
+| 2 | **Deployment target** — staging VPS confirmed at `smart-learning-solutions.craftandconscious.com`; production domain not yet pointed | — | Yes |
 | 3 | **Testimonials** — owner-supplied quotes pending | — | No (optional) |
 
 ---
 
 ## Open Audit Items
 
-See `AUDIT.md` for full findings. Open items: C-1 (Formspree), H-1 (routing), H-3 (Plausible), H-4 (overlay timeout), M-1 (OG image), M-4–M-9 (medium).
+See `AUDIT.md` for full findings. Open items: C-1 (Formspree), H-1 (production domain routing), H-3 (Plausible), H-4 (overlay timeout), M-1 (OG image), M-4–M-9 (medium). H-1 staging routing resolved (v2.16.1).
 
 ---
 
@@ -55,7 +58,7 @@ See `AUDIT.md` for full findings. Open items: C-1 (Formspree), H-1 (routing), H-
 | Priority | Action | Finding |
 |---|---|---|
 | 1 | Create Formspree account → replace `REPLACE_ME` in `book.html` and `contact.html` | C-1 |
-| 2 | Choose deployment host; verify `/programs/` directory routing resolves | H-1 |
+| 2 | Point production domain to VPS; verify routing end-to-end | H-1 |
 | 3 | Convert `og-image.svg` to PNG/JPEG 1200×630 | M-1 |
 
 ---

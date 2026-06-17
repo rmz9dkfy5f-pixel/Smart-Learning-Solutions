@@ -5,6 +5,44 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.16.1 — 2026-06-17 — VPS nginx Routing Fix and SSH Access
+
+**Tag:** `v2.16.1`
+**Commit:** (applied after commit)
+
+### Summary
+Diagnosed and fixed nginx 404 on `smart-learning-solutions.craftandconscious.com`. Root cause
+was missing `$uri.html` in `try_files` — clean URLs like `/workshops` and `/about` 404'd even
+though the `.html` files existed. Custom 404 page was also not configured. Both fixed directly
+on the VPS. SSH key added to VPS for future direct Claude Code access. Debug notes documented
+in `docs/debug/nginx-404-debug.md`.
+
+### Work Completed
+- Diagnosed nginx 404 via curl: `.html` routes returned 200, clean URLs returned 404
+- Fixed `/etc/nginx/sites-available/smart-learning-solutions`: added `$uri.html` to `try_files`
+  and added `error_page 404 /404.html` with `location = /404.html { internal; }`
+- Verified all routes: `/workshops`, `/about`, `/programs` all correct; custom 404 confirmed
+- Added SSH public key (`~/.ssh/id_ed25519.pub`) to VPS authorized_keys
+- Renamed 9 sloppy RepoBackup snapshot folders (v2.15.0–v2.16.0) to full descriptive names
+- Created `docs/debug/nginx-404-debug.md` documenting root cause and fix
+
+### Files
+- `docs/debug/nginx-404-debug.md` — new debug notes
+- `STATUS.md`, `PROGRESS_NOTES.md`, `COMMIT_NOTES.md`, `CHANGELOG.md` — version records updated
+- VPS: `/etc/nginx/sites-available/smart-learning-solutions` (server-side, not in repo)
+
+### Validation
+- `curl https://smart-learning-solutions.craftandconscious.com/workshops` → 200
+- `curl https://smart-learning-solutions.craftandconscious.com/about` → 200
+- `curl https://smart-learning-solutions.craftandconscious.com/nonexistent` → 404 (custom page, 2795 bytes)
+- `sudo nginx -t` → ok; `systemctl reload nginx` → ok
+
+### Notes for Next Agent
+VPS is accessible via `ssh -i ~/.ssh/id_ed25519 root@74.208.9.49`. Formspree REPLACE_ME
+and production domain pointing remain the two hard launch blockers.
+
+---
+
 ## v2.16.0 — 2026-06-16 — Add Project Starter Kit v3.3 and Push Workflow Prompts
 
 **Tag:** `v2.16.0`

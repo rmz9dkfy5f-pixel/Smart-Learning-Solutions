@@ -15,8 +15,8 @@ These must be resolved before the site can go live.
 | ID | Item | Owner | Files |
 |---|---|---|---|
 | C-1 | Configure Formspree endpoint — replace `REPLACE_ME` in both forms | Owner (account creation required) | `book.html`, `contact.html` |
-| H-1 | Confirm `/programs/` directory routing on chosen host | Owner (host decision required) | Server config |
-| — | Choose and configure production host; point domain | Owner | — |
+| H-1 | ~~Confirm `/programs/` directory routing on chosen host~~ — **Resolved v2.16.1**: nginx `try_files` fixed on staging VPS; `/programs/` returns 301→200 correctly | — | — |
+| — | Point production domain to VPS (74.208.9.49) | Owner | DNS |
 
 ---
 
