@@ -7,7 +7,7 @@ commit hash, date, summary, and description.
 
 ## v2.16.1 — VPS nginx Routing Fix and SSH Access
 **Tag:** `v2.16.1`
-**Commit:** (applied after commit) · 2026-06-17
+**Commit:** `d920627` · 2026-06-17
 **Type:** `fix`
 
 **Summary:** fix(vps): nginx clean URL routing and custom 404 for smart-learning-solutions
