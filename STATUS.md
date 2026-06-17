@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.16.1 · 2026-06-17
+**Current Version:** v2.17.0 · 2026-06-17
 
 ---
 
@@ -34,6 +34,7 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 - VPS nginx routing fixed: `$uri.html` added to `try_files`, custom 404 page wired — clean URLs now work (v2.16.1)
 - SSH public key added to VPS (74.208.9.49) for direct Claude Code access (v2.16.1)
 - nginx 404 root cause documented in `docs/debug/nginx-404-debug.md` (v2.16.1)
+- Full production-readiness audit completed and documented — `plans/2026-06-17-website-status-audit.md` (v2.17.0)
 
 ---
 
