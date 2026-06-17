@@ -8,7 +8,7 @@ remains the focused current-session note and may be overwritten as work advances
 ## v2.16.1 — 2026-06-17 — VPS nginx Routing Fix and SSH Access
 
 **Tag:** `v2.16.1`
-**Commit:** (applied after commit)
+**Commit:** `d920627`
 
 ### Summary
 Diagnosed and fixed nginx 404 on `smart-learning-solutions.craftandconscious.com`. Root cause
