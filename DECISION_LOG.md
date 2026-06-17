@@ -32,5 +32,30 @@ M-3 PSTEM image dimensions, M-6 tel: + prefix — all resolved during migration 
 
 ---
 
-## ADR-009 — (next decision)
+## ADR-009 — nginx `try_files` Pattern for Static HTML Sites with Clean URLs
+**Date:** 2026-06-17
+**Version:** v2.16.1
+
+### Decision
+Use `try_files $uri $uri/ $uri.html =404` in nginx for this static site, plus
+`error_page 404 /404.html` with `location = /404.html { internal; }`.
+
+### Reason
+The site uses `.html` files (e.g. `about.html`, `workshops.html`) but links and
+users navigate to clean URLs without the extension. Without `$uri.html`, nginx
+returns 404 for any clean URL even though the file exists. The custom 404 page
+must be declared `internal` to prevent direct access to `/404.html` returning 200.
+
+### Alternatives Considered
+- Rename all pages to `index.html` inside subdirectories — rejected as too disruptive
+- Use nginx `rewrite` rules — unnecessary; `try_files` handles this cleanly
+
+### Consequences
+- All clean URLs resolve correctly
+- Custom 404 page served on all unmatched routes
+- Pattern must be replicated if site is moved to a new nginx host
+
+---
+
+## ADR-010 — (next decision)
 _Reserved for future use._

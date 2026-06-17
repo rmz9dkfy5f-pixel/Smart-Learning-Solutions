@@ -4,6 +4,25 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-002 — VPS nginx Routing Fix (v2.16.1)
+**Date:** 2026-06-17
+**Version:** v2.16.1
+
+**Slice:** Fix nginx clean URL routing and custom 404 on staging VPS.
+
+**Pre-review finding:** `curl` confirmed `/workshops.html` → 200 but `/workshops` → 404.
+nginx default 404 (162 bytes) served instead of custom `404.html`.
+
+**Change:** Updated `/etc/nginx/sites-available/smart-learning-solutions`:
+- `try_files $uri $uri/ =404` → `try_files $uri $uri/ $uri.html =404`
+- Added `error_page 404 /404.html; location = /404.html { internal; }`
+
+**Post-review result:** `/workshops`, `/about` → 200. Custom 404 → 2795 bytes. `nginx -t` ok.
+
+**Risk:** None remaining. Config backed up to `smart-learning-solutions.bak` on server.
+
+---
+
 ## SR-001 — v2 Planning Migration (v2.15.0)
 **Date:** 2026-05-16
 **Version:** v2.15.0

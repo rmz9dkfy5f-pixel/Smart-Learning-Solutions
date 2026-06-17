@@ -5,6 +5,25 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.16.1 — VPS nginx Routing Fix and SSH Access
+**Tag:** `v2.16.1`
+**Commit:** (applied after commit) · 2026-06-17
+**Type:** `fix`
+
+**Summary:** fix(vps): nginx clean URL routing and custom 404 for smart-learning-solutions
+
+**Description:**
+- Added `$uri.html` to nginx `try_files` so clean URLs (e.g. `/workshops`, `/about`) resolve to `.html` files without requiring the extension in the URL
+- Added `error_page 404 /404.html` with `location = /404.html { internal; }` so the custom 404 page is served instead of nginx's default
+- Added SSH public key to VPS for direct Claude Code access
+- Documented root cause and fix in `docs/debug/nginx-404-debug.md`
+- Renamed 9 RepoBackup snapshot folders (v2.15.0–v2.16.0) to include description and commit hash
+- No site code changed; VPS config change is server-side only
+
+**Verified:** clean URLs return 200, custom 404 confirmed at 2795 bytes, nginx -t passes
+
+---
+
 ## v2.16.0 — Add Project Starter Kit v3.3 and Push Workflow Prompts
 **Tag:** `v2.16.0`
 **Commit:** `8dc05d7` · 2026-06-16
