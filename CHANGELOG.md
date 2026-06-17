@@ -11,6 +11,23 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.16.1] — 2026-06-17
+
+**Tag:** `v2.16.1`
+
+### Summary
+Fix nginx routing on VPS: clean URLs now resolve without `.html` extension; custom 404 page now served.
+
+### Fixed
+- nginx `try_files` updated to include `$uri.html` — clean URLs like `/workshops` and `/about` now return 200 without requiring the `.html` extension
+- `error_page 404 /404.html` added to nginx config — custom 404 page now served instead of nginx default
+
+### Added
+- SSH public key added to VPS (74.208.9.49) for direct deployment access
+- `docs/debug/nginx-404-debug.md` — documents nginx 404 root cause, fix, and verification
+
+---
+
 ## [2.16.0] — 2026-06-16
 
 **Tag:** `v2.16.0`
