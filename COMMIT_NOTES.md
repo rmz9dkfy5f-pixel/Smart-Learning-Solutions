@@ -5,6 +5,23 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.17.0 — Full Production-Readiness Audit
+**Tag:** `v2.17.0`
+**Commit:** TBD · 2026-06-17
+**Type:** `docs`
+
+**Summary:** docs(audit): add full production-readiness audit to plans/
+
+**Description:**
+- Added `plans/2026-06-17-website-status-audit.md` — structured audit of all 10 pages, shared chrome, planning system, deployment/infra, and launch readiness
+- Audit confirms site is content-complete, Gate 0 passed, Gate 1 blocked on two owner-gated decisions (Formspree endpoint, production domain DNS)
+- No code changes — read-only audit; committed to repo so findings are accessible on any machine with repo pulled
+- Remaining: owner must supply Formspree endpoint and confirm production domain to unlock Gate 1
+
+**Verified:** Repo was clean before and after audit; all audit findings based on actual file state at v2.16.1
+
+---
+
 ## v2.16.1 — VPS nginx Routing Fix and SSH Access
 **Tag:** `v2.16.1`
 **Commit:** `d920627` · 2026-06-17

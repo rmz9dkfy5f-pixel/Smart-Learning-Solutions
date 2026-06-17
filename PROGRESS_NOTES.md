@@ -5,6 +5,37 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.17.0 — 2026-06-17 — Full Production-Readiness Audit
+
+**Tag:** `v2.17.0`
+**Commit:** TBD (filled after commit)
+
+### Summary
+Read-only production-readiness audit of the full site. Audit confirms the site is content-complete and Gate 0 passed. Gate 1 (Launch Readiness) remains blocked on two owner-gated decisions: Formspree endpoint and production domain DNS. All dev work is otherwise done. Audit documented in `plans/2026-06-17-website-status-audit.md` for cross-machine access.
+
+### Work Completed
+- Audited all 10 pages against content rules (CTAs, virtual language, pricing, parent framing, program names)
+- Audited shared chrome (components.js, main.css, animations.js)
+- Audited planning system consistency (STATUS, PHASE_GATES, BACKLOG, PLAN, DECISION_LOG — all consistent)
+- Audited deployment/infra (nginx, sitemap, robots.txt, Formspree, Plausible, CDN deps, asset paths)
+- Produced full structured audit report in `plans/2026-06-17-website-status-audit.md`
+
+### Files Changed
+- `plans/2026-06-17-website-status-audit.md` — new audit report
+- `STATUS.md`, `PROGRESS_NOTES.md`, `COMMIT_NOTES.md`, `CHANGELOG.md` — version records updated
+
+### Validation
+- Read-only audit — no code changes; all findings based on repo state at v2.16.1
+- Repo working tree was clean before and after audit
+
+### Notes for Next Agent
+Both launch blockers are owner-gated. No code work possible until:
+1. Formspree endpoint ID provided (C-1 / OD-001)
+2. Production domain target confirmed (H-1 / OD-003)
+See `plans/2026-06-17-website-status-audit.md` §5 for the 5-step Gate 1 → Production checklist.
+
+---
+
 ## v2.16.1 — 2026-06-17 — VPS nginx Routing Fix and SSH Access
 
 **Tag:** `v2.16.1`

@@ -11,6 +11,18 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.17.0] — 2026-06-17
+
+**Tag:** `v2.17.0`
+
+### Summary
+Full production-readiness audit completed and documented for cross-machine access.
+
+### Added
+- `plans/2026-06-17-website-status-audit.md` — structured production-readiness audit covering all 10 pages, shared chrome, planning system, deployment/infra, and Gate 1 launch blockers
+
+---
+
 ## [2.16.1] — 2026-06-17
 
 **Tag:** `v2.16.1`
