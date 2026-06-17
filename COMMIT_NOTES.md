@@ -7,7 +7,7 @@ commit hash, date, summary, and description.
 
 ## v2.17.0 — Full Production-Readiness Audit
 **Tag:** `v2.17.0`
-**Commit:** TBD · 2026-06-17
+**Commit:** `c002cd2` · 2026-06-17
 **Type:** `docs`
 
 **Summary:** docs(audit): add full production-readiness audit to plans/
