@@ -11,6 +11,18 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.18.1] — 2026-06-19
+
+**Tag:** `v2.18.1__mobile-nav-cta-center-fix__commit-PENDINGHASH`
+
+### Fixed
+- Mobile-nav **Request a Workshop** CTA label rendered left-aligned instead of centered. `.mobile-nav a { display: block }` (specificity 0,1,1) was overriding `.btn { display: inline-flex }` (0,1,0), so the full-width CTA became a block box and the existing `.mobile-nav .btn { justify-content: center }` was inert (the label fell back to start/left alignment). Added `display: flex` to `.mobile-nav .btn` (0,2,0) to restore flex centering.
+
+### Changed
+- `main.css` cache token bumped `?v=mobile-20260619c` → `?v=mobile-20260619d` across all 10 HTML files so browsers fetch the corrected CSS; `components.js` token left unchanged (file not modified)
+
+---
+
 ## [2.18.0] — 2026-06-19
 
 **Tag:** `v2.18.0__mobile-responsive-fixes__commit-4c92cd2`

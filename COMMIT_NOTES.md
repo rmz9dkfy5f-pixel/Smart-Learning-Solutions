@@ -5,6 +5,24 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.18.1 — Mobile-Nav CTA Label Centering
+**Tag:** `v2.18.1__mobile-nav-cta-center-fix__commit-PENDINGHASH`
+**Commit:** `PENDINGHASH` · branch `fix/mobile-responsive-20260619` · 2026-06-19
+**Type:** `fix`
+
+**Summary:** fix(mobile): center Request a Workshop CTA label in mobile nav
+
+**Description:**
+- Added `display: flex` to `.mobile-nav .btn` so the full-width CTA is a flex container again and the already-present `justify-content: center` centers the label
+- Root cause: `.mobile-nav a { display: block }` (0,1,1) was out-specificing `.btn { display: inline-flex }` (0,1,0); as a block box the button left-aligned its label and made `justify-content: center` inert
+- Bumped cache token `?v=mobile-20260619c` → `?v=mobile-20260619d` on `main.css` across all 10 HTML files so browsers fetch the corrected CSS; `components.js` token left unchanged (file not modified)
+
+**Verified:** CSS brace count balanced; all 10 HTML files confirmed on `?v=mobile-20260619d` for `main.css` while `components.js` token unchanged at `?v=mobile-20260619`; `git diff --stat` reviewed
+
+**Remaining risk:** Follow-up to v2.18.0 on branch `fix/mobile-responsive-20260619` — merge to `main` when owner approves. Formspree endpoint and production domain remain the two launch blockers.
+
+---
+
 ## v2.18.0 — Mobile Responsive Fixes
 **Tag:** `v2.18.0__mobile-responsive-fixes__commit-4c92cd2`
 **Code commit:** `ca43fb2` · docs commit `4c92cd2` · 2026-06-19
