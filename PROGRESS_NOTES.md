@@ -5,6 +5,44 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.18.0 — 2026-06-19 — Mobile Responsive Fixes
+
+**Code commit:** `ca43fb2` · branch `fix/mobile-responsive-20260619`
+
+### Summary
+Four-slice mobile responsive fix pass. Diagnosed defects from on-device iPhone screenshots and fixed them across all 10 pages: full-screen nav overlay (no page content bleed-through), hamburger breakpoint raised to ≤1100px (iPad CTA clipping fixed), hero proof-photo crop and radius normalised, eyebrow font-size specificity bug fixed, and mobile nav CTA button colour fixed.
+
+### Work Completed
+- Converted `.mobile-nav` from content-height dropdown to `inset:0` full-screen overlay with solid `--bg` background (ADR-010)
+- Added `body.nav-open .site-header` opaque rule so page `<h1>` no longer shows behind the logo
+- Added `closeNav()` helper called on link-tap, Escape, and `pageshow` — menu can never get stuck open
+- Raised hamburger breakpoint to ≤1100px (ADR-011); measured: CTA was squished to ~64px at 800px
+- Added `.header-cta { flex-shrink: 0 }` to prevent flexbox from collapsing the CTA label
+- Fixed `.hero-content .eyebrow` specificity (0,2,0) to beat `.hero-content p` (0,1,1) at 16px
+- Program proof photos: `border-radius: --radius-lg`, `object-position: center center`, `aspect-ratio: 16/10` at ≤768px
+- Section-break strip: same pattern with `aspect-ratio: 16/9`
+- Fixed `.mobile-nav a.btn--primary` colour to stay `#fff` (`.mobile-nav a` muted grey was winning)
+- Bumped cache token to `?v=mobile-20260619c` on all 10 HTML files
+
+### Files Changed
+- `src/css/main.css` — all layout and style fixes
+- `src/js/components.js` — nav open/close logic rewritten with `closeNav()` helper
+- All 10 HTML files — cache token bumped
+- `DECISION_LOG.md` — ADR-010 + ADR-011
+- `PLAN.md`, `plans/2026-06-19-mobile-responsive-fixes.md` — plan records
+- `STATUS.md`, `PROGRESS_NOTES.md`, `PROGRESS_NOTE.md`, `COMMIT_NOTES.md`, `CHANGELOG.md`, `SLICE_REVIEWS.md`, `LESSONS_LEARNED.md`, `BACKLOG.md` — handoff docs
+
+### Validation
+- CSS brace count balanced: 397 open / 397 close
+- JS syntax check: pass
+- All 10 HTML files confirmed on `mobile-20260619c` token
+- Visual: headed Playwright preview at ~390px (phone) and ~820px (iPad portrait), resizable window confirmed hamburger/desktop nav flip at 1100px
+
+### Notes for Next Agent
+Branch `fix/mobile-responsive-20260619` is pushed. Merge to `main` when owner approves. The two launch blockers (Formspree, production domain) are unchanged.
+
+---
+
 ## v2.17.0 — 2026-06-17 — Full Production-Readiness Audit
 
 **Tag:** `v2.17.0`

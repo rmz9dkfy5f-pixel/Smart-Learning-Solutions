@@ -83,6 +83,25 @@ Document this in README.md and CONTRIBUTING.md (already done).
 
 ---
 
+## CSS / Frontend
+
+### L-009 — CSS specificity when a semantic element also carries a utility class
+**Context:** v2.18.0 — the eyebrow label `<p class="eyebrow">` was rendering at 16px on mobile instead of the intended 12px (`--text-xs`).
+**What happened:** `.hero-content p` (specificity 0,1,1) was overriding `.eyebrow` (0,1,0) because the element is a `<p>`. The utility class rule lost because its specificity was lower than the parent-scoped element rule.
+**Rule:** When a utility class sits on a semantic element AND there is a parent-scoped element rule in the stylesheet, the element rule wins unless the utility class is made at least as specific. Use a compound selector like `.parent .utility-class` (0,2,0) to restore priority.
+
+### L-010 — Hamburger breakpoint must account for full header content width
+**Context:** v2.18.0 — the hamburger was originally set to ≤768px but the full desktop header (logo + 6 links + CTA) requires ~1100px to render the CTA label without clipping.
+**What happened:** Between 769–1099px the desktop nav was showing but `flex` was squishing the CTA button; `overflow: hidden` on `.btn` clipped the label entirely. iPad portrait (~820px) showed only the hamburger icon where the CTA should be.
+**Rule:** When setting a hamburger breakpoint, measure the full header content width (logo + all nav items + CTA) at the intended switch point. Use `scrollWidth > clientWidth` in the browser console to detect overflow. The breakpoint must be wide enough for all header content to fit without shrinking.
+
+### L-011 — Full-screen nav overlay vs content-height dropdown
+**Context:** v2.18.0 — the original `.mobile-nav` was a content-height dropdown (top: header-height, no bottom/height). Page content bled through above the header (transparent) and below the panel.
+**What happened:** A fixed-height dropdown panel with a semi-transparent header allows the page `<h1>` to show behind the logo and leaves page content visible below the panel's content edge.
+**Rule:** For mobile nav menus: use `inset: 0` + solid opaque background to guarantee full-screen coverage. Also add `body.nav-open .site-header` with solid background so the page heading never shows behind the logo. Ensure the nav toggles `body.style.overflow` to lock scroll.
+
+---
+
 ## Tooling
 
 ### L-008 — robocopy exit code 1 is success

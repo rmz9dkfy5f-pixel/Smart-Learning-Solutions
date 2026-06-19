@@ -37,7 +37,7 @@ These must be resolved before the site can go live.
 | H-3 | Pin Plausible analytics URL (version or SRI) | Plausible does not currently support SRI; monitor |
 | H-4 | Add timeout fallback to page transition overlay | `.is-navigating` has no safety timer |
 | M-4 | Remove inline style blocks where CSS classes are available | Code quality |
-| M-5 | Update CSS cache-busting query string to match last-change date | `?v=visual-20260428-navfix` is stale |
+| ~~M-5~~ | ~~Update CSS cache-busting query string~~ | Resolved v2.18.0: token updated to `?v=mobile-20260619c` across all 10 files |
 | M-7 | Populate `_next` redirect field in `book.html` | Empty field; Formspree uses it for post-submit redirect |
 | M-8 | Normalise email casing — `info@smartlearningsolutions.org` | `info@SmartLearningSolutions.org` inconsistent |
 | M-9 | Add `<meta name="robots">` to pages that should not be indexed | Staging / thank-you pages |

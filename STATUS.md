@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.17.0 · 2026-06-17
+**Current Version:** v2.18.0 · 2026-06-19
 
 ---
 
@@ -35,6 +35,7 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 - SSH public key added to VPS (74.208.9.49) for direct Claude Code access (v2.16.1)
 - nginx 404 root cause documented in `docs/debug/nginx-404-debug.md` (v2.16.1)
 - Full production-readiness audit completed and documented — `plans/2026-06-17-website-status-audit.md` (v2.17.0)
+- Mobile responsive fixes: full-screen nav overlay, hamburger breakpoint ≤1100px, hero proof-photo crop/radius fixed, eyebrow font-size specificity fixed, CTA button colour in mobile nav — all 10 HTML files cache-busted (v2.18.0)
 
 ---
 

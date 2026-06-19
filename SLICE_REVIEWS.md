@@ -4,6 +4,39 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-003 — Mobile Responsive Fixes (v2.18.0)
+**Date:** 2026-06-19
+**Version:** v2.18.0
+**Commit:** `ca43fb2`
+
+**Slice:** Four-slice mobile responsive fix pass — nav overlay, photo crop, eyebrow specificity, hamburger breakpoint.
+
+**Pre-review finding:** On-device iPhone screenshots confirmed:
+- Open mobile menu leaked page content (heading behind logo, page text below the CTA button)
+- Program hero proof photos cropped subjects at forehead level (fixed `180px` + `object-position: center 20%`)
+- Corner-radius mismatch between stacked hero images (`--radius-md` vs `--radius-lg`)
+- Section-break strip too thin (fixed `180px` + off-center crop)
+- Eyebrow label wrapped on mobile due to CSS specificity (`.hero-content p` 16px beat `.eyebrow` 12px)
+- iPad portrait (≤1100px): CTA button squished to ~64px by flexbox; label clipped entirely
+
+**Changes:**
+- `.mobile-nav`: `inset:0`, solid `--bg`, `padding-top` clears header; `z-index:99`; `opacity`/`transform` open transition
+- `body.nav-open .site-header`: opaque while overlay is open
+- `closeNav()` helper in `components.js`; closes on link-tap, Escape, `pageshow`
+- `@media (max-width: 1100px)`: hide `.site-nav` + `.header-cta`, show `.nav-toggle` + `.mobile-nav`
+- `.header-cta { flex-shrink: 0 }` in base styles
+- `.hero-content .eyebrow` (specificity 0,2,0) inside `≤1100px` block sets `--text-xs`
+- `.page-hero-proof-photo`: `--radius-lg`, `object-position: center center`, `aspect-ratio: 16/10` at ≤768px
+- `.program-section-break`: `object-position: center center`, `aspect-ratio: 16/9` at ≤768px
+- `.mobile-nav a.btn--primary, :hover { color: #fff }` — specificity fix for CTA colour
+- Cache token `?v=mobile-20260619c` on all 10 HTML files
+
+**Post-review result:** Playwright headed preview at 390px and 820px confirmed: no page content bleed-through on open menu; subjects visible in proof photos; eyebrow on one line; hamburger shows at 820px, desktop nav shows on drag past 1100px.
+
+**Risk:** None remaining. Branch `fix/mobile-responsive-20260619` pushed; merge to `main` when owner approves.
+
+---
+
 ## SR-002 — VPS nginx Routing Fix (v2.16.1)
 **Date:** 2026-06-17
 **Version:** v2.16.1

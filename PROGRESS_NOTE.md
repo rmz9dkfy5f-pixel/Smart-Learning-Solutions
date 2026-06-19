@@ -1,80 +1,57 @@
-**Updated:** v2.15.7 · 2026-06-04
+**Updated:** v2.18.0 · 2026-06-19
 
 # Progress Note — Current Session
 
-## v2.15.7 — Remove Program Card Proof Strip (2026-06-04)
-Removed the 80px student photo strip (.program-card-proof) from both program
-cards on programs/index.html and index.html. Each card now shows only the
-product photo. Removed the corresponding CSS block from main.css. Strengthened
-the .program-card-media--product::after bottom gradient (opacity 0.08 → 0.55)
-to fade the light product area into the dark card body.
+## v2.18.0 — Mobile Responsive Fixes (2026-06-19)
 
-## v2.15.6 — Migration Decision Update and Checklist (2026-06-04)
-Updated ADR-008 in DECISION_LOG.md to reflect completed migration: added
-Completed date (v2.15.5 · 2026-06-04), full files-added list (including FILE_MAP.md),
-files-updated list (CLAUDE.md, AGENTS.md, STATUS.md, PROGRESS_NOTE.md, COMMIT_NOTES.md,
-ROADMAP.md, PROJECT_BRIEF.md, BACKLOG.md, PLAN.md), and Gate 1 fixes note.
-Created MIGRATION_CHECKLIST.md — permanent verification record confirming all 18
-required v2 files exist, mandatory files preserved, no app code changed, Gate 0
-defined, file responsibilities enforced. Result: PASS.
+Four-slice mobile responsive fix pass triggered by on-device iPhone screenshots
+showing menu bleed-through, cropped hero photos, faded button text, and a
+squeezed eyebrow label on mobile.
 
-## v2.15.5 — File Responsibility Cleanup (2026-06-04)
-Enforced single-responsibility boundaries across planning docs (step 8 migration).
-ROADMAP.md: removed Completed/Deferred/Blockers sections, replaced with pointers.
-PROJECT_BRIEF.md: condensed Programs/Audiences/Decisions/Tech Stack tables to summaries,
-deferred detail to CONTEXT.md. BACKLOG.md: removed Resolved/Closed section, replaced
-with pointer to CHANGELOG.md. STATUS.md: condensed Audit Findings to one line, removed
-Deferred section. PLAN.md: replaced plan-index structure with Current State prose.
+**Slice 1 — Full-screen nav overlay**
+Converted `.mobile-nav` from a content-height dropdown to an `inset:0` full-screen
+overlay with solid `--bg` background. Added `body.nav-open .site-header` opaque
+rule so the page `<h1>` no longer shows behind the logo while the menu is open.
+Added `closeNav()` helper; menu closes on link-tap, Escape, and `pageshow`.
+Scroll-lock resets cleanly in all exit paths.
 
-## v2.15.4 — File Responsibility Map (2026-06-04)
-Created `FILE_MAP.md` — full inventory of every tracked file with purpose, owner
-(Dev / Owner / Both / Auto), and edit frequency. Updated PLAN.md to reference it.
+**Slice 2 — Program hero proof-photo fixes**
+Program page proof photos: `border-radius` unified to `--radius-lg`, `object-position`
+recentered to `center center`, fixed `180px` height replaced with `aspect-ratio: 16/10`
+at ≤768px. Section-break strip: same pattern with `aspect-ratio: 16/9`. Subjects are
+no longer cropped.
 
-## v2.15.3 — Gate 1 Launch-Readiness Fixes (2026-06-04)
-Executed all dev-executable Gate 1 items. Fixed C-2 (removed ungated `cursor: none`
-from `.btn`), H-2 (SRI hashes on GSAP CDN scripts, all 9 pages), M-2 (title em-dash on
-programs/index.html), M-3 (width/height on PSTEM product image), M-6 (tel: + prefix in
-book.html, contact.html, components.js). Updated BACKLOG.md, PHASE_GATES.md, STATUS.md.
+**Slice 3 — Eyebrow font-size specificity fix**
+CSS specificity bug: `.hero-content p` (0,1,1) was overriding `.eyebrow` base rule (0,1,0)
+and inflating the eyebrow to 16px on mobile, causing it to wrap. Fixed with
+`.hero-content .eyebrow` (0,2,0) inside the ≤1100px media query.
 
-## v2.15.2 — v2 Planning Migration (2026-06-04)
-Migrated project planning docs to the v2 project-control system. Added 7 missing
-required files: PROJECT_BRIEF.md, PLAN.md, PHASE_GATES.md, BACKLOG.md, DECISION_LOG.md,
-SLICE_REVIEWS.md, LESSONS_LEARNED.md. Updated CLAUDE.md, AGENTS.md, STATUS.md,
-PROGRESS_NOTE.md, PROGRESS_NOTES.md, and COMMIT_NOTES.md. No application code changed.
+**Slice 4 — Hamburger breakpoint raised to ≤1100px**
+Measured: the full desktop header (logo + 6 nav links + CTA button) needs ~1100px. Between
+769–1099px the CTA was flexbox-squished to as little as 64px and its label was clipped.
+Raised nav-swap breakpoint to ≤1100px (ADR-011). Added `.header-cta { flex-shrink: 0 }`.
+Also fixed `.mobile-nav a.btn--primary` colour — muted-grey link rule was out-specificing
+the white button colour.
+
+Cache token bumped to `?v=mobile-20260619c` on `main.css` and `components.js` across
+all 10 HTML files.
 
 ---
 
-## Milestone
-v2.15.2 — v2 planning migration (resumed from stash after remote sync conflict resolved).
+## Code Commit
+
+| Hash | Branch | Message |
+|---|---|---|
+| `ca43fb2` | `fix/mobile-responsive-20260619` | fix(mobile): full-screen nav overlay, hero crop fixes, tablet breakpoint |
 
 ---
 
-## Tasks Completed
+## Decisions Logged
 
-- Identified `04875a3` as pushed but untagged from the prior session
-- Added v2.15.1 entries to `CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md`
-- Updated `PROGRESS_NOTE.md` and `PROGRESS_NOTES.md`
-- Updated `ROADMAP.md` Completed line
-- Tagged `04875a3` as `v2.15.1` (clean semver)
-- Pushed `main` and `v2.15.1` tag to origin
-- Created snapshot at `v2.15.1` in WorkSync RepoBackups
-
----
-
-## Current Baseline
-
-| Hash | Message |
+| ADR | Decision |
 |---|---|
-| `967ba07` | docs(release): sync all docs to v2.15.1 |
-
----
-
-## Current Tag
-
-| Tag | Commit |
-|---|---|
-| `v2.15.1` | `04875a3` (prior hash-correction) |
-| `v2.15.1` (docs) | `967ba07` |
+| ADR-010 | Mobile nav → full-screen overlay |
+| ADR-011 | Hamburger breakpoint raised to ≤1100px |
 
 ---
 
@@ -82,20 +59,21 @@ v2.15.2 — v2 planning migration (resumed from stash after remote sync conflict
 
 | File | Change |
 |---|---|
-| `CHANGELOG.md` | Added v2.15.1 entry |
-| `RELEASE_NOTES.md` | Added v2.15.1 entry |
-| `COMMIT_NOTES.md` | Added v2.15.1 entry |
-| `PROGRESS_NOTE.md` | Updated current-session state |
-| `PROGRESS_NOTES.md` | Appended v2.15.1 cumulative entry |
-| `ROADMAP.md` | Updated Completed line |
+| `src/css/main.css` | Full-screen overlay, 1100px breakpoint, eyebrow fix, photo crop fix, CTA colour fix |
+| `src/js/components.js` | `closeNav()` helper, link-tap/Escape/pageshow resets |
+| All 10 HTML files | Cache token `?v=mobile-20260619c` |
+| `DECISION_LOG.md` | ADR-010, ADR-011 |
+| `PLAN.md` | History row added |
+| `plans/2026-06-19-mobile-responsive-fixes.md` | New plan file |
 
 ---
 
 ## What's Next
 
-**Launch blockers (owner/ops items):**
+Branch `fix/mobile-responsive-20260619` is pushed to origin.
+Merge to `main` when owner approves.
 
+**Launch blockers unchanged:**
 1. Configure Formspree — replace `REPLACE_ME` in `book.html` and `contact.html`
-2. Choose deployment host and confirm `/programs/` directory routing works
-3. Add SRI hashes to GSAP `<script>` tags
-4. Fix `.btn { cursor: none }` — prefix with `body.custom-cursor-enabled` in `main.css`
+2. Point production domain to VPS (74.208.9.49); verify routing end-to-end
+3. Convert `og-image.svg` to PNG/JPEG 1200×630

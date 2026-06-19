@@ -11,6 +11,31 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.18.0] — 2026-06-19
+
+**Tag:** `v2.18.0__mobile-responsive-fixes__commit-ca43fb2` (code) — see COMMIT_NOTES for docs commit hash
+
+### Summary
+Four-slice mobile responsive fix pass across all 10 pages. Full-screen nav overlay, hamburger breakpoint raised to ≤1100px, program hero photo crop and radius fixes, eyebrow font-size specificity fix, and CTA button colour fix inside the mobile nav.
+
+### Fixed
+- Mobile nav converted from content-height dropdown to `inset: 0` full-screen overlay (solid `--bg` background) — page content no longer bleeds through the open menu
+- Header bar is opaque while the mobile overlay is open (`body.nav-open .site-header` rule)
+- Mobile nav CTA button text kept white — `.mobile-nav a` muted-grey override was out-specificing `.btn--primary` white
+- Hamburger breakpoint raised from ≤768px to ≤1100px — the full desktop header (logo + 6 links + CTA) was being squished to near zero on iPad portrait (800–860px); CTA now hidden and hamburger shown where the full nav doesn't fit
+- `header-cta { flex-shrink: 0 }` — belt-and-suspenders against CTA label clipping at intermediate widths
+- Homepage hero eyebrow label fixed to 12px (`--text-xs`) through ≤1100px — `.hero-content p` rule (16px) was beating `.eyebrow` base rule due to specificity; fixed with `.hero-content .eyebrow` (0,2,0)
+- Program page proof photos: radius unified to `--radius-lg`, `object-position` recentered to `center center`, fixed `180px` height replaced with `aspect-ratio: 16/10` at ≤768px — subjects no longer decapitated
+- Section-break photo strip: same pattern — `object-position: center center` + `aspect-ratio: 16/9` at ≤768px
+
+### Changed
+- `main.css`: all layout/style fixes above; cache token `?v=mobile-20260619c`
+- `components.js`: `closeNav()` helper; closes on link tap, Escape, and `pageshow`; scroll-lock resets
+- All 10 HTML files: cache token bumped to `?v=mobile-20260619c`
+- `DECISION_LOG.md`: ADR-010 (nav overlay) and ADR-011 (1100px breakpoint) added
+
+---
+
 ## [2.17.0] — 2026-06-17
 
 **Tag:** `v2.17.0`
