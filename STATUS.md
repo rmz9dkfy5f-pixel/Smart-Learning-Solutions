@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.18.0 · 2026-06-19
+**Current Version:** v2.18.1 · 2026-06-19
 
 ---
 
@@ -36,6 +36,7 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 - nginx 404 root cause documented in `docs/debug/nginx-404-debug.md` (v2.16.1)
 - Full production-readiness audit completed and documented — `plans/2026-06-17-website-status-audit.md` (v2.17.0)
 - Mobile responsive fixes: full-screen nav overlay, hamburger breakpoint ≤1100px, hero proof-photo crop/radius fixed, eyebrow font-size specificity fixed, CTA button colour in mobile nav — all 10 HTML files cache-busted (v2.18.0)
+- Mobile-nav CTA label centring fix: `display: flex` added to `.mobile-nav .btn` so the existing `justify-content: center` takes effect (button was a block box, label left-aligned); `main.css` cache token bumped to `?v=mobile-20260619d` across all 10 HTML files (v2.18.1)
 
 ---
 

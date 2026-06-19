@@ -527,7 +527,7 @@ body.nav-open .site-header {
 
 .mobile-nav a:hover { color: var(--text); }
 .mobile-nav a:last-of-type { border-bottom: none; }
-.mobile-nav .btn { margin-top: var(--space-6); width: 100%; justify-content: center; }
+.mobile-nav .btn { display: flex; margin-top: var(--space-6); width: 100%; justify-content: center; }
 /* `.mobile-nav a` (muted grey) otherwise out-specifies the button's own colour,
    leaving the CTA label greyed out — keep it solid white. */
 .mobile-nav a.btn--primary,

@@ -1,6 +1,22 @@
-**Updated:** v2.18.0 · 2026-06-19
+**Updated:** v2.18.1 · 2026-06-19
 
 # Progress Note — Current Session
+
+## v2.18.1 — Mobile-Nav CTA Label Centering (2026-06-19)
+
+Follow-up to the v2.18.0 mobile pass. The **Request a Workshop** CTA inside the open
+mobile nav rendered with its label pinned to the left edge instead of centered. Root
+cause: `.mobile-nav a` sets `display: block` (specificity 0,1,1), which out-specified
+`.btn`'s `display: inline-flex` (0,1,0). The button was therefore a block box, so the
+`justify-content: center` already on `.mobile-nav .btn` was inert and the label fell back
+to start (left) alignment. Fixed by adding `display: flex` to `.mobile-nav .btn` (0,2,0),
+reactivating the existing centering — no markup, label, colour, or behaviour changed.
+
+Bumped the `main.css` cache token `?v=mobile-20260619c` → `?v=mobile-20260619d` across all
+10 HTML files so browsers fetch the corrected CSS. `components.js` was not modified and its
+token is unchanged at `?v=mobile-20260619`.
+
+---
 
 ## v2.18.0 — Mobile Responsive Fixes (2026-06-19)
 
