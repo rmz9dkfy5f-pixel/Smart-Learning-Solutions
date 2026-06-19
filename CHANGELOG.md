@@ -13,7 +13,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.18.0] — 2026-06-19
 
-**Tag:** `v2.18.0__mobile-responsive-fixes__commit-ca43fb2` (code) — see COMMIT_NOTES for docs commit hash
+**Tag:** `v2.18.0__mobile-responsive-fixes__commit-4c92cd2`
 
 ### Summary
 Four-slice mobile responsive fix pass across all 10 pages. Full-screen nav overlay, hamburger breakpoint raised to ≤1100px, program hero photo crop and radius fixes, eyebrow font-size specificity fix, and CTA button colour fix inside the mobile nav.

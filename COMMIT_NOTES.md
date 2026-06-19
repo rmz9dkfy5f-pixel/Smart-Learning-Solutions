@@ -6,8 +6,8 @@ commit hash, date, summary, and description.
 ---
 
 ## v2.18.0 — Mobile Responsive Fixes
-**Tag:** `v2.18.0__mobile-responsive-fixes__commit-TBD` _(docs commit hash backfilled after tag)_
-**Code commit:** `ca43fb2` · 2026-06-19
+**Tag:** `v2.18.0__mobile-responsive-fixes__commit-4c92cd2`
+**Code commit:** `ca43fb2` · docs commit `4c92cd2` · 2026-06-19
 **Type:** `fix`
 
 **Summary:** fix(mobile): full-screen nav overlay, hero crop fixes, tablet breakpoint
