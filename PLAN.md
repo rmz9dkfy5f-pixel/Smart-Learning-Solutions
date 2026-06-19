@@ -30,6 +30,8 @@ See `plans/open-decisions.md` for all pending owner decisions.
 | `plans/2026-05-06-polish-and-seo.md` | 2026-05-06 | Polish, SEO, analytics pass |
 | `plans/2026-05-06-program-prominence-assets.md` | 2026-05-06 | Program page prominence and assets |
 | `plans/2026-05-13-site-debug-remediation.md` | 2026-05-13 | Site debug and full remediation pass |
+| `plans/2026-06-17-website-status-audit.md` | 2026-06-17 | Website status / production-readiness audit |
+| `plans/2026-06-19-mobile-responsive-fixes.md` | 2026-06-19 | Mobile nav overlay + program hero photo crop/radius fixes |
 
 ---
 

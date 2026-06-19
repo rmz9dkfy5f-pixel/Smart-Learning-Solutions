@@ -173,21 +173,46 @@ function initPage({ activePage = '' } = {}) {
     onScroll();
   }
 
-  // Mobile nav toggle
+  // Mobile nav toggle — full-screen overlay
   const toggle = document.getElementById('nav-toggle');
   const mobileNav = document.getElementById('mobile-nav');
+
+  const closeNav = () => {
+    if (mobileNav) mobileNav.classList.remove('open');
+    if (toggle) {
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    document.body.classList.remove('nav-open');
+    document.body.style.overflow = '';
+  };
+
   if (toggle && mobileNav) {
     toggle.addEventListener('click', () => {
       const isOpen = mobileNav.classList.toggle('open');
       toggle.classList.toggle('open', isOpen);
       toggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('nav-open', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close the overlay when a link inside it is tapped.
+    mobileNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeNav);
+    });
+
+    // Close on Escape and return focus to the toggle.
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobileNav.classList.contains('open')) {
+        closeNav();
+        toggle.focus();
+      }
     });
   }
 
   window.addEventListener('pageshow', () => {
     document.body.classList.remove('is-navigating');
-    document.body.style.overflow = '';
+    closeNav();
   });
 
   document.addEventListener('click', (event) => {
