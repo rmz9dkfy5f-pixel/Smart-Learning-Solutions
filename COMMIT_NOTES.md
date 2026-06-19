@@ -5,6 +5,28 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.18.0 — Mobile Responsive Fixes
+**Tag:** `v2.18.0__mobile-responsive-fixes__commit-TBD` _(docs commit hash backfilled after tag)_
+**Code commit:** `ca43fb2` · 2026-06-19
+**Type:** `fix`
+
+**Summary:** fix(mobile): full-screen nav overlay, hero crop fixes, tablet breakpoint
+
+**Description:**
+- Converted mobile nav from content-height dropdown to `inset:0` full-screen overlay; header bar stays opaque while open (`body.nav-open` rule); closes on link tap, Escape, and `pageshow`
+- Raised hamburger breakpoint from ≤768px to ≤1100px — iPad portrait (800–860px) had the desktop CTA squished to near zero by flexbox; added `flex-shrink:0` belt-and-suspenders
+- Fixed homepage hero eyebrow to `--text-xs` (12px) through ≤1100px — CSS specificity bug: `.hero-content p` (0,1,1) was overriding `.eyebrow` (0,1,0); fixed with `.hero-content .eyebrow` (0,2,0)
+- Program page proof photos: radius → `--radius-lg`, `object-position` → `center center`, height → `aspect-ratio:16/10` at ≤768px (subjects no longer cropped); section-break strip same pattern (`16/9`)
+- CTA button text in mobile nav kept white — `.mobile-nav a` (muted grey) was out-specificing `.btn--primary` (white)
+- Cache token bumped to `?v=mobile-20260619c` on `main.css` and `components.js` across all 10 HTML files
+- ADR-010 (nav overlay) and ADR-011 (1100px breakpoint) added to `DECISION_LOG.md`
+
+**Verified:** CSS brace count balanced (397/397); JS syntax checked; all 10 HTML files confirmed on new cache token; visual validation via headed Playwright preview at 390px (phone), 820px (iPad portrait, crossing ≤1100px breakpoint)
+
+**Remaining risk:** Branch `fix/mobile-responsive-20260619` — merge to `main` when owner approves. Formspree and production domain remain the two launch blockers.
+
+---
+
 ## v2.17.0 — Full Production-Readiness Audit
 **Tag:** `v2.17.0`
 **Commit:** `c002cd2` · 2026-06-17
