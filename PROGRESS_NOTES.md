@@ -7,7 +7,7 @@ remains the focused current-session note and may be overwritten as work advances
 
 ## v2.18.1 — 2026-06-19 — Mobile-Nav CTA Label Centering
 
-**Commit:** `PENDINGHASH` · branch `fix/mobile-responsive-20260619`
+**Commit:** `e0127b0` · branch `fix/mobile-responsive-20260619`
 
 ### Summary
 Follow-up to the v2.18.0 mobile pass. The **Request a Workshop** CTA inside the open mobile nav rendered with its label hard against the left edge instead of centered. Fixed by restoring flex centering on the button, then bumped the `main.css` cache token so the fix is fetched on all 10 pages.

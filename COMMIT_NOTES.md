@@ -6,8 +6,8 @@ commit hash, date, summary, and description.
 ---
 
 ## v2.18.1 — Mobile-Nav CTA Label Centering
-**Tag:** `v2.18.1__mobile-nav-cta-center-fix__commit-PENDINGHASH`
-**Commit:** `PENDINGHASH` · branch `fix/mobile-responsive-20260619` · 2026-06-19
+**Tag:** `v2.18.1__mobile-nav-cta-center-fix__commit-e0127b0`
+**Commit:** `e0127b0` · branch `fix/mobile-responsive-20260619` · 2026-06-19
 **Type:** `fix`
 
 **Summary:** fix(mobile): center Request a Workshop CTA label in mobile nav
