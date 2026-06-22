@@ -116,5 +116,25 @@ Raising the hamburger breakpoint means the desktop nav only appears where it fit
 
 ---
 
-## ADR-012 — (next decision)
+## ADR-012 — Adopt Project Starter Kit V3.4 Agent Operating System
+**Date:** 2026-06-21
+**Version:** v2.19.0
+
+### Decision
+Install Project Starter Kit V3.4 into this repo in MIGRATE_EXISTING_PROJECT mode to establish a dual-agent operating system (governance docs, quality gates, Claude/Codex skills, AI ops layer).
+
+### Reason
+The site is being prepared for client sale and production readiness. V3.4 provides a standardised, validated governance layer (`docs/governance/`), agent skill definitions (`.claude/skills/`, `.agents/skills/`), and AI ops infrastructure (`ai/`), making the repo self-documenting and agent-ready for any future maintainer or AI agent.
+
+### Alternatives Considered
+- Continue with existing v2 project-control system only — rejected; V3.4 adds governance, skills, and eval infrastructure beyond what v2 provides
+- Install V3.4 in NEW_PROJECT mode — rejected; MIGRATE_EXISTING_PROJECT is non-destructive and preserves all existing files
+
+### Consequences
+- Positive: repo is now dual-agent compatible (Claude Code + Codex); governance docs installed; skill-based workflows available after Claude Code reload
+- Positive: V3.4 validator provides an automated health check going forward
+- Neutral: V3.4 installs generic stub docs in `docs/project/` and `docs/governance/` that duplicate root-level equivalents — reconciliation is a documented follow-up, not an immediate requirement
+- Risk: AGENTS.md and CLAUDE.md V3.4 candidates in `.v34_migration_review/` require manual review — they should be merged rather than ignored long-term
+
+## ADR-013 — (next decision)
 _Reserved for future use._

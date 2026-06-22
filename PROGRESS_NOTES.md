@@ -5,6 +5,37 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.19.0 — 2026-06-21 — V3.4 Project Starter Kit Migration
+
+**Commit:** `932c389` · branch `main`
+
+### Summary
+Project Starter Kit V3.4 migrated into the repo in MIGRATE_EXISTING_PROJECT mode. Non-destructive install: 40 new files added across `docs/governance/`, `docs/project/`, `ai/`, `.agents/skills/`. Existing AGENTS.md and CLAUDE.md preserved; V3.4 template versions quarantined in `.v34_migration_review/`. V3.4 validator: PASS.
+
+### Work Completed
+- Ran V3.4 installer dry-run, confirmed predicted outcome (38 fresh installs, 3 conflicts)
+- Applied install: 40 new files; no tracked files modified
+- Ran V3.4 validator: `Status: PASS` (exit 0) — all 22 required paths present, all 8 skill frontmatters valid
+- Performed agent review of core V3.4 governance files per `00_EXECUTE_ME.md` Step 7
+
+### Files Changed (new — none modified)
+- `docs/governance/` — 15 governance documents
+- `docs/project/` — 9 project documents
+- `ai/agents/`, `ai/prompts/`, `ai/reports/` — agent ops
+- `.agents/skills/v34-{execution-loop,migration-loop,production-readiness,context-eval-loop}/SKILL.md`
+- `00_MIGRATION_KICKOFF.md`, `MIGRATION_REPORT.md`, `V34_INSTALL_REPORT.json`
+- `.v34_migration_review/` — AGENTS.md + CLAUDE.md + .DS_Store V3.4 candidates
+
+### Validation
+- Dry-run output matched prediction before apply
+- `git diff --stat` empty after install (no tracked file modified)
+- V3.4 validator: PASS
+
+### Notes for Next Agent
+V3.4 is installed and validated. `.claude/skills/` was already gitignored — reload Claude Code to pick up the new skills from `.claude/skills/`. Follow-up: reconcile V3.4 stub docs in `docs/governance/` and `docs/project/` with existing root-level equivalents; review/merge `.v34_migration_review/` candidates.
+
+---
+
 ## v2.18.1 — 2026-06-19 — Mobile-Nav CTA Label Centering
 
 **Commit:** `e0127b0` · branch `fix/mobile-responsive-20260619`

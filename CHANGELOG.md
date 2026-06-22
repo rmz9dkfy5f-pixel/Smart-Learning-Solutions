@@ -11,6 +11,22 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.19.0] — 2026-06-21
+
+**Tag:** `v2.19.0__v34-starter-kit-migration__commit-932c389`
+
+### Added
+- Project Starter Kit V3.4 migrated into repo in MIGRATE_EXISTING_PROJECT mode — 40 new files, no existing files overwritten
+- `docs/governance/` — 15 governance documents: DONE_CRITERIA, PHASE_GATES, CHANGE_CONTROL, ROLLBACK_PLAN, PROJECT_RISK_REGISTER, REPO_HEALTH_CHECK, TEST_STRATEGY, SECURITY_BASELINE, COMPATIBILITY_MATRIX, EVALS_AND_FAILURE_LOG, CONTEXT_ENGINEERING, RELEASE_GATE, AGENT_RUN_LOG
+- `docs/project/` — 9 project stubs: PROJECT_BRIEF, ARCHITECTURE, STATUS, ROADMAP, CONTEXT, DECISION_LOG, CHANGELOG, RELEASE_NOTES, COMMIT_NOTES
+- `ai/agents/AGENT_REVIEW_GATES.md`, `ai/agents/SUBAGENT_ROLES.md`
+- `ai/prompts/` — MIGRATION_AGENT_PROMPT, TASK_INTAKE, V34_AGENT_TASK_PROMPT
+- `.agents/skills/` — 4 Codex-compatible skill SKILL.md files (execution-loop, migration-loop, production-readiness, context-eval-loop)
+- `00_MIGRATION_KICKOFF.md`, `MIGRATION_REPORT.md`, `V34_INSTALL_REPORT.json`
+- `.v34_migration_review/` — V3.4 candidate versions of AGENTS.md and CLAUDE.md (existing root files preserved; candidates held for manual review/merge)
+
+---
+
 ## [2.18.1] — 2026-06-19
 
 **Tag:** `v2.18.1__mobile-nav-cta-center-fix__commit-e0127b0`
