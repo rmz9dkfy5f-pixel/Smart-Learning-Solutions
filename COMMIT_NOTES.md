@@ -6,8 +6,8 @@ commit hash, date, summary, and description.
 ---
 
 ## v2.19.0 — V3.4 Project Starter Kit Migration
-**Tag:** `v2.19.0__v34-starter-kit-migration__commit-932c389`
-**Commit:** `932c389` · branch `main` · 2026-06-21
+**Tag:** `v2.19.0__v34-starter-kit-migration__commit-2100943`
+**Commit:** `2100943` · branch `main` · 2026-06-21
 **Type:** `chore`
 
 **Summary:** chore(tooling): migrate Project Starter Kit V3.4 into repo

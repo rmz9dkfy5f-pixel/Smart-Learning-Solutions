@@ -13,7 +13,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.19.0] — 2026-06-21
 
-**Tag:** `v2.19.0__v34-starter-kit-migration__commit-932c389`
+**Tag:** `v2.19.0__v34-starter-kit-migration__commit-2100943`
 
 ### Added
 - Project Starter Kit V3.4 migrated into repo in MIGRATE_EXISTING_PROJECT mode — 40 new files, no existing files overwritten
