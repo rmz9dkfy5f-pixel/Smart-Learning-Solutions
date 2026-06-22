@@ -7,7 +7,7 @@ remains the focused current-session note and may be overwritten as work advances
 
 ## v2.19.0 — 2026-06-21 — V3.4 Project Starter Kit Migration
 
-**Commit:** `932c389` · branch `main`
+**Commit:** `2100943` · branch `main`
 
 ### Summary
 Project Starter Kit V3.4 migrated into the repo in MIGRATE_EXISTING_PROJECT mode. Non-destructive install: 40 new files added across `docs/governance/`, `docs/project/`, `ai/`, `.agents/skills/`. Existing AGENTS.md and CLAUDE.md preserved; V3.4 template versions quarantined in `.v34_migration_review/`. V3.4 validator: PASS.
