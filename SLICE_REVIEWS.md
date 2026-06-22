@@ -4,6 +4,29 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-004 — V3.4 Project Starter Kit Migration (v2.19.0)
+**Date:** 2026-06-21
+**Version:** v2.19.0
+**Commit:** `932c389`
+
+**Slice:** Install Project Starter Kit V3.4 in MIGRATE_EXISTING_PROJECT mode — governance docs, dual-agent skills, AI ops infrastructure.
+
+**Pre-review finding:** Repo was on v2.18.1 (mobile CTA fix). All tracked files clean. Untracked: `project-starter-kit-v3.4/` only. Installer dry-run confirmed 38 fresh installs, 3 conflicts (`.DS_Store`, `AGENTS.md`, `CLAUDE.md`). No existing tracked file at risk.
+
+**Changes:**
+- `docs/governance/` — 15 governance docs installed fresh (no pre-existing `docs/governance/` directory)
+- `docs/project/` — 9 project stub docs installed fresh (no pre-existing `docs/project/` directory)
+- `ai/agents/`, `ai/prompts/`, `ai/reports/` — AI ops layer installed fresh
+- `.agents/skills/` — 4 Codex skill SKILL.md files installed fresh
+- `.v34_migration_review/` — AGENTS.md and CLAUDE.md V3.4 candidates quarantined; root copies untouched
+- `00_MIGRATION_KICKOFF.md`, `MIGRATION_REPORT.md`, `V34_INSTALL_REPORT.json` — root-level install artefacts
+
+**Post-review result:** `git diff --stat` empty (zero tracked-file modifications). V3.4 validator: `Status: PASS` (exit 0) — all 22 required paths present, all 8 skill frontmatters valid.
+
+**Risk:** V3.4 stub docs in `docs/project/` and `docs/governance/` duplicate root-level equivalents — reconciliation required as a follow-up. AGENTS.md/CLAUDE.md candidates in `.v34_migration_review/` need manual review/merge.
+
+---
+
 ## SR-003 — Mobile Responsive Fixes (v2.18.0)
 **Date:** 2026-06-19
 **Version:** v2.18.0

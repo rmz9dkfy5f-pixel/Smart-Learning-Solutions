@@ -1,0 +1,75 @@
+{
+  "version": "3.4.0",
+  "timestamp": "2026-06-21T20:18:34",
+  "mode": "migrate",
+  "target": "/Users/ant/Projects/GitHub/Smart-Learning-Solutions",
+  "dry_run": false,
+  "sections": {
+    "base": {
+      "installed": [
+        ".agents/skills/v34-context-eval-loop/SKILL.md",
+        ".agents/skills/v34-execution-loop/SKILL.md",
+        ".agents/skills/v34-migration-loop/SKILL.md",
+        ".agents/skills/v34-production-readiness/SKILL.md",
+        ".claude/skills/v34-context-eval-loop/SKILL.md",
+        ".claude/skills/v34-execution-loop/SKILL.md",
+        ".claude/skills/v34-migration-loop/SKILL.md",
+        ".claude/skills/v34-production-readiness/SKILL.md",
+        "ai/.DS_Store",
+        "ai/agents/AGENT_REVIEW_GATES.md",
+        "ai/agents/SUBAGENT_ROLES.md",
+        "ai/prompts/MIGRATION_AGENT_PROMPT.md",
+        "ai/prompts/TASK_INTAKE.md",
+        "ai/prompts/V34_AGENT_TASK_PROMPT.md",
+        "ai/reports/.gitkeep",
+        "docs/governance/AGENT_RUN_LOG.md",
+        "docs/governance/CHANGE_CONTROL.md",
+        "docs/governance/COMPATIBILITY_MATRIX.md",
+        "docs/governance/CONTEXT_ENGINEERING.md",
+        "docs/governance/DONE_CRITERIA.md",
+        "docs/governance/EVALS_AND_FAILURE_LOG.md",
+        "docs/governance/PHASE_GATES.md",
+        "docs/governance/PROJECT_RISK_REGISTER.md",
+        "docs/governance/RELEASE_GATE.md",
+        "docs/governance/REPO_HEALTH_CHECK.md",
+        "docs/governance/ROLLBACK_PLAN.md",
+        "docs/governance/SECURITY_BASELINE.md",
+        "docs/governance/TEST_STRATEGY.md",
+        "docs/project/ARCHITECTURE.md",
+        "docs/project/CHANGELOG.md",
+        "docs/project/COMMIT_NOTES.md",
+        "docs/project/CONTEXT.md",
+        "docs/project/DECISION_LOG.md",
+        "docs/project/PROJECT_BRIEF.md",
+        "docs/project/RELEASE_NOTES.md",
+        "docs/project/ROADMAP.md",
+        "docs/project/STATUS.md"
+      ],
+      "skipped_identical": [],
+      "conflicts": [
+        {
+          "existing": ".DS_Store",
+          "candidate": ".v34_migration_review/.DS_Store.v34-candidate"
+        },
+        {
+          "existing": "AGENTS.md",
+          "candidate": ".v34_migration_review/AGENTS.md.v34-candidate"
+        },
+        {
+          "existing": "CLAUDE.md",
+          "candidate": ".v34_migration_review/CLAUDE.md.v34-candidate"
+        }
+      ],
+      "errors": []
+    },
+    "migration": {
+      "installed": [
+        "00_MIGRATION_KICKOFF.md",
+        "MIGRATION_REPORT.md"
+      ],
+      "skipped_identical": [],
+      "conflicts": [],
+      "errors": []
+    }
+  }
+}

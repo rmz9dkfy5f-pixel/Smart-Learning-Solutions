@@ -5,6 +5,25 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.19.0 — V3.4 Project Starter Kit Migration
+**Tag:** `v2.19.0__v34-starter-kit-migration__commit-932c389`
+**Commit:** `932c389` · branch `main` · 2026-06-21
+**Type:** `chore`
+
+**Summary:** chore(tooling): migrate Project Starter Kit V3.4 into repo
+
+**Description:**
+- Ran V3.4 installer in MIGRATE_EXISTING_PROJECT mode — 40 new files added; no existing files overwritten
+- Fresh installs: `docs/governance/` (15 governance docs), `docs/project/` (9 project docs), `ai/agents/`, `ai/prompts/`, `ai/reports/`, `.agents/skills/` (4 Codex skill SKILL.md files), `00_MIGRATION_KICKOFF.md`, `MIGRATION_REPORT.md`, `V34_INSTALL_REPORT.json`
+- Conflicts (existing files differ from V3.4 templates) quarantined to `.v34_migration_review/`: `AGENTS.md.v34-candidate`, `CLAUDE.md.v34-candidate`; existing root copies preserved unchanged
+- V3.4 validator passed: all 22 required paths present, all 8 skill frontmatters valid (`Status: PASS`, exit 0)
+- `.claude/skills/` installed but gitignored per v2.14.4 decision — reload Claude Code to activate new skills
+- Follow-up: reconcile V3.4 stub docs with existing root-level planning equivalents; review `.v34_migration_review/` candidates
+
+**Verified:** dry-run output matched prediction; `git diff --stat` empty (no tracked file modified); validator exit 0
+
+---
+
 ## v2.18.1 — Mobile-Nav CTA Label Centering
 **Tag:** `v2.18.1__mobile-nav-cta-center-fix__commit-e0127b0`
 **Commit:** `e0127b0` · branch `fix/mobile-responsive-20260619` · 2026-06-19

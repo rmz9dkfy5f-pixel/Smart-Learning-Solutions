@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.18.1 · 2026-06-19
+**Current Version:** v2.19.0 · 2026-06-21
 
 ---
 
@@ -37,6 +37,7 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 - Full production-readiness audit completed and documented — `plans/2026-06-17-website-status-audit.md` (v2.17.0)
 - Mobile responsive fixes: full-screen nav overlay, hamburger breakpoint ≤1100px, hero proof-photo crop/radius fixed, eyebrow font-size specificity fixed, CTA button colour in mobile nav — all 10 HTML files cache-busted (v2.18.0)
 - Mobile-nav CTA label centring fix: `display: flex` added to `.mobile-nav .btn` so the existing `justify-content: center` takes effect (button was a block box, label left-aligned); `main.css` cache token bumped to `?v=mobile-20260619d` across all 10 HTML files (v2.18.1)
+- Project Starter Kit V3.4 migrated into repo — 40 new files: `docs/governance/` (15 governance docs), `docs/project/` (9 project docs), `ai/` (agent prompts, roles, run logs), `.agents/skills/` (4 Codex skills), `MIGRATION_REPORT.md`, `00_MIGRATION_KICKOFF.md`, `V34_INSTALL_REPORT.json`; validator: PASS; AGENTS.md/CLAUDE.md preserved, V3.4 candidates in `.v34_migration_review/` for manual merge (v2.19.0)
 
 ---
 
@@ -63,6 +64,8 @@ See `AUDIT.md` for full findings. Open items: C-1 (Formspree), H-1 (production d
 | 1 | Create Formspree account → replace `REPLACE_ME` in `book.html` and `contact.html` | C-1 |
 | 2 | Point production domain to VPS; verify routing end-to-end | H-1 |
 | 3 | Convert `og-image.svg` to PNG/JPEG 1200×630 | M-1 |
+| 4 | Reconcile V3.4 stub docs (`docs/project/`, `docs/governance/`) with existing root-level equivalents | V3.4 follow-up |
+| 5 | Review V3.4 candidate AGENTS.md/CLAUDE.md in `.v34_migration_review/` and merge any useful additions | V3.4 follow-up |
 
 ---
 
