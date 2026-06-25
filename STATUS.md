@@ -1,12 +1,33 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.19.0 · 2026-06-21
+**Current Version:** v2.20.0 · 2026-06-25
+**Branch:** `main`
 
 ---
 
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Production-Readiness Audit — 2026-06-23 (released v2.20.0)
+
+V3.4 production-readiness audit run. Overall result: **BLOCKED for client launch** — same two
+hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result recorded in
+`docs/governance/REPO_HEALTH_CHECK.md` and `docs/governance/RELEASE_GATE.md`. Risks logged in
+`docs/governance/PROJECT_RISK_REGISTER.md` (R-002–R-004); decision logged as ADR-013.
+
+- **Added:** portable privacy policy draft at `legal/privacy-policy.md` (closes the
+  "no privacy policy" gap; owner placeholders pending). Footer link + published page are
+  deferred until the host platform is confirmed.
+- **New open decision — hosting platform:** owner indicated the site may go on **Wix**. Wix
+  cannot host this hand-coded static repo as-is (it would require a rebuild in the Wix
+  editor). This must be resolved before host-specific work (security headers/CSP, clean-URL
+  and 404 wiring, deploy-root doc exclusion) — and before investing further in this
+  codebase if the client truly moves to Wix.
+- **Held (throwaway-if-Wix):** AVIF `<picture>` fallback, form a11y (live region + focus,
+  skip link, `aria-current`), page-transition overlay safety timer, OG image conversion.
 
 ---
 
@@ -38,6 +59,7 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 - Mobile responsive fixes: full-screen nav overlay, hamburger breakpoint ≤1100px, hero proof-photo crop/radius fixed, eyebrow font-size specificity fixed, CTA button colour in mobile nav — all 10 HTML files cache-busted (v2.18.0)
 - Mobile-nav CTA label centring fix: `display: flex` added to `.mobile-nav .btn` so the existing `justify-content: center` takes effect (button was a block box, label left-aligned); `main.css` cache token bumped to `?v=mobile-20260619d` across all 10 HTML files (v2.18.1)
 - Project Starter Kit V3.4 migrated into repo — 40 new files: `docs/governance/` (15 governance docs), `docs/project/` (9 project docs), `ai/` (agent prompts, roles, run logs), `.agents/skills/` (4 Codex skills), `MIGRATION_REPORT.md`, `00_MIGRATION_KICKOFF.md`, `V34_INSTALL_REPORT.json`; validator: PASS; AGENTS.md/CLAUDE.md preserved, V3.4 candidates in `.v34_migration_review/` for manual merge (v2.19.0)
+- Production-readiness audit (V3.4) + portable doc/governance fixes: BLOCKED result recorded in `REPO_HEALTH_CHECK.md` + `RELEASE_GATE.md`; portable privacy-policy draft added at `legal/privacy-policy.md`; README version/staleness fixed; risks R-002–R-004 + ADR-013 + lessons L-012/L-013 logged (v2.20.0)
 
 ---
 

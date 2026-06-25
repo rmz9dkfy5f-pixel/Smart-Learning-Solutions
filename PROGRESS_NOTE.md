@@ -1,95 +1,65 @@
-**Updated:** v2.18.1 · 2026-06-19
+**Updated:** v2.20.0 · 2026-06-25
 
 # Progress Note — Current Session
 
-## v2.18.1 — Mobile-Nav CTA Label Centering (2026-06-19)
+## v2.20.0 — V3.4 Production-Readiness Audit + Portable Doc/Governance Fixes (2026-06-23–25)
 
-Follow-up to the v2.18.0 mobile pass. The **Request a Workshop** CTA inside the open
-mobile nav rendered with its label pinned to the left edge instead of centered. Root
-cause: `.mobile-nav a` sets `display: block` (specificity 0,1,1), which out-specified
-`.btn`'s `display: inline-flex` (0,1,0). The button was therefore a block box, so the
-`justify-content: center` already on `.mobile-nav .btn` was inert and the label fell back
-to start (left) alignment. Fixed by adding `display: flex` to `.mobile-nav .btn` (0,2,0),
-reactivating the existing centering — no markup, label, colour, or behaviour changed.
+### Summary
 
-Bumped the `main.css` cache token `?v=mobile-20260619c` → `?v=mobile-20260619d` across all
-10 HTML files so browsers fetch the corrected CSS. `components.js` was not modified and its
-token is unchanged at `?v=mobile-20260619`.
+Full V3.4 production-readiness audit run across all 10 pages, shared JS/CSS, forms, SEO,
+performance, accessibility, and deployment posture. Overall result: **BLOCKED for client
+launch** — two hard blockers unchanged from prior audits (Formspree `REPLACE_ME`; host/domain
+unconfirmed). A new critical risk surfaced: the owner indicated the site "may go on Wix,"
+which cannot host this hand-coded static repo as-is.
 
----
+Portable fixes only were executed (content + docs; no code changes). All held code fixes are
+documented for resumption once the hosting platform is confirmed.
 
-## v2.18.0 — Mobile Responsive Fixes (2026-06-19)
+### Work Completed
 
-Four-slice mobile responsive fix pass triggered by on-device iPhone screenshots
-showing menu bleed-through, cropped hero photos, faded button text, and a
-squeezed eyebrow label on mobile.
+- **V3.4 production-readiness audit** — full read-only pass; scores and findings documented
+  in `docs/governance/REPO_HEALTH_CHECK.md` and `docs/governance/RELEASE_GATE.md`
+- **Privacy policy draft** — new file `legal/privacy-policy.md`; covers all data collected via
+  forms and Plausible analytics; owner placeholders marked for legal/business details
+- **README corrected** — version updated from v2.12.2 → v2.19.0; stale "(not yet added)" image
+  note removed
+- **STATUS.md updated** — version bumped to v2.20.0; audit section added; Done entry appended;
+  ADR/risk/lesson references corrected
+- **DECISION_LOG.md** — ADR-013 filled (Wix/portable-fixes-only decision; reserved stub replaced)
+- **LESSONS_LEARNED.md** — L-012 (Wix cannot host hand-coded static sites) and L-013
+  (deploy-root = repo-root exposes internal docs) appended
+- **PHASE_GATES.md** — Gate 1 updated: privacy policy criterion added; Wix hosting risk noted
+- **docs/governance/PROJECT_RISK_REGISTER.md** — R-001 closed; R-002 (forms dead), R-003
+  (host unconfirmed / Wix incompatible), R-004 (deploy-root exposes internal docs) added
+- **BACKLOG.md** — hosting platform confirmation item added as launch blocker; M-7 and M-8
+  updated with hold conditions
 
-**Slice 1 — Full-screen nav overlay**
-Converted `.mobile-nav` from a content-height dropdown to an `inset:0` full-screen
-overlay with solid `--bg` background. Added `body.nav-open .site-header` opaque
-rule so the page `<h1>` no longer shows behind the logo while the menu is open.
-Added `closeNav()` helper; menu closes on link-tap, Escape, and `pageshow`.
-Scroll-lock resets cleanly in all exit paths.
-
-**Slice 2 — Program hero proof-photo fixes**
-Program page proof photos: `border-radius` unified to `--radius-lg`, `object-position`
-recentered to `center center`, fixed `180px` height replaced with `aspect-ratio: 16/10`
-at ≤768px. Section-break strip: same pattern with `aspect-ratio: 16/9`. Subjects are
-no longer cropped.
-
-**Slice 3 — Eyebrow font-size specificity fix**
-CSS specificity bug: `.hero-content p` (0,1,1) was overriding `.eyebrow` base rule (0,1,0)
-and inflating the eyebrow to 16px on mobile, causing it to wrap. Fixed with
-`.hero-content .eyebrow` (0,2,0) inside the ≤1100px media query.
-
-**Slice 4 — Hamburger breakpoint raised to ≤1100px**
-Measured: the full desktop header (logo + 6 nav links + CTA button) needs ~1100px. Between
-769–1099px the CTA was flexbox-squished to as little as 64px and its label was clipped.
-Raised nav-swap breakpoint to ≤1100px (ADR-011). Added `.header-cta { flex-shrink: 0 }`.
-Also fixed `.mobile-nav a.btn--primary` colour — muted-grey link rule was out-specificing
-the white button colour.
-
-Cache token bumped to `?v=mobile-20260619c` on `main.css` and `components.js` across
-all 10 HTML files.
-
----
-
-## Code Commit
-
-| Hash | Branch | Message |
-|---|---|---|
-| `ca43fb2` | `fix/mobile-responsive-20260619` | fix(mobile): full-screen nav overlay, hero crop fixes, tablet breakpoint |
-
----
-
-## Decisions Logged
-
-| ADR | Decision |
-|---|---|
-| ADR-010 | Mobile nav → full-screen overlay |
-| ADR-011 | Hamburger breakpoint raised to ≤1100px |
-
----
-
-## Files Changed
+### Files Changed
 
 | File | Change |
 |---|---|
-| `src/css/main.css` | Full-screen overlay, 1100px breakpoint, eyebrow fix, photo crop fix, CTA colour fix |
-| `src/js/components.js` | `closeNav()` helper, link-tap/Escape/pageshow resets |
-| All 10 HTML files | Cache token `?v=mobile-20260619c` |
-| `DECISION_LOG.md` | ADR-010, ADR-011 |
-| `PLAN.md` | History row added |
-| `plans/2026-06-19-mobile-responsive-fixes.md` | New plan file |
+| `README.md` | Version corrected to v2.19.0; stale image note removed |
+| `STATUS.md` | v2.20.0 bump; audit section; ADR-013 reference |
+| `docs/governance/REPO_HEALTH_CHECK.md` | Filled from empty stub with real audit findings |
+| `docs/governance/RELEASE_GATE.md` | Filled from empty stub — status BLOCKED, dated notes |
+| `docs/governance/PROJECT_RISK_REGISTER.md` | R-001 closed; R-002, R-003, R-004 added |
+| `legal/privacy-policy.md` | New — portable privacy policy draft |
+| `DECISION_LOG.md` | ADR-013 added (filled reserved stub) |
+| `LESSONS_LEARNED.md` | L-012, L-013 added |
+| `PHASE_GATES.md` | Gate 1: privacy policy criterion + Wix risk note |
+| `BACKLOG.md` | Hosting blocker item added; M-7, M-8 hold conditions noted |
+| `PROGRESS_NOTE.md` | This file |
+| `PROGRESS_NOTES.md` | v2.20.0 entry appended |
 
----
+### Held (throwaway-if-Wix — resume once host confirmed)
 
-## What's Next
+- AVIF `<picture>` fallback (`programs/pstem.html` and others)
+- Form a11y: live-region success message, focus management, skip link, `aria-current` on nav
+- Page-transition overlay safety timer (`.is-navigating` has no fallback)
+- OG image SVG → PNG/JPEG 1200×630 conversion
 
-Branch `fix/mobile-responsive-20260619` is pushed to origin.
-Merge to `main` when owner approves.
+### Launch Blockers (unchanged)
 
-**Launch blockers unchanged:**
-1. Configure Formspree — replace `REPLACE_ME` in `book.html` and `contact.html`
-2. Point production domain to VPS (74.208.9.49); verify routing end-to-end
-3. Convert `og-image.svg` to PNG/JPEG 1200×630
+1. **Formspree `REPLACE_ME`** — owner must create account; replace in `book.html` + `contact.html`
+2. **Hosting platform unconfirmed** — confirm static hosting or Wix rebuild before further code work
+3. **Production domain** — point to VPS after host decision; verify routing end-to-end

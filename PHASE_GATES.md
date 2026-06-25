@@ -47,6 +47,10 @@ The site is ready to go live. All launch blockers are resolved.
 - [ ] Forms tested end-to-end on production URL
 - [ ] Navigation tested on production URL
 - [ ] Open Graph metadata verified (og:image resolves)
+- [ ] Privacy policy published and footer link added (`legal/privacy-policy.md` draft exists; owner placeholders pending)
+
+### Known Issues at Gate 1
+- **Hosting platform unconfirmed** (R-003): owner indicated the site "may go on Wix" — Wix cannot host this hand-coded static repo as-is. This gates host-specific work (security headers/CSP, clean-URL routing, deploy-root exclusion) and renders most code-level fixes throwaway until the platform is known. See ADR-013 and L-012.
 
 ---
 

@@ -102,6 +102,33 @@ Document this in README.md and CONTRIBUTING.md (already done).
 
 ---
 
+## Platform / Deployment
+
+### L-012 — Wix cannot host a hand-coded static site
+**Context:** v2.20.0 — audit surfaced that the production host was unconfirmed and the owner
+indicated the site "may go on Wix."
+**What happened:** Code-level fixes (AVIF fallback, form a11y, OG image, overlay timer) were
+scoped and ready to execute when the Wix risk emerged. All code work was held pending platform
+confirmation to avoid investing in throwaway fixes.
+**Rule:** Confirm the hosting platform before investing in code fixes. Wix is a closed website
+builder — it cannot serve an uploaded hand-coded static repo (ES modules, multi-page HTML,
+GSAP CDN, JS-injected header/footer). A move to Wix requires a full rebuild in the Wix editor.
+Portable work (privacy policy text, repo docs) is always safe; code work is only safe once
+the platform is confirmed as a static host (Netlify, GitHub Pages, nginx, etc.).
+
+### L-013 — Deploy-root = repo-root exposes internal docs
+**Context:** v2.20.0 — deploying the repo root verbatim (as documented in `docs/DEPLOYMENT.md`
+for Netlify) would publish all repo internals publicly.
+**What happened:** The repo root contains `AUDIT.md`, `CLAUDE.md`, `plans/`, `prompts/`,
+`project-starter-kit-v3.3/`, `project-starter-kit-v3.4/`, and `docs/` with internal
+governance material. These are not intended to be public-facing.
+**Rule:** Before deploying, configure the host to exclude internal-only files. On Netlify,
+use a `netlify.toml` with `publish = "."` and add redirect/ignore rules, or restructure so
+only the publishable asset folder (`src/`, HTML pages) is the publish root. Verify by
+requesting an internal file URL (e.g. `/AUDIT.md`) and confirming it returns 404.
+
+---
+
 ## Tooling
 
 ### L-008 — robocopy exit code 1 is success

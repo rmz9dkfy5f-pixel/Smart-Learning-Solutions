@@ -136,5 +136,38 @@ The site is being prepared for client sale and production readiness. V3.4 provid
 - Neutral: V3.4 installs generic stub docs in `docs/project/` and `docs/governance/` that duplicate root-level equivalents — reconciliation is a documented follow-up, not an immediate requirement
 - Risk: AGENTS.md and CLAUDE.md V3.4 candidates in `.v34_migration_review/` require manual review — they should be merged rather than ignored long-term
 
-## ADR-013 — (next decision)
-_Reserved for future use._
+## ADR-013 — Portable-Fixes-Only Scope / Hold Throwaway-if-Wix Code Work
+**Date:** 2026-06-23
+**Version:** v2.20.0
+
+### Decision
+After the V3.4 production-readiness audit (2026-06-23) surfaced that the site's host is
+unconfirmed and the owner indicated it "may go on Wix", restrict immediate work to
+host-independent portable fixes only. Hold all code-level fixes (AVIF `<picture>` fallback,
+form a11y live region + focus + skip link + `aria-current`, page-transition overlay safety
+timer, OG image conversion) until the hosting platform is confirmed.
+
+Portable fixes executed in this window: privacy policy draft added at `legal/privacy-policy.md`
+(content survives any platform); README version/staleness corrected; governance stub docs
+(`REPO_HEALTH_CHECK.md`, `RELEASE_GATE.md`) filled with real audit findings.
+
+### Context
+Wix is a closed website builder. It cannot host a hand-coded static repo (multi-page HTML +
+ES-module imports + GSAP CDN + Formspree + JS-injected header/footer). A real move to Wix
+means rebuilding in the Wix editor, which discards most code-level work. Code fixes invested
+before the platform is confirmed are therefore throwaway under Wix.
+
+### Alternatives Considered
+- Continue all code fixes regardless of platform — rejected; wasteful if Wix is chosen
+- Halt all work until platform confirmed — rejected; portable doc/content work has value on any platform
+
+### Consequences
+- Privacy policy draft is portable and ready regardless of final platform
+- Held code fixes are documented in STATUS.md and BACKLOG.md for resumption once platform is known
+- Owner must confirm platform before further code investment is recommended
+- Risk: platform decision may delay Gate 1 indefinitely if it remains open
+
+### See Also
+- R-003 in `docs/governance/PROJECT_RISK_REGISTER.md` (unconfirmed host / Wix incompatibility)
+- L-012 in `LESSONS_LEARNED.md` (Wix cannot host hand-coded static sites)
+- `STATUS.md` — Production-Readiness Audit section

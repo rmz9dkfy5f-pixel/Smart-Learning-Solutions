@@ -2,7 +2,8 @@
 
 ## Current Status
 
-Status: Unknown until first V3.4 health check is run.
+Status: **PARTIAL / BLOCKED for launch** — see Last Health Check below. First V3.4
+production-readiness audit run 2026-06-23.
 
 ## Health Checklist
 
@@ -36,7 +37,17 @@ Status: Unknown until first V3.4 health check is run.
 
 ## Last Health Check
 
-- Date:
-- Agent:
-- Result: PASS / PARTIAL / BLOCKED / FAIL
-- Notes:
+- Date: 2026-06-23
+- Agent: Claude (V3.4 production-readiness skill)
+- Result: BLOCKED (for client launch)
+- Notes: Read-only audit of all 10 pages, `components.js`, `animations.js`, `main.css`,
+  `robots.txt`, `sitemap.xml`. Internal links and image references all resolve; no secrets
+  tracked; `.gitignore` sound; no `console`/`debugger` in shipped JS. **Hard blockers:**
+  (1) both forms POST to `REPLACE_ME` Formspree endpoint — primary conversion path is dead;
+  (2) no confirmed production host/domain. **Notable gaps:** OG image is SVG (no social
+  preview), no shipped security headers/CSP for the chosen host, deploy-root = repo-root
+  would expose internal docs publicly, no privacy policy (a portable draft was added at
+  `legal/privacy-policy.md`), AVIF image has no fallback, form success messages lack
+  live-region/focus handling. Full report and prioritised remediation plan archived with
+  the session plan file. **Open platform decision:** owner indicated the site may go on
+  Wix, which cannot host this hand-coded static repo as-is — this gates host-specific work.

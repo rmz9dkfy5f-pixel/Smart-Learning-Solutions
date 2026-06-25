@@ -1,6 +1,6 @@
 # Smart Learning Solutions
 
-**Version:** v2.12.2
+**Version:** v2.20.0
 **Status:** In Progress
 **Owner:** Smart Learning Solutions
 
@@ -51,7 +51,7 @@ Then open `http://localhost:8080` (or whichever port is shown).
 │   │   └── main.css                  ← Full design system
 │   ├── js/
 │   │   └── components.js             ← Shared header + footer
-│   └── images/                       ← Site imagery (not yet added)
+│   └── images/                       ← Site imagery
 ├── docs/
 │   ├── strategy/
 │   │   └── sls-project-context.md   ← Business context and audiences
