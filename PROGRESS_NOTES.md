@@ -5,6 +5,38 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.20.0 — 2026-06-25 — V3.4 Production-Readiness Audit + Portable Fixes
+
+**Commit:** TBD · branch `main`
+
+### Summary
+V3.4 production-readiness audit run across all 10 pages, shared JS/CSS, forms, SEO,
+accessibility, and deployment posture. Result: **BLOCKED for client launch**. New critical
+finding: owner indicated site "may go on Wix" — Wix cannot host this hand-coded static repo.
+Scope restricted to portable fixes only: privacy policy draft added, governance stubs filled,
+README corrected, ADR-013/L-012/L-013/R-002–R-004 logged. All held code fixes documented.
+
+### Work Completed
+- V3.4 production-readiness audit — full read-only pass
+- `legal/privacy-policy.md` — new portable privacy policy draft
+- `docs/governance/REPO_HEALTH_CHECK.md` — filled from empty stub with real audit findings
+- `docs/governance/RELEASE_GATE.md` — filled from empty stub — status BLOCKED
+- `docs/governance/PROJECT_RISK_REGISTER.md` — R-002, R-003, R-004 added; R-001 closed
+- `README.md` — version corrected; stale note removed
+- `STATUS.md` — v2.20.0 bump + audit section + ADR/risk/lesson references
+- `DECISION_LOG.md` — ADR-013 filled (Wix/portable-fixes-only decision)
+- `LESSONS_LEARNED.md` — L-012, L-013 added
+- `PHASE_GATES.md` — Gate 1 privacy policy criterion + Wix risk note
+- `BACKLOG.md` — hosting blocker added; M-7, M-8 hold conditions noted
+
+### Notes for Next Agent
+Two hard blockers: (1) Formspree `REPLACE_ME` in `book.html` + `contact.html`; (2) hosting
+platform unconfirmed (possible Wix rebuild). Do not invest in code fixes until platform is
+confirmed. Privacy policy draft ready at `legal/privacy-policy.md` — owner must fill
+placeholders and publish on chosen platform.
+
+---
+
 ## v2.19.0 — 2026-06-21 — V3.4 Project Starter Kit Migration
 
 **Commit:** `2100943` · branch `main`

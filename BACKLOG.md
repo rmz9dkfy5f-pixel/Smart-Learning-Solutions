@@ -16,7 +16,8 @@ These must be resolved before the site can go live.
 |---|---|---|---|
 | C-1 | Configure Formspree endpoint — replace `REPLACE_ME` in both forms | Owner (account creation required) | `book.html`, `contact.html` |
 | H-1 | ~~Confirm `/programs/` directory routing on chosen host~~ — **Resolved v2.16.1**: nginx `try_files` fixed on staging VPS; `/programs/` returns 301→200 correctly | — | — |
-| — | Point production domain to VPS (74.208.9.49) | Owner | DNS |
+| — | **Confirm hosting platform** — owner indicated site "may go on Wix"; Wix cannot host this repo as-is; must be confirmed before further code investment (R-003, ADR-013) | Owner | — |
+| — | Point production domain to VPS (74.208.9.49) — **only if static hosting confirmed** | Owner | DNS |
 
 ---
 
@@ -38,8 +39,8 @@ These must be resolved before the site can go live.
 | H-4 | Add timeout fallback to page transition overlay | `.is-navigating` has no safety timer |
 | M-4 | Remove inline style blocks where CSS classes are available | Code quality |
 | ~~M-5~~ | ~~Update CSS cache-busting query string~~ | Resolved v2.18.0: token updated to `?v=mobile-20260619c` across all 10 files |
-| M-7 | Populate `_next` redirect field in `book.html` | Empty field; Formspree uses it for post-submit redirect |
-| M-8 | Normalise email casing — `info@smartlearningsolutions.org` | `info@SmartLearningSolutions.org` inconsistent |
+| M-7 | Populate `_next` redirect field in `book.html` | Empty field; Formspree uses it for post-submit redirect — **hold until Formspree endpoint configured (C-1)** |
+| M-8 | Normalise email casing — `info@smartlearningsolutions.org` | `info@SmartLearningSolutions.org` inconsistent — **hold until hosting platform confirmed** |
 | M-9 | Add `<meta name="robots">` to pages that should not be indexed | Staging / thank-you pages |
 
 ---
