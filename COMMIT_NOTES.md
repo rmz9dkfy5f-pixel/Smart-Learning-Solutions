@@ -5,6 +5,31 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.20.0 — V3.4 Production-Readiness Audit + Portable Doc/Governance Fixes
+**Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-ed9b0bb`
+**Commit:** `ed9b0bb` · branch `main` · 2026-06-25
+**Type:** `docs`
+
+**Summary:** docs: V3.4 production-readiness audit + portable governance fixes (v2.20.0)
+
+**Description:**
+- V3.4 audit run — result BLOCKED: two hard blockers (Formspree `REPLACE_ME`; unconfirmed host); new critical risk: owner indicated site "may go on Wix" — Wix cannot host this hand-coded static repo as-is
+- Scope restricted to portable fixes only (ADR-013); all code-level fixes held until platform confirmed
+- `legal/privacy-policy.md` — new portable privacy policy draft
+- `docs/governance/REPO_HEALTH_CHECK.md` — filled from empty V3.4 stub; result PARTIAL/BLOCKED
+- `docs/governance/RELEASE_GATE.md` — filled from empty V3.4 stub; status BLOCKED
+- `docs/governance/PROJECT_RISK_REGISTER.md` — R-001 closed; R-002/R-003/R-004 added
+- `DECISION_LOG.md` — ADR-013: portable-fixes-only / hold throwaway-if-Wix code
+- `LESSONS_LEARNED.md` — L-012 (Wix incompatibility), L-013 (deploy-root exposes internals)
+- `PHASE_GATES.md` — Gate 1: privacy policy criterion + Wix risk note
+- `BACKLOG.md` — hosting blocker added; M-7/M-8 hold conditions noted
+- `README.md` — version corrected to v2.20.0; stale image note removed
+- `STATUS.md` — v2.20.0 bump + full audit section
+
+**Verified:** All 12 files staged explicitly; `git diff --cached --stat` reviewed; tag applied.
+
+---
+
 ## v2.19.0 — V3.4 Project Starter Kit Migration
 **Tag:** `v2.19.0__v34-starter-kit-migration__commit-2100943`
 **Commit:** `2100943` · branch `main` · 2026-06-21

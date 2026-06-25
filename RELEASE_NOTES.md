@@ -2,6 +2,29 @@
 
 ---
 
+## v2.20.0 — 2026-06-25 — Audit + Portable Fixes
+
+**Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-ed9b0bb`
+
+### Summary
+V3.4 production-readiness audit (result: BLOCKED). Privacy policy draft added. Governance
+stubs filled. ADR-013, L-012, L-013, R-002–R-004 logged. All code-level fixes held until
+hosting platform is confirmed (possible Wix incompatibility — see ADR-013 and R-003).
+
+### Added
+- `legal/privacy-policy.md` — portable privacy policy draft
+
+### Changed
+- `docs/governance/REPO_HEALTH_CHECK.md` — filled from empty stub; result BLOCKED
+- `docs/governance/RELEASE_GATE.md` — filled from empty stub; status BLOCKED
+- `docs/governance/PROJECT_RISK_REGISTER.md` — R-002/R-003/R-004 added; R-001 closed
+- `DECISION_LOG.md` — ADR-013 (portable-fixes-only scope)
+- `LESSONS_LEARNED.md` — L-012, L-013
+- `PHASE_GATES.md` — Gate 1 privacy policy criterion; Wix risk note
+- `BACKLOG.md`, `README.md`, `STATUS.md` — updated
+
+---
+
 ## v2.16.0 - 2026-06-16 - Toolkit
 
 **Tag:** `v2.16.0`
