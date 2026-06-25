@@ -11,6 +11,29 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.20.0] — 2026-06-25
+
+**Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-ed9b0bb`
+
+### Added
+- `legal/privacy-policy.md` — portable privacy policy draft; covers form data (name, email, phone, org, program, group size, age range, dates, location, message), Plausible cookieless analytics, and third-party processors (Formspree, Plausible, Google Fonts, Cloudflare cdnjs); owner placeholders marked for legal details
+- `docs/governance/PROJECT_RISK_REGISTER.md` — R-002 (forms dead / REPLACE_ME), R-003 (host unconfirmed / Wix incompatible), R-004 (deploy-root exposes internal docs); R-001 closed
+
+### Changed
+- `docs/governance/REPO_HEALTH_CHECK.md` — filled from empty V3.4 stub with real V3.4 audit findings (PARTIAL/BLOCKED result, dated 2026-06-23)
+- `docs/governance/RELEASE_GATE.md` — filled from empty V3.4 stub; status BLOCKED; dated blockers and remediation notes
+- `DECISION_LOG.md` — ADR-013 added: portable-fixes-only scope / hold throwaway-if-Wix code work
+- `LESSONS_LEARNED.md` — L-012 (Wix cannot host hand-coded static sites), L-013 (deploy-root = repo-root exposes internal docs)
+- `PHASE_GATES.md` — Gate 1: privacy policy criterion added; Wix hosting risk documented
+- `BACKLOG.md` — hosting platform confirmation added as launch blocker; M-7, M-8 updated with hold conditions
+- `README.md` — version corrected to v2.20.0; stale "(not yet added)" image note removed
+- `STATUS.md` — v2.20.0 bump; audit section added; ADR-013/R-002–R-004/L-012–L-013 referenced; Done entry appended
+
+### Held (deferred until hosting platform confirmed)
+- AVIF `<picture>` fallback, form a11y (live region, focus, skip link, `aria-current`), page-transition safety timer, OG image SVG→PNG
+
+---
+
 ## [2.19.0] — 2026-06-21
 
 **Tag:** `v2.19.0__v34-starter-kit-migration__commit-2100943`

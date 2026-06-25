@@ -7,7 +7,7 @@ remains the focused current-session note and may be overwritten as work advances
 
 ## v2.20.0 — 2026-06-25 — V3.4 Production-Readiness Audit + Portable Fixes
 
-**Commit:** TBD · branch `main`
+**Commit:** `ed9b0bb` · branch `main`
 
 ### Summary
 V3.4 production-readiness audit run across all 10 pages, shared JS/CSS, forms, SEO,
