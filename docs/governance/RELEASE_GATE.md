@@ -39,12 +39,14 @@ A project is not release-ready until these checks are complete or explicitly wai
 ## Release Decision
 
 - Status: BLOCKED (not release-ready)
-- Date: 2026-06-23
+- Date: 2026-06-27 (re-confirmed; first assessed 2026-06-23)
 - Approver: Pending owner — assessed by Claude (V3.4 production-readiness audit)
 - Notes: Two hard blockers prevent launch: (1) forms wired to `REPLACE_ME` Formspree
-  endpoint (owner must create the account and replace it in `book.html` and `contact.html`);
-  (2) production host + domain not confirmed. Forms, security headers, OG image, AVIF
-  fallback, form a11y, and a privacy policy must be addressed before collecting live user
-  data. A portable privacy policy draft was added at `legal/privacy-policy.md`. Re-run this
-  gate after blockers are cleared and a live staging verification pass (Lighthouse,
-  responsive, cross-browser, screen reader, end-to-end form test) is complete.
+  endpoint — owner must create account and replace in `book.html:108` and `contact.html:121`;
+  (2) production host + domain not confirmed (Wix incompatibility unresolved per ADR-013).
+  Held until host confirmed: security headers (server-level), OG image PNG/JPEG conversion,
+  AVIF fallback, form a11y, overlay safety timer, internal-doc exclusion from deploy root.
+  Privacy policy draft exists at `legal/privacy-policy.md` — owner must fill placeholders
+  and publish. C-2 (cursor CSS gate) confirmed fixed in current code. Re-run this gate after
+  blockers are cleared and a live staging verification pass (Lighthouse, responsive,
+  cross-browser, screen reader, end-to-end form test) is complete.
