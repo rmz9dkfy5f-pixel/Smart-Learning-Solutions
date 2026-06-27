@@ -7,7 +7,7 @@ remains the focused current-session note and may be overwritten as work advances
 
 ## v2.21.0 — 2026-06-27 — Second Production-Readiness Audit + Documentation
 
-**Commit:** pending · branch `audit/production-readiness`
+**Commit:** `639159d` · branch `audit/production-readiness`
 
 ### Summary
 Second V3.4 production-readiness audit. Result: **BLOCKED** — same two hard blockers (Formspree
