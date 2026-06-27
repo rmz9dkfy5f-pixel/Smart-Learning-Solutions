@@ -11,6 +11,29 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.21.0] — 2026-06-27
+
+**Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-639159d`
+
+### Changed
+- `STATUS.md` — second production-readiness audit section added (2026-06-27 scorecard); version bumped to v2.21.0
+- `docs/governance/REPO_HEALTH_CHECK.md` — Last Health Check updated to 2026-06-27 (multi-agent audit pass); prior 2026-06-23 entry preserved as Previous Health Check
+- `docs/governance/RELEASE_GATE.md` — Release Decision date re-confirmed 2026-06-27; C-2 (cursor CSS gate) confirmed fixed; held items list clarified
+- `PROGRESS_NOTE.md` — current session note for v2.21.0
+- `PROGRESS_NOTES.md` — v2.21.0 entry appended
+
+### Confirmed Fixed
+- C-2 cursor CSS gate (`src/css/main.css:135-142`) — `cursor: none` correctly gated by `body.custom-cursor-enabled`; prior AUDIT.md entry was stale (fixed in `43ee9f4`, v2.15.3)
+
+### Held (unchanged — deferred until hosting platform confirmed per ADR-013)
+- Formspree endpoint (`REPLACE_ME` in `book.html`, `contact.html`)
+- Internal-doc exclusion from deploy root
+- OG image SVG → PNG/JPEG conversion
+- AVIF `<picture>` fallback, form a11y, overlay safety timer
+- Security headers at server level, privacy policy publish + footer link
+
+---
+
 ## [2.20.0] — 2026-06-25
 
 **Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-ed9b0bb`

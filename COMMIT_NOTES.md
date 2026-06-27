@@ -5,6 +5,26 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.21.0 — Second Production-Readiness Audit + Documentation Update
+**Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-639159d`
+**Commit:** `639159d` · branch `audit/production-readiness` · 2026-06-27
+**Type:** `docs`
+
+**Summary:** docs(audit): second production-readiness audit + doc update (v2.21.0)
+
+**Description:**
+- Second V3.4 production-readiness audit run 2026-06-27; multi-agent read-only pass across all 10 pages, JS/CSS, images, forms, SEO, a11y, security, deployment config, and all governance docs
+- Result: BLOCKED — same two hard blockers as v2.20.0 (Formspree `REPLACE_ME` in `book.html:108` + `contact.html:121`; hosting platform unconfirmed per ADR-013)
+- Notable confirmation: C-2 (cursor CSS gate) verified fixed in current code at `src/css/main.css:135-142`; prior AUDIT.md entry was stale
+- No code changes; all held per ADR-013 pending hosting platform decision
+- `STATUS.md` — v2.21.0 audit section + full scorecard added
+- `docs/governance/REPO_HEALTH_CHECK.md` — Last Health Check updated to 2026-06-27; prior entry preserved as Previous
+- `docs/governance/RELEASE_GATE.md` — Release Decision date re-confirmed 2026-06-27; C-2 fix noted; held items clarified
+
+**Verified:** All 5 files staged explicitly; `git diff` reviewed; commits `639159d` + `fb0d52e` confirmed on remote.
+
+---
+
 ## v2.20.0 — V3.4 Production-Readiness Audit + Portable Doc/Governance Fixes
 **Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-ed9b0bb`
 **Commit:** `ed9b0bb` · branch `main` · 2026-06-25
