@@ -1,65 +1,55 @@
-**Updated:** v2.20.0 · 2026-06-25
+**Updated:** v2.21.0 · 2026-06-27
 
 # Progress Note — Current Session
 
-## v2.20.0 — V3.4 Production-Readiness Audit + Portable Doc/Governance Fixes (2026-06-23–25)
+## v2.21.0 — Second Production-Readiness Audit + Documentation (2026-06-27)
 
 ### Summary
 
-Full V3.4 production-readiness audit run across all 10 pages, shared JS/CSS, forms, SEO,
-performance, accessibility, and deployment posture. Overall result: **BLOCKED for client
-launch** — two hard blockers unchanged from prior audits (Formspree `REPLACE_ME`; host/domain
-unconfirmed). A new critical risk surfaced: the owner indicated the site "may go on Wix,"
-which cannot host this hand-coded static repo as-is.
+Second V3.4 production-readiness audit run across all 10 pages, shared JS/CSS, forms, images,
+SEO, accessibility, security posture, deployment config, and all governance docs. Overall
+result: **BLOCKED for client launch** — same two hard blockers as v2.20.0 (Formspree
+`REPLACE_ME`; hosting platform unconfirmed). No code changes executed; all held per ADR-013.
 
-Portable fixes only were executed (content + docs; no code changes). All held code fixes are
-documented for resumption once the hosting platform is confirmed.
+One notable confirmation surfaced: **C-2 (cursor CSS gate) is already fixed** in the current
+codebase (git commit `43ee9f4`). The AUDIT.md entry describing C-2 as open is stale. Current
+`src/css/main.css:135-142` correctly gates `cursor: none` behind `body.custom-cursor-enabled`.
+
+Full audit report archived in plan file `~/.claude/plans/encapsulated-sauteeing-mist.md`.
 
 ### Work Completed
 
-- **V3.4 production-readiness audit** — full read-only pass; scores and findings documented
-  in `docs/governance/REPO_HEALTH_CHECK.md` and `docs/governance/RELEASE_GATE.md`
-- **Privacy policy draft** — new file `legal/privacy-policy.md`; covers all data collected via
-  forms and Plausible analytics; owner placeholders marked for legal/business details
-- **README corrected** — version updated from v2.12.2 → v2.19.0; stale "(not yet added)" image
-  note removed
-- **STATUS.md updated** — version bumped to v2.20.0; audit section added; Done entry appended;
-  ADR/risk/lesson references corrected
-- **DECISION_LOG.md** — ADR-013 filled (Wix/portable-fixes-only decision; reserved stub replaced)
-- **LESSONS_LEARNED.md** — L-012 (Wix cannot host hand-coded static sites) and L-013
-  (deploy-root = repo-root exposes internal docs) appended
-- **PHASE_GATES.md** — Gate 1 updated: privacy policy criterion added; Wix hosting risk noted
-- **docs/governance/PROJECT_RISK_REGISTER.md** — R-001 closed; R-002 (forms dead), R-003
-  (host unconfirmed / Wix incompatible), R-004 (deploy-root exposes internal docs) added
-- **BACKLOG.md** — hosting platform confirmation item added as launch blocker; M-7 and M-8
-  updated with hold conditions
+- **Production-readiness audit** — multi-agent read-only pass (3 parallel explore agents)
+  covering all pages, JS/CSS, images, forms, security, SEO, a11y, performance, deployment
+- **STATUS.md** — new audit section added (v2.21.0 scorecard); version bumped
+- **docs/governance/REPO_HEALTH_CHECK.md** — Last Health Check updated to 2026-06-27;
+  prior entry moved to Previous Health Check
+- **docs/governance/RELEASE_GATE.md** — Release Decision re-confirmed, date updated,
+  C-2 fix noted, held items clarified
+- **PROGRESS_NOTE.md** — this file
+- **PROGRESS_NOTES.md** — v2.21.0 entry appended
 
 ### Files Changed
 
 | File | Change |
 |---|---|
-| `README.md` | Version corrected to v2.19.0; stale image note removed |
-| `STATUS.md` | v2.20.0 bump; audit section; ADR-013 reference |
-| `docs/governance/REPO_HEALTH_CHECK.md` | Filled from empty stub with real audit findings |
-| `docs/governance/RELEASE_GATE.md` | Filled from empty stub — status BLOCKED, dated notes |
-| `docs/governance/PROJECT_RISK_REGISTER.md` | R-001 closed; R-002, R-003, R-004 added |
-| `legal/privacy-policy.md` | New — portable privacy policy draft |
-| `DECISION_LOG.md` | ADR-013 added (filled reserved stub) |
-| `LESSONS_LEARNED.md` | L-012, L-013 added |
-| `PHASE_GATES.md` | Gate 1: privacy policy criterion + Wix risk note |
-| `BACKLOG.md` | Hosting blocker item added; M-7, M-8 hold conditions noted |
+| `STATUS.md` | v2.21.0 audit section + scorecard added |
+| `docs/governance/REPO_HEALTH_CHECK.md` | Last Health Check updated to 2026-06-27; prior preserved |
+| `docs/governance/RELEASE_GATE.md` | Release Decision date + notes updated |
 | `PROGRESS_NOTE.md` | This file |
-| `PROGRESS_NOTES.md` | v2.20.0 entry appended |
-
-### Held (throwaway-if-Wix — resume once host confirmed)
-
-- AVIF `<picture>` fallback (`programs/pstem.html` and others)
-- Form a11y: live-region success message, focus management, skip link, `aria-current` on nav
-- Page-transition overlay safety timer (`.is-navigating` has no fallback)
-- OG image SVG → PNG/JPEG 1200×630 conversion
+| `PROGRESS_NOTES.md` | v2.21.0 entry appended |
 
 ### Launch Blockers (unchanged)
 
-1. **Formspree `REPLACE_ME`** — owner must create account; replace in `book.html` + `contact.html`
-2. **Hosting platform unconfirmed** — confirm static hosting or Wix rebuild before further code work
-3. **Production domain** — point to VPS after host decision; verify routing end-to-end
+1. **Formspree `REPLACE_ME`** — owner must create Formspree account; replace in `book.html:108` + `contact.html:121`
+2. **Hosting platform unconfirmed** — confirm static hosting (Netlify / GitHub Pages / nginx) or Wix rebuild before any further code investment
+
+### Held (throwaway-if-Wix — resume once host confirmed)
+
+- Internal-doc exclusion from deploy root (R-004)
+- OG image SVG → PNG/JPEG 1200×630 (M-1)
+- AVIF `<picture>` fallback (`programs/pstem.html`)
+- Form a11y: live-region success message, focus management, skip link, `aria-current`
+- Page-transition overlay safety timer (H-4)
+- Security headers at server level (`docs/DEPLOYMENT.md §7`)
+- Privacy policy publish + footer link (draft ready at `legal/privacy-policy.md`)

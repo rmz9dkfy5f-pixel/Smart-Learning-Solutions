@@ -5,6 +5,25 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.21.0 — 2026-06-27 — Second Production-Readiness Audit + Documentation
+
+**Commit:** pending · branch `audit/production-readiness`
+
+### Summary
+Second V3.4 production-readiness audit. Result: **BLOCKED** — same two hard blockers (Formspree
+`REPLACE_ME`; hosting platform unconfirmed). Notable confirmation: C-2 (cursor CSS gate) is
+verified fixed in current code (`src/css/main.css:135-142`); AUDIT.md entry is stale. No code
+changes; docs updated. Full audit report in plan file.
+
+### Work Completed
+- Multi-agent read-only audit pass (3 parallel explore agents)
+- `STATUS.md` — v2.21.0 audit section + scorecard added
+- `docs/governance/REPO_HEALTH_CHECK.md` — Last Health Check updated to 2026-06-27
+- `docs/governance/RELEASE_GATE.md` — Release Decision date + notes updated
+- `PROGRESS_NOTE.md` + `PROGRESS_NOTES.md` — session logged
+
+---
+
 ## v2.20.0 — 2026-06-25 — V3.4 Production-Readiness Audit + Portable Fixes
 
 **Commit:** `ed9b0bb` · branch `main`

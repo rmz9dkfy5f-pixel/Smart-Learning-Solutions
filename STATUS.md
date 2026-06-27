@@ -11,6 +11,32 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 
 ---
 
+## Production-Readiness Audit — 2026-06-27 (v2.21.0)
+
+Second V3.4 production-readiness audit run. Overall result: **BLOCKED for client launch** —
+same two hard blockers as v2.20.0. Full audit report in plan file
+`~/.claude/plans/encapsulated-sauteeing-mist.md`. No code changes executed (all held per
+ADR-013 until hosting platform confirmed). One notable confirmation: **C-2 (cursor CSS gate)
+is verified fixed** in current code — `cursor: none` is gated by `body.custom-cursor-enabled`
+at `src/css/main.css:135-142`; AUDIT.md entry is stale.
+
+### Scorecard (2026-06-27)
+
+| Category | Status | Notes |
+|---|---|---|
+| Build/runtime | Pass | No build step; `npx serve .` works; ES modules documented |
+| Routes/pages | Pass | 10 pages; `programs/` routing verified; custom 404 present |
+| Booking/forms | **Fail** | Both forms POST to `REPLACE_ME`; zero conversion possible |
+| Security/auth | Fail | No secrets exposed; SRI present; but security headers not applied at server |
+| Accessibility | Pass (with gaps) | ARIA, focus states, form validation; gaps: form success a11y, skip links |
+| SEO/social | Pass (with gaps) | Canonical, OG, Twitter, robots, sitemap; gap: OG image is SVG |
+| Performance | Pass | WebP + responsive `<picture>`; lazy loading; deferred scripts |
+| Deployment/HTTPS | **Fail** | Platform unconfirmed; no live config; no HTTPS yet |
+| Observability | Pass (minimal) | Plausible configured; form failures visible in Formspree dashboard |
+| Documentation/handoff | Pass | README, ARCHITECTURE, DEPLOYMENT, CHANGELOG, PHASE_GATES, DECISION_LOG current |
+
+---
+
 ## Production-Readiness Audit — 2026-06-23 (released v2.20.0)
 
 V3.4 production-readiness audit run. Overall result: **BLOCKED for client launch** — same two
