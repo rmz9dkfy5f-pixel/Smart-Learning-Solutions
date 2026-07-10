@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.20.0 · 2026-06-25
+**Current Version:** v2.22.0 · 2026-07-10
 **Branch:** `main`
 
 ---
@@ -86,6 +86,8 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 - Mobile-nav CTA label centring fix: `display: flex` added to `.mobile-nav .btn` so the existing `justify-content: center` takes effect (button was a block box, label left-aligned); `main.css` cache token bumped to `?v=mobile-20260619d` across all 10 HTML files (v2.18.1)
 - Project Starter Kit V3.4 migrated into repo — 40 new files: `docs/governance/` (15 governance docs), `docs/project/` (9 project docs), `ai/` (agent prompts, roles, run logs), `.agents/skills/` (4 Codex skills), `MIGRATION_REPORT.md`, `00_MIGRATION_KICKOFF.md`, `V34_INSTALL_REPORT.json`; validator: PASS; AGENTS.md/CLAUDE.md preserved, V3.4 candidates in `.v34_migration_review/` for manual merge (v2.19.0)
 - Production-readiness audit (V3.4) + portable doc/governance fixes: BLOCKED result recorded in `REPO_HEALTH_CHECK.md` + `RELEASE_GATE.md`; portable privacy-policy draft added at `legal/privacy-policy.md`; README version/staleness fixed; risks R-002–R-004 + ADR-013 + lessons L-012/L-013 logged (v2.20.0)
+- Second production-readiness audit pass: BLOCKED result unchanged (v2.21.0); `main` fast-forwarded to this work after it sat unmerged on `audit/production-readiness` for two weeks
+- Mandatory Model Selection Gate adopted repo-wide (`MODEL_SELECTION_GATE.md`, `PROMPT_MODEL_SELECTION_GATE.md`) — see ADR-014; stale `project-starter-kit-v3.3/`/`v3.4/` template folders (and gitignored leftovers) fully removed (v2.22.0)
 
 ---
 

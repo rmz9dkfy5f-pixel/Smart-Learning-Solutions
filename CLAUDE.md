@@ -107,3 +107,10 @@ This repo uses the v2 project-control planning system (adopted v2.15.0).
 | `LESSONS_LEARNED.md` | Process, technical, and tooling lessons |
 | `PROGRESS_NOTES.md` | Session log index (active log is `PROGRESS_NOTE.md`) |
 | `PROJECT_BRIEF.md` | One-page project summary |
+
+## Mandatory Model Selection Gate
+
+Before substantial AI-assisted work, read `MODEL_SELECTION_GATE.md` and show its complete Model
+Selection Brief. Do not begin implementation until the brief has been shown. When VS Code is the
+current surface, compare both Codex in VS Code and Claude Code in VS Code, then select a primary
+and fallback executor. The visible picker overrides dated model examples.
