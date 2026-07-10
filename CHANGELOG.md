@@ -13,7 +13,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.22.0] — 2026-07-10
 
-**Tag:** `v2.22.0__model-selection-gate__commit-PENDING`
+**Tag:** `v2.22.0__model-selection-gate__commit-51cdd56`
 
 ### Added
 - `MODEL_SELECTION_GATE.md` — mandatory Model Selection Brief template (task classification,
