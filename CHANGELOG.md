@@ -11,6 +11,37 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.22.0] — 2026-07-10
+
+**Tag:** `v2.22.0__model-selection-gate__commit-PENDING`
+
+### Added
+- `MODEL_SELECTION_GATE.md` — mandatory Model Selection Brief template (task classification,
+  per-surface routing table, VS Code Codex-vs-Claude-Code choice, execution/escalation section)
+  and routing rules, ported from the AntBrainOS vault-wide 2026-07-08 rollout applied to ten
+  active repos
+- `PROMPT_MODEL_SELECTION_GATE.md` — paste-ready prompt version of the same gate for use outside
+  an agent session
+
+### Changed
+- `AGENTS.md`, `CLAUDE.md` — added "Mandatory Model Selection Gate" section requiring the brief
+  be shown before substantial AI-assisted work begins
+- `ai/prompts/TASK_INTAKE.md` — added a line requiring `PROMPT_MODEL_SELECTION_GATE.md` to be
+  run and its brief attached before execution
+- `docs/governance/AGENT_RUN_LOG.md` — added a "Model Usage Record" section for logging which
+  tool/model/effort was used per run and whether it was sufficient
+
+### Notes
+- These files were added repo-wide across ten AntBrainOS-tracked repos on 2026-07-08 and
+  deliberately left uncommitted pending per-repo review; this release is that review for Smart
+  Learning Solutions specifically. See ADR-014 in `DECISION_LOG.md`.
+- Also folded in during this pass: `main` was fast-forwarded to the previously unmerged
+  `origin/audit/production-readiness` branch (v2.21.0, already tagged/released below — no new
+  content, just bringing `main` current), and the stale `project-starter-kit-v3.3/`/`v3.4/`
+  template folders (including gitignored leftovers `git rm` couldn't touch) were fully removed.
+
+---
+
 ## [2.21.0] — 2026-06-27
 
 **Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-639159d`

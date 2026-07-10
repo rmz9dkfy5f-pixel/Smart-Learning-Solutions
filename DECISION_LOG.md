@@ -171,3 +171,45 @@ before the platform is confirmed are therefore throwaway under Wix.
 - R-003 in `docs/governance/PROJECT_RISK_REGISTER.md` (unconfirmed host / Wix incompatibility)
 - L-012 in `LESSONS_LEARNED.md` (Wix cannot host hand-coded static sites)
 - `STATUS.md` — Production-Readiness Audit section
+
+## ADR-014 — Adopt Mandatory Model Selection Gate
+**Date:** 2026-07-10
+**Version:** v2.22.0
+
+### Decision
+Adopt a mandatory Model Selection Gate: before substantial AI-assisted work, show a Model
+Selection Brief (task classification, risk, per-surface routing, VS Code Codex-vs-Claude-Code
+choice, execution/escalation plan) and do not begin implementation until it has been shown.
+Added `MODEL_SELECTION_GATE.md` (full brief + routing rules) and
+`PROMPT_MODEL_SELECTION_GATE.md` (paste-ready prompt form), referenced from `AGENTS.md`,
+`CLAUDE.md`, `ai/prompts/TASK_INTAKE.md`, and `docs/governance/AGENT_RUN_LOG.md` (new "Model
+Usage Record" section for logging which tool/model/effort was actually used).
+
+### Reason
+This repo is now worked by multiple AI tools/surfaces (Claude Code, Codex, potentially others)
+across VS Code and standalone. An explicit, shown-every-time gate prevents silently defaulting
+to whichever tool is open and makes the model/effort choice auditable per run.
+
+### Context
+These files were rolled out repo-wide across ten AntBrainOS-tracked repos on 2026-07-08 as
+part of a vault-wide governance pass, and deliberately left uncommitted in each repo pending
+individual review. This ADR is that review for Smart Learning Solutions: the diffs are
+doc-only and additive, consistent with the pattern applied to the other nine repos.
+
+### Alternatives Considered
+- Leave the gate files uncommitted indefinitely — rejected; an unreviewed, uncommitted gate
+  doesn't actually gate anything for future sessions or other agents cloning the repo
+- Skip the gate for this repo (static marketing site, low architectural complexity) —
+  rejected; low complexity doesn't remove the value of an auditable model-choice record
+
+### Consequences
+- Every substantial task going forward should show the brief before implementation (see this
+  session's own use of it, folded into the same v2.22.0 pass)
+- `docs/governance/AGENT_RUN_LOG.md` now has a place to record actual model usage per run —
+  currently empty/optional until the next run populates it
+- No code, content, or business-decision impact — process/governance only
+
+### See Also
+- ADR-012 (Project Starter Kit V3.4 adoption — same category of AI-ops governance tooling)
+- `MODEL_SELECTION_GATE.md`, `PROMPT_MODEL_SELECTION_GATE.md`
+- AntBrainOS vault: `00_START_HERE/AGENT_HANDOFF.md`, "Model Selection Gate Rollout — 2026-07-08"

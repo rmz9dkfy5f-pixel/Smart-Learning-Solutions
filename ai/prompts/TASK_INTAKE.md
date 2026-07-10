@@ -29,3 +29,5 @@ Use this before giving an agent a substantial task.
 ## Stop Conditions
 
 [When should the agent stop instead of continuing?]
+
+Before execution, run `PROMPT_MODEL_SELECTION_GATE.md` and attach the resulting brief.
