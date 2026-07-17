@@ -4,12 +4,10 @@ Decisions pending owner input. Nothing in this list should be resolved by Claude
 
 ---
 
-## OD-001 — Formspree Endpoint
-**Status:** Still open — owner confirmed not yet available (2026-04-24)
-**Blocking:** Forms going live — `REPLACE_ME` placeholder remains in both files
-**Question:** What is the Formspree form endpoint URL for the workshop enquiry form and contact form?
-**Action required:** Create a Formspree account at formspree.io, create a form, and replace `REPLACE_ME` in `book.html` and `contact.html` with the endpoint URL (e.g. `https://formspree.io/f/YOUR_ID`).
-**Files affected:** `book.html`, `contact.html`
+## OD-001 — Form Backend (was: Formspree Endpoint)
+**Status:** Resolved 2026-07-16 — owner switched providers and supplied a Web3Forms access key directly (not a Formspree endpoint)
+**Resolution:** Both forms migrated to Web3Forms (`https://api.web3forms.com/submit`). Access key centralized in `src/js/web3forms-config.js`. Changes are on branch `feat/web3forms-integration`, uncommitted pending owner review. See `plans/2026-07-16-web3forms-migration.md`.
+**Files affected:** `book.html`, `contact.html`, `src/js/web3forms-config.js`
 
 ---
 

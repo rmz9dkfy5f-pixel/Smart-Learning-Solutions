@@ -9,6 +9,25 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [Unreleased]
 
+### Changed
+- Migrated `book.html` and `contact.html` from Formspree to Web3Forms, resolving the C-1 /
+  OD-001 / R-002 launch blocker (`REPLACE_ME` placeholder). Access key centralized in new
+  `src/js/web3forms-config.js`, imported by both forms.
+- Added `botcheck` honeypot spam protection, an accessible `role="status"` loading/error region,
+  a 15s request timeout via `AbortController`, and a duplicate-submission guard to both forms,
+  replacing the previous `alert()`-based error handling.
+- Updated `.env.example`, `README.md`, `ARCHITECTURE.md`, `ROADMAP.md`, `BACKLOG.md`,
+  `PHASE_GATES.md`, `STATUS.md`, `docs/DEPLOYMENT.md`, `docs/TESTING.md`, `docs/STRATEGY.md`,
+  `docs/governance/PROJECT_RISK_REGISTER.md`, `plans/open-decisions.md` (OD-001), and
+  `legal/privacy-policy.md` to reflect Web3Forms as the form provider.
+
+### Notes
+- Work done on branch `feat/web3forms-integration`; see
+  `plans/2026-07-16-web3forms-migration.md` for the full slice plan. Uncommitted pending owner
+  review — version number and release tag to be assigned at commit time.
+- Deployed-domain verification is still blocked on OD-003 (hosting platform not yet chosen);
+  only local submission was verified in this pass.
+
 ---
 
 ## [2.22.0] — 2026-07-10

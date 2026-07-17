@@ -33,7 +33,7 @@ Install the Live Server extension, right-click `index.html` → "Open with Live 
 
 Before deploying to production:
 
-- [ ] Formspree endpoint in `book.html` and `contact.html` is replaced (search for `REPLACE_ME`)
+- [x] Web3Forms access key configured in `src/js/web3forms-config.js` (migrated from Formspree 2026-07-16)
 - [ ] All nav links resolve (no 404s)
 - [ ] `/programs/` serves `programs/index.html`
 - [ ] `sitemap.xml` URLs match the production domain
@@ -64,7 +64,7 @@ Before deploying to production:
 
 ## 5. Environment Variables
 
-This site has no server-side environment variables. The only sensitive value is the Formspree endpoint URL, which is embedded in HTML source. Keep it out of public-facing documentation.
+This site has no server-side environment variables. The Web3Forms access key is embedded in `src/js/web3forms-config.js` and delivered client-side — it is a public form identifier, not a secret, per Web3Forms' own documentation.
 
 `.env.example` is included for completeness — it has no active entries for this project.
 
@@ -85,7 +85,7 @@ add_header X-Content-Type-Options "nosniff" always;
 add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()" always;
 add_header X-Frame-Options "SAMEORIGIN" always;
-add_header Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://plausible.io 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io https://plausible.io; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'self'" always;
+add_header Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://plausible.io 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://plausible.io; base-uri 'self'; form-action 'self' https://api.web3forms.com; frame-ancestors 'self'" always;
 ```
 
 Only add HSTS after HTTPS is final and working for the canonical production domain:
@@ -124,7 +124,7 @@ git push origin main --force
 
 | Risk | Impact | Mitigation |
 |---|---|---|
-| `REPLACE_ME` Formspree endpoint deployed | Contact and booking forms silently fail | Pre-deploy checklist item |
+| Empty/invalid Web3Forms access key deployed | Contact and booking forms silently fail (fails safe with an inline status message, not a fake success) | Pre-deploy checklist item; key lives in `src/js/web3forms-config.js` |
 | Canonical URLs pointing to wrong domain | SEO impact | Update before domain switch |
 | ES module path differences between local and production | Components fail to load | Always test on a local server, not `file://` |
 | Staging indexed by search engines | Duplicate unfinished pages may appear in search | Send staging-only `X-Robots-Tag: noindex, nofollow, noarchive` |

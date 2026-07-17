@@ -116,7 +116,7 @@ respond to enquiries:
 
 | Provider | Purpose | Their privacy policy |
 |---|---|---|
-| Formspree | Receives and forwards your form submissions to us by email | https://formspree.io/legal/privacy-policy/ |
+| Web3Forms | Receives and forwards your form submissions to us by email | https://web3forms.com/privacy |
 | Plausible Analytics | Cookie-free, aggregate website analytics | https://plausible.io/data-policy |
 | Google Fonts | Serves the website's fonts (may receive your IP) | https://policies.google.com/privacy |
 | Cloudflare (cdnjs) | Serves an animation library (may receive your IP) | https://www.cloudflare.com/privacypolicy/ |

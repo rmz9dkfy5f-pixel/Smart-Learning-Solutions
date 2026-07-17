@@ -132,7 +132,7 @@
 |---|---|---|---|
 | Real testimonials available? | Trust signal; can't fabricate | Business owner | Yes — placeholder until provided |
 | Workshop photography available? | Hero and program imagery needed | Business owner | Yes — placeholder images for now |
-| Formspree endpoint confirmed? | Book and contact forms broken without it | Business owner | Yes — clearly marked REPLACE_ME |
+| ~~Formspree endpoint confirmed?~~ | Resolved 2026-07-16 — owner chose Web3Forms instead and supplied a live access key | Business owner | Resolved |
 | Target geographic markets? | May affect copy tone and SEO keywords | Business owner | Yes — national/worldwide for now |
 
 ## 11. Source-of-Truth Rules

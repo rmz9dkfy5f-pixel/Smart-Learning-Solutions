@@ -14,7 +14,7 @@ These must be resolved before the site can go live.
 
 | ID | Item | Owner | Files |
 |---|---|---|---|
-| C-1 | Configure Formspree endpoint — replace `REPLACE_ME` in both forms | Owner (account creation required) | `book.html`, `contact.html` |
+| C-1 | ~~Configure Formspree endpoint — replace `REPLACE_ME` in both forms~~ — **Resolved 2026-07-16**: migrated to Web3Forms with a live access key in `src/js/web3forms-config.js` (uncommitted — pending owner review) | — | `book.html`, `contact.html` |
 | H-1 | ~~Confirm `/programs/` directory routing on chosen host~~ — **Resolved v2.16.1**: nginx `try_files` fixed on staging VPS; `/programs/` returns 301→200 correctly | — | — |
 | — | **Confirm hosting platform** — owner indicated site "may go on Wix"; Wix cannot host this repo as-is; must be confirmed before further code investment (R-003, ADR-013) | Owner | — |
 | — | Point production domain to VPS (74.208.9.49) — **only if static hosting confirmed** | Owner | DNS |

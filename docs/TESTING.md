@@ -47,10 +47,12 @@ Before committing any change to an HTML page, CSS file, or `components.js`:
 - [ ] Empty required fields block submission
 - [ ] Invalid email addresses block submission
 - [ ] Overlong values are constrained by field limits
-- [ ] Form does not submit to `REPLACE_ME` endpoint in production
+- [ ] Form shows an inline "not configured" message instead of submitting if the Web3Forms access key is empty
+- [ ] Honeypot (`botcheck`) field is hidden and not keyboard-focusable
+- [ ] Double-click / rapid resubmit only sends one request
 - [ ] Submit button shows a loading/sent state
-- [ ] Error message shown if submission fails
-- [ ] Success message shown on successful submission
+- [ ] Error message shown if submission fails; entered values are preserved
+- [ ] Success message shown on successful submission (only after Web3Forms confirms delivery)
 
 **SEO / Metadata:**
 - [ ] `<title>` is unique and accurate per page
