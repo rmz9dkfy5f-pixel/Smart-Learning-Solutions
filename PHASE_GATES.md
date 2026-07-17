@@ -39,7 +39,7 @@ The project has a complete, pre-launch static site and a v2 project-control plan
 The site is ready to go live. All launch blockers are resolved.
 
 ### Criteria to Meet
-- [ ] Formspree endpoint configured — `REPLACE_ME` replaced in `book.html` and `contact.html` (C-1)
+- [x] Formspree endpoint configured — `REPLACE_ME` replaced in `book.html` and `contact.html` (C-1) — **superseded 2026-07-16**: migrated to Web3Forms instead of Formspree; both forms wired to a live access key (uncommitted — pending owner review, see `plans/2026-07-16-web3forms-migration.md`)
 - [x] `.btn { cursor: none }` gated behind `body.custom-cursor-enabled` in `main.css` (C-2)
 - [ ] Deployment host confirmed and `/programs/` directory routing verified (H-1)
 - [x] SRI hashes added to GSAP CDN `<script>` tags (H-2)

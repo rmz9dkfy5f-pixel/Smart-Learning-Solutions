@@ -213,3 +213,51 @@ doc-only and additive, consistent with the pattern applied to the other nine rep
 - ADR-012 (Project Starter Kit V3.4 adoption — same category of AI-ops governance tooling)
 - `MODEL_SELECTION_GATE.md`, `PROMPT_MODEL_SELECTION_GATE.md`
 - AntBrainOS vault: `00_START_HERE/AGENT_HANDOFF.md`, "Model Selection Gate Rollout — 2026-07-08"
+
+## ADR-015 — Replace Formspree with Web3Forms
+
+**Date:** 2026-07-16
+**Version:** unreleased (branch `feat/web3forms-integration`, uncommitted)
+
+### Decision
+Replace Formspree with Web3Forms as the production form provider for `book.html` and
+`contact.html`, resolving launch blocker C-1/OD-001 (the dead `formspree.io/f/REPLACE_ME`
+endpoint). Implementation adds a centralized `src/js/web3forms-config.js` access-key constant,
+rewrites both forms' submission flow to `fetch()` against `https://api.web3forms.com/submit`
+with a honeypot field and an accessible `role="status"` loading/success/error region, and
+removes the old Formspree action URL and `REPLACE_ME` alert guard.
+
+### Reason
+Formspree was never actually configured — the endpoint has been a placeholder since inception
+and was blocking launch. Web3Forms was chosen and executed per the vault's Web3Forms Migration
+Execution Plan (`09_PROMPTS/Claude_Code_Prompts/04_Prompts/web3forms_migration_execution_plan.md`),
+which also targets two other AntBrainOS-tracked repos.
+
+### Context
+This ADR records the decision as of 2026-07-16; it does not certify the site as launch-ready.
+Current real status: uncommitted on `feat/web3forms-integration`. The owner supplied a live
+Web3Forms access key mid-session and local browser testing (via `python3 -m http.server`)
+confirmed the loading and success states render correctly on both forms. Two items remain
+genuinely open and are **not** resolved by this ADR: (1) inbox delivery to
+`info@SmartLearningSolutions.org` has not yet been confirmed by the business owner, and
+(2) the deployed-domain verification step (migration plan §11.4) is blocked on OD-003 — no
+hosting platform/production domain has been chosen yet, so there is nothing to test against.
+See `plans/2026-07-16-web3forms-migration.md` for the full slice-by-slice record.
+
+### Alternatives Considered
+- Wait for a Formspree account to be created instead — rejected; Web3Forms was the owner's
+  chosen direction and this plan had already been triaged and authorized for this repo.
+- Retain Formspree as an active fallback alongside Web3Forms — rejected per the migration
+  plan's own non-negotiable decisions; a dead second integration adds no value.
+
+### Consequences
+- C-1/OD-001 (Formspree `REPLACE_ME` launch blocker) is resolved at the code level once this
+  branch is reviewed, committed, and the two open items above are cleared.
+- `PHASE_GATES.md`/`BACKLOG.md` Gate 1 criteria for form functionality still require the
+  inbox-delivery confirmation and deployed-domain test before they can be checked off.
+- No visual/content redesign — forms keep their existing fields, labels, and layout.
+
+### See Also
+- `09_PROMPTS/Claude_Code_Prompts/04_Prompts/web3forms_migration_execution_plan.md` (AntBrainOS vault)
+- `plans/2026-07-16-web3forms-migration.md` (this repo, same branch)
+- ADR-013 (portable-fixes-only / hosting-gated work — same "don't overstate readiness" discipline)

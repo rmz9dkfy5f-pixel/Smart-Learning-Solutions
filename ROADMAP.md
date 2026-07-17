@@ -22,9 +22,9 @@ A clean, fast, credible marketing site that converts visitors into workshop book
 ## Milestones
 
 ### Next — Launch Readiness
-- Replace Formspree `REPLACE_ME` in `book.html` and `contact.html` with the real endpoint
+- ~~Replace Formspree `REPLACE_ME` in `book.html` and `contact.html` with the real endpoint~~ — **Resolved 2026-07-16**: migrated to Web3Forms with a live access key (uncommitted — pending owner review)
 - Choose the production deployment target and complete domain setup
-- Test navigation, forms, and metadata on the production host
+- Test navigation, forms, and metadata on the production host (forms verified locally; production-domain submission still pending host choice)
 
 ### Next — Imagery and Trust Signals
 - Add team, venue, or workshop photography where approved
