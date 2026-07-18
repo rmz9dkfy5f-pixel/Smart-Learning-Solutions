@@ -4,16 +4,16 @@
 
 **Phase:** Gate 1 — Launch Readiness (in progress)
 
-All dev-executable items for Gate 1 are complete (v2.15.3). The remaining blockers
-are owner-gated and cannot advance without external input:
+All dev-executable items for Gate 1 are complete. C-1 (Formspree → Web3Forms, v2.23.0) and
+M-1 (OG image SVG → PNG, v2.24.0) are both resolved. The one remaining blocker is
+owner/client-gated and cannot advance without external input:
 
 | Blocker | Owner action required |
 |---|---|
-| C-1 — Formspree endpoint | Owner creates Formspree account; provides endpoint URL |
-| H-1 — Deployment host | Owner chooses host (Netlify or GitHub Pages); confirms `/programs/` routing |
+| H-1 / OD-003 — Deployment host | Client to accept/reject the self-host proposal (existing staging VPS); once accepted, point production DNS and verify `/programs/` routing end-to-end |
 
-No active dev sprint. Next task triggers when the owner provides the Formspree
-endpoint or confirms a deployment host.
+No active dev sprint. Next task triggers once the client responds to OD-003, or from the
+owner-confirmed next task recorded in `STATUS.md`/`BACKLOG.md`.
 
 See `BACKLOG.md` for the full prioritised work queue.
 See `PHASE_GATES.md` for Gate 1 criteria.
@@ -32,6 +32,8 @@ See `plans/open-decisions.md` for all pending owner decisions.
 | `plans/2026-05-13-site-debug-remediation.md` | 2026-05-13 | Site debug and full remediation pass |
 | `plans/2026-06-17-website-status-audit.md` | 2026-06-17 | Website status / production-readiness audit |
 | `plans/2026-06-19-mobile-responsive-fixes.md` | 2026-06-19 | Mobile nav overlay + program hero photo crop/radius fixes |
+| `plans/2026-07-16-web3forms-migration.md` | 2026-07-16 | Formspree → Web3Forms migration (C-1/OD-001) |
+| `plans/2026-07-18-og-image-png-conversion.md` | 2026-07-18 | OG image SVG → PNG conversion (M-1) + release ceremony |
 
 ---
 

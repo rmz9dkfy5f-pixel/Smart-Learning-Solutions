@@ -58,6 +58,18 @@ unintended files (browser cache directories, Claude local settings).
 **Rule:** Always stage by explicit file list. Never use `git add .` or `git add -A`
 in this project. Stage only the files listed in the plan.
 
+### L-015 — Cross-gate duplicate criteria in PHASE_GATES.md go stale independently
+**Context:** v2.24.0 — `PHASE_GATES.md` listed the same OG-image requirement twice: correctly
+under Gate 1 ("Open Graph metadata verified") and again, stale, under Gate 3 ("Post-Launch
+Expansion", Deferred).
+**What happened:** `BACKLOG.md` and `STATUS.md` both treated the item as active Gate 1/2 work,
+while `PHASE_GATES.md`'s Gate 3 copy called it deferred — a real cross-document conflict that
+took a full session-start audit to surface, because nothing diffs `PHASE_GATES.md` against
+itself for duplicate criteria across gate sections.
+**Rule:** When a `PHASE_GATES.md` criterion is resolved, grep the whole file for the same
+subject before checking a single box — a duplicate elsewhere is easy to miss and will silently
+disagree with `BACKLOG.md`/`STATUS.md` until someone notices.
+
 ---
 
 ## Technical
@@ -135,3 +147,17 @@ requesting an internal file URL (e.g. `/AUDIT.md`) and confirming it returns 404
 **Context:** Robocopy exit codes: 0 = no files copied, 1 = files copied successfully,
 2+ = extra files exist, 8+ = errors. Exit code 1 from robocopy is not an error.
 **Rule:** Check for snapshot folder existence, not robocopy exit code, to confirm success.
+
+### L-014 — Headless Chromium (even a Playwright test-cache binary) is a reliable zero-install SVG rasterizer
+**Context:** v2.24.0 — needed to convert `og-image.svg` to a 1200×630 PNG; no ImageMagick,
+`rsvg-convert`, Inkscape, or `cairosvg` was installed, and this repo intentionally has no build
+tooling.
+**What happened:** Checked for leftover Playwright-cached Chromium binaries
+(`~/Library/Caches/ms-playwright/`) before reaching for `npx <package>` or `sips` (which lists
+SVG as a readable format but has an inconsistent fidelity history for gradients/text). A
+`chrome-headless-shell --headless --screenshot --window-size=W,H` render matched the source SVG
+exactly on the first attempt.
+**Rule:** Before adding any tool for a one-off asset conversion, check for already-present
+binaries (Playwright/Puppeteer caches, other installed browsers) — a headless-browser screenshot
+is a spec-accurate, zero-install SVG rasterizer, and using one doesn't add a repo dependency
+since only the output asset gets committed.
