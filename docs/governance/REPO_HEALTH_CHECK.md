@@ -37,17 +37,31 @@ production-readiness audit run 2026-06-23.
 
 ## Last Health Check
 
+- Date: 2026-06-27
+- Agent: Claude (V3.4 production-readiness skill, multi-agent explore pass)
+- Result: BLOCKED (for client launch) — status unchanged from 2026-06-23
+- Notes: Full read-only audit across all 10 HTML pages, `src/js/`, `src/css/main.css`,
+  `src/images/`, deployment config, security posture, SEO, accessibility, and all governance
+  docs. **Hard blockers unchanged:** (1) both forms POST to `REPLACE_ME` Formspree endpoint;
+  (2) hosting platform unconfirmed (Wix incompatibility still unresolved). **Notable
+  confirmation:** C-2 (cursor CSS gate) is verified fixed in current code — `cursor: none`
+  is gated by `body.custom-cursor-enabled` at `src/css/main.css:135-142`; the AUDIT.md
+  entry describing it as open is stale. **Remaining gaps (held per ADR-013):** OG image is
+  SVG (social previews broken), internal docs exposed if repo root is deployed without
+  exclusion rules, privacy policy draft unpublished, security headers not applied at server
+  level, form a11y (live region + focus), AVIF without fallback, overlay safety timer.
+  Full audit report: plan file `~/.claude/plans/encapsulated-sauteeing-mist.md`.
+
+## Previous Health Check
+
 - Date: 2026-06-23
 - Agent: Claude (V3.4 production-readiness skill)
 - Result: BLOCKED (for client launch)
 - Notes: Read-only audit of all 10 pages, `components.js`, `animations.js`, `main.css`,
   `robots.txt`, `sitemap.xml`. Internal links and image references all resolve; no secrets
-  tracked; `.gitignore` sound; no `console`/`debugger` in shipped JS. **Hard blockers:**
-  (1) both forms POST to `REPLACE_ME` Formspree endpoint — primary conversion path is dead;
-  (2) no confirmed production host/domain. **Notable gaps:** OG image is SVG (no social
-  preview), no shipped security headers/CSP for the chosen host, deploy-root = repo-root
-  would expose internal docs publicly, no privacy policy (a portable draft was added at
-  `legal/privacy-policy.md`), AVIF image has no fallback, form success messages lack
-  live-region/focus handling. Full report and prioritised remediation plan archived with
-  the session plan file. **Open platform decision:** owner indicated the site may go on
-  Wix, which cannot host this hand-coded static repo as-is — this gates host-specific work.
+  tracked; `.gitignore` sound; no `console`/`debugger` in shipped JS. Hard blockers:
+  (1) both forms POST to `REPLACE_ME` Formspree endpoint; (2) no confirmed production
+  host/domain. Notable gaps: OG image is SVG, no shipped security headers/CSP, deploy-root
+  exposes internal docs, no privacy policy (portable draft added at `legal/privacy-policy.md`),
+  AVIF without fallback, form success messages lack live-region/focus handling. Open platform
+  decision: owner indicated site may go on Wix.

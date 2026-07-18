@@ -4,6 +4,28 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-005 — Second Production-Readiness Audit (v2.21.0)
+**Date:** 2026-06-27
+**Version:** v2.21.0
+**Commit:** `639159d`
+
+**Slice:** Full read-only production-readiness audit — multi-agent pass across all 10 HTML pages, `src/js/`, `src/css/main.css`, `src/images/`, deployment config, security posture, SEO, accessibility, performance, and all governance docs.
+
+**Pre-review finding:** Branch `audit/production-readiness` clean; last work was v2.20.0 portable fixes (2026-06-25). No code changes since v2.18.1 (mobile CTA center fix). All governance stubs filled as of v2.20.0.
+
+**Audit method:** 3 parallel Explore agents — (1) repo structure, git state, docs; (2) HTML pages, CSS, JS, forms, SEO, images; (3) security, env, deployment, observability, CI/CD.
+
+**Findings:**
+- **P0 Launch Blockers (unchanged):** (1) Both forms POST to `REPLACE_ME` Formspree endpoint — zero conversion possible; (2) hosting platform unconfirmed — Wix incompatibility unresolved (ADR-013)
+- **P1 High Risk (unchanged):** Internal docs exposed on deploy (R-004); OG image is SVG (M-1); privacy policy unpublished; security headers not applied at server level
+- **Notable confirmation:** C-2 (cursor CSS gate) is **verified fixed** in current code — `cursor: none` gated by `body.custom-cursor-enabled` at `src/css/main.css:135-142`; the finding in AUDIT.md was stale (fixed in `43ee9f4`, v2.15.3)
+
+**Post-review result:** No code changes executed. 5 governance/status docs updated to reflect 2026-06-27 audit result. Overall result: BLOCKED (unchanged from v2.20.0). Full audit report archived in `~/.claude/plans/encapsulated-sauteeing-mist.md`.
+
+**Risk:** None from this slice (read-only + doc updates). All code fixes remain held per ADR-013.
+
+---
+
 ## SR-004 — V3.4 Project Starter Kit Migration (v2.19.0)
 **Date:** 2026-06-21
 **Version:** v2.19.0

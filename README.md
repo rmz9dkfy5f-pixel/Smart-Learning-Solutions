@@ -13,7 +13,7 @@ The previous site had three broken 404 pages (including the primary booking page
 ## Stack
 - **HTML / CSS / JS** — no build tool, no framework, no CMS
 - **ES Modules** — shared header/footer injected via `src/js/components.js`
-- **Formspree** — third-party form handling (free tier)
+- **Web3Forms** — third-party form handling (free tier)
 - **Netlify or GitHub Pages** — deployment
 
 ## How to Run Locally
@@ -68,10 +68,9 @@ Then open `http://localhost:8080` (or whichever port is shown).
 ```
 
 ## Before Deploying
-1. Replace `REPLACE_ME` in `book.html` and `contact.html` with your Formspree form endpoint
-2. Add final hero and program photography to `src/images/`
-3. Confirm the production deployment target and connect the final domain configuration
-4. Test both forms end-to-end on the production host
+1. Add final hero and program photography to `src/images/`
+2. Confirm the production deployment target and connect the final domain configuration
+3. Test both forms end-to-end on the production host (Web3Forms; see `ARCHITECTURE.md`)
 
 ## Contact
 - Phone: 1-877-365-SMRT (7678)
