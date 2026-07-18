@@ -13,7 +13,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.23.0] — 2026-07-18
 
-**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-PENDING`
+**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-7031e21`
 
 ### Changed
 - Migrated `book.html` and `contact.html` from Formspree to Web3Forms, resolving the C-1 /

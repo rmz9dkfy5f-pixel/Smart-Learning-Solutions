@@ -6,8 +6,8 @@ commit hash, date, summary, and description.
 ---
 
 ## v2.23.0 — Web3Forms Merge + Hosting Decision
-**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-PENDING`
-**Commit:** `PENDING` · branch `main` · 2026-07-18
+**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-7031e21`
+**Commit:** `7031e21` · branch `main` · 2026-07-18
 **Type:** `docs` (merge of prior `feat` work)
 
 **Summary:** Merge Web3Forms migration into main; log confirmed inbox delivery and self-host proposal (v2.23.0)
