@@ -50,6 +50,32 @@ to skip).
 
 ---
 
+## v2.22.0 — Model Selection Gate
+**Tag:** `v2.22.0__model-selection-gate__commit-51cdd56`
+**Commit:** `51cdd56` · branch `main` · 2026-07-10
+**Type:** `docs`
+
+**Summary:** Adopt Model Selection Gate (v2.22.0)
+
+**Description:**
+- Brought the AntBrainOS vault-wide 2026-07-08 Model Selection Gate rollout into this repo:
+  mandatory brief before substantial AI-assisted work, per-surface routing, and a Model Usage
+  Record in the agent run log
+- Added `MODEL_SELECTION_GATE.md` and `PROMPT_MODEL_SELECTION_GATE.md`; updated `AGENTS.md`,
+  `CLAUDE.md`, `ai/prompts/TASK_INTAKE.md`, `docs/governance/AGENT_RUN_LOG.md`
+- These files were rolled out across ten AntBrainOS-tracked repos on 2026-07-08 and deliberately
+  left uncommitted pending per-repo review; this commit is that review for Smart Learning
+  Solutions — diffs are doc-only and additive
+- Also fast-forwarded `main` to the previously unmerged `origin/audit/production-readiness`
+  branch (v2.21.0) in the same pass; no new code changes from the fast-forward itself
+- `DECISION_LOG.md` ADR-014 logged
+
+**Verified:** Diffs confirmed doc-only and additive, consistent with the pattern applied to the
+other nine AntBrainOS-tracked repos; no build/lint/test tooling exists for this static site
+(none applicable to skip).
+
+---
+
 ## v2.21.0 — Second Production-Readiness Audit + Documentation Update
 **Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-639159d`
 **Commit:** `639159d` · branch `audit/production-readiness` · 2026-06-27

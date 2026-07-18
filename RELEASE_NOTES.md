@@ -21,10 +21,99 @@ wired into all 9 pages' `og:image` tags, restoring social-share preview images a
 - `BACKLOG.md`, `STATUS.md`, `FILE_MAP.md`, `PHASE_GATES.md` — M-1 marked resolved; Gate 1/Gate 3
   duplicate criterion reconciled
 
-### Note
-This file's most recent entry before this release was v2.20.0 — v2.21.0, v2.22.0, and v2.23.0
-were never added here (a pre-existing gap, not introduced by this release). Not backfilled in
-this pass; flagged for the owner.
+---
+
+## v2.23.0 — 2026-07-18 — Web3Forms Merge + Hosting Decision
+
+**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-7031e21`
+
+### Summary
+Merged the Web3Forms migration (Formspree → Web3Forms) into `main`, confirmed inbox delivery,
+and logged the hosting direction: self-hosting on the existing staging VPS is being proposed to
+the client (OD-003). Resolves the C-1/OD-001 launch blocker.
+
+### Changed
+- Migrated `book.html` and `contact.html` from Formspree to Web3Forms, resolving the C-1/OD-001/
+  R-002 launch blocker (`REPLACE_ME` placeholder). Access key centralized in new
+  `src/js/web3forms-config.js`.
+- Added `botcheck` honeypot spam protection, an accessible `role="status"` loading/error region,
+  a 15s request timeout via `AbortController`, and a duplicate-submission guard to both forms.
+- Updated `.env.example`, `README.md`, `ARCHITECTURE.md`, `ROADMAP.md`, `BACKLOG.md`,
+  `PHASE_GATES.md`, `STATUS.md`, `docs/DEPLOYMENT.md`, `docs/TESTING.md`, `docs/STRATEGY.md`,
+  `docs/governance/PROJECT_RISK_REGISTER.md`, `plans/open-decisions.md` (OD-001), and
+  `legal/privacy-policy.md` to reflect Web3Forms as the form provider.
+- Logged the hosting direction: self-hosting on the existing staging VPS (`74.208.9.49`) proposed
+  to the client (OD-003), superseding the earlier Netlify/GitHub Pages recommendation.
+
+### Confirmed
+- Inbox delivery to `info@SmartLearningSolutions.org` confirmed working.
+
+### Notes
+- Merged branch `feat/web3forms-integration` into `main`; see
+  `plans/2026-07-16-web3forms-migration.md` and `DECISION_LOG.md` ADR-015.
+- Deployed-domain verification remains blocked on OD-003.
+
+---
+
+## v2.22.0 — 2026-07-10 — Model Selection Gate
+
+**Tag:** `v2.22.0__model-selection-gate__commit-51cdd56`
+
+### Summary
+Adopted the AntBrainOS vault-wide Model Selection Gate for this repo: a mandatory brief shown
+before substantial AI-assisted work, with per-surface routing and a Model Usage Record. Also
+fast-forwarded `main` to the previously unmerged `audit/production-readiness` branch (v2.21.0).
+
+### Added
+- `MODEL_SELECTION_GATE.md` — mandatory Model Selection Brief template (task classification,
+  per-surface routing table, VS Code Codex-vs-Claude-Code choice, execution/escalation section)
+  and routing rules
+- `PROMPT_MODEL_SELECTION_GATE.md` — paste-ready prompt version of the same gate
+
+### Changed
+- `AGENTS.md`, `CLAUDE.md` — added "Mandatory Model Selection Gate" section
+- `ai/prompts/TASK_INTAKE.md` — requires the gate be run and its brief attached before execution
+- `docs/governance/AGENT_RUN_LOG.md` — added a "Model Usage Record" section
+
+### Notes
+- These files were rolled out repo-wide across ten AntBrainOS-tracked repos on 2026-07-08 and
+  deliberately left uncommitted pending per-repo review; this release is that review for Smart
+  Learning Solutions. See `DECISION_LOG.md` ADR-014.
+- `main` was fast-forwarded to the previously unmerged `origin/audit/production-readiness`
+  branch (v2.21.0, see below) as part of this same pass — no new code changes from that
+  fast-forward itself.
+
+---
+
+## v2.21.0 — 2026-06-27 — Second Production-Readiness Audit
+
+**Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-639159d`
+
+### Summary
+Second V3.4 production-readiness audit pass. Result: BLOCKED for client launch — same two hard
+blockers as v2.20.0 (Formspree `REPLACE_ME`; hosting platform unconfirmed). One notable
+confirmation: C-2 (cursor CSS gate) verified fixed in current code; the `AUDIT.md` entry
+describing it was stale.
+
+### Changed
+- `STATUS.md` — second production-readiness audit section added (2026-06-27 scorecard); version
+  bumped to v2.21.0
+- `docs/governance/REPO_HEALTH_CHECK.md` — Last Health Check updated to 2026-06-27; prior
+  2026-06-23 entry preserved as Previous Health Check
+- `docs/governance/RELEASE_GATE.md` — Release Decision date re-confirmed 2026-06-27; C-2 fix
+  noted; held items list clarified
+- `PROGRESS_NOTE.md`, `PROGRESS_NOTES.md` — v2.21.0 session entries
+
+### Confirmed Fixed
+- C-2 cursor CSS gate (`src/css/main.css:135-142`) — `cursor: none` correctly gated by
+  `body.custom-cursor-enabled`; prior `AUDIT.md` entry was stale (fixed in `43ee9f4`, v2.15.3)
+
+### Held (deferred until hosting platform confirmed per ADR-013)
+- Formspree endpoint (`REPLACE_ME` in `book.html`, `contact.html`)
+- Internal-doc exclusion from deploy root
+- OG image SVG → PNG/JPEG conversion
+- AVIF `<picture>` fallback, form a11y, overlay safety timer
+- Security headers at server level, privacy policy publish + footer link
 
 ---
 
