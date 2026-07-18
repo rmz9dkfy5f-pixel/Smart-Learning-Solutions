@@ -13,7 +13,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.24.0] — 2026-07-18
 
-**Tag:** `v2.24.0__og-image-png-conversion__commit-PENDING`
+**Tag:** `v2.24.0__og-image-png-conversion__commit-d7f48fd`
 
 ### Fixed
 - Converted `src/images/og-image.svg` to a 1200×630 PNG (`src/images/og-image.png`), rendered

@@ -6,8 +6,8 @@ commit hash, date, summary, and description.
 ---
 
 ## v2.24.0 — OG Image PNG Conversion
-**Tag:** `v2.24.0__og-image-png-conversion__commit-PENDING`
-**Commit:** `PENDING` · branch `main` · 2026-07-18
+**Tag:** `v2.24.0__og-image-png-conversion__commit-d7f48fd`
+**Commit:** `d7f48fd` · branch `main` · 2026-07-18
 **Type:** `fix` (SEO/social-share) + `docs`
 
 **Summary:** Convert og-image.svg to PNG 1200×630 for social share compatibility, resolving M-1 (v2.24.0)
