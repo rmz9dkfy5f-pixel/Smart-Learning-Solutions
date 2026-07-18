@@ -21,3 +21,16 @@ Next action:
 ## Runs
 
 _Add new runs below._
+
+## Model Usage Record
+
+- Tool used:
+- Surface used:
+- Model used:
+- Effort/thinking level:
+- Why this model was chosen:
+- If in VS Code, why Codex or Claude Code was chosen:
+- Was the model sufficient? Yes / No
+- Should similar tasks use the same route? Yes / No
+- Escalation needed next time? Yes / No
+- Notes:

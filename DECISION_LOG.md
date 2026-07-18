@@ -171,3 +171,93 @@ before the platform is confirmed are therefore throwaway under Wix.
 - R-003 in `docs/governance/PROJECT_RISK_REGISTER.md` (unconfirmed host / Wix incompatibility)
 - L-012 in `LESSONS_LEARNED.md` (Wix cannot host hand-coded static sites)
 - `STATUS.md` — Production-Readiness Audit section
+
+## ADR-014 — Adopt Mandatory Model Selection Gate
+**Date:** 2026-07-10
+**Version:** v2.22.0
+
+### Decision
+Adopt a mandatory Model Selection Gate: before substantial AI-assisted work, show a Model
+Selection Brief (task classification, risk, per-surface routing, VS Code Codex-vs-Claude-Code
+choice, execution/escalation plan) and do not begin implementation until it has been shown.
+Added `MODEL_SELECTION_GATE.md` (full brief + routing rules) and
+`PROMPT_MODEL_SELECTION_GATE.md` (paste-ready prompt form), referenced from `AGENTS.md`,
+`CLAUDE.md`, `ai/prompts/TASK_INTAKE.md`, and `docs/governance/AGENT_RUN_LOG.md` (new "Model
+Usage Record" section for logging which tool/model/effort was actually used).
+
+### Reason
+This repo is now worked by multiple AI tools/surfaces (Claude Code, Codex, potentially others)
+across VS Code and standalone. An explicit, shown-every-time gate prevents silently defaulting
+to whichever tool is open and makes the model/effort choice auditable per run.
+
+### Context
+These files were rolled out repo-wide across ten AntBrainOS-tracked repos on 2026-07-08 as
+part of a vault-wide governance pass, and deliberately left uncommitted in each repo pending
+individual review. This ADR is that review for Smart Learning Solutions: the diffs are
+doc-only and additive, consistent with the pattern applied to the other nine repos.
+
+### Alternatives Considered
+- Leave the gate files uncommitted indefinitely — rejected; an unreviewed, uncommitted gate
+  doesn't actually gate anything for future sessions or other agents cloning the repo
+- Skip the gate for this repo (static marketing site, low architectural complexity) —
+  rejected; low complexity doesn't remove the value of an auditable model-choice record
+
+### Consequences
+- Every substantial task going forward should show the brief before implementation (see this
+  session's own use of it, folded into the same v2.22.0 pass)
+- `docs/governance/AGENT_RUN_LOG.md` now has a place to record actual model usage per run —
+  currently empty/optional until the next run populates it
+- No code, content, or business-decision impact — process/governance only
+
+### See Also
+- ADR-012 (Project Starter Kit V3.4 adoption — same category of AI-ops governance tooling)
+- `MODEL_SELECTION_GATE.md`, `PROMPT_MODEL_SELECTION_GATE.md`
+- AntBrainOS vault: `00_START_HERE/AGENT_HANDOFF.md`, "Model Selection Gate Rollout — 2026-07-08"
+
+## ADR-015 — Replace Formspree with Web3Forms
+
+**Date:** 2026-07-16
+**Version:** unreleased (merged to `main` 2026-07-18 from branch `feat/web3forms-integration`)
+
+### Decision
+Replace Formspree with Web3Forms as the production form provider for `book.html` and
+`contact.html`, resolving launch blocker C-1/OD-001 (the dead `formspree.io/f/REPLACE_ME`
+endpoint). Implementation adds a centralized `src/js/web3forms-config.js` access-key constant,
+rewrites both forms' submission flow to `fetch()` against `https://api.web3forms.com/submit`
+with a honeypot field and an accessible `role="status"` loading/success/error region, and
+removes the old Formspree action URL and `REPLACE_ME` alert guard.
+
+### Reason
+Formspree was never actually configured — the endpoint has been a placeholder since inception
+and was blocking launch. Web3Forms was chosen and executed per the vault's Web3Forms Migration
+Execution Plan (`09_PROMPTS/Claude_Code_Prompts/04_Prompts/web3forms_migration_execution_plan.md`),
+which also targets two other AntBrainOS-tracked repos.
+
+### Context
+This ADR records the decision as of 2026-07-16; it does not certify the site as launch-ready.
+The owner supplied a live Web3Forms access key mid-session and local browser testing (via
+`python3 -m http.server`) confirmed the loading and success states render correctly on both
+forms. **Update 2026-07-18:** inbox delivery to `info@SmartLearningSolutions.org` is now
+confirmed. One item remains genuinely open and is **not** resolved by this ADR: the
+deployed-domain verification step (migration plan §11.4) is blocked on OD-003 — the owner is
+proposing self-hosting to the client, but this is not yet accepted and no production domain is
+live, so there is nothing to test against yet.
+See `plans/2026-07-16-web3forms-migration.md` for the full slice-by-slice record.
+
+### Alternatives Considered
+- Wait for a Formspree account to be created instead — rejected; Web3Forms was the owner's
+  chosen direction and this plan had already been triaged and authorized for this repo.
+- Retain Formspree as an active fallback alongside Web3Forms — rejected per the migration
+  plan's own non-negotiable decisions; a dead second integration adds no value.
+
+### Consequences
+- C-1/OD-001 (Formspree `REPLACE_ME` launch blocker) is resolved at the code level; merged to
+  `main` 2026-07-18. Inbox delivery is confirmed.
+- `PHASE_GATES.md`/`BACKLOG.md` Gate 1 criteria for form functionality still require the
+  deployed-domain test (blocked on OD-003) before they can be fully checked off.
+- No visual/content redesign — forms keep their existing fields, labels, and layout.
+
+### See Also
+- `09_PROMPTS/Claude_Code_Prompts/04_Prompts/web3forms_migration_execution_plan.md` (AntBrainOS vault)
+- `plans/2026-07-16-web3forms-migration.md` (this repo, same branch)
+- ADR-013 (portable-fixes-only / hosting-gated work — same "don't overstate readiness" discipline)

@@ -14,10 +14,10 @@ These must be resolved before the site can go live.
 
 | ID | Item | Owner | Files |
 |---|---|---|---|
-| C-1 | Configure Formspree endpoint — replace `REPLACE_ME` in both forms | Owner (account creation required) | `book.html`, `contact.html` |
+| C-1 | ~~Configure Formspree endpoint — replace `REPLACE_ME` in both forms~~ — **Resolved 2026-07-16, merged to `main` 2026-07-18**: migrated to Web3Forms with a live access key in `src/js/web3forms-config.js`; inbox delivery confirmed | — | `book.html`, `contact.html` |
 | H-1 | ~~Confirm `/programs/` directory routing on chosen host~~ — **Resolved v2.16.1**: nginx `try_files` fixed on staging VPS; `/programs/` returns 301→200 correctly | — | — |
-| — | **Confirm hosting platform** — owner indicated site "may go on Wix"; Wix cannot host this repo as-is; must be confirmed before further code investment (R-003, ADR-013) | Owner | — |
-| — | Point production domain to VPS (74.208.9.49) — **only if static hosting confirmed** | Owner | DNS |
+| — | **Confirm hosting platform** — self-hosting on the existing VPS (74.208.9.49) proposed to the client 2026-07-18 (OD-003); not yet accepted. Wix remains a risk only if the client rejects the proposal (R-003, ADR-013) | Owner/Client | — |
+| — | Point production domain to VPS (74.208.9.49) — **pending client acceptance of self-host proposal** | Owner | DNS |
 
 ---
 
@@ -26,8 +26,7 @@ These must be resolved before the site can go live.
 | ID | Item | Notes |
 |---|---|---|
 | M-1 | Convert `og-image.svg` to PNG/JPEG 1200×630 | Social share previews will not render until resolved |
-| OD-001 | Formspree endpoint (owner must create account) | Blocks C-1 above |
-| OD-003 | Deployment target decision (Netlify or GitHub Pages) | Blocks host setup |
+| OD-003 | Deployment target decision (self-host proposed, pending client acceptance) | Blocks host setup |
 
 ---
 

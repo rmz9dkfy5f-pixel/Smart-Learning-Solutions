@@ -9,6 +9,79 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [Unreleased]
 
+### Changed
+- Migrated `book.html` and `contact.html` from Formspree to Web3Forms, resolving the C-1 /
+  OD-001 / R-002 launch blocker (`REPLACE_ME` placeholder). Access key centralized in new
+  `src/js/web3forms-config.js`, imported by both forms.
+- Added `botcheck` honeypot spam protection, an accessible `role="status"` loading/error region,
+  a 15s request timeout via `AbortController`, and a duplicate-submission guard to both forms,
+  replacing the previous `alert()`-based error handling.
+- Updated `.env.example`, `README.md`, `ARCHITECTURE.md`, `ROADMAP.md`, `BACKLOG.md`,
+  `PHASE_GATES.md`, `STATUS.md`, `docs/DEPLOYMENT.md`, `docs/TESTING.md`, `docs/STRATEGY.md`,
+  `docs/governance/PROJECT_RISK_REGISTER.md`, `plans/open-decisions.md` (OD-001), and
+  `legal/privacy-policy.md` to reflect Web3Forms as the form provider.
+
+### Notes
+- Work done on branch `feat/web3forms-integration`; see
+  `plans/2026-07-16-web3forms-migration.md` for the full slice plan. Uncommitted pending owner
+  review — version number and release tag to be assigned at commit time.
+- Deployed-domain verification is still blocked on OD-003 (hosting platform not yet chosen);
+  only local submission was verified in this pass.
+
+---
+
+## [2.22.0] — 2026-07-10
+
+**Tag:** `v2.22.0__model-selection-gate__commit-51cdd56`
+
+### Added
+- `MODEL_SELECTION_GATE.md` — mandatory Model Selection Brief template (task classification,
+  per-surface routing table, VS Code Codex-vs-Claude-Code choice, execution/escalation section)
+  and routing rules, ported from the AntBrainOS vault-wide 2026-07-08 rollout applied to ten
+  active repos
+- `PROMPT_MODEL_SELECTION_GATE.md` — paste-ready prompt version of the same gate for use outside
+  an agent session
+
+### Changed
+- `AGENTS.md`, `CLAUDE.md` — added "Mandatory Model Selection Gate" section requiring the brief
+  be shown before substantial AI-assisted work begins
+- `ai/prompts/TASK_INTAKE.md` — added a line requiring `PROMPT_MODEL_SELECTION_GATE.md` to be
+  run and its brief attached before execution
+- `docs/governance/AGENT_RUN_LOG.md` — added a "Model Usage Record" section for logging which
+  tool/model/effort was used per run and whether it was sufficient
+
+### Notes
+- These files were added repo-wide across ten AntBrainOS-tracked repos on 2026-07-08 and
+  deliberately left uncommitted pending per-repo review; this release is that review for Smart
+  Learning Solutions specifically. See ADR-014 in `DECISION_LOG.md`.
+- Also folded in during this pass: `main` was fast-forwarded to the previously unmerged
+  `origin/audit/production-readiness` branch (v2.21.0, already tagged/released below — no new
+  content, just bringing `main` current), and the stale `project-starter-kit-v3.3/`/`v3.4/`
+  template folders (including gitignored leftovers `git rm` couldn't touch) were fully removed.
+
+---
+
+## [2.21.0] — 2026-06-27
+
+**Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-639159d`
+
+### Changed
+- `STATUS.md` — second production-readiness audit section added (2026-06-27 scorecard); version bumped to v2.21.0
+- `docs/governance/REPO_HEALTH_CHECK.md` — Last Health Check updated to 2026-06-27 (multi-agent audit pass); prior 2026-06-23 entry preserved as Previous Health Check
+- `docs/governance/RELEASE_GATE.md` — Release Decision date re-confirmed 2026-06-27; C-2 (cursor CSS gate) confirmed fixed; held items list clarified
+- `PROGRESS_NOTE.md` — current session note for v2.21.0
+- `PROGRESS_NOTES.md` — v2.21.0 entry appended
+
+### Confirmed Fixed
+- C-2 cursor CSS gate (`src/css/main.css:135-142`) — `cursor: none` correctly gated by `body.custom-cursor-enabled`; prior AUDIT.md entry was stale (fixed in `43ee9f4`, v2.15.3)
+
+### Held (unchanged — deferred until hosting platform confirmed per ADR-013)
+- Formspree endpoint (`REPLACE_ME` in `book.html`, `contact.html`)
+- Internal-doc exclusion from deploy root
+- OG image SVG → PNG/JPEG conversion
+- AVIF `<picture>` fallback, form a11y, overlay safety timer
+- Security headers at server level, privacy policy publish + footer link
+
 ---
 
 ## [2.20.0] — 2026-06-25

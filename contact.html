@@ -117,9 +117,19 @@
 
           <div class="contact-card">
             <h3>Send a Message</h3>
-            <!-- Replace ACTION with your Formspree endpoint -->
-            <form id="contact-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
-              <input type="hidden" name="_subject" value="Message via Contact Page — Smart Learning Solutions">
+            <form id="contact-form" novalidate>
+              <input type="hidden" name="access_key" value="">
+              <input type="hidden" name="subject" value="Message via Contact Page — Smart Learning Solutions">
+              <input type="hidden" name="from_name" value="Smart Learning Solutions Website">
+              <input
+                type="checkbox"
+                name="botcheck"
+                id="c-botcheck"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+                class="form-honeypot"
+              >
               <div class="form-grid">
                 <div class="form-group">
                   <label for="c-name">Your Name *</label>
@@ -136,6 +146,7 @@
               </div>
               <div style="margin-top: var(--space-6);">
                 <button type="submit" class="btn btn--primary btn--lg" style="width: 100%; justify-content: center;">Send Message</button>
+                <div class="form-status" id="contact-status" role="status" aria-live="polite"></div>
               </div>
             </form>
             <div class="form-success" id="contact-success">
@@ -193,33 +204,83 @@
   <script type="module">
     import { initPage }       from '/src/js/components.js?v=mobile-20260619';
     import { initAnimations } from '/src/js/animations.js?v=visual-20260426';
+    import { WEB3FORMS_ACCESS_KEY } from '/src/js/web3forms-config.js?v=web3forms-20260716';
     initPage({ activePage: 'contact' });
     initAnimations();
 
     const form = document.getElementById('contact-form');
     const success = document.getElementById('contact-success');
+    const status = document.getElementById('contact-status');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const submitLabel = submitBtn.textContent;
+    form.querySelector('input[name="access_key"]').value = WEB3FORMS_ACCESS_KEY;
+
+    let isSubmitting = false;
+
+    function setStatus(kind, message) {
+      status.textContent = message;
+      status.className = 'form-status visible' + (kind ? ` form-status--${kind}` : '');
+    }
+
+    function clearStatus() {
+      status.textContent = '';
+      status.className = 'form-status';
+    }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      clearStatus();
+
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
-      if (form.action.includes('REPLACE_ME')) {
-        alert('This form is not configured yet. Please email us directly at info@SmartLearningSolutions.org');
+
+      if (!WEB3FORMS_ACCESS_KEY) {
+        setStatus('error', 'This form is not configured yet. Please email us directly at info@SmartLearningSolutions.org');
         return;
       }
-      const data = new FormData(form);
+
+      if (isSubmitting) return;
+      isSubmitting = true;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      form.setAttribute('aria-busy', 'true');
+      setStatus('loading', 'Sending…');
+
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+
       try {
-        const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-        if (res.ok) {
+        const data = Object.fromEntries(new FormData(form).entries());
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data),
+          signal: controller.signal,
+        });
+        const result = await res.json().catch(() => null);
+
+        if (res.ok && result && result.success) {
+          clearStatus();
           form.style.display = 'none';
           success.classList.add('visible');
         } else {
-          alert('Something went wrong. Please email us directly at info@SmartLearningSolutions.org');
+          setStatus('error', 'We could not confirm delivery. Please try again or email us directly at info@SmartLearningSolutions.org');
         }
-      } catch {
-        alert('Something went wrong. Please email us directly at info@SmartLearningSolutions.org');
+      } catch (err) {
+        if (err.name === 'AbortError') {
+          setStatus('error', 'We could not confirm delivery in time. Please try again or email us directly at info@SmartLearningSolutions.org');
+        } else {
+          setStatus('error', 'We could not confirm delivery. Please try again or email us directly at info@SmartLearningSolutions.org');
+        }
+      } finally {
+        clearTimeout(timeout);
+        form.removeAttribute('aria-busy');
+        submitBtn.disabled = false;
+        submitBtn.textContent = submitLabel;
+        isSubmitting = false;
       }
     });
   </script>

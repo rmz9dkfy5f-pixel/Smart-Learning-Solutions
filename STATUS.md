@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.20.0 · 2026-06-25
+**Current Version:** v2.22.0 · 2026-07-10
 **Branch:** `main`
 
 ---
@@ -8,6 +8,32 @@
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Production-Readiness Audit — 2026-06-27 (v2.21.0)
+
+Second V3.4 production-readiness audit run. Overall result: **BLOCKED for client launch** —
+same two hard blockers as v2.20.0. Full audit report in plan file
+`~/.claude/plans/encapsulated-sauteeing-mist.md`. No code changes executed (all held per
+ADR-013 until hosting platform confirmed). One notable confirmation: **C-2 (cursor CSS gate)
+is verified fixed** in current code — `cursor: none` is gated by `body.custom-cursor-enabled`
+at `src/css/main.css:135-142`; AUDIT.md entry is stale.
+
+### Scorecard (2026-06-27)
+
+| Category | Status | Notes |
+|---|---|---|
+| Build/runtime | Pass | No build step; `npx serve .` works; ES modules documented |
+| Routes/pages | Pass | 10 pages; `programs/` routing verified; custom 404 present |
+| Booking/forms | **Fail** | Both forms POST to `REPLACE_ME`; zero conversion possible |
+| Security/auth | Fail | No secrets exposed; SRI present; but security headers not applied at server |
+| Accessibility | Pass (with gaps) | ARIA, focus states, form validation; gaps: form success a11y, skip links |
+| SEO/social | Pass (with gaps) | Canonical, OG, Twitter, robots, sitemap; gap: OG image is SVG |
+| Performance | Pass | WebP + responsive `<picture>`; lazy loading; deferred scripts |
+| Deployment/HTTPS | **Fail** | Platform unconfirmed; no live config; no HTTPS yet |
+| Observability | Pass (minimal) | Plausible configured; form failures visible in Formspree dashboard |
+| Documentation/handoff | Pass | README, ARCHITECTURE, DEPLOYMENT, CHANGELOG, PHASE_GATES, DECISION_LOG current |
 
 ---
 
@@ -60,6 +86,9 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 - Mobile-nav CTA label centring fix: `display: flex` added to `.mobile-nav .btn` so the existing `justify-content: center` takes effect (button was a block box, label left-aligned); `main.css` cache token bumped to `?v=mobile-20260619d` across all 10 HTML files (v2.18.1)
 - Project Starter Kit V3.4 migrated into repo — 40 new files: `docs/governance/` (15 governance docs), `docs/project/` (9 project docs), `ai/` (agent prompts, roles, run logs), `.agents/skills/` (4 Codex skills), `MIGRATION_REPORT.md`, `00_MIGRATION_KICKOFF.md`, `V34_INSTALL_REPORT.json`; validator: PASS; AGENTS.md/CLAUDE.md preserved, V3.4 candidates in `.v34_migration_review/` for manual merge (v2.19.0)
 - Production-readiness audit (V3.4) + portable doc/governance fixes: BLOCKED result recorded in `REPO_HEALTH_CHECK.md` + `RELEASE_GATE.md`; portable privacy-policy draft added at `legal/privacy-policy.md`; README version/staleness fixed; risks R-002–R-004 + ADR-013 + lessons L-012/L-013 logged (v2.20.0)
+- Second production-readiness audit pass: BLOCKED result unchanged (v2.21.0); `main` fast-forwarded to this work after it sat unmerged on `audit/production-readiness` for two weeks
+- Mandatory Model Selection Gate adopted repo-wide (`MODEL_SELECTION_GATE.md`, `PROMPT_MODEL_SELECTION_GATE.md`) — see ADR-014; stale `project-starter-kit-v3.3/`/`v3.4/` template folders (and gitignored leftovers) fully removed (v2.22.0)
+- Formspree → Web3Forms migration: C-1 launch blocker resolved — both forms wired to a live Web3Forms access key (`src/js/web3forms-config.js`), honeypot spam protection, accessible loading/error states, request timeout added; see `plans/2026-07-16-web3forms-migration.md` (2026-07-16, uncommitted — pending owner review)
 
 ---
 
@@ -67,7 +96,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 
 | # | Blocker | File(s) | Required? |
 |---|---|---|---|
-| 1 | **Formspree endpoint** — `REPLACE_ME` still in form action; forms cannot submit | `book.html`, `contact.html` | Yes |
+| 1 | ~~**Formspree endpoint** — `REPLACE_ME` still in form action; forms cannot submit~~ — **Resolved 2026-07-16**: migrated to Web3Forms, live access key configured | `book.html`, `contact.html` | Yes |
 | 2 | **Deployment target** — staging VPS confirmed at `smart-learning-solutions.craftandconscious.com`; production domain not yet pointed | — | Yes |
 | 3 | **Testimonials** — owner-supplied quotes pending | — | No (optional) |
 
@@ -75,7 +104,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 
 ## Open Audit Items
 
-See `AUDIT.md` for full findings. Open items: C-1 (Formspree), H-1 (production domain routing), H-3 (Plausible), H-4 (overlay timeout), M-1 (OG image), M-4–M-9 (medium). H-1 staging routing resolved (v2.16.1).
+See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H-3 (Plausible), H-4 (overlay timeout), M-1 (OG image), M-4–M-9 (medium). H-1 staging routing resolved (v2.16.1). C-1 (Formspree) resolved 2026-07-16 — migrated to Web3Forms.
 
 ---
 
@@ -83,7 +112,7 @@ See `AUDIT.md` for full findings. Open items: C-1 (Formspree), H-1 (production d
 
 | Priority | Action | Finding |
 |---|---|---|
-| 1 | Create Formspree account → replace `REPLACE_ME` in `book.html` and `contact.html` | C-1 |
+| 1 | ~~Create Formspree account → replace `REPLACE_ME`~~ — done via Web3Forms migration (2026-07-16); review and commit the branch | C-1 |
 | 2 | Point production domain to VPS; verify routing end-to-end | H-1 |
 | 3 | Convert `og-image.svg` to PNG/JPEG 1200×630 | M-1 |
 | 4 | Reconcile V3.4 stub docs (`docs/project/`, `docs/governance/`) with existing root-level equivalents | V3.4 follow-up |

@@ -63,7 +63,7 @@ This is a flat static site — no client-side routing. Each page is its own HTML
 On Netlify, clean URLs (without `.html`) work out of the box. On GitHub Pages they require a `_config.yml` or redirect rules.
 
 ## Form Handling
-Both `book.html` and `contact.html` post to Formspree via AJAX. The form action URL contains `REPLACE_ME` — this must be replaced with the real Formspree endpoint before deploying. Formspree sends form submissions to the configured email address and returns a JSON response for the AJAX handler.
+Both `book.html` and `contact.html` submit to Web3Forms (`https://api.web3forms.com/submit`) via `fetch()` with a JSON body, replacing the earlier Formspree integration (migrated 2026-07-16). The shared access key lives in `src/js/web3forms-config.js` — it is a public form identifier, not a secret, and both pages import it so it only needs updating in one place to rotate. Each form includes a `botcheck` honeypot field for baseline spam protection. Web3Forms delivers submissions to `info@SmartLearningSolutions.org` and returns a JSON response consumed by the AJAX handler; success is only shown once both the HTTP response and the response body confirm delivery.
 
 ## Design System
 All design tokens (colours, type scale, spacing, radii, shadows) are defined as CSS custom properties at `:root` in `src/css/main.css`. Components reference tokens only — no hardcoded values in component styles.
