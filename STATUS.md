@@ -119,7 +119,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 
 ## Open Audit Items
 
-See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H-3 (Plausible), H-4 (overlay timeout), M-1 (OG image), M-4–M-9 (medium). H-1 staging routing resolved (v2.16.1). C-1 (Formspree) resolved 2026-07-16 — migrated to Web3Forms.
+See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H-3 (Plausible), H-4 (overlay timeout), M-4–M-9 (medium). H-1 staging routing resolved (v2.16.1). C-1 (Formspree) resolved 2026-07-16 — migrated to Web3Forms. M-1 (OG image) resolved 2026-07-18 — converted to PNG.
 
 ---
 
@@ -129,7 +129,7 @@ See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H
 |---|---|---|
 | 1 | ~~Create Formspree account → replace `REPLACE_ME`~~ — done via Web3Forms migration, merged to `main` (v2.23.0) | C-1 |
 | 2 | Client to accept/reject self-host proposal; once accepted, point production domain to VPS and verify routing end-to-end | H-1 / OD-003 |
-| 3 | Convert `og-image.svg` to PNG/JPEG 1200×630 — **confirmed as next session's starting task, 2026-07-18** | M-1 |
+| 3 | ~~Convert `og-image.svg` to PNG/JPEG 1200×630~~ — done: `src/images/og-image.png` generated and referenced on all 9 pages, 2026-07-18 | M-1 |
 | 4 | Reconcile V3.4 stub docs (`docs/project/`, `docs/governance/`) with existing root-level equivalents | V3.4 follow-up |
 | 5 | Review V3.4 candidate AGENTS.md/CLAUDE.md in `.v34_migration_review/` and merge any useful additions | V3.4 follow-up |
 

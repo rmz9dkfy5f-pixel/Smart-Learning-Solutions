@@ -78,4 +78,4 @@ The site is live and verified in production.
 ### Criteria
 - [ ] Professional Development page (pending content approval)
 - [ ] FAQ page (post-launch, if booking questions emerge)
-- [ ] `og-image.svg` converted to PNG/JPEG 1200×630 (M-1)
+- [x] `og-image.svg` converted to PNG/JPEG 1200×630 (M-1)

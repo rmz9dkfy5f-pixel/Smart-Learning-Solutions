@@ -33,7 +33,8 @@ Maps every tracked file to its purpose, owner, and edit frequency.
 | `src/js/components.js` | Shared header/footer injection, nav, Plausible analytics | Dev | Launch |
 | `src/js/animations.js` | GSAP animations — page entry, scroll triggers, cursor | Dev | Launch |
 | `src/images/` | Optimised WebP/AVIF production images | Dev + Owner | Launch |
-| `og-image.svg` | Open Graph fallback image (SVG — needs PNG conversion M-1) | Dev | Launch |
+| `og-image.svg` | Open Graph image — editable vector source (rasterized to `og-image.png` for production use) | Dev | Launch |
+| `og-image.png` | Open Graph share image (PNG, 1200×630) — referenced by every page's `og:image` tag | Dev | Launch |
 
 ---
 
