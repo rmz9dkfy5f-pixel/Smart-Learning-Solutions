@@ -5,8 +5,8 @@ Decisions pending owner input. Nothing in this list should be resolved by Claude
 ---
 
 ## OD-001 — Form Backend (was: Formspree Endpoint)
-**Status:** Resolved 2026-07-16 — owner switched providers and supplied a Web3Forms access key directly (not a Formspree endpoint)
-**Resolution:** Both forms migrated to Web3Forms (`https://api.web3forms.com/submit`). Access key centralized in `src/js/web3forms-config.js`. Changes are on branch `feat/web3forms-integration`, uncommitted pending owner review. See `plans/2026-07-16-web3forms-migration.md`.
+**Status:** ✅ Resolved 2026-07-16, merged to `main` 2026-07-18 — owner switched providers and supplied a Web3Forms access key directly (not a Formspree endpoint); inbox delivery confirmed 2026-07-18
+**Resolution:** Both forms migrated to Web3Forms (`https://api.web3forms.com/submit`). Access key centralized in `src/js/web3forms-config.js`. See `plans/2026-07-16-web3forms-migration.md` and ADR-015.
 **Files affected:** `book.html`, `contact.html`, `src/js/web3forms-config.js`
 
 ---
@@ -21,11 +21,11 @@ Decisions pending owner input. Nothing in this list should be resolved by Claude
 ---
 
 ## OD-003 — Deployment Target
-**Blocking:** v1.4.0 (go live)
-**Question:** Will the site be deployed to Netlify or GitHub Pages?
-**Context:** Both are free. Netlify supports clean URLs (no `.html`) and form handling natively. GitHub Pages is simpler but requires extra config for clean URLs.
-**Recommendation:** Netlify — easier setup, better clean URL support, and Netlify Forms is an alternative to Formspree if preferred.
-**Action required:** Choose a platform and confirm.
+**Status:** Open — direction proposed 2026-07-18, not yet accepted by the client
+**Blocking:** v1.4.0 (go live); deployed-domain verification for ADR-015/OD-001
+**Question:** Will the site be self-hosted, or deployed to Netlify/GitHub Pages?
+**Context:** A staging VPS is already configured (`74.208.9.49`, nginx `try_files` pattern documented in ADR-009 and `docs/DEPLOYMENT.md`). As of 2026-07-18, the owner is proposing self-hosting on this existing VPS to the client, superseding the earlier Netlify/GitHub Pages recommendation and the earlier "may go on Wix" consideration (R-003/ADR-013) — Wix remains a risk only if the client rejects the self-host proposal.
+**Action required:** Client to accept or reject the self-host proposal. Once accepted, confirm production domain/DNS and complete the Gate 1 deployed-domain checks.
 
 ---
 

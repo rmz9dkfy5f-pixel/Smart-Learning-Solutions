@@ -1,7 +1,7 @@
 # Plan: Web3Forms Migration
 
 **Date:** 2026-07-16
-**Status:** Slice 1 + 2 complete (local verification only); uncommitted pending owner review
+**Status:** Slice 1 + 2 complete; inbox delivery confirmed 2026-07-18; merged to `main`
 
 ---
 
@@ -83,8 +83,8 @@ access-key constant that fails safe until the owner supplies the real key.
   production URL exists yet to test against.
 
 **Outstanding before this can be marked fully done:**
-- Confirmation that the test email actually landed in `info@SmartLearningSolutions.org`.
-- Deployed-domain gate, once OD-003 is resolved and the site is live.
+- ~~Confirmation that the test email actually landed in `info@SmartLearningSolutions.org`~~ — **Confirmed 2026-07-18.**
+- Deployed-domain gate, once OD-003 is resolved and the site is live. Direction as of 2026-07-18: self-hosting is being proposed to the client (see OD-003); this gate still requires the client to accept and a live domain to test against.
 
 ## Risks
 - No live production domain yet (OD-003 open) — deployed-domain verification (plan §11.4) cannot
