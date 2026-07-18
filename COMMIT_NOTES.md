@@ -5,6 +5,24 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.23.0 — Web3Forms Merge + Hosting Decision
+**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-PENDING`
+**Commit:** `PENDING` · branch `main` · 2026-07-18
+**Type:** `docs` (merge of prior `feat` work)
+
+**Summary:** Merge Web3Forms migration into main; log confirmed inbox delivery and self-host proposal (v2.23.0)
+
+**Description:**
+- Reviewed `feat/web3forms-integration` (Formspree → Web3Forms migration, `book.html`/`contact.html`, `src/js/web3forms-config.js`, honeypot + accessible status region + request timeout + duplicate-submission guard); no issues found
+- Inbox delivery to `info@SmartLearningSolutions.org` confirmed — closes the last open item on ADR-015/OD-001; C-1/OD-001 launch blocker fully resolved
+- Owner confirmed hosting direction: self-hosting on the existing staging VPS (`74.208.9.49`) is being proposed to the client (OD-003), superseding the earlier Netlify/GitHub Pages recommendation and the earlier Wix consideration; not yet accepted
+- Merged `feat/web3forms-integration` into `main` (`--no-ff`) and pushed to `origin/main`
+- `STATUS.md`, `PROGRESS_NOTE.md`, `PROGRESS_NOTES.md`, `DECISION_LOG.md`, `plans/open-decisions.md`, `BACKLOG.md`, `PHASE_GATES.md`, `plans/2026-07-16-web3forms-migration.md`, `CHANGELOG.md`, `SLICE_REVIEWS.md` updated to reflect current state
+
+**Verified:** `grep -rn REPLACE_ME book.html contact.html` returned no matches; working tree clean before and after merge; no build/lint/test tooling exists for this static site (none applicable to skip).
+
+---
+
 ## v2.21.0 — Second Production-Readiness Audit + Documentation Update
 **Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-639159d`
 **Commit:** `639159d` · branch `audit/production-readiness` · 2026-06-27

@@ -9,6 +9,12 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [Unreleased]
 
+---
+
+## [2.23.0] — 2026-07-18
+
+**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-PENDING`
+
 ### Changed
 - Migrated `book.html` and `contact.html` from Formspree to Web3Forms, resolving the C-1 /
   OD-001 / R-002 launch blocker (`REPLACE_ME` placeholder). Access key centralized in new
@@ -20,13 +26,18 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
   `PHASE_GATES.md`, `STATUS.md`, `docs/DEPLOYMENT.md`, `docs/TESTING.md`, `docs/STRATEGY.md`,
   `docs/governance/PROJECT_RISK_REGISTER.md`, `plans/open-decisions.md` (OD-001), and
   `legal/privacy-policy.md` to reflect Web3Forms as the form provider.
+- Logged the hosting direction: self-hosting on the existing staging VPS (`74.208.9.49`) is
+  being proposed to the client (OD-003), superseding the earlier Netlify/GitHub Pages
+  recommendation.
+
+### Confirmed
+- Inbox delivery to `info@SmartLearningSolutions.org` confirmed working.
 
 ### Notes
-- Work done on branch `feat/web3forms-integration`; see
-  `plans/2026-07-16-web3forms-migration.md` for the full slice plan. Uncommitted pending owner
-  review — version number and release tag to be assigned at commit time.
-- Deployed-domain verification is still blocked on OD-003 (hosting platform not yet chosen);
-  only local submission was verified in this pass.
+- Merged branch `feat/web3forms-integration` into `main`; see
+  `plans/2026-07-16-web3forms-migration.md` and `DECISION_LOG.md` ADR-015 for the full record.
+- Deployed-domain verification remains blocked on OD-003 — the self-host proposal above is not
+  yet accepted by the client, and no production domain is live to test against.
 
 ---
 
