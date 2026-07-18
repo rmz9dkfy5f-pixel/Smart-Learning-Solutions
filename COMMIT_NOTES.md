@@ -5,6 +5,33 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.24.0 — OG Image PNG Conversion
+**Tag:** `v2.24.0__og-image-png-conversion__commit-PENDING`
+**Commit:** `PENDING` · branch `main` · 2026-07-18
+**Type:** `fix` (SEO/social-share) + `docs`
+
+**Summary:** Convert og-image.svg to PNG 1200×630 for social share compatibility, resolving M-1 (v2.24.0)
+
+**Description:**
+- Rendered `src/images/og-image.svg` (already authored at the exact 1200×630 canvas) to
+  `src/images/og-image.png` via a headless-Chromium binary already present on disk from prior
+  Playwright use — no new repo dependency added
+- Repointed the `og:image` meta tag on all 9 pages that carry one; `404.html` has none and was
+  out of scope. No `twitter:image` tag exists anywhere, so Twitter/X already falls back to
+  `og:image` — no separate edit needed
+- Verified output is exactly 1200×630 (`sips`) and visually matches the source SVG
+- Reconciled a stale `PHASE_GATES.md` duplicate: this requirement was listed under both Gate 1
+  ("Open Graph metadata verified") and Gate 3 ("Post-Launch Expansion", Deferred) — Gate 1's is
+  now checked, the Gate 3 duplicate removed
+- `BACKLOG.md`, `STATUS.md`, `FILE_MAP.md` updated to reflect resolution
+
+**Verified:** `grep -rn 'og-image.svg' *.html programs/*.html` returns no hits; `grep -rn
+'og-image.png'` returns exactly 9; local server spot-check on 5 pages returned 200 with the
+correct `og:image` tag; no build/lint/test tooling exists for this static site (none applicable
+to skip).
+
+---
+
 ## v2.23.0 — Web3Forms Merge + Hosting Decision
 **Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-7031e21`
 **Commit:** `7031e21` · branch `main` · 2026-07-18
