@@ -1,47 +1,55 @@
-**Updated:** v2.23.0 · 2026-07-18
+**Updated:** v2.24.0 · 2026-07-18
 
 # Progress Note — Current Session
 
-## Web3Forms Merge + Hosting Decision (2026-07-18)
+## OG Image PNG Conversion (2026-07-18)
 
 ### Summary
 
-Resolved launch blocker C-1/OD-001 for real: reviewed `feat/web3forms-integration` (Formspree
-→ Web3Forms migration, done 2026-07-16/17), confirmed inbox delivery to
-`info@SmartLearningSolutions.org`, merged the branch into `main`, and pushed. The owner also
-confirmed the hosting direction: self-hosting on the existing staging VPS (`74.208.9.49`) will
-be proposed to the client (OD-003), superseding the earlier Netlify/GitHub Pages
-recommendation and the earlier Wix consideration. Not yet accepted by the client.
+Resolved M-1: converted `src/images/og-image.svg` to a 1200×630 PNG via headless Chromium
+(already present on disk from prior Playwright use — no new dependency added) and repointed the
+`og:image` tag on all 9 pages that carry one. Also reconciled the pending `STATUS.md` line the
+session-start audit flagged, and closed out the release ceremony (changelog, release notes,
+commit notes, slice review, tag, snapshot) that the M-1 plan had explicitly deferred.
 
 ### Work Completed
 
-- Reviewed `feat/web3forms-integration` end-to-end (code + docs) — no issues found.
-- Confirmed inbox delivery to `info@SmartLearningSolutions.org`.
-- Updated `plans/2026-07-16-web3forms-migration.md`, `DECISION_LOG.md` (ADR-015),
-  `plans/open-decisions.md` (OD-001 resolved, OD-003 updated), `BACKLOG.md`, `PHASE_GATES.md`
-  to reflect confirmed delivery and the self-host proposal.
-- Merged `feat/web3forms-integration` into `main` (merge commit, `--no-ff`) and pushed to
-  `origin/main`.
-- This pass: `STATUS.md`, `PROGRESS_NOTES.md`, `COMMIT_NOTES.md`, `CHANGELOG.md`,
-  `SLICE_REVIEWS.md` updated for the v2.23.0 release record; tag and snapshot to follow.
+- Ran `REPO_SESSION_START_RECOVERY_AUDIT.md` — same-agent (Claude Code → Claude Code) resumption,
+  provenance confirmed, verdict PASS WITH CONDITIONS (one uncommitted `STATUS.md` line).
+- Committed the pending line (`060dacb`).
+- Two parallel Explore agents investigated (1) `og-image.svg` content/references and (2) local
+  SVG-rasterization tooling availability — found the SVG already exactly 1200×630 and
+  self-contained, and two usable headless-Chromium binaries already on disk.
+- Rendered `og-image.png`, verified dimensions and visual fidelity, repointed all 9 `og:image`
+  tags (`bf6fcc0`), validated via a local `serve` instance.
+- Marked M-1 resolved in `BACKLOG.md`/`STATUS.md`/`FILE_MAP.md`; checked `PHASE_GATES.md`'s box
+  without resolving its Gate 1/Gate 3 duplicate-listing conflict yet (`b0bec01`).
+- Owner asked why the release ceremony hadn't run and pointed out `PHASE_GATES.md`'s remaining
+  conflict — reconciled `PHASE_GATES.md` (Gate 1 criterion checked with a resolution note, stale
+  Gate 3 duplicate removed) and ran the full release-records pass: `STATUS.md` version bump,
+  `CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `SLICE_REVIEWS.md`, this note.
 
 ### Validation Performed
 
-- `grep -rn REPLACE_ME book.html contact.html` — no matches (confirmed resolved).
-- Working tree clean before and after merge; merge was conflict-free.
-- No project build/lint/test tooling exists for this static site (expected, longstanding) —
-  none applicable to skip.
+- `sips -g pixelWidth -g pixelHeight` confirmed the PNG is exactly 1200×630.
+- Visual inspection confirmed the render matches the SVG (gradient background, badge icon,
+  heading, subhead, body line, decorative shapes, robot icon).
+- `grep -rn og-image.svg *.html programs/*.html` — zero hits; `og-image.png` — exactly 9 hits.
+- Local `serve` instance: 5 representative pages returned HTTP 200 with the correct `og:image`
+  tag; the new PNG served correctly at its expected byte size.
+- No project build/lint/test tooling exists for this static site (expected, longstanding).
 
 ### Not Yet Verified / Open
 
-- Deployed-domain gate (Gate 1) — blocked on OD-003; the client has not yet accepted the
-  self-host proposal, and no production domain is live to test the Web3Forms integration
-  against.
-- V3.4 stub-doc reconciliation and `.v34_migration_review/` candidate merge — unrelated
-  pre-existing follow-ups, still open.
+- `RELEASE_NOTES.md` has a pre-existing gap — last entry before this session was v2.20.0;
+  v2.21.0, v2.22.0, and v2.23.0 were never added. Flagged to the owner; not backfilled here (out
+  of scope for this session's work, and reconstructing three versions of historical release
+  notes after the fact risks inaccuracy).
+- Deployed-domain gate (Gate 1) remains blocked on OD-003 — unchanged.
+- Push to `origin/main` not yet performed — pending explicit confirmation.
 
 ### Launch Blockers (updated)
 
-1. ~~Formspree `REPLACE_ME`~~ — **resolved, merged to `main`** (v2.23.0).
+1. ~~Formspree `REPLACE_ME`~~ — resolved, merged to `main` (v2.23.0).
 2. Production domain not yet pointed to the VPS — unchanged; pending client acceptance of the
    self-host proposal (OD-003).

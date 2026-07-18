@@ -2,6 +2,32 @@
 
 ---
 
+## v2.24.0 — 2026-07-18 — OG Image PNG Conversion
+
+**Tag:** `v2.24.0__og-image-png-conversion__commit-PENDING`
+
+### Summary
+Resolved M-1 (`AUDIT.md`): `og-image.svg` rendered to a 1200×630 PNG via headless Chromium and
+wired into all 9 pages' `og:image` tags, restoring social-share preview images across the site.
+`PHASE_GATES.md`'s duplicate Gate 1/Gate 3 listing for this requirement reconciled.
+
+### Fixed
+- `src/images/og-image.png` — new 1200×630 raster export of `og-image.svg`
+- `index.html`, `about.html`, `book.html`, `contact.html`, `resources.html`, `workshops.html`,
+  `programs/index.html`, `programs/coding-with-robots.html`, `programs/pstem.html` — `og:image`
+  now points to the PNG
+
+### Changed
+- `BACKLOG.md`, `STATUS.md`, `FILE_MAP.md`, `PHASE_GATES.md` — M-1 marked resolved; Gate 1/Gate 3
+  duplicate criterion reconciled
+
+### Note
+This file's most recent entry before this release was v2.20.0 — v2.21.0, v2.22.0, and v2.23.0
+were never added here (a pre-existing gap, not introduced by this release). Not backfilled in
+this pass; flagged for the owner.
+
+---
+
 ## v2.20.0 — 2026-06-25 — Audit + Portable Fixes
 
 **Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-ed9b0bb`

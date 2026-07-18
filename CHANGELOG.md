@@ -11,6 +11,32 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.24.0] — 2026-07-18
+
+**Tag:** `v2.24.0__og-image-png-conversion__commit-PENDING`
+
+### Fixed
+- Converted `src/images/og-image.svg` to a 1200×630 PNG (`src/images/og-image.png`), rendered
+  via headless Chromium — resolves M-1. SVG `og:image` tags are not reliably supported by
+  Facebook, Twitter/X, LinkedIn, WhatsApp, or Slack, so shared links previously showed no
+  preview image. All 9 pages carrying an `og:image` tag (`index.html`, `about.html`,
+  `book.html`, `contact.html`, `resources.html`, `workshops.html`, `programs/index.html`,
+  `programs/coding-with-robots.html`, `programs/pstem.html`) now reference the PNG.
+
+### Changed
+- Updated `BACKLOG.md`, `STATUS.md`, `FILE_MAP.md`, `PHASE_GATES.md` to reflect M-1 resolved.
+  `PHASE_GATES.md` had this same requirement listed twice — Gate 1's "Open Graph metadata
+  verified" criterion and a stale duplicate filed under Gate 3 (Post-Launch Expansion,
+  Deferred). The Gate 1 criterion is now checked; the Gate 3 duplicate is removed.
+
+### Notes
+- `src/images/og-image.svg` remains in the repo as the editable vector source; not deleted.
+- No `twitter:image` tag exists on any page — per the Twitter/X Card spec, `summary_large_image`
+  without an explicit `twitter:image` already falls back to `og:image`, so no separate change
+  was needed there.
+
+---
+
 ## [2.23.0] — 2026-07-18
 
 **Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-7031e21`

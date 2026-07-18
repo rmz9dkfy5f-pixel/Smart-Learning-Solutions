@@ -46,7 +46,7 @@ The site is ready to go live. All launch blockers are resolved.
 - [ ] Production domain pointed and SSL confirmed
 - [ ] Forms tested end-to-end on production URL
 - [ ] Navigation tested on production URL
-- [ ] Open Graph metadata verified (og:image resolves)
+- [x] Open Graph metadata verified (og:image resolves) — resolved 2026-07-18: `og-image.svg` rasterized to `og-image.png` (1200×630), all 9 pages' `og:image` tags updated (M-1)
 - [ ] Privacy policy published and footer link added (`legal/privacy-policy.md` draft exists; owner placeholders pending)
 
 ### Known Issues at Gate 1
@@ -78,4 +78,3 @@ The site is live and verified in production.
 ### Criteria
 - [ ] Professional Development page (pending content approval)
 - [ ] FAQ page (post-launch, if booking questions emerge)
-- [x] `og-image.svg` converted to PNG/JPEG 1200×630 (M-1)

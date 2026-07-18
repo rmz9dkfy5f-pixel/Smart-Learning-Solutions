@@ -5,6 +5,35 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## v2.24.0 — 2026-07-18 — OG Image PNG Conversion
+
+**Branch:** `main`
+
+### Summary
+Resolved M-1: `og-image.svg` converted to a 1200×630 PNG via headless Chromium (no new
+dependency — used an already-present Playwright-cached binary) and wired into all 9 pages'
+`og:image` tags. Reconciled a stale `PHASE_GATES.md` duplicate (the same requirement was listed
+under both Gate 1 and a deferred Gate 3). Full release ceremony run: `CHANGELOG.md`,
+`RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `SLICE_REVIEWS.md` updated; tagged and snapshotted.
+
+### Work Completed / Areas Changed
+`src/images/og-image.png` (new), `index.html`, `about.html`, `book.html`, `contact.html`,
+`resources.html`, `workshops.html`, `programs/index.html`, `programs/coding-with-robots.html`,
+`programs/pstem.html`, `BACKLOG.md`, `STATUS.md`, `FILE_MAP.md`, `PHASE_GATES.md`,
+`CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `SLICE_REVIEWS.md`, `PROGRESS_NOTE.md`.
+
+### Validation Performed
+PNG dimensions confirmed exactly 1200×630 via `sips`; visual inspection matched the source SVG;
+grep confirmed zero remaining `.svg` references and exactly 9 `.png` references; 5 pages
+spot-checked via a local `serve` instance (200 responses, correct tag).
+
+### Notes for the Next Agent
+`RELEASE_NOTES.md` has a pre-existing gap (v2.21.0–v2.23.0 were never added, discovered during
+this session) — flagged to the owner, not backfilled. Deployed-domain verification (Gate 1)
+remains blocked on OD-003.
+
+---
+
 ## v2.23.0 — 2026-07-18 — Web3Forms Merge + Hosting Decision
 
 **Branch:** `main` (merged from `feat/web3forms-integration`, pushed to `origin/main`)

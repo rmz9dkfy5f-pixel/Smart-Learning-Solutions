@@ -4,6 +4,43 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-007 — OG Image PNG Conversion (v2.24.0)
+**Date:** 2026-07-18
+**Version:** v2.24.0
+**Commit:** `PENDING`
+
+**Slice:** Resolve M-1 (`AUDIT.md`) — convert `og-image.svg` to a 1200×630 PNG and repoint all
+`og:image` references; reconcile tracking docs.
+
+**Pre-review finding:** `og-image.svg` was already authored at the exact 1200×630 target canvas
+but no PNG existed anywhere in the repo, and no SVG-rasterization tooling was installed. Two
+Explore agents run in parallel confirmed: (1) the SVG is self-contained with no external assets,
+9 pages reference it identically, no `twitter:image` tag exists; (2) no ImageMagick/
+rsvg-convert/Inkscape/cairosvg is installed, but two fully-functional headless-Chromium binaries
+already exist on disk from prior Playwright use.
+
+**Review method:** Rendered via `chrome-headless-shell --headless --screenshot`; verified exact
+1200×630 output via `sips`; visually inspected the PNG against the known SVG content; grepped
+for zero remaining `.svg` references and exactly 9 `.png` references; spot-checked 5 pages via a
+local `serve` instance (200 responses, correct tag).
+
+**Findings:**
+- Render was faithful on the first attempt — no fallback binary needed
+- `PHASE_GATES.md` carried this requirement twice (Gate 1 "Open Graph metadata verified" and a
+  stale Gate 3/Deferred duplicate) — reconciled by checking Gate 1's criterion and removing the
+  Gate 3 duplicate, since this is Gate-1 launch-readiness work, not deferred post-launch scope
+- `RELEASE_NOTES.md` had a pre-existing 3-version gap (last entry v2.20.0; v2.21.0–v2.23.0 were
+  never added) — flagged to the owner, not backfilled in this slice
+
+**Post-review result:** M-1 fully resolved. `BACKLOG.md`, `STATUS.md`, `FILE_MAP.md`,
+`PHASE_GATES.md` updated. PNG chosen over JPEG (lossless, no compression artifacts on the
+text/gradient graphic) — no repo doc stated a preference either way.
+
+**Risk:** Low — additive PNG asset plus one-line meta-tag edits on 9 pages; SVG source untouched
+and left in place.
+
+---
+
 ## SR-006 — Web3Forms Merge + Hosting Decision (v2.23.0)
 **Date:** 2026-07-18
 **Version:** v2.23.0
