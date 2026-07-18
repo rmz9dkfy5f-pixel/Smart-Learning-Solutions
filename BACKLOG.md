@@ -25,7 +25,7 @@ These must be resolved before the site can go live.
 
 | ID | Item | Notes |
 |---|---|---|
-| M-1 | Convert `og-image.svg` to PNG/JPEG 1200×630 | Social share previews will not render until resolved |
+| M-1 | ~~Convert `og-image.svg` to PNG/JPEG 1200×630~~ — **Resolved 2026-07-18**: rendered via headless Chromium, `src/images/og-image.png` now referenced on all 9 pages | Social share previews will not render until resolved |
 | OD-003 | Deployment target decision (self-host proposed, pending client acceptance) | Blocks host setup |
 
 ---
