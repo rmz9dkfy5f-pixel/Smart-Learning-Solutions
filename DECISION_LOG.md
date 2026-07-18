@@ -217,7 +217,7 @@ doc-only and additive, consistent with the pattern applied to the other nine rep
 ## ADR-015 — Replace Formspree with Web3Forms
 
 **Date:** 2026-07-16
-**Version:** unreleased (branch `feat/web3forms-integration`, uncommitted)
+**Version:** unreleased (merged to `main` 2026-07-18 from branch `feat/web3forms-integration`)
 
 ### Decision
 Replace Formspree with Web3Forms as the production form provider for `book.html` and
@@ -235,13 +235,13 @@ which also targets two other AntBrainOS-tracked repos.
 
 ### Context
 This ADR records the decision as of 2026-07-16; it does not certify the site as launch-ready.
-Current real status: uncommitted on `feat/web3forms-integration`. The owner supplied a live
-Web3Forms access key mid-session and local browser testing (via `python3 -m http.server`)
-confirmed the loading and success states render correctly on both forms. Two items remain
-genuinely open and are **not** resolved by this ADR: (1) inbox delivery to
-`info@SmartLearningSolutions.org` has not yet been confirmed by the business owner, and
-(2) the deployed-domain verification step (migration plan §11.4) is blocked on OD-003 — no
-hosting platform/production domain has been chosen yet, so there is nothing to test against.
+The owner supplied a live Web3Forms access key mid-session and local browser testing (via
+`python3 -m http.server`) confirmed the loading and success states render correctly on both
+forms. **Update 2026-07-18:** inbox delivery to `info@SmartLearningSolutions.org` is now
+confirmed. One item remains genuinely open and is **not** resolved by this ADR: the
+deployed-domain verification step (migration plan §11.4) is blocked on OD-003 — the owner is
+proposing self-hosting to the client, but this is not yet accepted and no production domain is
+live, so there is nothing to test against yet.
 See `plans/2026-07-16-web3forms-migration.md` for the full slice-by-slice record.
 
 ### Alternatives Considered
@@ -251,10 +251,10 @@ See `plans/2026-07-16-web3forms-migration.md` for the full slice-by-slice record
   plan's own non-negotiable decisions; a dead second integration adds no value.
 
 ### Consequences
-- C-1/OD-001 (Formspree `REPLACE_ME` launch blocker) is resolved at the code level once this
-  branch is reviewed, committed, and the two open items above are cleared.
+- C-1/OD-001 (Formspree `REPLACE_ME` launch blocker) is resolved at the code level; merged to
+  `main` 2026-07-18. Inbox delivery is confirmed.
 - `PHASE_GATES.md`/`BACKLOG.md` Gate 1 criteria for form functionality still require the
-  inbox-delivery confirmation and deployed-domain test before they can be checked off.
+  deployed-domain test (blocked on OD-003) before they can be fully checked off.
 - No visual/content redesign — forms keep their existing fields, labels, and layout.
 
 ### See Also

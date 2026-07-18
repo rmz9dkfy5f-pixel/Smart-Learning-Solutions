@@ -39,7 +39,7 @@ The project has a complete, pre-launch static site and a v2 project-control plan
 The site is ready to go live. All launch blockers are resolved.
 
 ### Criteria to Meet
-- [x] Formspree endpoint configured — `REPLACE_ME` replaced in `book.html` and `contact.html` (C-1) — **superseded 2026-07-16**: migrated to Web3Forms instead of Formspree; both forms wired to a live access key (uncommitted — pending owner review, see `plans/2026-07-16-web3forms-migration.md`)
+- [x] Formspree endpoint configured — `REPLACE_ME` replaced in `book.html` and `contact.html` (C-1) — **superseded 2026-07-16, merged to `main` 2026-07-18**: migrated to Web3Forms instead of Formspree; both forms wired to a live access key, inbox delivery confirmed (see `plans/2026-07-16-web3forms-migration.md`, ADR-015)
 - [x] `.btn { cursor: none }` gated behind `body.custom-cursor-enabled` in `main.css` (C-2)
 - [ ] Deployment host confirmed and `/programs/` directory routing verified (H-1)
 - [x] SRI hashes added to GSAP CDN `<script>` tags (H-2)
@@ -50,7 +50,7 @@ The site is ready to go live. All launch blockers are resolved.
 - [ ] Privacy policy published and footer link added (`legal/privacy-policy.md` draft exists; owner placeholders pending)
 
 ### Known Issues at Gate 1
-- **Hosting platform unconfirmed** (R-003): owner indicated the site "may go on Wix" — Wix cannot host this hand-coded static repo as-is. This gates host-specific work (security headers/CSP, clean-URL routing, deploy-root exclusion) and renders most code-level fixes throwaway until the platform is known. See ADR-013 and L-012.
+- **Hosting platform unconfirmed** (R-003, OD-003): self-hosting on the existing staging VPS (74.208.9.49) was proposed to the client 2026-07-18; not yet accepted. Until accepted, this still gates host-specific work (security headers/CSP, clean-URL routing, deploy-root exclusion) and the deployed-domain verification for C-1/ADR-015. Wix remains a fallback risk only if the client rejects the proposal. See ADR-013 and L-012.
 
 ---
 
