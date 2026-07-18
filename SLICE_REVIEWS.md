@@ -7,7 +7,7 @@ Record of significant work slices reviewed before and after implementation.
 ## SR-006 — Web3Forms Merge + Hosting Decision (v2.23.0)
 **Date:** 2026-07-18
 **Version:** v2.23.0
-**Commit:** `PENDING`
+**Commit:** `7031e21`
 
 **Slice:** Review and merge `feat/web3forms-integration` into `main`; confirm the two items that ADR-015 explicitly left open.
 
