@@ -7,7 +7,7 @@ Record of significant work slices reviewed before and after implementation.
 ## SR-007 — OG Image PNG Conversion (v2.24.0)
 **Date:** 2026-07-18
 **Version:** v2.24.0
-**Commit:** `PENDING`
+**Commit:** `d7f48fd`
 
 **Slice:** Resolve M-1 (`AUDIT.md`) — convert `og-image.svg` to a 1200×630 PNG and repoint all
 `og:image` references; reconcile tracking docs.

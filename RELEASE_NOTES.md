@@ -4,7 +4,7 @@
 
 ## v2.24.0 — 2026-07-18 — OG Image PNG Conversion
 
-**Tag:** `v2.24.0__og-image-png-conversion__commit-PENDING`
+**Tag:** `v2.24.0__og-image-png-conversion__commit-d7f48fd`
 
 ### Summary
 Resolved M-1 (`AUDIT.md`): `og-image.svg` rendered to a 1200×630 PNG via headless Chromium and
