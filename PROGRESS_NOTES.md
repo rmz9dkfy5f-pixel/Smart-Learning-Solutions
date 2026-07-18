@@ -5,35 +5,39 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
-## Unreleased — 2026-07-16/17 — Formspree → Web3Forms Migration
+## v2.23.0 — 2026-07-18 — Web3Forms Merge + Hosting Decision
 
-**Branch:** `feat/web3forms-integration` (pushed, unmerged — no version/tag assigned yet)
+**Branch:** `main` (merged from `feat/web3forms-integration`, pushed to `origin/main`)
 
 ### Summary
-Resolved launch blocker C-1/OD-001 by replacing the dead `formspree.io/f/REPLACE_ME` endpoint
-in `book.html`/`contact.html` with a Web3Forms integration (honeypot, accessible status region,
-request timeout, duplicate-submission guard), per the AntBrainOS vault's Web3Forms Migration
-Execution Plan. `CLAUDE.md`/`AGENTS.md` Confirmed Decisions updated; `DECISION_LOG.md` ADR-015
-added. Full detail: `plans/2026-07-16-web3forms-migration.md`.
+Launch blocker C-1/OD-001 is resolved: the Web3Forms migration (2026-07-16/17, replacing the
+dead `formspree.io/f/REPLACE_ME` endpoint in `book.html`/`contact.html` with honeypot,
+accessible status region, request timeout, duplicate-submission guard) was reviewed, inbox
+delivery to `info@SmartLearningSolutions.org` was confirmed, and the branch was merged into
+`main`. The owner also confirmed the hosting direction: self-hosting on the existing staging
+VPS (`74.208.9.49`) is being proposed to the client (OD-003), superseding the earlier
+Netlify/GitHub Pages recommendation. Full detail: `plans/2026-07-16-web3forms-migration.md`,
+`DECISION_LOG.md` ADR-015.
 
 ### Work Completed / Areas Changed
 `src/js/web3forms-config.js` (new), `book.html`, `contact.html`, `src/css/main.css`,
-`CLAUDE.md`, `AGENTS.md`, `DECISION_LOG.md`, plus doc-consistency updates across
+`CLAUDE.md`, `AGENTS.md`, `DECISION_LOG.md` (ADR-015), plus doc-consistency updates across
 `.env.example`, `README.md`, `ARCHITECTURE.md`, `ROADMAP.md`, `STATUS.md`, `BACKLOG.md`,
 `PHASE_GATES.md`, `docs/DEPLOYMENT.md`, `docs/STRATEGY.md`, `docs/TESTING.md`,
-`docs/governance/PROJECT_RISK_REGISTER.md`, `plans/open-decisions.md`,
-`legal/privacy-policy.md`, `CHANGELOG.md`.
+`docs/governance/PROJECT_RISK_REGISTER.md`, `plans/open-decisions.md` (OD-001, OD-003),
+`legal/privacy-policy.md`, `CHANGELOG.md`, `SLICE_REVIEWS.md`, `COMMIT_NOTES.md`.
 
 ### Validation Performed
 Local browser testing confirmed both forms' loading/success states render correctly with a
 live access key. A scripted `curl` probe against the Web3Forms API was correctly rejected
-(403) by its anti-bot layer, confirming real-browser-only submission.
+(403) by its anti-bot layer, confirming real-browser-only submission. Inbox delivery
+subsequently confirmed by the owner. `grep` confirmed no `REPLACE_ME` remains in `book.html`
+or `contact.html`.
 
 ### Notes for the Next Agent
-Not fully done — two owner-gated items remain: (1) inbox delivery to
-`info@SmartLearningSolutions.org` unconfirmed, (2) deployed-domain verification blocked on
-OD-003 (no production domain/host finalized yet). Do not merge to `main` or assign a version
-tag until both clear.
+Deployed-domain verification (Gate 1) is still blocked on OD-003 — the self-host proposal has
+not yet been accepted by the client, and no production domain is live to test against. Once
+accepted, point the domain at the VPS and complete the Gate 1 checklist in `PHASE_GATES.md`.
 
 ---
 

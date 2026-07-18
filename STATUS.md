@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.22.0 · 2026-07-10
+**Current Version:** v2.23.0 · 2026-07-18
 **Branch:** `main`
 
 ---
@@ -8,6 +8,20 @@
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Web3Forms Migration + Hosting Decision — 2026-07-18 (v2.23.0)
+
+Launch blocker C-1/OD-001 (Formspree `REPLACE_ME`) is resolved: both forms migrated to
+Web3Forms on branch `feat/web3forms-integration`, reviewed, merged into `main`, and pushed.
+Inbox delivery to `info@SmartLearningSolutions.org` is confirmed. See
+`plans/2026-07-16-web3forms-migration.md` and `DECISION_LOG.md` ADR-015.
+
+Hosting (OD-003): self-hosting on the existing staging VPS (`74.208.9.49`) is being proposed
+to the client, superseding the earlier Netlify/GitHub Pages recommendation and the earlier
+Wix consideration. Not yet accepted — deployed-domain verification for Gate 1 stays open
+until the client accepts and a production domain is live.
 
 ---
 
@@ -88,7 +102,8 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 - Production-readiness audit (V3.4) + portable doc/governance fixes: BLOCKED result recorded in `REPO_HEALTH_CHECK.md` + `RELEASE_GATE.md`; portable privacy-policy draft added at `legal/privacy-policy.md`; README version/staleness fixed; risks R-002–R-004 + ADR-013 + lessons L-012/L-013 logged (v2.20.0)
 - Second production-readiness audit pass: BLOCKED result unchanged (v2.21.0); `main` fast-forwarded to this work after it sat unmerged on `audit/production-readiness` for two weeks
 - Mandatory Model Selection Gate adopted repo-wide (`MODEL_SELECTION_GATE.md`, `PROMPT_MODEL_SELECTION_GATE.md`) — see ADR-014; stale `project-starter-kit-v3.3/`/`v3.4/` template folders (and gitignored leftovers) fully removed (v2.22.0)
-- Formspree → Web3Forms migration: C-1 launch blocker resolved — both forms wired to a live Web3Forms access key (`src/js/web3forms-config.js`), honeypot spam protection, accessible loading/error states, request timeout added; see `plans/2026-07-16-web3forms-migration.md` (2026-07-16, uncommitted — pending owner review)
+- Formspree → Web3Forms migration: C-1 launch blocker resolved — both forms wired to a live Web3Forms access key (`src/js/web3forms-config.js`), honeypot spam protection, accessible loading/error states, request timeout added; inbox delivery confirmed; merged to `main` (v2.23.0); see `plans/2026-07-16-web3forms-migration.md`
+- Hosting direction logged: self-hosting on the existing VPS proposed to the client (OD-003), pending acceptance (v2.23.0)
 
 ---
 
@@ -112,8 +127,8 @@ See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H
 
 | Priority | Action | Finding |
 |---|---|---|
-| 1 | ~~Create Formspree account → replace `REPLACE_ME`~~ — done via Web3Forms migration (2026-07-16); review and commit the branch | C-1 |
-| 2 | Point production domain to VPS; verify routing end-to-end | H-1 |
+| 1 | ~~Create Formspree account → replace `REPLACE_ME`~~ — done via Web3Forms migration, merged to `main` (v2.23.0) | C-1 |
+| 2 | Client to accept/reject self-host proposal; once accepted, point production domain to VPS and verify routing end-to-end | H-1 / OD-003 |
 | 3 | Convert `og-image.svg` to PNG/JPEG 1200×630 | M-1 |
 | 4 | Reconcile V3.4 stub docs (`docs/project/`, `docs/governance/`) with existing root-level equivalents | V3.4 follow-up |
 | 5 | Review V3.4 candidate AGENTS.md/CLAUDE.md in `.v34_migration_review/` and merge any useful additions | V3.4 follow-up |

@@ -4,6 +4,28 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-006 — Web3Forms Merge + Hosting Decision (v2.23.0)
+**Date:** 2026-07-18
+**Version:** v2.23.0
+**Commit:** `PENDING`
+
+**Slice:** Review and merge `feat/web3forms-integration` into `main`; confirm the two items that ADR-015 explicitly left open.
+
+**Pre-review finding:** Branch `feat/web3forms-integration` (2026-07-16/17) implemented a working Web3Forms replacement for the dead Formspree `REPLACE_ME` endpoint, but was unmerged and had two open items per its own plan: unconfirmed inbox delivery, and a still-undecided hosting platform.
+
+**Review method:** Read the full branch diff (`book.html`, `contact.html`, `src/js/web3forms-config.js`, `src/css/main.css`, and all doc updates); read `plans/2026-07-16-web3forms-migration.md` and `DECISION_LOG.md` ADR-015 in full.
+
+**Findings:**
+- Implementation is sound: honeypot field, accessible `role="status"` loading/error region, `AbortController` timeout, duplicate-submission guard; access key documented as public/client-safe per Web3Forms' own docs, not a secret
+- No `REPLACE_ME` remaining in either form
+- Docs (`CLAUDE.md`/`AGENTS.md` Confirmed Decisions, `BACKLOG.md`, `PHASE_GATES.md`, `plans/open-decisions.md`, `DECISION_LOG.md`) were kept consistent with the code change throughout the branch
+
+**Post-review result:** Owner confirmed inbox delivery and the hosting direction (self-host proposal to the client, OD-003). Branch merged into `main` (`--no-ff`) and pushed. C-1/OD-001 launch blocker fully resolved. Deployed-domain verification (Gate 1) remains open pending client acceptance of the self-host proposal.
+
+**Risk:** Low — code change was already reviewed and locally verified before this slice; this slice's own changes are additive documentation plus a conflict-free merge.
+
+---
+
 ## SR-005 — Second Production-Readiness Audit (v2.21.0)
 **Date:** 2026-06-27
 **Version:** v2.21.0
