@@ -2,6 +2,31 @@
 
 ---
 
+## v2.25.0 — 2026-07-19 — Staging Redeploy + Deploy-Allowlist Hardening
+
+**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-<hash>`
+
+### Summary
+Staging was found running a stale deploy from ~2026-06-19/23 — predating the Web3Forms migration
+and OG-image PNG conversion. Both booking/contact forms were live-POSTing to the dead Formspree
+endpoint. Redeployed current `main` to staging via a new allowlist-based deploy script, closing
+that gap and hardening against future internal-doc exposure (R-004).
+
+### Fixed
+- Staging `book.html`/`contact.html` now call `api.web3forms.com` (previously the dead
+  `formspree.io/f/REPLACE_ME` endpoint)
+- Staging `index.html` `og:image` now points to `og-image.png` (previously `og-image.svg`)
+
+### Added
+- `scripts/deploy-staging.sh` — explicit path allowlist over rsync/SSH; see `docs/DEPLOYMENT.md`
+  §11
+
+### Changed
+- `docs/DEPLOYMENT.md`, `docs/governance/PROJECT_RISK_REGISTER.md`, `LESSONS_LEARNED.md`,
+  `DECISION_LOG.md` (ADR-016) updated — see `SLICE_REVIEWS.md` SR-009 for full detail
+
+---
+
 ## v2.24.0 — 2026-07-18 — OG Image PNG Conversion
 
 **Tag:** `v2.24.0__og-image-png-conversion__commit-d7f48fd`

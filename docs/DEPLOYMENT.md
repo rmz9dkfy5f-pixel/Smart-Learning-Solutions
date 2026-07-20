@@ -13,7 +13,7 @@ This is a static site — no build step required. The repo root is the deploy ro
 | Environment | Method |
 |---|---|
 | Local dev | `npx serve .` or VS Code Live Server |
-| Staging | Deploy root folder to the staging host |
+| Staging | `scripts/deploy-staging.sh` — explicit path allowlist over rsync/SSH; see §11 |
 | Production | Deploy root folder to Netlify, GitHub Pages, or Nginx static hosting |
 
 ## 2. Local Development
@@ -106,7 +106,29 @@ Production must not send the staging `X-Robots-Tag` header.
 
 ## 9. Rollback
 
-There is no build or database to roll back. To revert a broken deploy:
+**Staging (VPS):** `scripts/deploy-staging.sh` does not currently create its own rollback point
+automatically — before a manual redeploy, take a timestamped backup of the live directory first:
+
+```bash
+ssh -i ~/.ssh/jones_vps root@74.208.9.49 \
+  'cp -a /var/www/smart-learning-solutions /var/www/smart-learning-solutions.bak-$(date +%Y%m%d-%H%M%S)'
+```
+
+To roll back, rename the broken live directory aside (don't delete — keep it for a post-mortem)
+and restore the backup in its place:
+
+```bash
+ssh -i ~/.ssh/jones_vps root@74.208.9.49 '
+  mv /var/www/smart-learning-solutions /var/www/smart-learning-solutions.broken-$(date +%Y%m%d-%H%M%S)
+  mv /var/www/smart-learning-solutions.bak-<TIMESTAMP> /var/www/smart-learning-solutions
+'
+```
+
+There is no CI auto-deploy on push to `main` — a `git revert`/`git push` alone does not change
+staging content; you must re-run `scripts/deploy-staging.sh` after fixing the issue.
+
+**If/when production ever deploys via git-triggered CI** (Netlify/GitHub Pages, pending OD-003),
+the git-based rollback below applies there instead:
 
 ```bash
 git revert HEAD
@@ -129,3 +151,28 @@ git push origin main --force
 | ES module path differences between local and production | Components fail to load | Always test on a local server, not `file://` |
 | Staging indexed by search engines | Duplicate unfinished pages may appear in search | Send staging-only `X-Robots-Tag: noindex, nofollow, noarchive` |
 | Missing security headers | Reduced browser-side protection | Apply Nginx headers before collecting user data |
+| Staging silently drifts behind `main` (no deploy tooling) | Live forms/content can run stale or broken code for weeks unnoticed — happened 2026-06-23 to 2026-07-19 | `scripts/deploy-staging.sh` (§11); periodically diff live content against `main` |
+| Careless future deploy ships internal docs/governance files | Repo internals (`AUDIT.md`, `CLAUDE.md`, `.claude/`, `.agents/`, `plans/`, etc.) become publicly fetchable | `scripts/deploy-staging.sh` uses an explicit path allowlist, not a denylist — internal paths are never named as a source, so they cannot be shipped regardless of what new internal files land in the repo later |
+
+## 11. Staging Deploy — VPS (rsync over SSH)
+
+Host: `74.208.9.49` (IONOS, shared multi-tenant VPS — several other unrelated client sites live
+under sibling `/var/www/` directories; every command must stay scoped to
+`/var/www/smart-learning-solutions/`). Web root: `/var/www/smart-learning-solutions/`.
+
+Run `scripts/deploy-staging.sh --dry-run` first, review the output, then
+`scripts/deploy-staging.sh` for real. The script deploys an explicit allowlist — the 7 root
+pages, `robots.txt`, `sitemap.xml`, `programs/`, `src/`, `legal/` — nothing else. `pics/` and
+every repo-internal path (`.git`, `.claude`, `.agents`, `docs/`, `plans/`, `prompts/`, all root
+governance `.md` files, etc.) are structurally excluded because they are never named as a source
+anywhere in the script, not because of an exclude pattern that could be forgotten later. See
+`DECISION_LOG.md` for the allowlist-over-denylist rationale.
+
+Always back up the live directory before a real run (§9) and verify afterward: forms reference
+`api.web3forms.com` (not the dead Formspree endpoint), `og:image` resolves, all pages return 200,
+the security headers from §7 are present, and internal paths (e.g. `/AUDIT.md`, `/.git/config`)
+still return 404.
+
+There is no automatic trigger — `scripts/deploy-staging.sh` must be run manually after merging to
+`main` whenever staging should reflect current code. There is currently no CI or scheduled check
+that staging is in sync with `main`; this is a known gap (see `LESSONS_LEARNED.md` L-016).

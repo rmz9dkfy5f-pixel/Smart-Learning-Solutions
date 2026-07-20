@@ -4,6 +4,52 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-009 — Staging Redeploy + Deploy-Allowlist Hardening (v2.25.0)
+**Date:** 2026-07-19
+**Version:** v2.25.0
+**Commit:** (filled in after commit)
+
+**Slice:** Redeploy current `main` (HEAD `2b39333`) to the staging VPS, replacing a stale
+deployment last touched ~2026-06-19/23, and add a durable, allowlist-based deploy mechanism so
+internal-only files can never be shipped by a future careless deploy (R-004).
+
+**Pre-review finding:** Investigating a narrower, originally-scoped task ("add `.claude/`/
+`.agents/` to rsync excludes") found the staging web root had no `.git/`, deploy script, or CI
+workflow — the last deploy was a one-time manual copy that was never repeated. It predated the
+Web3Forms migration (both forms still POSTed to the dead `formspree.io/f/REPLACE_ME` endpoint on
+live) and the OG-image PNG conversion (`index.html` still referenced `og-image.svg`). All pages
+including `workshops.html` were present but stale.
+
+**Change:** Added `scripts/deploy-staging.sh` — an explicit source-path allowlist (7 root pages,
+`robots.txt`, `sitemap.xml`, `programs/`, `src/`, `legal/`) over rsync/SSH, with `--delete`
+scoped per-directory so it can never reach sibling paths. Took a timestamped `cp -a` backup of
+the live directory before the real run (`smart-learning-solutions.bak-20260720-034206`). `pics/`
+and every repo-internal path were never named as a source anywhere, so structurally excluded
+rather than denylist-excluded. See `DECISION_LOG.md` ADR-016 for the allowlist-over-denylist
+rationale.
+
+**Findings:** Dry run confirmed ~1.26MB across 9 root files + `programs/`/`src/`/`legal/`,
+matching only the allowlist. Real run deployed cleanly (one bash-3.2 "unbound variable" bug in
+the script's dry-run-flag handling was found and fixed via the dry run before any real transfer
+occurred — no partial state resulted). Post-deploy `curl` verification: `book.html`/`contact.html`
+now call `api.web3forms.com`, zero `formspree`/`REPLACE_ME` references; `index.html` `og:image`
+now points to `og-image.png`; the PNG is fetchable (200, `image/png`); all pages return 200;
+direct `/404.html` correctly still 404s (ADR-009 `internal`); all 5 security headers from SR-008
+unaffected; `/AUDIT.md`, `/.git/config`, `/.git/HEAD`, `/.claude/`, `/.agents/skills/.../SKILL.md`,
+`/docs/...`, `/plans/...`, `/COMMIT_NOTES.md`, and `/scripts/deploy-staging.sh` itself all
+continue to 404.
+
+**Post-review result:** Staging now reflects `main` HEAD. `docs/DEPLOYMENT.md` updated with new
+§11 (deploy script) and a corrected §9 (VPS-specific rollback, replacing the inapplicable
+git-based rollback text). `docs/governance/PROJECT_RISK_REGISTER.md` R-004 updated to "mitigated
+for staging / open for production" (not blanket-closed — production hosting is still undecided
+per OD-003). `LESSONS_LEARNED.md` L-013 resolved, new L-016 added.
+
+**Risk:** Low — allowlist-scoped, backed up, dry-run-verified before execution; shared
+multi-tenant server, but every command scoped to `/var/www/smart-learning-solutions/` only.
+
+---
+
 ## SR-008 — Nginx Security Headers on Staging (server-side, no version bump)
 **Date:** 2026-07-19
 **Version:** — (no repo code change; server-side config only)

@@ -97,6 +97,14 @@ Maps every tracked file to its purpose, owner, and edit frequency.
 
 ---
 
+## scripts/ Directory
+
+| File | Purpose | Owner | Frequency |
+|---|---|---|---|
+| `scripts/deploy-staging.sh` | Deploys the public site to the staging VPS via an explicit path allowlist (see `docs/DEPLOYMENT.md` §11) | Dev | Per deploy |
+
+---
+
 ## docs/ Directory
 
 | File | Purpose | Owner | Frequency |

@@ -11,6 +11,35 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.25.0] — 2026-07-19
+
+**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-<hash>`
+
+### Fixed
+- Staging (`smart-learning-solutions.craftandconscious.com`) was serving a stale deploy from
+  ~2026-06-19/23 — both `book.html` and `contact.html` were still live-POSTing to the dead
+  `formspree.io/f/REPLACE_ME` endpoint, and `index.html` still referenced the old
+  `og-image.svg`. Redeployed current `main` to staging, resolving both.
+
+### Added
+- `scripts/deploy-staging.sh` — deploys the site to the staging VPS via rsync/SSH using an
+  explicit source-path allowlist (7 root pages, `robots.txt`, `sitemap.xml`, `programs/`,
+  `src/`, `legal/`). Internal-only paths (`.git`, `.claude`, `.agents`, `docs/`, `plans/`,
+  governance `.md` files, etc.) are never named as a source, so they cannot be shipped by this
+  mechanism regardless of what new internal files land in the repo later.
+
+### Changed
+- `docs/DEPLOYMENT.md` — §1 points at the new deploy script; new §11 documents it; §9 rollback
+  section corrected (previously described a git-based rollback that doesn't apply to this VPS
+  deploy mechanism).
+- `docs/governance/PROJECT_RISK_REGISTER.md` R-004 updated: mitigated for staging, still open
+  for production (pending OD-003).
+- `LESSONS_LEARNED.md` — L-013 resolved; new L-016 ("a confirmed host is not a confirmed deploy
+  pipeline").
+- `DECISION_LOG.md` — new ADR-016 documenting the allowlist-over-denylist choice.
+
+---
+
 ## [2.24.0] — 2026-07-18
 
 **Tag:** `v2.24.0__og-image-png-conversion__commit-d7f48fd`

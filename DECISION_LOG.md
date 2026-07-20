@@ -259,5 +259,61 @@ See `plans/2026-07-16-web3forms-migration.md` for the full slice-by-slice record
 
 ### See Also
 - `09_PROMPTS/Claude_Code_Prompts/04_Prompts/web3forms_migration_execution_plan.md` (AntBrainOS vault)
+
+---
+
+## ADR-016 — Staging Deploy Script Uses an Explicit Path Allowlist, Not a Denylist
+
+**Date:** 2026-07-19
+**Version:** v2.25.0
+
+### Decision
+`scripts/deploy-staging.sh` deploys to the staging VPS using an explicit allowlist of exactly
+which paths are public (7 root HTML pages, `robots.txt`, `sitemap.xml`, `programs/`, `src/`,
+`legal/`). It never takes the repo root as a source with exclude patterns layered on top.
+
+### Reason
+While investigating why the staging site was serving stale, broken content, a broader
+discovery: this repo has repeatedly added new internal top-level directories over time
+(`docs/governance`, `docs/project`, `ai/`, `.agents/skills` all arrived together in the v2.19.0
+V3.4 migration; `Documents/`, `Planning Documents/`, `.v34_migration_review/`, `sample-data/`
+are all git-tracked with no corresponding `.gitignore` entry). A denylist-based deploy approach
+has to be remembered and updated every time a new internal path appears — and forgetting fails
+*silently*: the new internal directory just gets shipped, with nothing to notice until someone
+happens to check. An allowlist fails in the opposite, safe direction: forgetting to add a new
+*public* path just means a new page doesn't deploy yet, which is immediately obvious (a 404 on
+a page that should exist) rather than a silent internal-docs leak.
+
+### Context
+Discovered while executing a much narrower originally-scoped task ("add `.claude/`/`.agents/`
+to rsync excludes"). That investigation found no rsync/deploy mechanism was actually tracked in
+this repo at all, and that the live staging content was stale by about four weeks — predating
+the Web3Forms migration (ADR-015) and the OG-image PNG conversion, with both forms still
+POSTing to the dead Formspree endpoint on the live site. See `SLICE_REVIEWS.md` SR-009 for the
+full investigation and redeploy record.
+
+### Alternatives Considered
+- Denylist (exclude internal paths from a repo-root source) — rejected; this is exactly the
+  pattern that let internal directories accumulate unnoticed in git tracking, and the failure
+  mode (a forgotten exclusion silently ships internal docs) is the worse direction to fail in.
+- Restructure the repo so only a dedicated publish folder holds public assets (`LESSONS_LEARNED.md`
+  L-013's originally suggested approach) — rejected for now as a larger, unrequested repo
+  restructure; the allowlist script achieves the same safety property without moving any files.
+- Git-based deploy (checkout/pull directly on the VPS) — not applicable; confirmed this session
+  that the actual deploy mechanism has never been git-based, and switching to one now would be a
+  larger, separately-scoped change.
+
+### Consequences
+- Adding a new public page/asset requires a one-line addition to `scripts/deploy-staging.sh`'s
+  `ROOT_FILES`/`DIRS` arrays — a small, deliberate, visible step.
+- R-004 (deploy-root internal-doc exposure) is mitigated for staging; production remains open,
+  gated on OD-003 (production host still unconfirmed).
+- `docs/DEPLOYMENT.md` §9's rollback section needed correcting — it previously described a
+  git-based rollback (`git revert && git push`) that does nothing for this VPS deploy mechanism.
+
+### See Also
+- `SLICE_REVIEWS.md` SR-009
+- `LESSONS_LEARNED.md` L-013 (resolved), L-016 (new)
+- `docs/governance/PROJECT_RISK_REGISTER.md` R-004
 - `plans/2026-07-16-web3forms-migration.md` (this repo, same branch)
 - ADR-013 (portable-fixes-only / hosting-gated work — same "don't overstate readiness" discipline)
