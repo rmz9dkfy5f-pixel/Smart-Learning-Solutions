@@ -138,6 +138,23 @@ governance material. These are not intended to be public-facing.
 use a `netlify.toml` with `publish = "."` and add redirect/ignore rules, or restructure so
 only the publishable asset folder (`src/`, HTML pages) is the publish root. Verify by
 requesting an internal file URL (e.g. `/AUDIT.md`) and confirming it returns 404.
+**Resolved 2026-07-19 (staging only):** Implemented as `scripts/deploy-staging.sh` — an
+explicit source-path allowlist rather than a repo-root-minus-excludes approach. See SR-009
+and `DECISION_LOG.md`. Production still has no mechanism (R-004).
+
+### L-016 — A confirmed host is not a confirmed deploy pipeline
+**Context:** SR-009, 2026-07-19 — the staging VPS had been reachable and correctly configured
+(nginx `try_files`, security headers) for over a month, but there was no tracked deploy
+mechanism at all in the repo.
+**What happened:** Live content silently drifted behind `main` for about four weeks — through
+two shipped launch-blocker fixes (Web3Forms migration, OG-image PNG conversion) — before
+anyone checked the staging URL's actual served content directly against the repo. The forms on
+staging were POSTing to a dead endpoint the whole time.
+**Rule:** "Host confirmed/reachable" and "repeatable deploy mechanism exists" are separate
+facts — verify both independently. When a host has been live for a while with no deploy
+tooling tracked in the repo, treat its content as unverified until checked directly (e.g.
+`curl`/`grep` the live page for a known-recent string), regardless of how long the host has
+been up or how confident prior session notes sound.
 
 ---
 

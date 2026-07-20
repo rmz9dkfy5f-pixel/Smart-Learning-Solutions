@@ -5,6 +5,43 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.25.0 — Staging Redeploy + Deploy-Allowlist Hardening
+**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-<hash>`
+**Commit:** (pending — backfilled in a follow-up commit once this commit's hash is known)
+**Type:** `fix` (staging content) + `feat` (deploy tooling) + `docs`
+
+**Summary:** Redeploy stale staging content to current `main`; add an allowlist-based deploy
+script so internal docs can never be shipped again (2026-07-19)
+
+**Description:**
+- Investigating a narrower originally-scoped task ("add `.claude/`/`.agents/` to rsync
+  excludes") found the staging VPS web root had no `.git/`, deploy script, or CI workflow — the
+  last real deploy was a one-time manual copy from ~2026-06-19/23, never repeated. Both
+  `book.html`/`contact.html` were live-POSTing to the dead `formspree.io/f/REPLACE_ME` endpoint
+  (the C-1 blocker fixed in the repo three weeks prior), and `index.html` still referenced the
+  old `og-image.svg`
+- Added `scripts/deploy-staging.sh`: an explicit source-path allowlist (7 root pages,
+  `robots.txt`, `sitemap.xml`, `programs/`, `src/`, `legal/`) over rsync/SSH, with `--delete`
+  scoped per-directory. Fixed a bash-3.2 (macOS default `/bin/bash`) "unbound variable" bug in
+  the dry-run-flag handling, caught by the dry run itself before any real transfer occurred
+- Took a timestamped `cp -a` backup of the live directory before the real deploy
+  (`smart-learning-solutions.bak-20260720-034206`)
+- Redeployed current `main` (`2b39333`) to staging via the new script
+- Updated `docs/DEPLOYMENT.md` (§1, new §11, corrected §9 rollback),
+  `docs/governance/PROJECT_RISK_REGISTER.md` (R-004: mitigated for staging, open for
+  production), `LESSONS_LEARNED.md` (resolved L-013, new L-016), `DECISION_LOG.md` (new ADR-016
+  for the allowlist-over-denylist rationale), `STATUS.md`, `PHASE_GATES.md`, `SLICE_REVIEWS.md`
+  (SR-009)
+
+**Verified:** `curl` confirmed both forms now reference `api.web3forms.com` with zero
+`formspree`/`REPLACE_ME` matches; `og:image` points to the PNG (fetchable, `image/png`); all
+pages return 200; `/404.html` itself still correctly 404s (ADR-009 `internal`); the 5 SR-008
+security headers unaffected; internal paths (`/AUDIT.md`, `/.git/config`, `/.claude/`,
+`/.agents/...`, `/docs/...`, `/plans/...`, `/scripts/deploy-staging.sh` itself) all continue to
+404 after the new deploy mechanism ran.
+
+---
+
 ## 2026-07-19 — Nginx Security Headers on Staging (docs-only, no version bump)
 **Tag:** — (none; docs-only, no code diff, no version bump — follows this repo's established precedent for small governance/tracking-only commits)
 **Commit:** `198ac4f` · branch `main` · 2026-07-19

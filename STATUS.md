@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.24.0 · 2026-07-18
+**Current Version:** v2.25.0 · 2026-07-19
 **Branch:** `main`
 
 ---
@@ -8,6 +8,19 @@
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Staging Redeploy + Deploy-Allowlist Hardening — 2026-07-19 (v2.25.0)
+
+Staging (`smart-learning-solutions.craftandconscious.com`) was found serving a stale deploy from
+~2026-06-19/23 — predating the Web3Forms migration and OG-image PNG conversion. Both forms were
+live-POSTing to the dead `formspree.io/f/REPLACE_ME` endpoint. Redeployed current `main`
+(`2b39333`) via a new `scripts/deploy-staging.sh`, which uses an explicit path allowlist (not a
+denylist) so internal docs structurally cannot be shipped regardless of what new internal files
+land in the repo later. Verified via `curl`: forms now hit Web3Forms, OG image is the PNG, all
+pages are live and current, security headers and internal-path 404s (from SR-008) unaffected. See
+`SLICE_REVIEWS.md` SR-009 and `DECISION_LOG.md` ADR-016.
 
 ---
 
@@ -141,6 +154,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 - Hosting direction logged: self-hosting on the existing VPS proposed to the client (OD-003), pending acceptance (v2.23.0)
 - OG image converted from SVG to PNG (1200×630) for social-share compatibility — M-1 resolved via headless-Chromium render; `PHASE_GATES.md` Gate 1/Gate 3 duplicate criterion reconciled (v2.24.0)
 - Nginx security headers (X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-Frame-Options, CSP-Report-Only) applied to the staging vhost per `docs/DEPLOYMENT.md` §7 — server-side only, no repo code change (2026-07-19)
+- Staging redeployed to current `main` via new `scripts/deploy-staging.sh` (explicit path allowlist, replacing an untracked, four-week-stale manual deploy) — fixed live forms that were still POSTing to the dead Formspree endpoint and a stale OG image reference; R-004 mitigated for staging (v2.25.0)
 
 ---
 
@@ -148,7 +162,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 
 | # | Blocker | File(s) | Required? |
 |---|---|---|---|
-| 1 | ~~**Formspree endpoint** — `REPLACE_ME` still in form action; forms cannot submit~~ — **Resolved 2026-07-16**: migrated to Web3Forms, live access key configured | `book.html`, `contact.html` | Yes |
+| 1 | ~~**Formspree endpoint** — `REPLACE_ME` still in form action; forms cannot submit~~ — **Resolved in code 2026-07-16**, migrated to Web3Forms; **actually deployed to staging 2026-07-19** — the code fix sat undeployed on staging for 3 weeks (staging was still serving the dead endpoint until this session's redeploy, SR-009) | `book.html`, `contact.html` | Yes |
 | 2 | **Deployment target** — staging VPS confirmed at `smart-learning-solutions.craftandconscious.com`; production domain not yet pointed | — | Yes |
 | 3 | **Testimonials** — owner-supplied quotes pending | — | No (optional) |
 
@@ -169,6 +183,7 @@ See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H
 | 3 | ~~Convert `og-image.svg` to PNG/JPEG 1200×630~~ — done: `src/images/og-image.png` generated and referenced on all 9 pages, 2026-07-18 | M-1 |
 | 4 | Reconcile V3.4 stub docs (`docs/project/`, `docs/governance/`) with existing root-level equivalents | V3.4 follow-up |
 | 5 | Review V3.4 candidate AGENTS.md/CLAUDE.md in `.v34_migration_review/` and merge any useful additions | V3.4 follow-up |
+| 6 | Run `scripts/deploy-staging.sh` after merging future changes to `main` — there is no automatic trigger; staging silently drifted 4 weeks behind before this session caught it (L-016) | SR-009 follow-up |
 
 ---
 
