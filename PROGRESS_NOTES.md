@@ -5,6 +5,40 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-07-19 — Nginx Security Headers on Staging (server-side, no version bump)
+
+**Branch:** `main` (no repo code change for the core task)
+
+### Summary
+Applied `docs/DEPLOYMENT.md` §7's baseline security headers (`X-Content-Type-Options`,
+`Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`, `Content-Security-Policy-Report-Only`)
+to the staging vhost (`smart-learning-solutions.craftandconscious.com`) on the VPS, server-side
+only. CSP kept in report-only mode; HSTS and §8's `X-Robots-Tag` intentionally not added in this
+pass. Discovered and corrected a stale operational detail: the documented SSH key
+(`~/.ssh/id_ed25519`) no longer exists locally — access was re-established via a different,
+already-authorized key — and confirmed the VPS is a shared, multi-tenant host serving several
+other unrelated client sites, not dedicated to this project.
+
+### Work Completed / Areas Changed
+VPS: `/etc/nginx/sites-available/smart-learning-solutions` (server-side, one added `include`
+line), new `/etc/nginx/snippets/security-headers.conf` (server-side). Repo docs updated:
+`docs/DEPLOYMENT.md`, `STATUS.md`, `PHASE_GATES.md`, `SLICE_REVIEWS.md` (SR-008), this file,
+`PROGRESS_NOTE.md`.
+
+### Validation Performed
+`nginx -t` passed before and after; `curl -sI` confirmed all 5 headers on 3 pages (root, `/about`,
+`/workshops.html`), all 200; confirmed CSP is report-only (no enforcing header); custom 404
+routing unaffected; final config diff against a timestamped pre-change backup showed exactly one
+added line.
+
+### Notes for the Next Agent
+Production security headers, HSTS, and §8's staging `X-Robots-Tag` remain open — all gated on
+OD-003 (client acceptance of the self-host proposal) for production, or simply out of this
+session's scope for §8. The corrected SSH access path (working key confirmed this session, not
+`~/.ssh/id_ed25519`) should be used going forward.
+
+---
+
 ## v2.24.0 — 2026-07-18 — OG Image PNG Conversion
 
 **Branch:** `main`
@@ -283,6 +317,9 @@ in `docs/debug/nginx-404-debug.md`.
 ### Notes for Next Agent
 VPS is accessible via `ssh -i ~/.ssh/id_ed25519 root@74.208.9.49`. Formspree REPLACE_ME
 and production domain pointing remain the two hard launch blockers.
+
+_(Note: as of 2026-07-19, this key no longer exists on the local machine — see the 2026-07-19
+entry above for the corrected access path and additional context.)_
 
 ---
 

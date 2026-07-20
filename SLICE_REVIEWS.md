@@ -4,6 +4,52 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-008 — Nginx Security Headers on Staging (server-side, no version bump)
+**Date:** 2026-07-19
+**Version:** — (no repo code change; server-side config only)
+**Commit:** — (nothing to commit for the core change)
+
+**Slice:** Apply `docs/DEPLOYMENT.md` §7's baseline security headers
+(`X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`,
+`Content-Security-Policy-Report-Only`) to the staging vhost on the VPS.
+
+**Pre-review finding:** The SSH key path documented in prior sessions (`~/.ssh/id_ed25519`) no
+longer exists on the local machine; a different, already-authorized local key was found and used
+instead. Discovery also revealed the VPS is a shared, multi-tenant host serving several other
+unrelated client sites (Jones Barber Shop, Old Fashion Care, Pro Auto Repair, etc.) alongside this
+one — not a dedicated host as earlier docs implied. The `smart-learning-solutions` vhost itself had
+no pre-existing header directives and no `location` block that would have swallowed
+server-level `add_header` inheritance.
+
+**Review method:** Took a timestamped backup of the live vhost config; wrote the 5 directives to a
+new `/etc/nginx/snippets/security-headers.conf` (built locally and diffed against
+`docs/DEPLOYMENT.md` §7 to rule out transcription drift, then uploaded via `scp` to avoid remote
+shell-quoting hazards around the CSP value's embedded quotes); inserted a single idempotent
+`include` line into the vhost, anchored on `index index.html;` (unique — `server_name` appears
+twice in the file, in both the HTTPS and the plain-HTTP-redirect blocks). Validated with
+`nginx -t`, reloaded via `systemctl reload nginx` (graceful, no dropped connections).
+
+**Findings:**
+- All 5 headers verified present with correct values on 3 representative pages (root, `/about`,
+  `/workshops.html`), all returning 200
+- Confirmed `Content-Security-Policy-Report-Only` only — no enforcing `Content-Security-Policy`
+  header present
+- Custom 404 routing (`try_files`/`error_page 404`, from ADR-009/SR-002) unaffected
+- Final config diff against the pre-change backup showed exactly one added line — nothing else
+  touched
+- HSTS and the separate `X-Robots-Tag` staging-indexing header (§8) intentionally excluded —
+  production/HTTPS isn't final, and §8 wasn't part of this task's scope
+
+**Post-review result:** Staging security-header criterion resolved. `docs/DEPLOYMENT.md` §3,
+`STATUS.md`, `PHASE_GATES.md` Gate 1 updated to reflect staging done, production still pending
+domain/HTTPS finalization (OD-003).
+
+**Risk:** Low — additive, report-only headers on a fully-reversible, backed-up config; verified
+against a shared multi-tenant server, but only the `smart-learning-solutions` vhost file was
+touched (confirmed via diff).
+
+---
+
 ## SR-007 — OG Image PNG Conversion (v2.24.0)
 **Date:** 2026-07-18
 **Version:** v2.24.0
@@ -188,8 +234,3 @@ nginx default 404 (162 bytes) served instead of custom `404.html`.
 - Confirmed-decisions tables still exist in 5 places (consolidation deferred)
 - TASK-polish-and-seo.md at root level not moved (awaiting specific approval)
 - README.md version line not updated (kept out of migration scope)
-
----
-
-## SR-002 — (next review)
-_Reserved for next significant work slice._
