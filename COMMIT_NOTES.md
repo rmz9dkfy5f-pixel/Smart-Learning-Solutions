@@ -7,7 +7,7 @@ commit hash, date, summary, and description.
 
 ## 2026-07-19 — Nginx Security Headers on Staging (docs-only, no version bump)
 **Tag:** — (none; docs-only, no code diff, no version bump — follows this repo's established precedent for small governance/tracking-only commits)
-**Commit:** (pending — backfilled in a follow-up commit once this commit's hash is known)
+**Commit:** `198ac4f` · branch `main` · 2026-07-19
 **Type:** `docs` (records a server-side infrastructure change made outside this repo)
 
 **Summary:** Apply nginx security headers to the staging VPS per `docs/DEPLOYMENT.md` §7; document the rollout and a corrected SSH-access detail across tracking files
