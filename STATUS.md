@@ -11,6 +11,28 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 
 ---
 
+## Nginx Security Headers — Staging — 2026-07-19 (no version bump, server-side only)
+
+Applied the `docs/DEPLOYMENT.md` §7 baseline (`X-Content-Type-Options`, `Referrer-Policy`,
+`Permissions-Policy`, `X-Frame-Options`, `Content-Security-Policy-Report-Only`) to the staging
+vhost (`smart-learning-solutions.craftandconscious.com`) on the VPS. Server-side only — no repo
+code change. CSP kept in report-only mode per the doc's own guidance (pages still use inline
+styles/scripts); HSTS and the separate `X-Robots-Tag` staging-indexing header (§8) were
+intentionally not added in this pass. Verified via `curl -sI` on 3 pages (all 5 headers present,
+CSP confirmed report-only, existing routing/404 behavior unaffected); config change confirmed as a
+single additive `include` line via `diff` against a timestamped pre-change backup. See
+`SLICE_REVIEWS.md` SR-008.
+
+Also corrected a stale operational detail found during this session: prior docs
+(`PROGRESS_NOTES.md` v2.16.1, `COMMIT_NOTES.md`, `CHANGELOG.md`) reference SSH access via
+`~/.ssh/id_ed25519`, but that key no longer exists on the local machine. Working access was
+re-established via a different, already-authorized local key. This session also confirmed the VPS
+is a shared, multi-tenant host serving several other unrelated client sites alongside this one, not
+a dedicated host as earlier docs implied. Historical entries are left as-is (accurate at the time
+they were written); this note documents current reality going forward.
+
+---
+
 ## OG Image PNG Conversion — 2026-07-18 (v2.24.0)
 
 Resolved M-1: `src/images/og-image.svg` rendered to a 1200×630 PNG via headless Chromium
@@ -118,6 +140,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 - Formspree → Web3Forms migration: C-1 launch blocker resolved — both forms wired to a live Web3Forms access key (`src/js/web3forms-config.js`), honeypot spam protection, accessible loading/error states, request timeout added; inbox delivery confirmed; merged to `main` (v2.23.0); see `plans/2026-07-16-web3forms-migration.md`
 - Hosting direction logged: self-hosting on the existing VPS proposed to the client (OD-003), pending acceptance (v2.23.0)
 - OG image converted from SVG to PNG (1200×630) for social-share compatibility — M-1 resolved via headless-Chromium render; `PHASE_GATES.md` Gate 1/Gate 3 duplicate criterion reconciled (v2.24.0)
+- Nginx security headers (X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-Frame-Options, CSP-Report-Only) applied to the staging vhost per `docs/DEPLOYMENT.md` §7 — server-side only, no repo code change (2026-07-19)
 
 ---
 

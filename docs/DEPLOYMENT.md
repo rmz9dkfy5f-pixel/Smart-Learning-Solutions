@@ -40,7 +40,7 @@ Before deploying to production:
 - [ ] `<link rel="canonical">` URLs match the production domain
 - [ ] Open Graph image path is correct for the production domain
 - [ ] Production is indexable, and staging is blocked from indexing at the server level
-- [ ] Security headers are present on staging/production responses
+- [x] Security headers are present on staging responses (applied 2026-07-19, see §7); production pending domain/HTTPS finalization (OD-003)
 - [ ] No `console.log` or debug statements left in `animations.js` or `components.js`
 - [ ] Test the booking form end-to-end on staging/production
 

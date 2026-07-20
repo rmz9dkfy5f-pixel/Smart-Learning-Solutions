@@ -5,6 +5,39 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-07-19 — Nginx Security Headers on Staging (docs-only, no version bump)
+**Tag:** — (none; docs-only, no code diff, no version bump — follows this repo's established precedent for small governance/tracking-only commits)
+**Commit:** (pending — backfilled in a follow-up commit once this commit's hash is known)
+**Type:** `docs` (records a server-side infrastructure change made outside this repo)
+
+**Summary:** Apply nginx security headers to the staging VPS per `docs/DEPLOYMENT.md` §7; document the rollout and a corrected SSH-access detail across tracking files
+
+**Description:**
+- Applied the 5-header baseline (`X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`,
+  `X-Frame-Options`, `Content-Security-Policy-Report-Only`) to the staging vhost
+  (`smart-learning-solutions.craftandconscious.com`) on the shared VPS — server-side only, no code
+  in this repo changed. CSP kept in report-only mode per §7's own guidance; HSTS and §8's
+  `X-Robots-Tag` intentionally excluded (production/HTTPS not final; §8 out of scope)
+- Took a timestamped backup of the live vhost config before editing; installed the headers via a
+  new `/etc/nginx/snippets/security-headers.conf`, included by a single line anchored on the
+  vhost's unique `index index.html;` line; validated with `nginx -t` and reloaded via
+  `systemctl reload nginx`
+- Discovered the SSH key path documented in prior sessions (`~/.ssh/id_ed25519`) no longer exists
+  locally; re-established access via a different, already-authorized key, and confirmed the VPS is
+  a shared, multi-tenant host serving several other unrelated client sites, not dedicated to this
+  project as earlier docs implied
+- Updated `docs/DEPLOYMENT.md` (§3 checklist), `STATUS.md`, `PHASE_GATES.md` (Gate 1),
+  `SLICE_REVIEWS.md` (new SR-008, and removed a stale unused `SR-002` placeholder),
+  `PROGRESS_NOTES.md` (new entry, plus a forward-pointing note on the stale v2.16.1 SSH
+  reference), and `PROGRESS_NOTE.md` (current-session note) to reflect all of the above
+
+**Verified:** `curl -sI` on 3 pages (root, `/about`, `/workshops.html`) confirmed all 5 headers
+present with correct values, all 200; confirmed `Content-Security-Policy-Report-Only` only (no
+enforcing `Content-Security-Policy`); custom 404 routing unaffected; final live-config diff against
+the pre-change backup showed exactly one added line, nothing else touched.
+
+---
+
 ## v2.24.0 — OG Image PNG Conversion
 **Tag:** `v2.24.0__og-image-png-conversion__commit-d7f48fd`
 **Commit:** `d7f48fd` · branch `main` · 2026-07-18

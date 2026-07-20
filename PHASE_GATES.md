@@ -43,6 +43,7 @@ The site is ready to go live. All launch blockers are resolved.
 - [x] `.btn { cursor: none }` gated behind `body.custom-cursor-enabled` in `main.css` (C-2)
 - [ ] Deployment host confirmed and `/programs/` directory routing verified (H-1)
 - [x] SRI hashes added to GSAP CDN `<script>` tags (H-2)
+- [x] Nginx security headers applied on staging (`X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`, `Content-Security-Policy-Report-Only`) — resolved 2026-07-19 per `docs/DEPLOYMENT.md` §7; production pending domain/HTTPS finalization (OD-003)
 - [ ] Production domain pointed and SSL confirmed
 - [ ] Forms tested end-to-end on production URL
 - [ ] Navigation tested on production URL
@@ -50,7 +51,7 @@ The site is ready to go live. All launch blockers are resolved.
 - [ ] Privacy policy published and footer link added (`legal/privacy-policy.md` draft exists; owner placeholders pending)
 
 ### Known Issues at Gate 1
-- **Hosting platform unconfirmed** (R-003, OD-003): self-hosting on the existing staging VPS (74.208.9.49) was proposed to the client 2026-07-18; not yet accepted. Until accepted, this still gates host-specific work (security headers/CSP, clean-URL routing, deploy-root exclusion) and the deployed-domain verification for C-1/ADR-015. Wix remains a fallback risk only if the client rejects the proposal. See ADR-013 and L-012.
+- **Hosting platform unconfirmed** (R-003, OD-003): self-hosting on the existing staging VPS (74.208.9.49) was proposed to the client 2026-07-18; not yet accepted. Staging security headers are now applied (2026-07-19); until OD-003 is accepted, remaining host-specific work (clean-URL routing, deploy-root exclusion, production headers) and the deployed-domain verification for C-1/ADR-015 stay gated. Wix remains a fallback risk only if the client rejects the proposal. See ADR-013 and L-012.
 
 ---
 

@@ -1,52 +1,51 @@
-**Updated:** v2.24.0 · 2026-07-18
+**Updated:** 2026-07-19 (no version bump, server-side only)
 
 # Progress Note — Current Session
 
-## OG Image PNG Conversion (2026-07-18)
+## Nginx Security Headers on Staging (2026-07-19)
 
 ### Summary
 
-Resolved M-1: converted `src/images/og-image.svg` to a 1200×630 PNG via headless Chromium
-(already present on disk from prior Playwright use — no new dependency added) and repointed the
-`og:image` tag on all 9 pages that carry one. Also reconciled the pending `STATUS.md` line the
-session-start audit flagged, and closed out the release ceremony (changelog, release notes,
-commit notes, slice review, tag, snapshot) that the M-1 plan had explicitly deferred.
+Applied `docs/DEPLOYMENT.md` §7's baseline security headers (`X-Content-Type-Options`,
+`Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`, `Content-Security-Policy-Report-Only`)
+to the staging vhost (`smart-learning-solutions.craftandconscious.com`) on the VPS — server-side
+only, no repo code change. CSP kept in report-only mode per the doc's own guidance; HSTS and §8's
+`X-Robots-Tag` staging-indexing header intentionally not added in this pass.
 
 ### Work Completed
 
-- Ran `REPO_SESSION_START_RECOVERY_AUDIT.md` — same-agent (Claude Code → Claude Code) resumption,
-  provenance confirmed, verdict PASS WITH CONDITIONS (one uncommitted `STATUS.md` line).
-- Committed the pending line (`060dacb`).
-- Two parallel Explore agents investigated (1) `og-image.svg` content/references and (2) local
-  SVG-rasterization tooling availability — found the SVG already exactly 1200×630 and
-  self-contained, and two usable headless-Chromium binaries already on disk.
-- Rendered `og-image.png`, verified dimensions and visual fidelity, repointed all 9 `og:image`
-  tags (`bf6fcc0`), validated via a local `serve` instance.
-- Marked M-1 resolved in `BACKLOG.md`/`STATUS.md`/`FILE_MAP.md`; checked `PHASE_GATES.md`'s box
-  without resolving its Gate 1/Gate 3 duplicate-listing conflict yet (`b0bec01`).
-- Owner asked why the release ceremony hadn't run and pointed out `PHASE_GATES.md`'s remaining
-  conflict — reconciled `PHASE_GATES.md` (Gate 1 criterion checked with a resolution note, stale
-  Gate 3 duplicate removed) and ran the full release-records pass: `STATUS.md` version bump,
-  `CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `SLICE_REVIEWS.md`, this note.
+- Pre-flight discovery over SSH: confirmed the vhost's single content-serving `server {}` block,
+  no pre-existing header directives, no `location` block that would swallow inherited headers.
+- Found the documented SSH key (`~/.ssh/id_ed25519`) no longer exists locally; located and used a
+  different, already-authorized key instead. This also revealed the VPS is a shared, multi-tenant
+  host serving several other unrelated client sites alongside this one, not dedicated as earlier
+  docs implied.
+- Took a timestamped backup of the live vhost config before editing.
+- Wrote the 5 directives to a new `/etc/nginx/snippets/security-headers.conf`, diffed against
+  `docs/DEPLOYMENT.md` §7 to confirm exact match, uploaded via `scp`.
+- Inserted a single idempotent `include` line into the vhost, anchored on the unique
+  `index index.html;` line (`server_name` appears twice in the file, so wasn't a safe anchor).
+- Validated with `nginx -t`, reloaded via `systemctl reload nginx`.
+- Updated `docs/DEPLOYMENT.md` (§3 checklist), `STATUS.md`, `PHASE_GATES.md` (Gate 1), and added
+  `SLICE_REVIEWS.md` SR-008, plus a corrected forward-pointing note on the stale v2.16.1 SSH
+  reference in `PROGRESS_NOTES.md` — all confirmed with the owner before editing.
 
 ### Validation Performed
 
-- `sips -g pixelWidth -g pixelHeight` confirmed the PNG is exactly 1200×630.
-- Visual inspection confirmed the render matches the SVG (gradient background, badge icon,
-  heading, subhead, body line, decorative shapes, robot icon).
-- `grep -rn og-image.svg *.html programs/*.html` — zero hits; `og-image.png` — exactly 9 hits.
-- Local `serve` instance: 5 representative pages returned HTTP 200 with the correct `og:image`
-  tag; the new PNG served correctly at its expected byte size.
-- No project build/lint/test tooling exists for this static site (expected, longstanding).
+- `curl -sI` on 3 pages (root, `/about`, `/workshops.html`): all 5 headers present with correct
+  values, all 200.
+- Confirmed `Content-Security-Policy-Report-Only` present and no enforcing
+  `Content-Security-Policy` header.
+- Custom 404 routing (`try_files`/`error_page 404`) unaffected.
+- Final config diff against the pre-change backup showed exactly one added line.
 
 ### Not Yet Verified / Open
 
-- `RELEASE_NOTES.md` has a pre-existing gap — last entry before this session was v2.20.0;
-  v2.21.0, v2.22.0, and v2.23.0 were never added. Flagged to the owner; not backfilled here (out
-  of scope for this session's work, and reconstructing three versions of historical release
-  notes after the fact risks inaccuracy).
-- Deployed-domain gate (Gate 1) remains blocked on OD-003 — unchanged.
-- Push to `origin/main` not yet performed — pending explicit confirmation.
+- Production security headers, HSTS, and §8's staging `X-Robots-Tag` remain open — production
+  work is gated on OD-003 (client acceptance of the self-host proposal); §8 was out of this
+  session's scope.
+- Repo doc changes made this session are uncommitted — push to `origin/main` not yet performed,
+  pending explicit confirmation (no commit was requested this session).
 
 ### Launch Blockers (updated)
 
