@@ -6,8 +6,8 @@ commit hash, date, summary, and description.
 ---
 
 ## v2.25.0 — Staging Redeploy + Deploy-Allowlist Hardening
-**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-<hash>`
-**Commit:** (pending — backfilled in a follow-up commit once this commit's hash is known)
+**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-b0e0371`
+**Commit:** `b0e0371` · branch `main` · 2026-07-19
 **Type:** `fix` (staging content) + `feat` (deploy tooling) + `docs`
 
 **Summary:** Redeploy stale staging content to current `main`; add an allowlist-based deploy

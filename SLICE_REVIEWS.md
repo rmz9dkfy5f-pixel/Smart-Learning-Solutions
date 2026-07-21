@@ -7,7 +7,7 @@ Record of significant work slices reviewed before and after implementation.
 ## SR-009 — Staging Redeploy + Deploy-Allowlist Hardening (v2.25.0)
 **Date:** 2026-07-19
 **Version:** v2.25.0
-**Commit:** (filled in after commit)
+**Commit:** `b0e0371`
 
 **Slice:** Redeploy current `main` (HEAD `2b39333`) to the staging VPS, replacing a stale
 deployment last touched ~2026-06-19/23, and add a durable, allowlist-based deploy mechanism so
