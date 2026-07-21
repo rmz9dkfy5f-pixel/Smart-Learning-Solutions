@@ -4,7 +4,7 @@
 
 ## v2.25.0 — 2026-07-19 — Staging Redeploy + Deploy-Allowlist Hardening
 
-**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-<hash>`
+**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-b0e0371`
 
 ### Summary
 Staging was found running a stale deploy from ~2026-06-19/23 — predating the Web3Forms migration

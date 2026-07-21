@@ -13,7 +13,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.25.0] — 2026-07-19
 
-**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-<hash>`
+**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-b0e0371`
 
 ### Fixed
 - Staging (`smart-learning-solutions.craftandconscious.com`) was serving a stale deploy from
