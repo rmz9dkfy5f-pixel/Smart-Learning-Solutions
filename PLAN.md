@@ -12,8 +12,13 @@ owner/client-gated and cannot advance without external input:
 |---|---|
 | H-1 / OD-003 — Deployment host | Client to accept/reject the self-host proposal (existing staging VPS); once accepted, point production DNS and verify `/programs/` routing end-to-end |
 
-No active dev sprint. Next task triggers once the client responds to OD-003, or from the
-owner-confirmed next task recorded in `STATUS.md`/`BACKLOG.md`.
+**Confirmed queue (2026-07-22):** M-7 (`_next` redirect field) was scoped and closed as not
+applicable (see `DECISION_LOG.md` ADR-018). Owner confirmed working the remaining Medium-priority
+Gate-1/Gate-2 backlog in order of importance: (1) H-4 — page-transition overlay timeout
+fallback; (2) H-3 — pin/document the Plausible analytics URL; (3) M-9 — noindex meta on
+non-public pages; (4) M-4 — remove inline style blocks; (5) reconcile V3.4 stub docs; (6) M-8 —
+email casing (held pending OD-003). OD-003 itself remains owner/client-gated throughout. Starting
+with H-4.
 
 See `BACKLOG.md` for the full prioritised work queue.
 See `PHASE_GATES.md` for Gate 1 criteria.
