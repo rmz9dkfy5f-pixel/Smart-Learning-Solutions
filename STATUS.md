@@ -11,6 +11,22 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 
 ---
 
+## M-7 Closed as Not Applicable — 2026-07-22 (no version bump)
+
+`BACKLOG.md` M-7 ("populate `book.html`'s `_next` redirect field") was scoped before
+implementation, per the Model Selection Gate's task-classification step, rather than implemented
+as originally written. Both `book.html` and `contact.html` submit via a JS handler that calls
+`e.preventDefault()` and posts to Web3Forms with `fetch()` — success is shown in-page via
+`#form-success`, and no native form POST or browser navigation ever occurs. A `_next`/redirect
+field only has an effect on a native, non-intercepted submission, so it would be inert even if
+added; the literal field AUDIT.md's original finding described no longer exists in `book.html`
+at all, having been removed when the form was rebuilt for the Web3Forms/AJAX migration (v2.23.0).
+Flagged to the owner rather than adding a no-op field; owner chose to close the item. See
+`DECISION_LOG.md` ADR-018 and `SLICE_REVIEWS.md` SR-012. No confirmed next task remains as of
+this closure.
+
+---
+
 ## Staging Deploy + Reference-File Hygiene — 2026-07-22 (v2.26.0, no new version)
 
 The v2.26.0 client logo is now confirmed live on staging (`smart-learning-solutions.craftandconscious.com`),
@@ -184,6 +200,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 - OG image converted from SVG to PNG (1200×630) for social-share compatibility — M-1 resolved via headless-Chromium render; `PHASE_GATES.md` Gate 1/Gate 3 duplicate criterion reconciled (v2.24.0)
 - Nginx security headers (X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-Frame-Options, CSP-Report-Only) applied to the staging vhost per `docs/DEPLOYMENT.md` §7 — server-side only, no repo code change (2026-07-19)
 - Staging redeployed to current `main` via new `scripts/deploy-staging.sh` (explicit path allowlist, replacing an untracked, four-week-stale manual deploy) — fixed live forms that were still POSTing to the dead Formspree endpoint and a stale OG image reference; R-004 mitigated for staging (v2.25.0)
+- M-7 (`_next` redirect field in `book.html`) closed as not applicable — both forms submit via JS `fetch()` with `e.preventDefault()`, never performing a native POST/redirect, so the field would be inert; it no longer exists in the form at all, removed during the Web3Forms/AJAX migration (v2.23.0); see `DECISION_LOG.md` ADR-018, `SLICE_REVIEWS.md` SR-012 (2026-07-22, no version bump)
 
 ---
 
@@ -199,7 +216,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 
 ## Open Audit Items
 
-See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H-3 (Plausible), H-4 (overlay timeout), M-4–M-9 (medium). H-1 staging routing resolved (v2.16.1). C-1 (Formspree) resolved 2026-07-16 — migrated to Web3Forms. M-1 (OG image) resolved 2026-07-18 — converted to PNG.
+See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H-3 (Plausible), H-4 (overlay timeout), M-4, M-8, M-9 (medium). H-1 staging routing resolved (v2.16.1). C-1 (Formspree) resolved 2026-07-16 — migrated to Web3Forms. M-1 (OG image) resolved 2026-07-18 — converted to PNG. M-6 (`tel:` prefix) resolved v2.15.3. M-7 (`_next` redirect) closed 2026-07-22 — not applicable.
 
 ---
 

@@ -232,16 +232,26 @@ The `programs/index.html` file itself is structurally clean. The page is well-fo
 
 ---
 
-**M-7: Formspree `_next` Redirect Is Empty in book.html**
+**M-7: Formspree `_next` Redirect Is Empty in book.html — CLOSED, NOT APPLICABLE (2026-07-22)**
 - **Severity:** Medium
 - **Affected:** `book.html`
-- **What is happening:** `<input type="hidden" name="_next" value="">` — the `_next` field that controls where Formspree redirects the user after submission is present but empty. When the form is active and submitted, Formspree will redirect to its own generic thank-you page (off-brand, breaks the experience).
-- **Evidence:** `name="_next" value=""` confirmed in book.html source.
-- **Likely cause:** Placeholder was added without a URL being set — deferred until a thank-you page was created.
-- **User impact:** After successful submission, user lands on an unbranded Formspree confirmation page rather than a site-specific confirmation.
-- **Business impact:** Poor post-submission experience. No opportunity to re-engage the user or track conversion.
+- **What is happening:** ~~`<input type="hidden" name="_next" value="">` — the `_next` field that controls where Formspree redirects the user after submission is present but empty. When the form is active and submitted, Formspree will redirect to its own generic thank-you page (off-brand, breaks the experience).~~
+  Moot as of the Web3Forms/AJAX migration (v2.23.0) — the `_next` field described here no longer
+  exists in `book.html`. The form now submits via a JS handler that calls `e.preventDefault()`
+  and posts to Web3Forms with `fetch()`; success is shown in-page via `#form-success`. No native
+  POST or browser navigation ever occurs, so a `_next`/redirect field would have no effect even
+  if re-added. See `DECISION_LOG.md` ADR-018.
+- **Evidence:** `_next` field confirmed absent from current `book.html` source; form-submit
+  handler confirmed to intercept and never allow a native submission. See `SLICE_REVIEWS.md`
+  SR-012.
+- **Likely cause:** Finding predates the Web3Forms/AJAX migration; the original Formspree-era
+  field was removed, not re-added, when the form was rebuilt.
+- **User impact:** None — the in-page `#form-success` message already gives the user
+  confirmation without a redirect.
+- **Business impact:** None remaining.
 - **Confidence:** Confirmed
-- **Recommended next step:** Create a `/booking-confirmed.html` page and set it as the `_next` value, or remove the empty hidden input to suppress the redirect.
+- **Recommended next step:** None — closed. If a dedicated post-success page/redirect is wanted
+  later, that is a new feature request, not a fix to this finding.
 
 ---
 
@@ -470,7 +480,7 @@ If the site is ever deployed to a staging URL before production, the robots.txt 
 | 7 | M-3: PSTEM image missing width/height | Medium | CLS on the most recently added page |
 | 8 | M-2: Title em-dash inconsistency on programs page | Medium | SEO and brand consistency |
 | 9 | M-6: `tel:` missing `+` prefix | Medium | Phone CTA may fail on some mobile devices |
-| 10 | M-7: `_next` empty on book form | Medium | Post-submission experience broken once forms work |
+| 10 | ~~M-7: `_next` empty on book form~~ — **closed, not applicable** (2026-07-22) | Medium | Superseded by Web3Forms AJAX migration — field is inert/removed |
 
 ---
 

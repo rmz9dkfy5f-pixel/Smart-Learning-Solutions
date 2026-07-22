@@ -4,6 +4,32 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-012 — M-7 Closed as Not Applicable (docs-only, no version bump)
+**Date:** 2026-07-22
+**Version:** none
+
+**Slice:** Scope `BACKLOG.md` M-7 ("populate `book.html`'s `_next` redirect field") before
+implementing it, per the Model Selection Gate's task classification step.
+
+**Pre-review finding:** Inspection of `book.html`/`contact.html` found no `_next` field present
+at all, and both forms submit via a JS handler that calls `e.preventDefault()` and posts to
+Web3Forms via `fetch()` — success is shown in-page via `#form-success`, with no native POST or
+browser navigation ever occurring. A `_next`/redirect field only takes effect on a native,
+non-intercepted submission, so adding one would be inert. `AUDIT.md`'s original M-7 finding
+described a literal `name="_next" value=""` field that existed under the pre-Web3Forms Formspree
+implementation; it was removed when the form was rebuilt for the AJAX/Web3Forms migration
+(v2.23.0) and never re-added.
+
+**Change:** No code change. Flagged the mismatch to the owner rather than adding a no-op field;
+owner chose to close the item. Updated `BACKLOG.md` (M-7 row), `AUDIT.md` (M-7 finding marked
+closed), and `DECISION_LOG.md` (new ADR-018).
+
+**Post-review result:** M-7 closed as not applicable. No open candidate remains in its place.
+
+**Risk:** None — documentation-only change, no code touched.
+
+---
+
 ## SR-011 — Deploy v2.26.0 to Staging + Reference-File Hygiene (server-side + housekeeping, no version bump)
 **Date:** 2026-07-22
 **Version:** v2.26.0 (deployed, not newly released)

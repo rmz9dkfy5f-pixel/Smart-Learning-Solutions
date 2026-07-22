@@ -1,65 +1,50 @@
-**Updated:** 2026-07-22 (v2.26.0 + same-day deploy/hygiene follow-up, no further version bump)
+**Updated:** 2026-07-22 (M-7 closed as not applicable, no version bump)
 
 # Progress Note — Current Session
 
-## Client Logo Implementation (v2.26.0) + Staging Deploy + Reference-File Hygiene (2026-07-22)
+## M-7 Closed as Not Applicable (`_next` Redirect Field) (2026-07-22)
 
 ### Summary
 
-Replaced the placeholder inline-SVG-badge + text wordmark in the header/footer with the client's
-actual logo (`src/images/brand-logo-mark.png`), owner-confirmed as the next task from the
-2026-07-21 closeout. Same day, closed the two loose ends flagged at that point: deployed the
-change to staging (verified genuinely stale beforehand, genuinely current afterward — not
-assumed either way) and resolved the fate of an unused black-line-art reference file
-(owner-confirmed keep, renamed and tracked).
+`BACKLOG.md` M-7 ("populate `book.html`'s `_next` redirect field") was picked up as this
+session's task and scoped via the Model Selection Gate before implementing it as originally
+written. Investigation found the task's premise no longer matches the current implementation:
+both `book.html` and `contact.html` submit via a JS handler that calls `e.preventDefault()` and
+posts to Web3Forms with `fetch()` — success is shown in-page via `#form-success`, and no native
+form POST or browser navigation ever occurs. A `_next`/redirect field only has an effect on a
+native, non-intercepted submission, so adding one would be inert. The literal field AUDIT.md's
+original finding described no longer exists in `book.html` at all — it was removed when the form
+was rebuilt for the Web3Forms/AJAX migration (v2.23.0). Flagged this to the owner rather than
+adding a no-op field; owner chose to close the item outright rather than pursue a real
+post-success redirect.
 
 ### Work Completed
 
-- Owner provided the logo image directly in-session. Confirmed source file
-  (`pics/Logo/Logo.png.avif`, git-tracked since 2026-05-08, never wired in) decoded via `sips` to
-  a full-color orange/teal version with real alpha transparency — not the black line art the
-  pasted reference image suggested. Flagged this rather than guessing a color treatment; owner
-  deferred the call, color AVIF used natively (no CSS filter) since its orange/teal already track
-  the site's existing accent-orange/cyan tokens. Logged as `DECISION_LOG.md` ADR-017.
-- Cropped to a single-line "icon + SmartLearning" lockup (`src/images/brand-logo-mark.png`),
-  wired into `components.js`'s `buildHeader()`/`buildFooter()` as a single `<img>`, restyled
-  `.site-logo` in `main.css`. Resolved `AUDIT.md` L-2 as a side effect.
-- Validated live (local server + a disposable Playwright script) across all 10 pages, header
-  transparent/scrolled states, the documented ~1100px nav-squeeze zone, and mobile.
-- Full v2.26.0 release ceremony; tagged
-  `v2.26.0__client-logo-implementation__commit-7594701`, pushed.
-- Same day, user asked to close the two flagged loose ends:
-  - Verified staging was genuinely stale (old `E85D1A` SVG fill present, new asset 404) before
-    deploying, per `LESSONS_LEARNED.md` L-016.
-  - Deployed via `scripts/deploy-staging.sh` following `docs/DEPLOYMENT.md` §9/§11's documented
-    backup → dry-run → real-run → curl-verify sequence (same runbook already proven in SR-009).
-  - Renamed and tracked the unused reference file
-    (`pics/Logo/169B49B9-...jpeg` → `pics/Logo/logo-black-line-art.jpeg`) — owner chose
-    keep-not-delete (higher native resolution than the AVIF actually used).
-  - `SLICE_REVIEWS.md` SR-011 added (no version bump — operational/housekeeping, matching the
-    SR-008 precedent); `STATUS.md`, `COMMIT_NOTES.md`, `DECISION_LOG.md` updated.
-  - Retroactively created the missing `RepoBackups/Smart Learning Solutions/
-    v2.26.0__client-logo-implementation__commit-7594701/` snapshot this session (had been missed
-    at the time of the original v2.26.0 push).
+- Confirmed via direct source inspection: no `_next`/redirect field present in either
+  `book.html` or `contact.html`; both use the `preventDefault()` + `fetch()` AJAX pattern.
+- `BACKLOG.md` M-7 row struck through and closed.
+- `AUDIT.md` M-7 finding (and its priority-table row) marked closed/not-applicable.
+- `DECISION_LOG.md` ADR-018 added, recording the decision and alternatives considered.
+- `SLICE_REVIEWS.md` SR-012 added.
+- `STATUS.md` updated (new session section, Done log, Open Audit Items line corrected — also
+  caught and fixed a pre-existing stale reference to M-6, which was actually resolved in v2.15.3).
+- `COMMIT_NOTES.md` updated with this session's entry.
 
 ### Validation Performed
 
-- Logo implementation: Playwright smoke pass across all 10 pages (200 status, zero console
-  errors, logo image 200); visual pass on header states, ~1100px breakpoint, mobile.
-- Staging deploy: `curl` confirmed the new asset live (`200`/`image/png`), old SVG fill gone,
-  full SR-009 regression checklist unaffected (forms, OG image, security headers, internal-path
-  404s).
-- `git status`/`git diff --stat` reviewed before each commit to confirm only intended files
-  changed.
+- `grep` across `book.html`/`contact.html` confirmed no `_next` or `redirect` field/reference
+  present anywhere in either form.
+- Read both forms' submit handlers directly, confirming `e.preventDefault()` and a `fetch()` POST
+  to `https://api.web3forms.com/submit` with an in-page success state — no code path that would
+  ever perform a native browser redirect.
 
 ### Not Yet Verified / Open
 
+- No confirmed next task remains as of this closure.
 - Production domain not yet pointed to the VPS — unchanged; pending client acceptance of the
   self-host proposal (OD-003).
-- The full two-line logo lockup (with the "solutions" script swoosh) isn't placed anywhere yet —
-  non-blocking, a future candidate if a larger placement (e.g. an About page) is ever wanted.
 
-### Launch Blockers (updated)
+### Launch Blockers (unchanged)
 
 1. ~~Formspree `REPLACE_ME`~~ — resolved, merged to `main` (v2.23.0), confirmed live on staging.
 2. Production domain not yet pointed to the VPS — unchanged; pending client acceptance of the
