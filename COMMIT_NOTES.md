@@ -6,8 +6,8 @@ commit hash, date, summary, and description.
 ---
 
 ## v2.26.0 — Client Logo Implementation
-**Tag:** `v2.26.0__client-logo-implementation__commit-<pending>`
-**Commit:** `<pending>` · branch `main` · 2026-07-22
+**Tag:** `v2.26.0__client-logo-implementation__commit-7594701`
+**Commit:** `7594701` · branch `main` · 2026-07-22
 **Type:** `feat` (brand asset) + `fix` (AUDIT.md L-2) + `docs`
 
 **Summary:** Replace the placeholder inline-SVG-badge + text wordmark with the client's actual

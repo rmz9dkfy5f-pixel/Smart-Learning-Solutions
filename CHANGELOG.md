@@ -13,7 +13,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.26.0] — 2026-07-22
 
-**Tag:** `v2.26.0__client-logo-implementation__commit-<pending>`
+**Tag:** `v2.26.0__client-logo-implementation__commit-7594701`
 
 ### Changed
 - Replaced the placeholder inline-SVG-badge + text wordmark ("Smart**Learning**") in the header
