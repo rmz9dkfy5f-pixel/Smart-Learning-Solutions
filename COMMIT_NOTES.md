@@ -5,6 +5,46 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-07-22 — Deploy v2.26.0 to Staging + Reference-File Hygiene (no version bump)
+**Tag:** — (none; docs/housekeeping-only, no code change, no new version — follows this repo's
+established precedent for small governance/tracking-only and operational-deploy commits, e.g.
+SR-008)
+**Commit:** `ad4e224` · branch `main` · 2026-07-22
+**Type:** `chore` (deploy) + `docs`
+
+**Summary:** Deploy the already-shipped v2.26.0 client logo to staging; resolve the other loose
+end flagged at that session's close by tracking the unused black-line-art reference file under a
+real name
+
+**Description:**
+- The client-logo session (v2.26.0, commit `7594701`) had ended with two loose ends explicitly
+  flagged rather than silently left: staging hadn't been redeployed, and an unused reference
+  file sat untracked. User asked directly to close both out.
+- Verified staging was genuinely stale before touching anything, per `LESSONS_LEARNED.md` L-016
+  ("a confirmed host is not a confirmed deploy pipeline") — live `components.js` still carried
+  the old `E85D1A` SVG fill (2 matches), zero `brand-logo-mark` references, and the new asset
+  path 404'd
+- Followed `docs/DEPLOYMENT.md` §9/§11 exactly (the same runbook already proven in SR-009): SSH
+  `cp -a` backup (`smart-learning-solutions.bak-20260722-090930`) → `scripts/deploy-staging.sh
+  --dry-run` (confirmed only the 3 expected changed/new files) → real run → full `curl`
+  verification
+- Renamed and tracked the unused reference file
+  (`pics/Logo/169B49B9-553F-4E10-82BC-E5EE7636C266.jpeg` → `pics/Logo/logo-black-line-art.jpeg`,
+  previously untracked under a device-export filename) — owner-confirmed keep-not-delete, since
+  it's the higher-resolution (552×351 vs. the 277×164 AVIF actually used) native mono source of
+  the design
+- `DECISION_LOG.md` ADR-017 Consequences updated to close its own flagged open item;
+  `SLICE_REVIEWS.md` SR-011 added; `STATUS.md` updated
+
+**Verified:** Post-deploy `curl`: `/src/images/brand-logo-mark.png` → `200`/`image/png`; live
+`components.js` now contains `brand-logo-mark`, zero `E85D1A` matches; full SR-009 regression
+checklist re-confirmed unaffected — all pages `200` (`/404.html` itself correctly still `404`s),
+both forms reference `web3forms-config.js` with zero `formspree`/`REPLACE_ME`, `og:image`
+resolves, all 5 SR-008 security headers present, internal paths (`/AUDIT.md`, `/.git/config`,
+`/.claude/settings.json`, `/scripts/deploy-staging.sh`) all still `404`.
+
+---
+
 ## v2.26.0 — Client Logo Implementation
 **Tag:** `v2.26.0__client-logo-implementation__commit-7594701`
 **Commit:** `7594701` · branch `main` · 2026-07-22
