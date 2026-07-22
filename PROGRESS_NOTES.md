@@ -5,6 +5,70 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-07-22 — Client Logo Implementation (v2.26.0) + Staging Deploy/Reference-File Hygiene
+
+**Branch:** `main`
+
+### Summary
+Replaced the placeholder inline-SVG-badge + text wordmark with the client's actual logo
+(owner-confirmed next task from the 2026-07-21 closeout). Source file decoded to a full-color
+orange/teal version, not the black line art initially expected — flagged rather than guessed;
+owner deferred the color call, used natively (`DECISION_LOG.md` ADR-017). Same day, closed two
+loose ends flagged at that session's end: deployed to staging (verified stale before, current
+after, per L-016) and resolved the unused reference file's fate (owner: keep, renamed and
+tracked). This entry also backfills a gap: `PROGRESS_NOTES.md` had no v2.25.0 entry — see below.
+
+### Work Completed / Areas Changed
+`src/images/brand-logo-mark.png` (new), `src/js/components.js`, `src/css/main.css`, `AUDIT.md`
+(L-2 resolved), `CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `SLICE_REVIEWS.md`
+(SR-010, SR-011), `DECISION_LOG.md` (ADR-017), `STATUS.md`, `PLAN.md`,
+`plans/2026-07-22-implement-client-logo.md` (new),
+`pics/Logo/logo-black-line-art.jpeg` (new, renamed from an untracked device-export filename).
+VPS: `/var/www/smart-learning-solutions/` redeployed to current `main`.
+
+### Validation Performed
+Local server + a disposable Playwright script drove real Chromium across all 10 pages (200
+status, zero console errors) and a detailed visual pass (header transparent/scrolled states,
+footer, ~1100px breakpoint, mobile). Post-deploy `curl` confirmed the new asset live and the full
+SR-009 regression checklist (forms, OG image, security headers, internal-path 404s) unaffected.
+
+### Notes for the Next Agent
+No next task confirmed with the owner yet — the next `REPO_SESSION_END_CLOSEOUT.md` run should
+establish one. Non-blocking open item: the full two-line logo lockup (with "solutions") isn't
+placed anywhere yet. Production hosting remains gated on OD-003.
+
+---
+
+## v2.25.0 — 2026-07-19 — Staging Redeploy + Deploy-Allowlist Hardening
+
+**Branch:** `main`
+
+### Summary
+Staging was found serving a stale deploy from ~2026-06-19/23 — predating the Web3Forms migration
+and OG-image PNG conversion, with both forms live-POSTing to the dead Formspree endpoint despite
+the code fixes having merged weeks earlier. Redeployed current `main` via a new
+allowlist-based `scripts/deploy-staging.sh`, chosen over a denylist since this repo has
+repeatedly added new internal top-level directories a denylist would need to keep excluding
+(`DECISION_LOG.md` ADR-016). *(Backfilled 2026-07-22 — this entry was missing.)*
+
+### Work Completed / Areas Changed
+`scripts/deploy-staging.sh` (new), `docs/DEPLOYMENT.md`,
+`docs/governance/PROJECT_RISK_REGISTER.md` (R-004), `LESSONS_LEARNED.md` (L-013 resolved, new
+L-016), `DECISION_LOG.md` (ADR-016), `FILE_MAP.md`, `STATUS.md`, `PHASE_GATES.md`,
+`SLICE_REVIEWS.md` (SR-009), `CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md`. VPS:
+`/var/www/smart-learning-solutions/` redeployed; pre-change backup taken.
+
+### Validation Performed
+Dry run reviewed before the real run; post-deploy `curl` confirmed both forms on
+`api.web3forms.com` with zero `formspree`/`REPLACE_ME` matches, `og:image` on the PNG, all pages
+200, SR-008's security headers and internal-path 404s unaffected.
+
+### Notes for the Next Agent
+`scripts/deploy-staging.sh` has no automatic trigger — must be re-run manually after any future
+`main` merge that should reach staging, or drift can recur silently (L-016).
+
+---
+
 ## 2026-07-19 — Nginx Security Headers on Staging (server-side, no version bump)
 
 **Branch:** `main` (no repo code change for the core task)
