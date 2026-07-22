@@ -11,6 +11,26 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.26.0] — 2026-07-22
+
+**Tag:** `v2.26.0__client-logo-implementation__commit-<pending>`
+
+### Changed
+- Replaced the placeholder inline-SVG-badge + text wordmark ("Smart**Learning**") in the header
+  and footer with the client's actual logo image (`src/images/brand-logo-mark.png`, cropped from
+  `pics/Logo/Logo.png.avif`) — single-line "icon + SmartLearning" lockup, native orange/teal
+  color, no CSS filter needed.
+- `src/js/components.js` — `buildHeader()`/`buildFooter()` now render an `<img>` instead of
+  inline SVG + text.
+- `src/css/main.css` — `.site-logo`/`.footer-brand .site-logo` restyled for an image child;
+  removed the now-dead `.site-logo span { color: var(--accent); }` rule.
+
+### Fixed
+- `AUDIT.md` L-2 (footer logo SVG `width`/`viewBox` mismatch) — resolved by removing the old SVG
+  entirely, not patched.
+
+---
+
 ## [2.25.0] — 2026-07-19
 
 **Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-b0e0371`

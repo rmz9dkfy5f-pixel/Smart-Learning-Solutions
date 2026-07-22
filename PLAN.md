@@ -34,6 +34,7 @@ See `plans/open-decisions.md` for all pending owner decisions.
 | `plans/2026-06-19-mobile-responsive-fixes.md` | 2026-06-19 | Mobile nav overlay + program hero photo crop/radius fixes |
 | `plans/2026-07-16-web3forms-migration.md` | 2026-07-16 | Formspree → Web3Forms migration (C-1/OD-001) |
 | `plans/2026-07-18-og-image-png-conversion.md` | 2026-07-18 | OG image SVG → PNG conversion (M-1) + release ceremony |
+| `plans/2026-07-22-implement-client-logo.md` | 2026-07-22 | Client logo image implemented in header/footer (v2.26.0) |
 
 ---
 

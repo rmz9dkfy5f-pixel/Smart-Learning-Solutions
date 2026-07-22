@@ -2,6 +2,27 @@
 
 ---
 
+## v2.26.0 — 2026-07-22 — Client Logo Implementation
+
+**Tag:** `v2.26.0__client-logo-implementation__commit-<pending>`
+
+### Summary
+Replaced the placeholder inline-SVG-badge + text wordmark in the header and footer with the
+client's actual logo. Source file (`pics/Logo/Logo.png.avif`) turned out to be a full-color
+orange/teal version, not the black line art initially expected from a pasted reference image —
+used as-is (native color) rather than forcing a monochrome treatment, since it already carries
+real alpha transparency and its colors track the site's existing accent/cyan tokens closely.
+
+### Changed
+- `src/images/brand-logo-mark.png` (new) — single-line "icon + SmartLearning" crop
+- `src/js/components.js` — header/footer logo markup now an `<img>`, not inline SVG + text
+- `src/css/main.css` — `.site-logo` restyled for an image child; dead text-color rule removed
+
+### Fixed
+- `AUDIT.md` L-2 (footer logo SVG size/viewBox mismatch) — moot, old SVG removed entirely
+
+---
+
 ## v2.25.0 — 2026-07-19 — Staging Redeploy + Deploy-Allowlist Hardening
 
 **Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-b0e0371`

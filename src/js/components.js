@@ -40,12 +40,7 @@ function buildHeader(activePage = '') {
 <header class="site-header transparent" id="site-header">
   <div class="header-inner">
     <a href="/index.html" class="site-logo" aria-label="Smart Learning Solutions home">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect width="28" height="28" rx="7" fill="#E85D1A"/>
-        <path d="M8 18l6-8 6 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="14" cy="10" r="2" fill="white"/>
-      </svg>
-      Smart<span>Learning</span>
+      <img src="/src/images/brand-logo-mark.png" alt="" width="277" height="120">
     </a>
 
     <nav class="site-nav" aria-label="Primary navigation">
@@ -73,12 +68,7 @@ function buildFooter() {
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="/index.html" class="site-logo" aria-label="Smart Learning Solutions home">
-          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-            <rect width="28" height="28" rx="7" fill="#E85D1A"/>
-            <path d="M8 18l6-8 6 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="14" cy="10" r="2" fill="white"/>
-          </svg>
-          Smart<span>Learning</span>
+          <img src="/src/images/brand-logo-mark.png" alt="" width="277" height="120">
         </a>
         <p>Hands-on STEM workshops for curious learners — bringing robotics, coding, and physical science to life in schools and communities.</p>
         <div class="footer-contact">

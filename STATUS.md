@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.25.0 · 2026-07-19
+**Current Version:** v2.26.0 · 2026-07-22
 **Branch:** `main`
 
 ---
@@ -8,6 +8,21 @@
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Client Logo Implementation — 2026-07-22 (v2.26.0)
+
+Replaced the placeholder inline-SVG-badge + text wordmark in the header and footer with the
+client's actual logo (`src/images/brand-logo-mark.png`), owner-confirmed as the next task at the
+2026-07-19 closeout. The confirmed source file decoded to a full-color orange/teal version with
+real alpha transparency, not the black line art a pasted reference image had suggested — used
+natively (no CSS filter) since its colors already track the site's existing accent-orange and
+cyan tokens and it composites cleanly on the dark background. Cropped to a single-line "icon +
+SmartLearning" lockup for the fixed 72px header. Validated live across all 10 pages, the
+transparent/scrolled header states, the documented ~1100px nav-squeeze zone (no regression), and
+mobile (header, nav-open, footer). Resolves `AUDIT.md` L-2 as a side effect. See
+`SLICE_REVIEWS.md` SR-010 and `DECISION_LOG.md` ADR-017.
 
 ---
 

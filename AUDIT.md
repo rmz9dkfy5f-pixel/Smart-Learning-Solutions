@@ -285,15 +285,19 @@ The `programs/index.html` file itself is structurally clean. The page is well-fo
 
 ---
 
-**L-2: Footer Logo SVG viewBox/Size Mismatch**
+**L-2: Footer Logo SVG viewBox/Size Mismatch — RESOLVED v2.26.0**
 - **Severity:** Low
 - **Affected:** Footer on all pages (rendered by `components.js`)
-- **What is happening:** The footer logo has `width="24" height="24"` but `viewBox="0 0 28 28"`. The SVG scales to fit, which is visually acceptable, but the mismatch is imprecise.
-- **Evidence:** `components.js` footer SVG definition confirmed.
+- **What is happening:** ~~The footer logo has `width="24" height="24"` but `viewBox="0 0 28 28"`.~~
+  Moot as of v2.26.0 — the header and footer both now render the client's actual logo image
+  (`src/images/brand-logo-mark.png`) via `<img>`, and the inline placeholder SVG this finding
+  described no longer exists anywhere in `components.js`.
+- **Evidence:** `components.js` footer SVG definition confirmed removed; see `SLICE_REVIEWS.md`
+  SR-010.
 - **Likely cause:** Footer SVG was reduced from 28×28 to 24×24 but viewBox was not correspondingly updated.
-- **User impact:** Virtually none.
+- **User impact:** Virtually none (was already low; now none).
 - **Confidence:** Confirmed
-- **Recommended next step:** Align width/height with viewBox — either `width="28" height="28"` or update viewBox to `0 0 24 24`.
+- **Recommended next step:** None — resolved by removal, not patched.
 
 ---
 
