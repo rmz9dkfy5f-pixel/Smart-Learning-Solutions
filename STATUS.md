@@ -11,6 +11,20 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 
 ---
 
+## Staging Deploy + Reference-File Hygiene — 2026-07-22 (v2.26.0, no new version)
+
+The v2.26.0 client logo is now confirmed live on staging (`smart-learning-solutions.craftandconscious.com`),
+not just shipped in the repo — deployed via `scripts/deploy-staging.sh` following the standard
+backup → dry-run → real-run → curl-verify sequence (SR-009's proven runbook). Verified directly
+(not assumed): the old placeholder logo code was confirmed present on staging before the deploy,
+and the new logo asset plus updated `components.js` are confirmed present after, with the full
+regression checklist (forms, OG image, security headers, internal-path 404s) unaffected. Also
+resolved the one remaining loose end from the logo session: the unused black-line-art reference
+file is now tracked in git under a real name (`pics/Logo/logo-black-line-art.jpeg`), closing out
+`DECISION_LOG.md` ADR-017's flagged open item. See `SLICE_REVIEWS.md` SR-011.
+
+---
+
 ## Client Logo Implementation — 2026-07-22 (v2.26.0)
 
 Replaced the placeholder inline-SVG-badge + text wordmark in the header and footer with the

@@ -4,6 +4,52 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-011 — Deploy v2.26.0 to Staging + Reference-File Hygiene (server-side + housekeeping, no version bump)
+**Date:** 2026-07-22
+**Version:** v2.26.0 (deployed, not newly released)
+**Commit:** `<pending>` (docs/housekeeping only — the logo code itself already shipped in `7594701`/`3ae77b9`)
+
+**Slice:** Close out two loose ends explicitly flagged (not silently done) at the end of the
+SR-010 logo session: (1) staging still served the pre-logo placeholder wordmark, since deploying
+wasn't part of that session's ask; (2) an unused black-line-art reference file sat untracked
+under a meaningless device-export filename.
+
+**Pre-review finding:** Per `LESSONS_LEARNED.md` L-016 ("a confirmed host is not a confirmed
+deploy pipeline"), staleness was verified directly rather than assumed — `curl`-ing the live
+`src/js/components.js` showed the old inline SVG fill (`E85D1A`, 2 matches) and zero references
+to `brand-logo-mark`; requesting the new asset path directly returned `404`. Confirmed genuinely
+stale, not just presumed so.
+
+**Change:** Followed `docs/DEPLOYMENT.md` §9/§11 exactly (same runbook SR-009 already proved
+once): SSH `cp -a` backup (`smart-learning-solutions.bak-20260722-090930`) → `--dry-run` (showed
+only the 3 expected changed/new files: `main.css`, `brand-logo-mark.png`, `components.js`) →
+real `scripts/deploy-staging.sh` run → full `curl` verification. Separately, renamed the unused
+reference file (owner-confirmed: keep, not delete — it's the only higher-resolution native mono
+source of the design) from `pics/Logo/169B49B9-553F-4E10-82BC-E5EE7636C266.jpeg` to
+`pics/Logo/logo-black-line-art.jpeg` and tracked it in git for the first time (previously
+untracked). `DECISION_LOG.md` ADR-017's Consequences updated to close out its own flagged open
+item rather than leaving it stale.
+
+**Findings:** Dry run matched expectations exactly, no surprises. Real deploy transferred
+cleanly. Post-deploy `curl` verification: `/src/images/brand-logo-mark.png` → `200`,
+`image/png`; live `components.js` now contains `brand-logo-mark` (2 matches) and zero `E85D1A`
+matches. Full SR-009-style regression net re-run and unaffected: all pages `200` (`/404.html`
+itself correctly still `404`s, ADR-009 `internal`); both forms reference
+`web3forms-config.js`, zero `formspree`/`REPLACE_ME`; `og:image` resolves; all 5 SR-008 security
+headers present (CSP still report-only); internal paths (`/AUDIT.md`, `/.git/config`,
+`/.claude/settings.json`, `/scripts/deploy-staging.sh`) all still `404`.
+
+**Post-review result:** Staging now reflects `main` @ `3ae77b9` (v2.26.0) — the real client logo
+is live, not just shipped to the repo. The black-line-art reference asset is now a properly
+named, tracked file instead of an untracked leftover with no decision behind it.
+
+**Risk:** Low — repeat of an already-proven runbook (SR-009), backed up first, dry-run-verified
+before the real transfer, scoped to `/var/www/smart-learning-solutions/` only on a shared
+multi-tenant host. The file rename/tracking touches nothing live (confirmed unused by any code
+path in the SR-010 session).
+
+---
+
 ## SR-010 — Client Logo Implementation (v2.26.0)
 **Date:** 2026-07-22
 **Version:** v2.26.0
