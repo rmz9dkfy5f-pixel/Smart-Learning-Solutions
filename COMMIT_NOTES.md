@@ -8,8 +8,7 @@ commit hash, date, summary, and description.
 ## 2026-07-22 — M-7 Closed as Not Applicable (no version bump)
 **Tag:** — (none; docs-only, no code change, no new version — follows this repo's established
 precedent for housekeeping/tracking-only commits, e.g. SR-008, SR-011)
-**Commit:** `<pending — backfilled in a follow-up commit per this repo's convention>` · branch
-`main` · 2026-07-22
+**Commit:** `f4e3053` · branch `main` · 2026-07-22
 **Type:** `docs`
 
 **Summary:** Close `BACKLOG.md` M-7 (`book.html`'s `_next` redirect field) as not applicable — the
