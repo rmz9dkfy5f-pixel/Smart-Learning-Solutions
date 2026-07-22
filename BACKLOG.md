@@ -38,7 +38,7 @@ These must be resolved before the site can go live.
 | H-4 | Add timeout fallback to page transition overlay | `.is-navigating` has no safety timer |
 | M-4 | Remove inline style blocks where CSS classes are available | Code quality |
 | ~~M-5~~ | ~~Update CSS cache-busting query string~~ | Resolved v2.18.0: token updated to `?v=mobile-20260619c` across all 10 files |
-| M-7 | Populate `_next` redirect field in `book.html` | Empty field; Formspree uses it for post-submit redirect — **hold until Formspree endpoint configured (C-1)** |
+| ~~M-7~~ | ~~Populate `_next` redirect field in `book.html`~~ — **Closed 2026-07-22, not applicable**: both forms submit via JS `fetch()` with `e.preventDefault()`, never performing a native POST/redirect, so a `_next`/redirect field would be inert. The field itself no longer exists — removed during the Web3Forms/AJAX migration (v2.23.0). See `DECISION_LOG.md` ADR-018 | Superseded by the Web3Forms AJAX implementation |
 | M-8 | Normalise email casing — `info@smartlearningsolutions.org` | `info@SmartLearningSolutions.org` inconsistent — **hold until hosting platform confirmed** |
 | M-9 | Add `<meta name="robots">` to pages that should not be indexed | Staging / thank-you pages |
 

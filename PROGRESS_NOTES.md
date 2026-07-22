@@ -5,6 +5,36 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-07-22 — M-7 Closed as Not Applicable (`_next` Redirect Field)
+
+**Branch:** `main`
+
+### Summary
+`BACKLOG.md` M-7 ("populate `book.html`'s `_next` redirect field") was scoped via the Model
+Selection Gate before implementing it, rather than implemented as originally written. Both
+`book.html` and `contact.html` submit via a JS handler that calls `e.preventDefault()` and posts
+to Web3Forms with `fetch()` — success is shown in-page via `#form-success`, and no native form
+POST or browser navigation ever occurs. A `_next`/redirect field only has an effect on a native,
+non-intercepted submission, so it would be inert even if added — and the literal field AUDIT.md's
+original finding described no longer exists in `book.html` at all, removed when the form was
+rebuilt for the Web3Forms/AJAX migration (v2.23.0). Flagged to the owner rather than adding a
+no-op field; owner chose to close the item outright.
+
+### Work Completed / Areas Changed
+No code change. `BACKLOG.md` (M-7 row closed), `AUDIT.md` (M-7 finding marked closed),
+`DECISION_LOG.md` (new ADR-018), `SLICE_REVIEWS.md` (new SR-012), `STATUS.md`, `COMMIT_NOTES.md`.
+
+### Validation Performed
+Direct source inspection of both forms' submit handlers and hidden-field lists confirmed no
+`_next`/redirect field present in either file, and confirmed the `preventDefault()` + `fetch()`
+pattern in both.
+
+### Notes for the Next Agent
+No confirmed next task remains as of this closure — the next session-end closeout should
+establish one.
+
+---
+
 ## 2026-07-22 — Client Logo Implementation (v2.26.0) + Staging Deploy/Reference-File Hygiene
 
 **Branch:** `main`

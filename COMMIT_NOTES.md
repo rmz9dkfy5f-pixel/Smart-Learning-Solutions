@@ -5,6 +5,38 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-07-22 — M-7 Closed as Not Applicable (no version bump)
+**Tag:** — (none; docs-only, no code change, no new version — follows this repo's established
+precedent for housekeeping/tracking-only commits, e.g. SR-008, SR-011)
+**Commit:** `<pending — backfilled in a follow-up commit per this repo's convention>` · branch
+`main` · 2026-07-22
+**Type:** `docs`
+
+**Summary:** Close `BACKLOG.md` M-7 (`book.html`'s `_next` redirect field) as not applicable — the
+field would be inert under the current Web3Forms/AJAX form implementation
+
+**Description:**
+- Picked up M-7 as this session's task; scoped it via the Model Selection Gate before
+  implementing it as originally written (an `AUDIT.md` finding dating from the Formspree era)
+- Found `book.html`/`contact.html` submit via a JS handler that calls `e.preventDefault()` and
+  posts to Web3Forms with `fetch()`; success is shown in-page via `#form-success`. No native form
+  POST or browser navigation ever occurs, so a `_next`/redirect field would have no observable
+  effect even if added
+- The literal `_next` hidden field `AUDIT.md`'s original finding described no longer exists in
+  `book.html` at all — removed when the form was rebuilt for the Web3Forms/AJAX migration
+  (v2.23.0)
+- Flagged this to the owner rather than adding a no-op field; owner chose to close the item
+  outright rather than pursue a real post-success redirect
+- Updated `BACKLOG.md` (M-7 row struck through), `AUDIT.md` (M-7 finding marked closed),
+  `DECISION_LOG.md` (new ADR-018), `SLICE_REVIEWS.md` (new SR-012), `STATUS.md`,
+  `PROGRESS_NOTE.md`, `PROGRESS_NOTES.md`
+
+**Verified:** Direct source inspection of both forms' submit handlers and hidden-field lists
+confirmed no `_next`/redirect field present in either file, and confirmed the
+`preventDefault()` + `fetch()` AJAX pattern in both.
+
+---
+
 ## 2026-07-22 — Deploy v2.26.0 to Staging + Reference-File Hygiene (no version bump)
 **Tag:** — (none; docs/housekeeping-only, no code change, no new version — follows this repo's
 established precedent for small governance/tracking-only and operational-deploy commits, e.g.

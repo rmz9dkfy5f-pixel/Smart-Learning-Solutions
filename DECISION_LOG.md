@@ -378,3 +378,50 @@ for the full investigation and implementation record.
 - `SLICE_REVIEWS.md` SR-010, SR-011
 - `plans/2026-07-22-implement-client-logo.md`
 - `AUDIT.md` L-2 (resolved as a side effect of this change)
+
+---
+
+## ADR-018 — M-7 (`book.html` `_next` Redirect Field) Closed as Not Applicable
+
+**Date:** 2026-07-22
+**Version:** none (no code change, no version bump)
+
+### Decision
+`BACKLOG.md`'s M-7 — "populate `book.html`'s `_next` redirect field" — is closed as not
+applicable rather than implemented.
+
+### Reason
+Both `book.html` and `contact.html` submit via a JS `submit` handler that calls
+`e.preventDefault()` and posts to Web3Forms with `fetch()`; success is shown in-page via
+`#form-success`. No native form POST or browser navigation ever occurs. A `_next`/redirect field
+only has an effect on a native, non-intercepted form submission — Web3Forms would never see or
+act on it here, so adding one would be inert configuration with no observable effect. The
+`_next` hidden field that `AUDIT.md`'s original M-7 finding described (`name="_next" value=""`)
+no longer exists in `book.html` at all — it was removed when the form was rebuilt for the
+Web3Forms/AJAX migration (v2.23.0); M-7's "Formspree uses it for post-submit redirect" framing
+predates that migration and no longer describes the current implementation.
+
+### Context
+Surfaced during Model Selection Gate scoping for this task rather than adding a field that would
+have no effect. Owner chose to close the item outright rather than pursue a real post-success
+redirect (e.g., a dedicated thank-you page).
+
+### Alternatives Considered
+- Add a real post-success redirect (`window.location.href` to a new thank-you page) — not
+  pursued; would require creating a new page and would replace the current in-page
+  `#form-success` UX, which is out of scope for what was asked.
+- Add the `_next`/redirect field anyway, for documentation/parity with the original audit
+  finding — rejected; would be dead configuration with no user-visible effect, which the site's
+  own content-accuracy guardrails argue against.
+
+### Consequences
+- `BACKLOG.md` M-7 marked closed/not applicable; no functional change to `book.html` or
+  `contact.html`.
+- `AUDIT.md`'s M-7 finding marked closed, since the field it described no longer exists in the
+  current implementation.
+- No confirmed next task remains as of this decision.
+
+### See Also
+- `BACKLOG.md` M-7
+- `AUDIT.md` M-7
+- `SLICE_REVIEWS.md` SR-012
