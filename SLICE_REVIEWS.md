@@ -7,7 +7,7 @@ Record of significant work slices reviewed before and after implementation.
 ## SR-011 — Deploy v2.26.0 to Staging + Reference-File Hygiene (server-side + housekeeping, no version bump)
 **Date:** 2026-07-22
 **Version:** v2.26.0 (deployed, not newly released)
-**Commit:** `<pending>` (docs/housekeeping only — the logo code itself already shipped in `7594701`/`3ae77b9`)
+**Commit:** `ad4e224` (docs/housekeeping only — the logo code itself already shipped in `7594701`/`3ae77b9`)
 
 **Slice:** Close out two loose ends explicitly flagged (not silently done) at the end of the
 SR-010 logo session: (1) staging still served the pre-logo placeholder wordmark, since deploying
