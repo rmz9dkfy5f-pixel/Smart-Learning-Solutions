@@ -7,7 +7,7 @@ Record of significant work slices reviewed before and after implementation.
 ## SR-010 — Client Logo Implementation (v2.26.0)
 **Date:** 2026-07-22
 **Version:** v2.26.0
-**Commit:** `<pending>`
+**Commit:** `7594701`
 
 **Slice:** Replace the placeholder inline-SVG-badge + text wordmark in `components.js`'s
 `buildHeader()`/`buildFooter()` with the client's actual logo image, owner-confirmed as the

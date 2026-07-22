@@ -4,7 +4,7 @@
 
 ## v2.26.0 — 2026-07-22 — Client Logo Implementation
 
-**Tag:** `v2.26.0__client-logo-implementation__commit-<pending>`
+**Tag:** `v2.26.0__client-logo-implementation__commit-7594701`
 
 ### Summary
 Replaced the placeholder inline-SVG-badge + text wordmark in the header and footer with the
