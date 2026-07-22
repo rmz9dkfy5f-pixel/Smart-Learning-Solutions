@@ -363,13 +363,18 @@ for the full investigation and implementation record.
 ### Consequences
 - The header/footer logo now carries brand color (orange/teal) instead of being purely
   monochrome — a visible departure from the "invert to white" premise in the original plan.
-- The unused black-line-art JPEG (`pics/Logo/169B49B9-...jpeg`) remains untracked and unused in
-  the repo; a future decision is needed on whether to keep it as a reference or remove it.
+- ~~The unused black-line-art JPEG (`pics/Logo/169B49B9-...jpeg`) remains untracked and unused in
+  the repo; a future decision is needed on whether to keep it as a reference or remove it.~~
+  **Resolved 2026-07-22:** owner chose to keep it — it's the only higher-resolution (552×351 vs.
+  the 277×164 AVIF actually used) native mono source of this design. Renamed to
+  `pics/Logo/logo-black-line-art.jpeg` and tracked in git (previously untracked under a
+  meaningless device-export filename). See `SLICE_REVIEWS.md` SR-011.
 - If a monochrome/white treatment is wanted later (e.g. for a dark-on-dark placement this color
-  version doesn't suit), it will need either better local tooling (ImageMagick/PIL) or a
-  dedicated export from the client.
+  version doesn't suit), `pics/Logo/logo-black-line-art.jpeg` is now the tracked starting point —
+  still needs either better local tooling (ImageMagick/PIL) or a dedicated export from the client
+  to background-remove it cleanly.
 
 ### See Also
-- `SLICE_REVIEWS.md` SR-010
+- `SLICE_REVIEWS.md` SR-010, SR-011
 - `plans/2026-07-22-implement-client-logo.md`
 - `AUDIT.md` L-2 (resolved as a side effect of this change)
