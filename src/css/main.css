@@ -435,16 +435,14 @@ body.nav-open .site-header {
 .site-logo {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: var(--text-lg);
-  letter-spacing: -0.03em;
-  color: var(--text);
   flex-shrink: 0;
 }
 
-.site-logo span { color: var(--accent); }
+.site-logo img {
+  display: block;
+  height: 36px;
+  width: auto;
+}
 
 /* Never let flexbox squeeze the header CTA below its label width. */
 .header-cta { flex-shrink: 0; }
@@ -1891,8 +1889,11 @@ body.nav-open .site-header {
 }
 
 .footer-brand .site-logo {
-  font-size: var(--text-xl);
   margin-bottom: var(--space-4);
+}
+
+.footer-brand .site-logo img {
+  height: 40px;
 }
 
 .footer-brand p {

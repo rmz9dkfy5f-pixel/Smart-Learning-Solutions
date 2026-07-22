@@ -4,6 +4,48 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-010 — Client Logo Implementation (v2.26.0)
+**Date:** 2026-07-22
+**Version:** v2.26.0
+**Commit:** `<pending>`
+
+**Slice:** Replace the placeholder inline-SVG-badge + text wordmark in `components.js`'s
+`buildHeader()`/`buildFooter()` with the client's actual logo image, owner-confirmed as the
+next task at the 2026-07-21 closeout.
+
+**Pre-review finding:** The owner-pasted reference image looked like black line art, but the
+confirmed source file (`pics/Logo/Logo.png.avif`, already git-tracked, added 2026-05-08, never
+wired in) decoded to a full-color orange/teal version with real alpha transparency. A second,
+untracked file in the same folder (`169B49B9-...jpeg`) is the actual black version but has an
+opaque white background with no alpha channel, and only `sips` is available locally (no
+ImageMagick/PIL for chroma-key background removal) — using it would have meant either a risky
+improvised background-removal attempt or accepting a visible white box against the site's
+transparent-by-default header. Surfaced this plainly rather than guessing; owner deferred the
+color-treatment call.
+
+**Change:** Used the color AVIF, native color, no CSS filter — cropped to a 277×120 single-line
+"icon + SmartLearning" lockup (excludes the "solutions" swoosh) and saved as
+`src/images/brand-logo-mark.png`. Wired into both builder functions as a single `<img>`; restyled
+`.site-logo`/`.footer-brand .site-logo` for an image child; removed the dead `.site-logo span`
+color rule. `AUDIT.md` L-2 resolved as a side effect (old mismatched SVG no longer exists).
+
+**Findings:** Smoke pass (disposable Playwright script, local static server, real Chromium)
+across all 10 pages: 200 status, zero console/page errors, logo image request 200 everywhere.
+Visual pass on `index.html`: logo renders in full orange/teal color, correctly sized, in the
+transparent top-of-page header, the scrolled/opaque header, the footer, at 1100px width (this
+repo's documented historical nav-squeeze zone — no regression), mobile header, mobile nav-open
+overlay, and mobile footer.
+
+**Post-review result:** Header/footer now show the client's real logo. No favicon change (out of
+scope, owner-confirmed). Two loose ends noted for later, not blocking: whether the full two-line
+lockup (with "solutions") should be placed anywhere, and whether the unused
+`pics/Logo/169B49B9-...jpeg` should be kept or removed.
+
+**Risk:** Low — scoped to the shared header/footer component and one new image asset; validated
+live across all pages and the documented regression zone before shipping.
+
+---
+
 ## SR-009 — Staging Redeploy + Deploy-Allowlist Hardening (v2.25.0)
 **Date:** 2026-07-19
 **Version:** v2.25.0

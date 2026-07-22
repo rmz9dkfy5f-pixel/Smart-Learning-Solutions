@@ -317,3 +317,59 @@ full investigation and redeploy record.
 - `docs/governance/PROJECT_RISK_REGISTER.md` R-004
 - `plans/2026-07-16-web3forms-migration.md` (this repo, same branch)
 - ADR-013 (portable-fixes-only / hosting-gated work — same "don't overstate readiness" discipline)
+
+---
+
+## ADR-017 — Client Logo Uses Native Color, Not a Forced Monochrome/Invert Treatment
+
+**Date:** 2026-07-22
+**Version:** v2.26.0
+
+### Decision
+The client logo (`src/images/brand-logo-mark.png`, cropped from `pics/Logo/Logo.png.avif`) is
+used in its native orange/teal color in the header and footer, with no CSS filter applied.
+
+### Reason
+The owner's pasted reference image looked like black line art, which would have been invisible
+against this site's fully dark (`#060A14`-family) background with no color change — the original
+plan called for a CSS `invert()` filter to solve that. But the owner-confirmed actual source file
+to use, `pics/Logo/Logo.png.avif` (already git-tracked, added 2026-05-08, never wired in), decoded
+via `sips` to a full-color version with real alpha transparency — not black art. A second file in
+the same folder, `pics/Logo/169B49B9-553F-4E10-82BC-E5EE7636C266.jpeg` (untracked, opaque white
+background, no alpha channel), is the actual black-line-art version matching the pasted
+reference, but only `sips` is available locally for image work — no ImageMagick, no PIL — so
+reliable chroma-key background removal isn't achievable without a much riskier improvised
+approach. Recommended and used the color AVIF instead: its alpha channel composites cleanly with
+no white-box-artifact risk, and its orange/teal already closely track the site's existing
+`--accent`/icon-badge orange (`#E85D1A`) and `--cyan` design tokens, reading as coordinated rather
+than clashing.
+
+### Context
+Surfaced to the owner mid-implementation rather than guessing a treatment for a file that turned
+out not to match the premise the plan was built on. Owner deferred the color-vs-mono call back to
+this session's judgment. See `SLICE_REVIEWS.md` SR-010 and `plans/2026-07-22-implement-client-logo.md`
+for the full investigation and implementation record.
+
+### Alternatives Considered
+- Force the color AVIF to white/mono via a filter anyway, to match the original plan literally —
+  rejected; would discard brand colors that already fit the site's palette, for no contrast
+  benefit the native colors don't already provide.
+- Background-remove the black JPEG and use it instead — rejected for this pass; not reliably
+  achievable with the only tool available (`sips`), and would still need an invert/white-force
+  step afterward since black art alone is invisible on this background.
+- Ask the client for a dedicated white/light-color export — not pursued; would block this task on
+  an external round-trip when the already-available color asset works cleanly.
+
+### Consequences
+- The header/footer logo now carries brand color (orange/teal) instead of being purely
+  monochrome — a visible departure from the "invert to white" premise in the original plan.
+- The unused black-line-art JPEG (`pics/Logo/169B49B9-...jpeg`) remains untracked and unused in
+  the repo; a future decision is needed on whether to keep it as a reference or remove it.
+- If a monochrome/white treatment is wanted later (e.g. for a dark-on-dark placement this color
+  version doesn't suit), it will need either better local tooling (ImageMagick/PIL) or a
+  dedicated export from the client.
+
+### See Also
+- `SLICE_REVIEWS.md` SR-010
+- `plans/2026-07-22-implement-client-logo.md`
+- `AUDIT.md` L-2 (resolved as a side effect of this change)

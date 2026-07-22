@@ -5,6 +5,50 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.26.0 — Client Logo Implementation
+**Tag:** `v2.26.0__client-logo-implementation__commit-<pending>`
+**Commit:** `<pending>` · branch `main` · 2026-07-22
+**Type:** `feat` (brand asset) + `fix` (AUDIT.md L-2) + `docs`
+
+**Summary:** Replace the placeholder inline-SVG-badge + text wordmark with the client's actual
+logo image in the shared header/footer component (2026-07-22)
+
+**Description:**
+- Owner-confirmed next task from the 2026-07-21 closeout: implement the client logo. Owner
+  provided the logo image directly in-session; confirmed the actual source file to use was
+  already sitting untracked-adjacent in the repo (`pics/Logo/Logo.png.avif`, added 2026-05-08,
+  never wired in)
+- Decoding the AVIF via `sips` (only local conversion tool available) revealed it's a full-color
+  orange/teal version with real alpha transparency, not the black line art the pasted reference
+  image suggested. A second file in the same folder (`169B49B9-...jpeg`, untracked, opaque white
+  background, no alpha) matches the black version but can't be cleanly background-removed with
+  the tooling available. Flagged this to the owner rather than guessing a treatment; owner
+  deferred the call. Recommended and used the color AVIF — real transparency, and its
+  orange/teal already closely track the site's existing `--accent`/icon-badge orange and `--cyan`
+  tokens
+- Cropped the decoded 277×164 source to a 277×120 single-line "icon + SmartLearning" lockup
+  (excludes the "solutions" script swoosh, which isn't placed anywhere in this pass), saved as
+  `src/images/brand-logo-mark.png`
+- `components.js`: `buildHeader()`/`buildFooter()` now render `<img src="/src/images/
+  brand-logo-mark.png" alt="">` inside the existing `.site-logo` link, replacing the inline SVG +
+  `Smart<span>Learning</span>` text
+- `main.css`: `.site-logo` restyled for an image child (`height: 36px` header / `40px` footer,
+  `width: auto`); removed the now-dead `.site-logo span { color: var(--accent); }` rule
+- No CSS color filter applied — native logo color composites cleanly against the site's dark
+  (`#060A14`-family) background in every header state
+- `AUDIT.md` L-2 (footer SVG `width`/`viewBox` mismatch) resolved as a side effect — the
+  mismatched SVG no longer exists
+
+**Verified:** Local static server + a disposable Playwright script drove real Chromium across all
+10 pages — 200 status, zero console/page errors, logo image request 200 everywhere. Visual pass
+on `index.html` confirmed the logo renders correctly (full color, no invisibility/box artifacts)
+in the transparent top-of-page header state, the scrolled/opaque header state, the footer, at
+1100px width (this repo's documented historical nav-squeeze zone — no regression, nav already
+collapses to the hamburger by that width), mobile header (390px), the mobile nav-open overlay,
+and the mobile footer.
+
+---
+
 ## v2.25.0 — Staging Redeploy + Deploy-Allowlist Hardening
 **Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-b0e0371`
 **Commit:** `b0e0371` · branch `main` · 2026-07-19
