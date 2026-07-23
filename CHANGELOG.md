@@ -13,7 +13,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.27.0] — 2026-07-23
 
-**Tag:** `v2.27.0__about-page-logo-watermark__commit-<pending>`
+**Tag:** `v2.27.0__about-page-logo-watermark__commit-5f185d8`
 
 ### Added
 - `about.html` — the client's full two-line logo lockup
