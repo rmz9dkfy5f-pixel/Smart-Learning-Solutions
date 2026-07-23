@@ -425,3 +425,61 @@ redirect (e.g., a dedicated thank-you page).
 - `BACKLOG.md` M-7
 - `AUDIT.md` M-7
 - `SLICE_REVIEWS.md` SR-012
+
+---
+
+## ADR-019 — Two-Line Logo Watermark Extends ADR-017's Native-Color Choice; Opacity Set Below Sitewide Convention
+
+**Date:** 2026-07-23
+**Version:** v2.27.0
+
+### Decision
+The About page's new two-line logo watermark (`src/images/brand-logo-lockup-full.png`) uses the
+same native orange/teal color as the header/footer mark (no CSS filter), extending ADR-017's
+reasoning. Its background-image opacity is set to 0.08 — below this site's existing 0.09–0.11
+decorative-background convention (`.audience-photo-bg`, `.format-card-photo-bg`,
+`.cta-band-photo-bg`).
+
+### Reason
+ADR-017 already established that this logo's native color composites cleanly (real alpha, no
+white-box risk) and already tracks the site's `--accent`/`--cyan` tokens — that reasoning applies
+unchanged to a second placement of the same asset family. The opacity choice is new: the mission
+column's paragraph text uses `color: var(--text-muted)`, which — independent of this change —
+already sits close to the WCAG AA 4.5:1 contrast floor. A hard-edged logo graphic (sharp
+letterform/swoosh strokes) sitting behind that text has less room to darken/lighten localized
+patches evenly than a smooth photograph would at the same opacity, since the sitewide convention's
+proven range was validated against photos, not logo strokes. 0.08 was chosen as a conservative
+starting point and confirmed sufficient — not just assumed — via a direct visual legibility check
+across all 4 standard breakpoints (375/768/1024/1440px) before shipping, with no patch reading as
+harder to read than the rest of the paragraph.
+
+### Context
+This is the second use of the same source logo family on the site (following ADR-017's
+header/footer placement), and the first use of it as a background element behind body text rather
+than as a standalone mark. See `SLICE_REVIEWS.md` SR-014 and
+`plans/2026-07-22-two-line-logo-watermark.md` for the full investigation and implementation
+record.
+
+### Alternatives Considered
+- Match the sitewide 0.09–0.11 decorative-image convention exactly — rejected as the default,
+  since that convention was validated against smooth photographs, not a hard-edged logo graphic,
+  over already-borderline `--text-muted` text; starting lower and confirming visually was judged
+  safer than starting at the photo-convention value and only checking afterward.
+- Desaturate/invert the logo for this specific placement (mono/white treatment) — rejected;
+  ADR-017 already rejected this for the same asset family for the same tooling-constraint reasons
+  (only `sips` available locally, no reliable chroma-key background removal), and at 8% opacity
+  hue is barely perceptible against the near-black background regardless — the visible signal is
+  overwhelmingly luminance/silhouette, not color.
+
+### Consequences
+- The same brand color treatment now appears twice on the About page (small in the header/footer,
+  large and faint in the mission section) — reinforces brand recognition rather than fragmenting
+  it across two different color treatments.
+- If a future placement needs a different (e.g. lighter/whiter) treatment,
+  `pics/Logo/logo-black-line-art.jpeg` remains the tracked starting point noted in ADR-017 — still
+  blocked on better local tooling or a dedicated client export for clean background removal.
+
+### See Also
+- ADR-017
+- `SLICE_REVIEWS.md` SR-014
+- `plans/2026-07-22-two-line-logo-watermark.md`
