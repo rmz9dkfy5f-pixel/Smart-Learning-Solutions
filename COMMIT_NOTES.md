@@ -6,8 +6,8 @@ commit hash, date, summary, and description.
 ---
 
 ## 2026-07-23 — About Page Logo Watermark (v2.27.0)
-**Tag:** `v2.27.0__about-page-logo-watermark__commit-5f185d8`
-**Commit:** `5f185d8` · branch `main` · 2026-07-23
+**Tag:** `v2.27.0__about-page-logo-watermark__commit-1160a69`
+**Commit:** `1160a69` · branch `main` · 2026-07-23
 **Type:** `feat`
 
 **Summary:** Place the full two-line logo lockup (with the "solutions" swoosh) as a subtle
