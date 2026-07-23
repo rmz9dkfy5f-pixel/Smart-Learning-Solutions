@@ -13,7 +13,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.26.1] — 2026-07-22
 
-**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-TBD`
+**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862`
 
 ### Fixed
 - `BACKLOG.md` H-4 — the `.is-navigating` page-transition overlay (`src/js/components.js`,
