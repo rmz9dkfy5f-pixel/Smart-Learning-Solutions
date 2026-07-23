@@ -483,3 +483,70 @@ record.
 - ADR-017
 - `SLICE_REVIEWS.md` SR-014
 - `plans/2026-07-22-two-line-logo-watermark.md`
+
+---
+
+## ADR-020 — Replace Plausible With a Free Analytics Provider; Google Analytics Rejected; Cloudflare Web Analytics Attempted and Blocked
+
+**Date:** 2026-07-23
+**Version:** none (no code change, no version bump)
+
+### Decision
+`BACKLOG.md` H-3 (originally "pin the Plausible analytics URL") is superseded: the owner chose to
+replace Plausible ($9/mo) with a free, privacy-friendly analytics provider instead of continuing
+to maintain it. Google Analytics was considered and explicitly rejected. Cloudflare Web Analytics
+was the first replacement attempted; its account was created, but the onboarding flow could not be
+completed due to a reproducible product bug. No provider swap has shipped yet — Plausible remains
+the live provider in `src/js/components.js` as of this decision.
+
+### Reason
+- **Google Analytics rejected:** GA4 sets tracking cookies and shares data with Google for
+  ad/profiling purposes. This site's `legal/privacy-policy.md` and Plausible's own no-cookie
+  posture currently require no cookie-consent banner; adopting GA would very likely require adding
+  one plus rewriting the privacy policy to disclose Google's data sharing — a real scope increase
+  for a site whose only conversion goal is a booking-enquiry form, not proportionate to the money
+  saved.
+- **Cloudflare Web Analytics attempted:** same free, no-cookie category as Plausible/GoatCounter,
+  so it was tried first. Account created under `info@SmartLearningSolutions.org` (matching the
+  Web3Forms account, per this repo's convention that client-facing service accounts belong to the
+  client, not the developer). The "Add a site" wizard's hostname field would not register a typed
+  hostname as a valid selection (rejected with "Your website's hostname or selection from your
+  existing zones is required" even with the exact text visible in the field), and clicking the
+  hostname dropdown's own "No active websites found" element cleared the field entirely, creating
+  an unbreakable loop. Reproduced identically across Chrome, Brave, and a private/incognito
+  window — ruling out a local browser/extension cause. No site or JS-snippet token was ever
+  generated, so no code change was possible.
+
+### Context
+Surfaced mid-session while working `BACKLOG.md`'s post-H-4 queue. The owner asked to compare free
+alternatives to Plausible before committing to anything, was walked through a short comparison
+(Google Analytics, Cloudflare Web Analytics, GoatCounter), and picked Cloudflare Web Analytics.
+Account creation and the onboarding wizard were attempted live, in-session, with the owner sharing
+screenshots at each step; the wizard bug above was found this way, not assumed.
+
+### Alternatives Considered
+- **Keep Plausible, just pin the script URL** (the original, narrower H-3 scope) — superseded by
+  the owner's explicit preference to stop paying for it once a free equivalent was identified.
+- **Google Analytics** — rejected; see Reason above.
+- **GoatCounter** — same free/no-cookie category as Cloudflare Web Analytics, not yet attempted.
+  Chosen as the next thing to try, specifically because its signup is a plain account + site-name
+  form with no hostname-selection wizard, which sidesteps the exact failure mode hit with
+  Cloudflare.
+- **Keep troubleshooting Cloudflare further this session** (different account, wait-and-retry,
+  Cloudflare support chat) — not pursued once the bug reproduced across three separate
+  browser/session combinations; judged as very likely a platform-side issue rather than something
+  further local troubleshooting would fix quickly.
+
+### Consequences
+- Plausible remains live and unchanged in `src/js/components.js` — the site's analytics have not
+  been interrupted.
+- `BACKLOG.md` H-3 reframed to track the provider swap rather than the original narrower
+  URL-pinning task.
+- **Confirmed next task (this session, `REPO_SESSION_END_CLOSEOUT.md` Step 4a):** after the
+  already-queued v2.27.0 staging deploy, resume this item by trying GoatCounter's signup instead
+  of continuing to fight Cloudflare's onboarding bug.
+
+### See Also
+- `BACKLOG.md` H-3
+- `PLAN.md` Current State
+- `SLICE_REVIEWS.md` SR-015

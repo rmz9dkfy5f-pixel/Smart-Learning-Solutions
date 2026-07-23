@@ -11,6 +11,22 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 
 ---
 
+## H-3 Analytics Swap: Cloudflare Web Analytics Attempted, Blocked — 2026-07-23 (no version bump)
+
+Owner decided to replace Plausible ($9/mo) with a free, privacy-friendly analytics provider.
+Google Analytics was considered and rejected (would require a cookie-consent banner and a
+privacy-policy rewrite for this site). Cloudflare Web Analytics was tried first: an account was
+created under `info@SmartLearningSolutions.org` (matching the Web3Forms account), but its "Add a
+site" onboarding wizard has a reproducible bug — a typed hostname is rejected as invalid even when
+visibly present in the field, and clicking the hostname dropdown clears it entirely. Reproduced
+across Chrome, Brave, and a private window, so this is very likely a platform-side issue, not a
+local one. No site/token was generated; Plausible remains live and unchanged in
+`src/js/components.js`. See `DECISION_LOG.md` ADR-020 and `SLICE_REVIEWS.md` SR-015. **Next
+session (after the queued v2.27.0 staging deploy): try GoatCounter instead** — same free/no-cookie
+category, simpler signup with no hostname wizard.
+
+---
+
 ## About Page Logo Watermark — 2026-07-23 (v2.27.0)
 
 The full two-line logo lockup (including the "solutions" script swoosh, deliberately excluded
