@@ -5,6 +5,37 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-07-23 — H-3 Analytics Swap: Cloudflare Web Analytics Attempted, Blocked (no version bump)
+**Tag:** — (none; no code change, no new version)
+**Commit:** TBD · branch `main` · 2026-07-23
+**Type:** `docs`
+
+**Summary:** Document the decision to replace Plausible with a free analytics provider, and the
+reproducible Cloudflare Web Analytics onboarding bug that blocked the first attempt
+
+**Description:**
+- Resumed the post-H-4 backlog queue; owner decided to replace Plausible ($9/mo) with a free,
+  privacy-friendly analytics provider rather than just pin its script URL as H-3 originally scoped
+- Compared Google Analytics (rejected — would require a cookie-consent banner and privacy-policy
+  rewrite disproportionate to this site's needs), Cloudflare Web Analytics, and GoatCounter; owner
+  picked Cloudflare Web Analytics to try first
+- Account created under `info@SmartLearningSolutions.org` (matching the Web3Forms account
+  convention). Cloudflare's "Add a site" onboarding wizard would not accept a manually-typed
+  hostname: rejected as invalid even while visibly present in the field, and clicking the
+  hostname dropdown's "No active websites found" element cleared the field entirely — an
+  unbreakable loop
+- Reproduced identically across Chrome, Brave, and a private/incognito Brave window, ruling out a
+  local browser/extension cause. No site or JS-snippet token was ever generated
+- No code change made; Plausible remains the live, unchanged analytics provider in
+  `src/js/components.js`
+- Updated `BACKLOG.md` (H-3 reframed to the provider-swap goal), `DECISION_LOG.md` (new ADR-020),
+  `SLICE_REVIEWS.md` (new SR-015), `STATUS.md`, `PLAN.md`
+
+**Verified:** Live, in-session attempt at Cloudflare's actual account-creation and onboarding
+flow, with the owner sharing screenshots at each step — the bug was found this way, not assumed.
+
+---
+
 ## 2026-07-23 — About Page Logo Watermark (v2.27.0)
 **Tag:** `v2.27.0__about-page-logo-watermark__commit-1160a69`
 **Commit:** `1160a69` · branch `main` · 2026-07-23

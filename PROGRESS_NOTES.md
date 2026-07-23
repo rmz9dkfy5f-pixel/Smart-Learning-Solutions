@@ -5,6 +5,36 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-07-23 — H-3: Analytics Swap — Cloudflare Web Analytics Attempted, Blocked (no version bump)
+
+**Branch:** `main`
+
+### Summary
+Owner decided to replace Plausible ($9/mo) with a free, privacy-friendly analytics provider.
+Google Analytics rejected (cookie-consent/privacy-policy overhead disproportionate to this site's
+needs). Cloudflare Web Analytics tried first: account created under
+`info@SmartLearningSolutions.org`, but its "Add a site" onboarding wizard has a reproducible bug —
+a typed hostname is rejected as invalid even while visibly present, and clicking the hostname
+dropdown clears the field, looping indefinitely. Reproduced across Chrome, Brave, and a private
+window. No site/token was generated; no code change made; Plausible remains live.
+
+### Work Completed / Areas Changed
+No code change. `BACKLOG.md` (H-3 reframed), `DECISION_LOG.md` (new ADR-020), `SLICE_REVIEWS.md`
+(new SR-015), `STATUS.md`, `PLAN.md`.
+
+### Validation Performed
+Live, in-session Cloudflare account-creation and onboarding attempt with the owner sharing
+screenshots at each step; the bug was reproduced across three separate browser/session
+combinations before concluding further local troubleshooting was unlikely to help.
+
+### Notes for the Next Agent
+Confirmed next task, in order: (1) deploy the already-shipped v2.27.0 to staging via
+`scripts/deploy-staging.sh`; (2) then resume H-3 by trying GoatCounter's signup instead of
+Cloudflare — its flow is a plain account + site-name form with no hostname-selection wizard,
+sidestepping the exact bug hit here.
+
+---
+
 ## 2026-07-23 — Two-Line Logo Lockup Watermark on About Page (v2.27.0)
 
 **Branch:** `main`

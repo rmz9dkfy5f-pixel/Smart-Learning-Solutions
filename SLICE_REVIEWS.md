@@ -4,6 +4,38 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-015 — H-3 Analytics Swap: Cloudflare Web Analytics Attempted, Blocked (no version bump)
+**Date:** 2026-07-23
+**Version:** none
+
+**Slice:** Resume `BACKLOG.md` H-3 after H-4. Owner chose to replace Plausible ($9/mo) with a free
+privacy-friendly analytics provider rather than keep pinning its script URL; compared Google
+Analytics (rejected — cookie-consent/privacy-policy overhead) against Cloudflare Web Analytics and
+GoatCounter (both free, no-cookie), and picked Cloudflare Web Analytics to try first.
+
+**Pre-review finding:** Account created under `info@SmartLearningSolutions.org`, matching the
+Web3Forms account convention. Cloudflare's "Add a site" onboarding wizard for Web Analytics would
+not accept the manual/JS-snippet hostname entry: typing the exact hostname
+(`smart-learning-solutions.craftandconscious.com`) into the field and clicking "Done" produced
+"Your website's hostname or selection from your existing zones is required" even with the text
+visibly present, and clicking the field's own "No active websites found" dropdown cleared the
+typed value entirely — an unbreakable loop. Reproduced identically in Chrome, Brave, and a
+private/incognito window, ruling out a local browser or extension cause.
+
+**Change:** None — no site/token was ever generated in Cloudflare, so no code change was made to
+`src/js/components.js`. Plausible remains the live, unchanged analytics provider. Documented the
+decision and blocker in `DECISION_LOG.md` ADR-020, reframed `BACKLOG.md` H-3 to track the
+provider-swap goal instead of the original narrower URL-pinning task.
+
+**Post-review result:** Provider swap not yet shipped. Confirmed next step (after the
+already-queued v2.27.0 staging deploy): try GoatCounter's signup instead, since its flow is a
+plain account + site-name form with no hostname-selection wizard, sidestepping the exact failure
+mode hit here.
+
+**Risk:** None — no code touched; investigative/decision session only.
+
+---
+
 ## SR-014 — Two-Line Logo Lockup Watermark on About Page (v2.27.0)
 **Date:** 2026-07-23
 **Version:** v2.27.0

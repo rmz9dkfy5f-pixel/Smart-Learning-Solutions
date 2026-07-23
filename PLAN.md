@@ -25,6 +25,12 @@ v2.27.0 (About page logo watermark) to staging via `scripts/deploy-staging.sh` â
 explicit pick over resuming the H-3/M-9/M-4/... queue above, which remains next in line after
 that deploy.
 
+**H-3 update (2026-07-23, same day):** Owner chose to replace Plausible with a free
+privacy-friendly analytics provider rather than just pin its URL. Google Analytics rejected;
+Cloudflare Web Analytics attempted but blocked by a reproducible onboarding-wizard bug (see
+`DECISION_LOG.md` ADR-020, `SLICE_REVIEWS.md` SR-015). **Confirmed next task, after the v2.27.0
+deploy above: try GoatCounter's signup for H-3** before troubleshooting Cloudflare further.
+
 See `BACKLOG.md` for the full prioritised work queue.
 See `PHASE_GATES.md` for Gate 1 criteria.
 See `plans/open-decisions.md` for all pending owner decisions.

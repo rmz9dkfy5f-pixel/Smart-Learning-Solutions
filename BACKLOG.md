@@ -34,7 +34,7 @@ These must be resolved before the site can go live.
 
 | ID | Item | Notes |
 |---|---|---|
-| H-3 | Pin Plausible analytics URL (version or SRI) | Plausible does not currently support SRI; monitor |
+| H-3 | ~~Pin Plausible analytics URL (version or SRI)~~ — **Superseded 2026-07-23**: owner chose to replace Plausible ($9/mo) with a free privacy-friendly alternative rather than keep pinning it. Google Analytics considered and rejected (would require a cookie-consent banner + privacy-policy rewrite for this site). **Cloudflare Web Analytics attempted, blocked**: account created under `info@SmartLearningSolutions.org` (same as Web3Forms), but the "Add a site" onboarding wizard has a reproducible bug (typed hostname is not registered as a valid selection; clicking the hostname dropdown clears the field entirely) — reproduced across both Chrome and Brave, in a private/incognito window too. No site/token was ever generated; no code change made. **Next session: try GoatCounter instead** (same free/no-cookie category) before troubleshooting Cloudflare's onboarding further | Swap decision made; provider not yet installed — see `DECISION_LOG.md` ADR-020 |
 | ~~H-4~~ | ~~Add timeout fallback to page transition overlay~~ — **Resolved 2026-07-22 (v2.26.1)**: `NAVIGATION_TIMEOUT_MS` (4000ms) fallback timer added to `initPage()` in `src/js/components.js`; force-clears `.is-navigating`/`overflow` if the `pageshow` listener never fires. See `SLICE_REVIEWS.md` SR-013 | `.is-navigating` previously had no safety timer |
 | M-4 | Remove inline style blocks where CSS classes are available | Code quality |
 | ~~M-5~~ | ~~Update CSS cache-busting query string~~ | Resolved v2.18.0: token updated to `?v=mobile-20260619c` across all 10 files |
