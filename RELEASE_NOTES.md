@@ -4,7 +4,7 @@
 
 ## v2.26.1 — 2026-07-22 — Page-Transition Overlay Timeout Fallback
 
-**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-TBD`
+**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862`
 
 ### Summary
 `BACKLOG.md` H-4: the shared `.is-navigating` page-transition overlay used by all 10 pages had no

@@ -6,8 +6,8 @@ commit hash, date, summary, and description.
 ---
 
 ## v2.26.1 — Page-Transition Overlay Timeout Fallback
-**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-TBD`
-**Commit:** `TBD` · branch `main` · 2026-07-22
+**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862`
+**Commit:** `c8ac862` · branch `main` · 2026-07-22
 **Type:** `fix`
 
 **Summary:** Add a safety timeout to the shared `.is-navigating` page-transition overlay so an
