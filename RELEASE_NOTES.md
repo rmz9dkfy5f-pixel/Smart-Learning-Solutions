@@ -4,7 +4,7 @@
 
 ## v2.27.0 — 2026-07-23 — About Page Logo Watermark
 
-**Tag:** `v2.27.0__about-page-logo-watermark__commit-<pending>`
+**Tag:** `v2.27.0__about-page-logo-watermark__commit-5f185d8`
 
 ### Summary
 Closed the non-blocking open item from the v2.26.0 logo session: the full two-line lockup
