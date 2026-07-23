@@ -5,6 +5,50 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-07-23 — Two-Line Logo Lockup Watermark on About Page (v2.27.0)
+
+**Branch:** `main`
+
+### Summary
+Closed the non-blocking open item flagged at the end of the v2.26.0 logo session: the full
+two-line logo lockup (including the "solutions" script swoosh, deliberately excluded from the
+single-line header/footer crop) is now placed as a subtle background watermark behind the "Built
+on Real Expertise" mission copy on `about.html`. Owner chose this placement over two alternatives
+(a CTA-band accent, a fully visible hero mark) after reviewing mockups of each, and chose
+repo-only scope for this pass — staging deploy is a deliberate, separate follow-up. This session
+also discovered and reconciled a concurrent-session conflict: another session pushed the H-4 fix
+and M-7 closure below (both dated 2026-07-22) to `origin/main` while this work was in progress,
+and both sessions had independently used `ADR-018`/`SR-012` for unrelated content — resolved by
+rebasing this session's commits onto the new `origin/main` and renumbering this session's entries
+to `ADR-019`/`SR-014`.
+
+### Work Completed / Areas Changed
+`src/images/brand-logo-lockup-full.png` (new, native 277×164 export from
+`pics/Logo/Logo.png.avif`), `about.html` (`.about-mission`/`.about-mission-watermark`),
+`CHANGELOG.md`, `RELEASE_NOTES.md`, `SLICE_REVIEWS.md` (SR-014), `DECISION_LOG.md` (ADR-019,
+extends ADR-017), `STATUS.md`, `COMMIT_NOTES.md`, `PLAN.md`,
+`plans/2026-07-22-two-line-logo-watermark.md` (new).
+
+### Validation Performed
+Disposable Playwright script (local static server, real Chromium) across all 10 pages: 200
+status, zero console/page errors; new asset loads only on `about.html`; existing header/footer
+logo unaffected everywhere. Computed-style check confirmed correct watermark/text stacking order
+(`z-index: 0` vs. `1`) and containment within the mission column. Visual check at
+375/768/1024/1440px: watermark reads as intentionally subtle at every breakpoint, no bleed into
+the credentials list, all copy remains fully legible. `prefers-reduced-motion` fallback confirmed
+unaffected.
+
+### Notes for the Next Agent
+Staging deploy of this change is a likely near-term follow-up (matching how the original logo
+work split code (SR-010) from deploy (SR-011)) — not yet done, by the owner's explicit choice of
+scope for this pass. Production hosting remains gated on OD-003. A RepoBackups snapshot folder
+(`v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862`) initially appeared to
+reference a commit absent from local git history — later explained: it was the concurrent
+session's real, pushed commit, fetched only after this session ran `git fetch` (see this entry's
+Summary). Not a stale/orphaned artifact after all.
+
+---
+
 ## 2026-07-22 — H-4: Page-Transition Overlay Timeout Fallback (v2.26.1)
 
 **Branch:** `main`
