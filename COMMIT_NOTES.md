@@ -7,7 +7,7 @@ commit hash, date, summary, and description.
 
 ## 2026-07-23 — H-3 Analytics Swap: Cloudflare Web Analytics Attempted, Blocked (no version bump)
 **Tag:** — (none; no code change, no new version)
-**Commit:** TBD · branch `main` · 2026-07-23
+**Commit:** `b91f802` · branch `main` · 2026-07-23
 **Type:** `docs`
 
 **Summary:** Document the decision to replace Plausible with a free analytics provider, and the
