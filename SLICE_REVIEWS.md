@@ -7,7 +7,7 @@ Record of significant work slices reviewed before and after implementation.
 ## SR-014 — Two-Line Logo Lockup Watermark on About Page (v2.27.0)
 **Date:** 2026-07-23
 **Version:** v2.27.0
-**Commit:** `5f185d8`
+**Commit:** `1160a69`
 
 **Slice:** Close the non-blocking open item flagged at the end of the v2.26.0 logo session
 (SR-010): place the full two-line lockup, including the "solutions" script swoosh deliberately
