@@ -5,6 +5,41 @@ commit hash, date, summary, and description.
 
 ---
 
+## v2.26.1 — Page-Transition Overlay Timeout Fallback
+**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-TBD`
+**Commit:** `TBD` · branch `main` · 2026-07-22
+**Type:** `fix`
+
+**Summary:** Add a safety timeout to the shared `.is-navigating` page-transition overlay so an
+interrupted navigation can't leave the page stuck (2026-07-22)
+
+**Description:**
+- Owner-confirmed next task (H-4) from the 2026-07-22 ranked-queue confirmation in `PLAN.md`
+- `initPage()` in `src/js/components.js` (shared by all 10 pages) intercepts same-origin link
+  clicks, adds `body.is-navigating` (fades in a full-viewport `#page-transition` cover-up per
+  `main.css`), sets `overflow: hidden`, then calls `window.location.assign()` after
+  `TRANSITION_DELAY_MS`. The class was only ever removed by a `pageshow` listener firing on the
+  destination page — an interrupted/failed navigation (offline, stalled load, a
+  `location.assign` edge case) had no fallback and would leave the overlay stuck indefinitely
+  with scrolling locked
+- Added `NAVIGATION_TIMEOUT_MS` (4000ms) module-level constant and a `navigationSafetyTimer`
+  started in the click handler, alongside the existing transition-delay timeout, that force-clears
+  `.is-navigating` and restores `overflow` if `pageshow` hasn't fired within that window
+- The `pageshow` listener now clears the pending safety timer before removing the class, so a
+  normal, successful navigation never leaves a dangling timeout running
+- No CSS or HTML changes — the overlay markup/styling were already correct; this only guarantees
+  the class is always eventually removed
+
+**Verified:** Local static server + a disposable Playwright script. Golden path: normal
+navigation via a real link click on `index.html`, `book.html`, and `workshops.html` confirmed
+`.is-navigating`/`overflow` are cleared immediately on arrival, no regression. Edge case: aborted
+the destination request (`page.route(..., route => route.abort('failed'))`) right after
+triggering a real click, confirmed `.is-navigating`/`overflow` remain set immediately after
+(overlay correctly shown) and are force-cleared automatically ~4s later by the new safety timer,
+rather than staying stuck.
+
+---
+
 ## 2026-07-22 — M-7 Closed as Not Applicable (no version bump)
 **Tag:** — (none; docs-only, no code change, no new version — follows this repo's established
 precedent for housekeeping/tracking-only commits, e.g. SR-008, SR-011)

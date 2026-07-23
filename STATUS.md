@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.26.0 · 2026-07-22
+**Current Version:** v2.26.1 · 2026-07-22
 **Branch:** `main`
 
 ---
@@ -8,6 +8,22 @@
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Page-Transition Overlay Timeout Fallback — 2026-07-22 (v2.26.1)
+
+`BACKLOG.md` H-4 — the shared `.is-navigating` page-transition overlay (used by all 10 pages via
+`initPage()` in `src/js/components.js`) had no safety timer: its only removal path was a
+`pageshow` listener that fires once the destination page loads. An interrupted or failed
+navigation (offline, a stalled load, a `location.assign` edge case) would leave the page stuck
+under the overlay with scrolling locked, with no way out short of a manual reload. Added a
+`NAVIGATION_TIMEOUT_MS` (4000ms) fallback timer that force-clears the overlay state if `pageshow`
+never fires; the `pageshow` listener now clears the pending timer so a normal navigation never
+leaves a dangling timeout. Verified via local server + a disposable Playwright script — golden
+path unaffected, simulated stalled navigation now self-clears after ~4s instead of staying stuck.
+See `SLICE_REVIEWS.md` SR-013. Next confirmed task (per the 2026-07-22 ranked queue): H-3 (pin
+Plausible analytics URL).
 
 ---
 

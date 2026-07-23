@@ -15,7 +15,10 @@ const PHONE    = '1-877-365-SMRT (7678)';
 const EMAIL    = 'info@SmartLearningSolutions.org';
 const YEAR     = new Date().getFullYear();
 const TRANSITION_DELAY_MS = 100;
+const NAVIGATION_TIMEOUT_MS = 4000;
 const PLAUSIBLE_DOMAINS = 'smartlearningsolutions.org,www.smartlearningsolutions.org';
+
+let navigationSafetyTimer;
 
 function injectHeadAssets() {
   if (!document.querySelector('script[data-domain="' + PLAUSIBLE_DOMAINS + '"]')) {
@@ -201,6 +204,7 @@ function initPage({ activePage = '' } = {}) {
   }
 
   window.addEventListener('pageshow', () => {
+    window.clearTimeout(navigationSafetyTimer);
     document.body.classList.remove('is-navigating');
     closeNav();
   });
@@ -226,6 +230,10 @@ function initPage({ activePage = '' } = {}) {
     event.preventDefault();
     document.body.classList.add('is-navigating');
     document.body.style.overflow = 'hidden';
+    navigationSafetyTimer = window.setTimeout(() => {
+      document.body.classList.remove('is-navigating');
+      document.body.style.overflow = '';
+    }, NAVIGATION_TIMEOUT_MS);
     window.setTimeout(() => {
       window.location.assign(nextUrl.href);
     }, TRANSITION_DELAY_MS);
