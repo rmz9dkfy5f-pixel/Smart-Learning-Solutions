@@ -5,6 +5,38 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-07-22 — H-4: Page-Transition Overlay Timeout Fallback (v2.26.1)
+
+**Branch:** `main`
+
+### Summary
+`BACKLOG.md` H-4, first item in the owner-confirmed 2026-07-22 ranked next-task queue
+(`PLAN.md`): the shared `.is-navigating` page-transition overlay (`initPage()` in
+`src/js/components.js`, used by all 10 pages) had no safety timer — its only removal path was a
+`pageshow` listener firing on the destination page. An interrupted/failed navigation (offline, a
+stalled load, a `location.assign` edge case) would leave the page stuck under the overlay
+indefinitely, scrolling locked. Added a `NAVIGATION_TIMEOUT_MS` (4000ms) fallback timer that
+force-clears the state if `pageshow` never fires; the `pageshow` listener now clears the pending
+timer so a normal navigation never leaves it dangling.
+
+### Work Completed / Areas Changed
+`src/js/components.js` (only file changed — no CSS/HTML needed). Version bumped to v2.26.1
+(patch, per `docs/VERSIONING.md`). `CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md`,
+`SLICE_REVIEWS.md` (new SR-013), `STATUS.md`, `BACKLOG.md` (H-4 row closed), `PLAN.md` (queue
+advanced to H-3).
+
+### Validation Performed
+Local static server + a disposable Playwright script. Golden-path navigation (real clicks across
+`index.html`, `book.html`, `workshops.html`) confirmed no regression. Simulated a stalled
+navigation via an aborted route: overlay correctly shown immediately after the click, then
+force-cleared automatically ~4.3s later by the new safety timer instead of staying stuck.
+
+### Notes for the Next Agent
+Not yet deployed to staging — a code-only fix pending the usual `scripts/deploy-staging.sh` run.
+Next confirmed task per the ranked queue: H-3 (pin/document the Plausible analytics script URL).
+
+---
+
 ## 2026-07-22 — M-7 Closed as Not Applicable (`_next` Redirect Field)
 
 **Branch:** `main`

@@ -2,6 +2,24 @@
 
 ---
 
+## v2.26.1 — 2026-07-22 — Page-Transition Overlay Timeout Fallback
+
+**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-TBD`
+
+### Summary
+`BACKLOG.md` H-4: the shared `.is-navigating` page-transition overlay used by all 10 pages had no
+safety timer — its only removal path was a `pageshow` listener that fires once the destination
+page loads. An interrupted or failed navigation (offline, a stalled load, a `location.assign`
+edge case) would leave the overlay stuck indefinitely, covering the page with scrolling locked.
+
+### Fixed
+- `src/js/components.js` — added a `NAVIGATION_TIMEOUT_MS` (4000ms) fallback timer, started
+  alongside the existing transition delay, that force-clears `.is-navigating` and restores
+  `overflow` if `pageshow` never fires. The `pageshow` listener now clears the pending timer on a
+  normal navigation, so no dangling timeout is left behind.
+
+---
+
 ## v2.26.0 — 2026-07-22 — Client Logo Implementation
 
 **Tag:** `v2.26.0__client-logo-implementation__commit-7594701`

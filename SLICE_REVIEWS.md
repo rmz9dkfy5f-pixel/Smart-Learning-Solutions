@@ -4,6 +4,37 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-013 — Page-Transition Overlay Timeout Fallback (H-4, v2.26.1)
+**Date:** 2026-07-22
+**Version:** v2.26.1
+
+**Slice:** Add a safety timeout to the shared `.is-navigating` page-transition overlay
+(`BACKLOG.md` H-4), owner-confirmed as the first item in the 2026-07-22 ranked next-task queue.
+
+**Pre-review finding:** `initPage()` in `src/js/components.js` (shared by all 10 pages via a
+single click handler) adds `.is-navigating` and `overflow: hidden` on internal link clicks, then
+navigates via `window.location.assign()`. The only code that ever removes `.is-navigating` is a
+`pageshow` listener that fires once the destination page loads. An interrupted or failed
+navigation (offline, a stalled load, an edge case with `location.assign`) has no fallback,
+leaving the page stuck under the overlay with scrolling locked indefinitely.
+
+**Change:** Added `NAVIGATION_TIMEOUT_MS` (4000ms) and a `navigationSafetyTimer`, started
+alongside the existing transition-delay timeout in the click handler, that force-clears
+`.is-navigating` and restores `overflow` if `pageshow` hasn't fired by then. The `pageshow`
+listener now clears the pending timer first, so a normal navigation never leaves a dangling
+timeout. Single file changed: `src/js/components.js`. No CSS/HTML changes needed.
+
+**Post-review result:** Verified via a local static server + disposable Playwright script:
+golden-path navigation (real click through to `about.html`/`index.html` from `book.html` and
+`workshops.html`) clears the overlay immediately with no regression; a simulated stalled
+navigation (aborted route) leaves the overlay correctly shown immediately after the click, then
+force-clears automatically ~4s later via the new safety timer instead of staying stuck.
+
+**Risk:** Low — additive-only defensive timer on a single shared JS function; does not change
+the golden-path navigation flow, transition timing, or overlay styling.
+
+---
+
 ## SR-012 — M-7 Closed as Not Applicable (docs-only, no version bump)
 **Date:** 2026-07-22
 **Version:** none

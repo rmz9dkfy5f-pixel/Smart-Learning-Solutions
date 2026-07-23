@@ -11,6 +11,22 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.26.1] — 2026-07-22
+
+**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-TBD`
+
+### Fixed
+- `BACKLOG.md` H-4 — the `.is-navigating` page-transition overlay (`src/js/components.js`,
+  `initPage()`) had no safety timer. If an internal navigation was interrupted or never
+  completed (offline, a stalled/failed load, a `location.assign` edge case), the overlay's
+  `pageshow` listener — its only removal path — would never fire, leaving the page stuck under a
+  full-viewport cover-up with scrolling locked. Added a `NAVIGATION_TIMEOUT_MS` (4000ms) fallback
+  timer that force-clears `.is-navigating` and restores `overflow` if `pageshow` hasn't fired by
+  then; the existing `pageshow` listener now clears the pending timer so a normal navigation
+  never leaves a dangling timeout.
+
+---
+
 ## [2.26.0] — 2026-07-22
 
 **Tag:** `v2.26.0__client-logo-implementation__commit-7594701`

@@ -1,46 +1,49 @@
-**Updated:** 2026-07-22 (M-7 closed as not applicable, no version bump)
+**Updated:** 2026-07-22 (H-4 — page-transition overlay timeout fallback, v2.26.1)
 
 # Progress Note — Current Session
 
-## M-7 Closed as Not Applicable (`_next` Redirect Field) (2026-07-22)
+## H-4: Page-Transition Overlay Timeout Fallback (2026-07-22)
 
 ### Summary
 
-`BACKLOG.md` M-7 ("populate `book.html`'s `_next` redirect field") was picked up as this
-session's task and scoped via the Model Selection Gate before implementing it as originally
-written. Investigation found the task's premise no longer matches the current implementation:
-both `book.html` and `contact.html` submit via a JS handler that calls `e.preventDefault()` and
-posts to Web3Forms with `fetch()` — success is shown in-page via `#form-success`, and no native
-form POST or browser navigation ever occurs. A `_next`/redirect field only has an effect on a
-native, non-intercepted submission, so adding one would be inert. The literal field AUDIT.md's
-original finding described no longer exists in `book.html` at all — it was removed when the form
-was rebuilt for the Web3Forms/AJAX migration (v2.23.0). Flagged this to the owner rather than
-adding a no-op field; owner chose to close the item outright rather than pursue a real
-post-success redirect.
+`BACKLOG.md` H-4, the first item in the owner-confirmed 2026-07-22 ranked next-task queue
+(`PLAN.md`): the shared `.is-navigating` page-transition overlay had no safety timer.
+`initPage()` in `src/js/components.js` (called by all 10 pages) adds `.is-navigating` and
+`overflow: hidden` on internal link clicks, then navigates via `window.location.assign()`. The
+only code that ever removes `.is-navigating` is a `pageshow` listener that fires once the
+destination page loads — an interrupted or failed navigation (offline, a stalled load, a
+`location.assign` edge case) had no fallback, leaving the page stuck under the overlay
+indefinitely with scrolling locked.
 
 ### Work Completed
 
-- Confirmed via direct source inspection: no `_next`/redirect field present in either
-  `book.html` or `contact.html`; both use the `preventDefault()` + `fetch()` AJAX pattern.
-- `BACKLOG.md` M-7 row struck through and closed.
-- `AUDIT.md` M-7 finding (and its priority-table row) marked closed/not-applicable.
-- `DECISION_LOG.md` ADR-018 added, recording the decision and alternatives considered.
-- `SLICE_REVIEWS.md` SR-012 added.
-- `STATUS.md` updated (new session section, Done log, Open Audit Items line corrected — also
-  caught and fixed a pre-existing stale reference to M-6, which was actually resolved in v2.15.3).
-- `COMMIT_NOTES.md` updated with this session's entry.
+- Added `NAVIGATION_TIMEOUT_MS` (4000ms) constant and a `navigationSafetyTimer`, started
+  alongside the existing transition-delay timeout in the click handler, that force-clears
+  `.is-navigating` and restores `overflow` if `pageshow` hasn't fired within that window.
+- The `pageshow` listener now clears the pending safety timer first, so a normal navigation never
+  leaves a dangling timeout running.
+- Single file changed: `src/js/components.js`. No CSS/HTML changes needed — the overlay markup
+  and styling were already correct.
+- Version bumped to v2.26.1 (patch — bug fix, per `docs/VERSIONING.md` §5). `CHANGELOG.md`,
+  `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `SLICE_REVIEWS.md` (SR-013), `STATUS.md` updated.
+  `BACKLOG.md` H-4 row closed; `PLAN.md` queue advanced to H-3 next.
 
 ### Validation Performed
 
-- `grep` across `book.html`/`contact.html` confirmed no `_next` or `redirect` field/reference
-  present anywhere in either form.
-- Read both forms' submit handlers directly, confirming `e.preventDefault()` and a `fetch()` POST
-  to `https://api.web3forms.com/submit` with an in-page success state — no code path that would
-  ever perform a native browser redirect.
+- Local static server (`python3 -m http.server`) + a disposable Playwright script.
+- Golden path: real link clicks navigating `index.html` → `about.html`, `book.html` →
+  `index.html`, and `workshops.html` → `index.html` all confirmed `.is-navigating`/`overflow`
+  cleared immediately on arrival, no regression.
+- Edge case: aborted the destination request (`page.route(..., route => route.abort('failed'))`)
+  right after a real click, confirming the overlay is correctly shown immediately after
+  (`is-navigating: true`, `overflow: hidden`) and force-clears automatically ~4.3s later via the
+  new safety timer, rather than staying stuck.
 
 ### Not Yet Verified / Open
 
-- No confirmed next task remains as of this closure.
+- Not yet deployed to staging — this is a code-only fix pending the usual
+  `scripts/deploy-staging.sh` run and the owner's release-ceremony convention for when to deploy
+  (per `LESSONS_LEARNED.md` L-016, staging drift can recur silently if not redeployed).
 - Production domain not yet pointed to the VPS — unchanged; pending client acceptance of the
   self-host proposal (OD-003).
 

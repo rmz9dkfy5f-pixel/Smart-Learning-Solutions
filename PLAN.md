@@ -14,11 +14,11 @@ owner/client-gated and cannot advance without external input:
 
 **Confirmed queue (2026-07-22):** M-7 (`_next` redirect field) was scoped and closed as not
 applicable (see `DECISION_LOG.md` ADR-018). Owner confirmed working the remaining Medium-priority
-Gate-1/Gate-2 backlog in order of importance: (1) H-4 — page-transition overlay timeout
-fallback; (2) H-3 — pin/document the Plausible analytics URL; (3) M-9 — noindex meta on
-non-public pages; (4) M-4 — remove inline style blocks; (5) reconcile V3.4 stub docs; (6) M-8 —
-email casing (held pending OD-003). OD-003 itself remains owner/client-gated throughout. Starting
-with H-4.
+Gate-1/Gate-2 backlog in order of importance: (1) ~~H-4~~ — page-transition overlay timeout
+fallback, **resolved 2026-07-22 (v2.26.1, `SLICE_REVIEWS.md` SR-013)**; (2) H-3 — pin/document
+the Plausible analytics URL; (3) M-9 — noindex meta on non-public pages; (4) M-4 — remove inline
+style blocks; (5) reconcile V3.4 stub docs; (6) M-8 — email casing (held pending OD-003). OD-003
+itself remains owner/client-gated throughout. Next up: H-3.
 
 See `BACKLOG.md` for the full prioritised work queue.
 See `PHASE_GATES.md` for Gate 1 criteria.
@@ -40,6 +40,7 @@ See `plans/open-decisions.md` for all pending owner decisions.
 | `plans/2026-07-16-web3forms-migration.md` | 2026-07-16 | Formspree → Web3Forms migration (C-1/OD-001) |
 | `plans/2026-07-18-og-image-png-conversion.md` | 2026-07-18 | OG image SVG → PNG conversion (M-1) + release ceremony |
 | `plans/2026-07-22-implement-client-logo.md` | 2026-07-22 | Client logo image implemented in header/footer (v2.26.0) |
+| `plans/2026-07-22-page-transition-overlay-timeout.md` | 2026-07-22 | H-4: timeout fallback for `.is-navigating` page-transition overlay (v2.26.1) |
 
 ---
 
