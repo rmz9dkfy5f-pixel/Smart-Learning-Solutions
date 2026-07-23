@@ -2,6 +2,26 @@
 
 ---
 
+## v2.27.0 — 2026-07-23 — About Page Logo Watermark
+
+**Tag:** `v2.27.0__about-page-logo-watermark__commit-<pending>`
+
+### Summary
+Closed the non-blocking open item from the v2.26.0 logo session: the full two-line lockup
+(including the "solutions" script swoosh, deliberately excluded from the single-line
+header/footer crop) is now placed as a subtle background watermark behind the "Built on Real
+Expertise" mission copy on `about.html` — the owner's choice among three placement options after
+reviewing mockups of each. Native color (extending ADR-017's reasoning); opacity set to 8%, below
+this site's existing decorative-background convention, since the mission paragraphs'
+`--text-muted` color already sits close to the AA contrast floor independent of this change.
+
+### Added
+- `src/images/brand-logo-lockup-full.png` (new) — full 277×164 two-line lockup, native-size PNG
+  export from `pics/Logo/Logo.png.avif`
+- `about.html` — `.about-mission`/`.about-mission-watermark` markup and CSS
+
+---
+
 ## v2.26.1 — 2026-07-22 — Page-Transition Overlay Timeout Fallback
 
 **Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862`

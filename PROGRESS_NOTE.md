@@ -1,51 +1,57 @@
-**Updated:** 2026-07-22 (H-4 — page-transition overlay timeout fallback, v2.26.1)
+**Updated:** 2026-07-23 (v2.27.0, About page logo watermark)
 
 # Progress Note — Current Session
 
-## H-4: Page-Transition Overlay Timeout Fallback (2026-07-22)
+## Two-Line Logo Lockup Watermark on About Page (v2.27.0) (2026-07-23)
 
 ### Summary
 
-`BACKLOG.md` H-4, the first item in the owner-confirmed 2026-07-22 ranked next-task queue
-(`PLAN.md`): the shared `.is-navigating` page-transition overlay had no safety timer.
-`initPage()` in `src/js/components.js` (called by all 10 pages) adds `.is-navigating` and
-`overflow: hidden` on internal link clicks, then navigates via `window.location.assign()`. The
-only code that ever removes `.is-navigating` is a `pageshow` listener that fires once the
-destination page loads — an interrupted or failed navigation (offline, a stalled load, a
-`location.assign` edge case) had no fallback, leaving the page stuck under the overlay
-indefinitely with scrolling locked.
+Closed the non-blocking open item flagged at the end of the v2.26.0 logo session: the full
+two-line logo lockup (including the "solutions" script swoosh, deliberately excluded from the
+single-line header/footer crop) is now placed as a subtle background watermark behind the "Built
+on Real Expertise" mission copy on `about.html`. Owner chose this placement over two alternatives
+(a CTA-band accent, a fully visible hero mark) after reviewing mockups of each, and chose
+repo-only scope for this pass — staging deploy is a deliberate, separate follow-up.
 
 ### Work Completed
 
-- Added `NAVIGATION_TIMEOUT_MS` (4000ms) constant and a `navigationSafetyTimer`, started
-  alongside the existing transition-delay timeout in the click handler, that force-clears
-  `.is-navigating` and restores `overflow` if `pageshow` hasn't fired within that window.
-- The `pageshow` listener now clears the pending safety timer first, so a normal navigation never
-  leaves a dangling timeout running.
-- Single file changed: `src/js/components.js`. No CSS/HTML changes needed — the overlay markup
-  and styling were already correct.
-- Version bumped to v2.26.1 (patch — bug fix, per `docs/VERSIONING.md` §5). `CHANGELOG.md`,
-  `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `SLICE_REVIEWS.md` (SR-013), `STATUS.md` updated.
-  `BACKLOG.md` H-4 row closed; `PLAN.md` queue advanced to H-3 next.
+- Confirmed no two-line asset existed anywhere in the repo (full-tree filename search). The
+  source `pics/Logo/Logo.png.avif` (277×164, alpha) is the full, uncropped two-line lockup;
+  exported it natively via `sips -s format png` to `src/images/brand-logo-lockup-full.png` — no
+  crop needed, since the shipped single-line mark was already the one that excluded the swoosh.
+- `about.html`: wrapped the mission column in a new `.about-mission` class, added an
+  `aria-hidden` watermark `<div>` as its first child, and added CSS in the page's own `<style>`
+  block following the site's existing `.cta-band-orb`/`.audience-photo-bg` decorative-layer
+  pattern (`position: absolute; z-index: 0` on the image, `position: relative; z-index: 1`
+  promotion on the real text — required for correct paint order).
+- Opacity set to 0.08 — deliberately below the sitewide 0.09–0.11 decorative-image convention,
+  since the mission paragraphs' `--text-muted` color already sits close to the AA 4.5:1 contrast
+  floor independent of this change. Confirmed sufficient via a direct visual check across all 4
+  standard breakpoints (375/768/1024/1440px), not just assumed — no adjustment was needed.
+  Logged as `DECISION_LOG.md` ADR-019 (extends ADR-017).
+- Native color (no CSS filter), extending ADR-017's reasoning for the same asset family.
+- Full v2.27.0 release ceremony; `SLICE_REVIEWS.md` SR-014 added.
 
 ### Validation Performed
 
-- Local static server (`python3 -m http.server`) + a disposable Playwright script.
-- Golden path: real link clicks navigating `index.html` → `about.html`, `book.html` →
-  `index.html`, and `workshops.html` → `index.html` all confirmed `.is-navigating`/`overflow`
-  cleared immediately on arrival, no regression.
-- Edge case: aborted the destination request (`page.route(..., route => route.abort('failed'))`)
-  right after a real click, confirming the overlay is correctly shown immediately after
-  (`is-navigating: true`, `overflow: hidden`) and force-clears automatically ~4.3s later via the
-  new safety timer, rather than staying stuck.
+- Disposable Playwright script (local static server, real Chromium) across all 10 pages: 200
+  status, zero console/page errors; new asset loads only on `about.html`; existing header/footer
+  logo (`brand-logo-mark.png`) unaffected everywhere.
+- Computed-style check: confirmed correct watermark/text stacking order (`z-index: 0` vs. `1`) and
+  that the watermark's rendered box stays within the mission column's bounds.
+- Visual check at 375/768/1024/1440px: watermark reads as intentionally subtle at every
+  breakpoint, stays scoped to the mission column only (no bleed into the credentials list,
+  including across the 768px stacking transition), and all three paragraphs plus the heading
+  remain fully legible.
+- `prefers-reduced-motion: reduce` confirmed unaffected — the existing `reveal-up` static fallback
+  still resolves correctly with the new child present.
 
 ### Not Yet Verified / Open
 
-- Not yet deployed to staging — this is a code-only fix pending the usual
-  `scripts/deploy-staging.sh` run and the owner's release-ceremony convention for when to deploy
-  (per `LESSONS_LEARNED.md` L-016, staging drift can recur silently if not redeployed).
-- Production domain not yet pointed to the VPS — unchanged; pending client acceptance of the
-  self-host proposal (OD-003).
+- Staging deploy — intentionally out of scope for this pass, a likely near-term follow-up
+  (matching how the original logo work split code (SR-010) from deploy (SR-011)).
+- Production domain not yet pointed to the VPS — unchanged from prior sessions; pending client
+  acceptance of the self-host proposal (OD-003).
 
 ### Launch Blockers (unchanged)
 

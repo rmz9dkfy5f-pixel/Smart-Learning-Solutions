@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.26.1 · 2026-07-22
+**Current Version:** v2.27.0 · 2026-07-23
 **Branch:** `main`
 
 ---
@@ -8,6 +8,20 @@
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## About Page Logo Watermark — 2026-07-23 (v2.27.0)
+
+The full two-line logo lockup (including the "solutions" script swoosh, deliberately excluded
+from the v2.26.0 header/footer crop) is now placed as a subtle background watermark behind the
+"Built on Real Expertise" mission copy on `about.html` — closing that session's flagged open item.
+Native orange/teal color (extends `DECISION_LOG.md` ADR-017), 8% opacity (below the sitewide
+0.09–0.11 decorative-image convention, given the mission text's `--text-muted` color already sits
+close to the AA contrast floor independent of this change — confirmed sufficient via a direct
+visual check at all 4 standard breakpoints, not just assumed). Repo-only scope for this pass —
+staging deploy is a deliberate, separate follow-up. See `SLICE_REVIEWS.md` SR-014 and
+`DECISION_LOG.md` ADR-019.
 
 ---
 

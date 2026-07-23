@@ -4,6 +4,60 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-014 — Two-Line Logo Lockup Watermark on About Page (v2.27.0)
+**Date:** 2026-07-23
+**Version:** v2.27.0
+**Commit:** `<pending>`
+
+**Slice:** Close the non-blocking open item flagged at the end of the v2.26.0 logo session
+(SR-010): place the full two-line lockup, including the "solutions" script swoosh deliberately
+excluded from the single-line header/footer crop, somewhere on the site. Owner chose a subtle
+background watermark behind the "Built on Real Expertise" mission copy on `about.html`, after
+reviewing three placement mockups (mission-section watermark, CTA-band accent, fully visible hero
+mark) and confirming repo-only scope (no staging deploy this pass).
+
+**Pre-review finding:** No two-line asset existed anywhere in the repo — confirmed via a filename
+search (`logo|brand|lockup|solutions|swoosh`) across the full tree. The source,
+`pics/Logo/Logo.png.avif` (277×164, RGBA alpha), is the full, uncropped two-line lockup; the
+shipped single-line mark (`brand-logo-mark.png`, 277×120) is a top-aligned crop of the same source
+that explicitly excludes the bottom ~44px containing the swoosh — so producing the two-line asset
+was a straight PNG format conversion at native size, not a new crop. Also confirmed:
+`.about-intro p`'s `--text-muted` color already sits close to the AA 4.5:1 contrast floor
+independent of this change, meaning little spare margin was available to absorb a watermark —
+this drove the opacity choice below rather than defaulting to the sitewide-typical 0.09–0.11 range.
+
+**Change:** `sips -s format png` exported `pics/Logo/Logo.png.avif` to
+`src/images/brand-logo-lockup-full.png` (native 277×164, no crop). In `about.html`, wrapped the
+mission column in `.about-mission` and inserted an `aria-hidden` watermark `<div>` as its first
+child; added CSS to the page's own `<style>` block following the site's established
+`.cta-band-orb`/`.audience-photo-bg` decorative-layer pattern (`position: absolute; z-index: 0` on
+the image, `position: relative; z-index: 1` promotion on `h2`/`p` — required for correct paint
+order, not cosmetic). Opacity set to 0.08 (the low end of the sitewide convention, per the
+contrast-headroom finding above). `DECISION_LOG.md` ADR-019 records the color/opacity reasoning,
+cross-referencing ADR-017.
+
+**Findings:** Disposable Playwright script (local static server, real Chromium) across all 10
+pages: 200 status, zero console/page errors; `brand-logo-lockup-full.png` loads only on
+`about.html`; existing `brand-logo-mark.png` unaffected (still 200) everywhere. Computed-style
+check confirmed correct layering (watermark `z-index: 0`, text `z-index: 1`) and that the
+watermark's rendered box stays within the mission column's bounds at a 1440px viewport. Visual
+check at 375/768/1024/1440px (`docs/DESIGN.md` §9): watermark reads as intentionally subtle at
+every breakpoint, stays scoped to the mission column only (no bleed into `.credentials-list`,
+including across the 768px stacking transition), and all three paragraphs plus the heading remain
+fully legible — no opacity/position adjustment was needed beyond the 0.08 starting point.
+`prefers-reduced-motion: reduce` confirmed unaffected (existing `reveal-up` static fallback still
+resolves correctly with the new child present).
+
+**Post-review result:** The About page now carries the full two-line brand lockup as a subtle,
+owner-approved background element. The v2.26.0/SR-010 open item is closed. Staging deploy remains
+a deliberate, separate follow-up per the owner's chosen scope for this pass — not yet done.
+
+**Risk:** Low — scoped to one page (`about.html`) plus one new image asset; `components.js` and
+`main.css` untouched; validated live across all 10 pages and all 4 standard breakpoints before
+shipping.
+
+---
+
 ## SR-013 — Page-Transition Overlay Timeout Fallback (H-4, v2.26.1)
 **Date:** 2026-07-22
 **Version:** v2.26.1

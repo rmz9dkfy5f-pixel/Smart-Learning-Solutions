@@ -11,6 +11,19 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.27.0] — 2026-07-23
+
+**Tag:** `v2.27.0__about-page-logo-watermark__commit-<pending>`
+
+### Added
+- `about.html` — the client's full two-line logo lockup
+  (`src/images/brand-logo-lockup-full.png`, native orange/teal color, includes the "solutions"
+  script swoosh excluded from the v2.26.0 header/footer crop) now appears as a subtle
+  8%-opacity background watermark behind the "Built on Real Expertise" mission copy, closing the
+  open item noted in that session's `PROGRESS_NOTE.md`.
+
+---
+
 ## [2.26.1] — 2026-07-22
 
 **Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862`

@@ -5,6 +5,41 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-07-23 — About Page Logo Watermark (v2.27.0)
+**Tag:** `v2.27.0__about-page-logo-watermark__commit-<pending>`
+**Commit:** `<pending>` · branch `main` · 2026-07-23
+**Type:** `feat`
+
+**Summary:** Place the full two-line logo lockup (with the "solutions" swoosh) as a subtle
+background watermark on the About page, closing the non-blocking open item flagged at the end of
+the v2.26.0 logo session
+
+**Description:**
+- No two-line asset existed anywhere in the repo — confirmed via a full-tree filename search. The
+  source `pics/Logo/Logo.png.avif` (277×164, alpha) is the full lockup; the shipped single-line
+  mark is a top-aligned 277×120 crop that explicitly excludes the swoosh. Exported the full source
+  natively via `sips -s format png` to `src/images/brand-logo-lockup-full.png` — no crop needed.
+- Owner chose the placement (mission-section watermark, over a CTA-band accent or a fully visible
+  hero mark) after reviewing mockups of all three, and chose repo-only scope for this pass
+  (staging deploy deferred as a separate follow-up).
+- `about.html`: wrapped the mission column in `.about-mission`, added an `aria-hidden` watermark
+  `<div>` as its first child, and added CSS following the site's existing
+  `.cta-band-orb`/`.audience-photo-bg` decorative-layer pattern. Opacity set to 0.08 — below the
+  sitewide 0.09–0.11 convention — because the mission paragraphs' `--text-muted` color already
+  sits close to the AA contrast floor independent of this change; confirmed sufficient via visual
+  check rather than assumed.
+- `DECISION_LOG.md` ADR-019 added (extends ADR-017); `SLICE_REVIEWS.md` SR-014 added; `STATUS.md`,
+  `PROGRESS_NOTE.md`, `CHANGELOG.md`, `RELEASE_NOTES.md`, `PLAN.md` updated.
+
+**Verified:** Disposable Playwright script (local static server, real Chromium) across all 10
+pages: 200 status, zero console/page errors; new asset loads only on `about.html`; existing
+header/footer logo unaffected everywhere. Computed-style check confirmed correct watermark/text
+layering and containment within the mission column. Visual check at 375/768/1024/1440px: subtle,
+legible, no bleed into the credentials list at any breakpoint. `prefers-reduced-motion` fallback
+unaffected.
+
+---
+
 ## v2.26.1 — Page-Transition Overlay Timeout Fallback
 **Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862`
 **Commit:** `c8ac862` · branch `main` · 2026-07-22

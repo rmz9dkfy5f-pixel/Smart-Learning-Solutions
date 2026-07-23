@@ -33,6 +33,33 @@
       margin-bottom: var(--space-5);
     }
 
+    .about-mission {
+      position: relative;
+    }
+
+    .about-mission-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      max-width: 320px;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .about-mission-watermark img {
+      width: 100%;
+      opacity: 0.08;
+    }
+
+    .about-mission h2,
+    .about-mission p {
+      position: relative;
+      z-index: 1;
+    }
+
     .credentials-list {
       display: flex;
       flex-direction: column;
@@ -91,7 +118,10 @@
     <section class="section">
       <div class="container">
         <div class="about-intro">
-          <div class="reveal-up">
+          <div class="about-mission reveal-up">
+            <div class="about-mission-watermark" aria-hidden="true">
+              <img src="/src/images/brand-logo-lockup-full.png" alt="" loading="lazy" width="277" height="164">
+            </div>
             <h2>Built on Real Expertise</h2>
             <p>Smart Learning Solutions develops and delivers STEM education experiences for K–12 students. Our team is made up of professional and certified engineers, coders, and educators who have customised and expanded industry-leading curricula with state-aligned lessons and activities.</p>
             <p>We're an authorised partner with Microbric, using the Edison robotics platform and the Whybricks platform to deliver workshops that meet students where they are — and take them further than they expected.</p>
