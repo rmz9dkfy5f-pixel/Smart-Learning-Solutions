@@ -18,7 +18,12 @@ Gate-1/Gate-2 backlog in order of importance: (1) ~~H-4~~ — page-transition ov
 fallback, **resolved 2026-07-22 (v2.26.1, `SLICE_REVIEWS.md` SR-013)**; (2) H-3 — pin/document
 the Plausible analytics URL; (3) M-9 — noindex meta on non-public pages; (4) M-4 — remove inline
 style blocks; (5) reconcile V3.4 stub docs; (6) M-8 — email casing (held pending OD-003). OD-003
-itself remains owner/client-gated throughout. Next up: H-3.
+itself remains owner/client-gated throughout.
+
+**Confirmed next task (2026-07-23 closeout, `REPO_SESSION_END_CLOSEOUT.md` Step 4a):** Deploy
+v2.27.0 (About page logo watermark) to staging via `scripts/deploy-staging.sh` — the owner's
+explicit pick over resuming the H-3/M-9/M-4/... queue above, which remains next in line after
+that deploy.
 
 See `BACKLOG.md` for the full prioritised work queue.
 See `PHASE_GATES.md` for Gate 1 criteria.

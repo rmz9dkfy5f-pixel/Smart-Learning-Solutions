@@ -48,8 +48,9 @@ repo-only scope for this pass — staging deploy is a deliberate, separate follo
 
 ### Not Yet Verified / Open
 
-- Staging deploy — intentionally out of scope for this pass, a likely near-term follow-up
-  (matching how the original logo work split code (SR-010) from deploy (SR-011)).
+- Staging deploy — intentionally out of scope for this pass. **Confirmed as the next task** at
+  this session's `REPO_SESSION_END_CLOSEOUT.md` Step 4a (owner's explicit pick), ahead of
+  resuming the concurrent session's own H-3/M-9/M-4/... queue (`PLAN.md`).
 - Production domain not yet pointed to the VPS — unchanged from prior sessions; pending client
   acceptance of the self-host proposal (OD-003).
 
