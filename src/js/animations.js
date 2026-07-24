@@ -304,4 +304,23 @@ function initAnimations() {
   });
 }
 
-export { initAnimations };
+// Loads and plays a .hero-video-bg <video> only when the visitor hasn't
+// requested reduced motion and the viewport is wide enough to be showing
+// the full-bleed hero (matches the existing 768px hero breakpoint).
+// Independent of GSAP so it still works if the animation CDN fails, and the
+// video's `src` is only set here — never in markup — so reduced-motion and
+// mobile visitors never fetch the file at all, just see the poster frame.
+function initHeroVideo() {
+  const video = document.querySelector('.hero-video-bg video');
+  if (!video) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wideEnough = window.innerWidth > 768;
+  if (reduceMotion || !wideEnough) return;
+
+  video.src = video.dataset.src;
+  video.load();
+  video.play().catch(() => {});
+}
+
+export { initAnimations, initHeroVideo };
