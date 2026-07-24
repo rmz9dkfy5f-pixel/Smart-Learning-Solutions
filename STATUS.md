@@ -295,7 +295,7 @@ See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H
 | 4 | Reconcile V3.4 stub docs (`docs/project/`, `docs/governance/`) with existing root-level equivalents | V3.4 follow-up |
 | 5 | Review V3.4 candidate AGENTS.md/CLAUDE.md in `.v34_migration_review/` and merge any useful additions | V3.4 follow-up |
 | 6 | ~~Run `scripts/deploy-staging.sh` after merging future changes to `main`~~ — done 2026-07-24 (v2.27.0 + v2.26.1 now live on staging, SR-016); no automatic trigger exists, so repeat manually after future merges (L-016) | SR-016 |
-| 7 | Resume the confirmed H-3/M-9/M-4/... backlog queue, starting at H-3 (pin/document the Plausible analytics URL) — presented as the top candidate at the 2026-07-24 closeout, but the owner explicitly chose not to confirm a next task that session | `PLAN.md` |
+| 7 | **Confirmed next task (2026-07-24, continued, via this session's `REPO_SESSION_END_CLOSEOUT.md` Step 4a):** resume H-3 — try GoatCounter's signup as the free Plausible replacement, per `DECISION_LOG.md` ADR-020. The hero-video exploration branch work (this same session) is treated as a completed side-branch, not the active thread. | `DECISION_LOG.md` ADR-020, `PLAN.md` |
 
 ---
 
