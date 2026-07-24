@@ -7,7 +7,7 @@ Record of significant work slices reviewed before and after implementation.
 ## SR-016 — Deploy v2.27.0 + v2.26.1 to Staging (server-side, no version bump)
 **Date:** 2026-07-24
 **Version:** v2.27.0 (already tagged; deploy-only, no repo code change)
-**Commit:** `bff2a99`
+**Commit:** `9ecd5da`
 
 **Slice:** Deploy the already-tagged v2.27.0 (two-line logo watermark, SR-014) and the
 previously-undeployed v2.26.1 (H-4 overlay-timeout fix, SR-013) to staging via
