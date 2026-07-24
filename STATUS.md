@@ -11,6 +11,12 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 
 ---
 
+## Design Exploration: Video Hero (branch `feat/hero-video-coding-with-robots`, not adopted) — 2026-07-24
+
+**Not part of `main` or any shipped version — this section describes work on a not-yet-merged exploratory branch.** Built a reusable full-bleed video-hero component (`.hero-video-bg` in `main.css`, `initHeroVideo()` in `animations.js`) and iterated its placement per owner review: first built on the Coding with Robots program page, then moved to the Workshops page instead per explicit owner direction, with Coding with Robots reverted to its original design. Deployed live for owner comparison at `smart-learning-solutions-hero-video-coding-with-robots.craftandconscious.com` (noindexed, individual Let's Encrypt cert, verified with zero regression to the 8+ other tenants on the shared VPS). A sibling branch, `feat/hero-video-homepage`, explores the same video on the homepage instead — also deployed for comparison at its own subdomain. Neither branch is merged; both are pending an owner decision on adoption. New accessibility/performance rules this introduced: `docs/ACCESSIBILITY.md` §6 (muted/looped/reduced-motion-aware background video is now permitted, replacing a prior blanket "no auto-playing video" line) and `docs/PERFORMANCE.md` §6 (new Video Rules section). Full build plan: `plans/2026-07-24-hero-video-background.md`.
+
+---
+
 ## H-3 Analytics Swap: Cloudflare Web Analytics Attempted, Blocked — 2026-07-23 (no version bump)
 
 Owner decided to replace Plausible ($9/mo) with a free, privacy-friendly analytics provider.
