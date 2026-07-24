@@ -41,16 +41,25 @@ This is a static marketing site. The primary performance goal is fast first-pain
 - Below-fold images: use `loading="lazy"`
 - No unoptimised large images in `src/images/` — compress before committing
 
-## 6. No Build Step
+## 6. Video Rules (background/hero video)
+
+- Self-hosted only — no third-party embeds/players, matching this site's no-external-media-dependency approach
+- Format: MP4 (H.264); audio track can be stripped if the video is always muted
+- Always pair with a `poster` image and explicit `width`/`height` to prevent CLS
+- Must respect `prefers-reduced-motion`: do not set the video `src` or call `.play()` for reduced-motion visitors — poster image only, no video bytes fetched
+- Prefer 1280×720 over 1920×1080 for background use — a scrim overlay and text sit on top, so full 1080p detail isn't visible
+- Target well under ~25MB per hero video; no unoptimised source video committed — compress/trim before committing, same discipline as images
+
+## 7. No Build Step
 
 There is no bundler, minifier, or build process. Files are served as-is. CSS and JS are human-readable source. This is intentional — do not introduce a build step without explicit owner decision and a plan.
 
-## 7. Local Dev vs Production
+## 8. Local Dev vs Production
 
 - Local: `npx serve .` or VS Code Live Server (required — ES modules fail on `file://`)
 - Production: Netlify or GitHub Pages — files are served statically with HTTPS, compression, and CDN automatically
 
-## 8. Known Risks
+## 9. Known Risks
 
 | Risk | Impact | Mitigation |
 |---|---|---|

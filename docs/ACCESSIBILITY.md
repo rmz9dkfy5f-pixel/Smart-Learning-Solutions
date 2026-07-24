@@ -43,7 +43,8 @@ WCAG 2.1 Level AA minimum. No formal audit has been completed — this document 
 
 - Respect `prefers-reduced-motion` media query in `src/js/animations.js` and `src/css/main.css`
 - GSAP animations must not play when the user has reduced-motion enabled — provide static fallback states
-- No auto-playing video or flashing content
+- No flashing or strobing content
+- Auto-playing video is only permitted when muted, looped, purely decorative (`aria-hidden="true"`), and reduced-motion-aware: under `prefers-reduced-motion: reduce`, the video must not be fetched or played at all — show the static `poster` image only (see `.hero-video-bg` / `initHeroVideo()` in `src/js/animations.js`)
 
 ## 7. ARIA Usage
 
