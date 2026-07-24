@@ -5,6 +5,36 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-07-24 — Staging Deploy: v2.27.0 + v2.26.1 (no version bump)
+**Tag:** — (none; deploy-only, no code change, no new version — follows this repo's established
+precedent for operational-deploy commits, e.g. SR-009, SR-011)
+**Commit:** `TBD` · branch `main` · 2026-07-24
+**Type:** `chore` (deploy) + `docs`
+
+**Summary:** Deploy the already-shipped v2.27.0 (logo watermark) and the previously-undeployed
+v2.26.1 (H-4 timeout fix) to staging via `scripts/deploy-staging.sh` — the confirmed next task
+from the 2026-07-23 closeout.
+
+**Description:**
+- Dry-run confirmed staging was stale on exactly the expected files (`about.html`,
+  `src/images/brand-logo-lockup-full.png`, `src/js/components.js`) before the real deploy, per the
+  proven SR-009 runbook (dry-run → real run → curl-verify).
+- Running `ssh`/`rsync` to the VPS's raw IP required disabling Claude Code's default Bash network
+  sandbox for those specific commands — the sandbox otherwise times out raw-IP port-22
+  connections even though HTTPS to the same host works. Checked the AntBrainOS vault first for
+  precedent; none existed either way, so this proceeded only after explicit owner confirmation.
+  `LESSONS_LEARNED.md` L-017 added.
+- `SLICE_REVIEWS.md` SR-016 added (renumbered from a draft SR-015 after a concurrent session's
+  push landed SR-015/ADR-020 for the H-3 analytics work first — same renumber-on-collision
+  precedent as ADR-018/SR-012); `STATUS.md`, `PLAN.md`, `PROGRESS_NOTE.md` updated.
+
+**Verified:** Post-deploy `curl` against the live staging URL: `about.html` references
+`brand-logo-lockup-full.png` (asset itself `200`); `components.js` contains
+`NAVIGATION_TIMEOUT_MS`; all 7 standard pages return `200` (`/404.html` itself correctly still
+`404`s, matching SR-011 precedent). Staging now matches `main` HEAD.
+
+---
+
 ## 2026-07-23 — H-3 Analytics Swap: Cloudflare Web Analytics Attempted, Blocked (no version bump)
 **Tag:** — (none; no code change, no new version)
 **Commit:** `b91f802` · branch `main` · 2026-07-23

@@ -1,6 +1,50 @@
-**Updated:** 2026-07-23 (H-3 — Cloudflare Web Analytics attempted, blocked; no version bump)
+**Updated:** 2026-07-24 (staging deploy — v2.27.0 + v2.26.1)
 
 # Progress Note — Current Session
+
+## Staging Deploy: v2.27.0 + v2.26.1 (2026-07-24, no version bump)
+
+### Summary
+
+Deployed the two-line logo watermark (v2.27.0) and the previously-undeployed page-transition
+overlay timeout fix (v2.26.1) to staging via `scripts/deploy-staging.sh` — the confirmed next
+task from the prior closeout. No repo code changed; deploy-only session.
+
+### Work Completed
+
+- Dry-run confirmed staging was stale on exactly the expected files (`about.html`,
+  `src/images/brand-logo-lockup-full.png`, `src/js/components.js`); ran the real deploy via the
+  proven SR-009 runbook.
+- Running `ssh`/`rsync` to the VPS's raw IP required disabling Claude Code's default Bash network
+  sandbox for those specific commands — the sandbox otherwise times out raw-IP port-22
+  connections even though HTTPS to the same host works. Checked the AntBrainOS vault first; no
+  precedent existed either way, so proceeded only after explicit owner confirmation. Logged as
+  `LESSONS_LEARNED.md` L-017.
+- `SLICE_REVIEWS.md` SR-016 added (renumbered from a draft SR-015 after a concurrent session's
+  push landed SR-015/ADR-020 for the H-3 work below first); `STATUS.md`, `PLAN.md`,
+  `COMMIT_NOTES.md` updated.
+
+### Validation Performed
+
+Post-deploy `curl` verification directly against the live staging URL: `about.html` references
+`brand-logo-lockup-full.png` (asset itself `200`); `components.js` contains
+`NAVIGATION_TIMEOUT_MS`; all 7 standard pages return `200` (`/404.html` itself correctly still
+`404`s). Staging now matches `main` HEAD.
+
+### Not Yet Verified / Open
+
+- Production domain not yet pointed to the VPS — unchanged from prior sessions; pending client
+  acceptance of the self-host proposal (OD-003).
+- Confirmed-queue backlog (H-3/M-9/M-4/...) resumes next, starting at H-3 (see the entry below —
+  try GoatCounter next, per that session's finding).
+
+### Launch Blockers (unchanged)
+
+1. ~~Formspree `REPLACE_ME`~~ — resolved, merged to `main` (v2.23.0), confirmed live on staging.
+2. Production domain not yet pointed to the VPS — unchanged; pending client acceptance of the
+   self-host proposal (OD-003).
+
+---
 
 ## H-3: Analytics Swap — Cloudflare Web Analytics Attempted, Blocked (2026-07-23)
 
@@ -41,9 +85,8 @@ generated, so no code change was made; Plausible remains live and unchanged.
 ### Not Yet Verified / Open
 
 - **Confirmed next task, in order:** (1) deploy the already-shipped v2.27.0 (About page logo
-  watermark) to staging via `scripts/deploy-staging.sh` — owner-confirmed at the 2026-07-23
-  closeout ahead of this item; (2) then resume H-3 by trying GoatCounter's signup instead of
-  Cloudflare.
+  watermark) to staging via `scripts/deploy-staging.sh` — **done 2026-07-24, see the entry
+  above**; (2) then resume H-3 by trying GoatCounter's signup instead of Cloudflare.
 - Production domain not yet pointed to the VPS — unchanged; pending client acceptance of the
   self-host proposal (OD-003).
 

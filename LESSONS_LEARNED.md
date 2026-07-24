@@ -178,3 +178,19 @@ exactly on the first attempt.
 binaries (Playwright/Puppeteer caches, other installed browsers) — a headless-browser screenshot
 is a spec-accurate, zero-install SVG rasterizer, and using one doesn't add a repo dependency
 since only the output asset gets committed.
+
+### L-017 — Claude Code's default Bash sandbox blocks raw-IP SSH (port 22), even when HTTPS to the same host works
+**Context:** 2026-07-24 — running `scripts/deploy-staging.sh` (rsync over SSH to `74.208.9.49:22`)
+from Claude Code (VS Code extension) failed with an SSH connection timeout, while `curl` to the
+same staging domain over HTTPS succeeded immediately, and general internet access (e.g.
+`github.com`) also worked fine. A raw `ping` to the IP also timed out. A direct `nc -zv` port-22
+probe timed out under the default sandbox but succeeded immediately with Claude Code's
+`dangerouslyDisableSandbox` Bash option enabled for that one command — confirming the block was a
+Claude Code environment/network-sandbox restriction, not a VPS or credentials problem (the SSH key
+and VPS were both otherwise fine).
+**Rule:** If `scripts/deploy-staging.sh` (or any raw-IP SSH/rsync command) times out from inside
+Claude Code while HTTPS to the same host works, suspect the Bash sandbox's network policy before
+suspecting the VPS, SSH key, or script. No repo or vault precedent documented this before this
+session (checked and confirmed absent). The workaround used here was enabling
+`dangerouslyDisableSandbox` for just the `ssh`/`rsync` calls, after explicit owner confirmation
+since it was undocumented, sandbox-bypass territory.
