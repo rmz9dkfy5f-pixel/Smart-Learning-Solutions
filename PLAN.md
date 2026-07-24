@@ -28,8 +28,12 @@ deploy the already-shipped v2.27.0 to staging, then (2) try GoatCounter's signup
 
 **Staging deploy complete (2026-07-24, no version bump, `SLICE_REVIEWS.md` SR-016):** v2.27.0
 (About page logo watermark) and the previously-undeployed v2.26.1 (H-4 fix) are both now live on
-staging, verified via direct `curl` checks. The confirmed-queue order above resumes next, starting
-at H-3 — try GoatCounter's signup per the note above.
+staging, verified via direct `curl` checks.
+
+**No next task confirmed at this session's closeout (2026-07-24):** presented the confirmed-queue
+order above (starting at H-3) as the top candidate, but the owner explicitly chose not to pick a
+next task this session ("None — end session here"). The queue order above remains the standing
+plan for whenever work resumes; nothing is actively confirmed as in-progress.
 
 See `BACKLOG.md` for the full prioritised work queue.
 See `PHASE_GATES.md` for Gate 1 criteria.
