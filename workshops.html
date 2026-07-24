@@ -84,11 +84,26 @@
   <div id="page-header"></div>
   <main>
 
-    <section class="page-hero">
-      <div class="container">
-        <p class="eyebrow">In-Person · Expert-Led</p>
-        <h1>STEM Workshops That Work</h1>
-        <p>Hands-on experiences designed for the way students actually learn — by doing, building, and discovering. Every workshop is tailored to your group.</p>
+    <section class="hero hero--video" aria-label="Workshops">
+
+      <!-- Video background -->
+      <div class="hero-video-bg" aria-hidden="true">
+        <video muted loop playsinline
+               poster="/src/images/edison-robot-promo-poster.jpg"
+               data-src="/src/videos/edison-robot-promo.mp4"
+               width="1280" height="720"></video>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="eyebrow">In-Person · Expert-Led</p>
+          <h1>STEM Workshops That Work</h1>
+          <p>Hands-on experiences designed for the way students actually learn — by doing, building, and discovering. Every workshop is tailored to your group.</p>
+          <div class="btn-group hero-cta">
+            <a href="/book.html" class="btn btn--primary btn--lg">Request a Workshop</a>
+            <a href="/contact.html" class="btn btn--outline btn--lg">Ask a Question First</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -321,9 +336,10 @@
 
   <script type="module">
     import { initPage }       from '/src/js/components.js?v=mobile-20260619';
-    import { initAnimations } from '/src/js/animations.js?v=visual-20260426';
+    import { initAnimations, initHeroVideo } from '/src/js/animations.js?v=visual-20260426';
     initPage({ activePage: 'workshops' });
     initAnimations();
+    initHeroVideo();
   </script>
 </body>
 </html>
