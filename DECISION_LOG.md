@@ -550,3 +550,57 @@ screenshots at each step; the wizard bug above was found this way, not assumed.
 - `BACKLOG.md` H-3
 - `PLAN.md` Current State
 - `SLICE_REVIEWS.md` SR-015
+
+---
+
+## ADR-021 — Video Hero Component Built on an Exploratory Branch; Relocated Off Coding-with-Robots to Workshops Per Owner Review
+
+**Date:** 2026-07-24
+**Version:** none (branch `feat/hero-video-coding-with-robots`, not merged, no version bump)
+
+### Decision
+Built a reusable full-bleed video-hero component (`.hero-video-bg` in `main.css`, `initHeroVideo()`
+in `animations.js`, mirroring the existing `.hero-photo-bg` scrim pattern) and deployed it live to
+a review-only subdomain for owner comparison against a sibling branch (`feat/hero-video-homepage`)
+that places the same video on the homepage instead. Initially placed the video on the Coding with
+Robots program page; after owner review, moved it to the Workshops page instead and reverted
+Coding with Robots to its original (pre-video) design. Both changes live on the same subdomain
+(`smart-learning-solutions-hero-video-coding-with-robots.craftandconscious.com` — kept as-is
+rather than provisioning new DNS for a matching name).
+
+### Reason
+- The video (an Edison robot manufacturer promo, owner-supplied) reads more naturally against the
+  general "workshops" framing than tied to one specific program page.
+- Owner reported the video "not playing" on first review; root-caused to the intentional
+  `prefers-reduced-motion`/`<768px` accessibility gate suppressing playback, not a deploy defect —
+  confirmed by direct `curl`/headless-browser checks against the live subdomain matching local
+  validation exactly. Owner chose to strip that gate on the two review deployments only (patched
+  directly on the VPS, never committed to either branch), so reviewers see it regardless of local
+  settings while the real gated version — required for production accessibility — stays intact in
+  git for any future real deploy.
+
+### Alternatives Considered
+- **Combined `certbot -d A -d B` single cert for both review subdomains** (matching a prior
+  sibling-project precedent) — rejected: a single ACME transaction fails validation for both
+  domains if either has any hiccup, re-coupling two otherwise independent review deploys for no
+  real benefit.
+- **New, correctly-named subdomain for the relocated content** — rejected for now (owner's
+  explicit choice) to avoid another DNS/TTL round-trip; the existing subdomain's name no longer
+  matches its content (says "coding-with-robots," shows video on Workshops instead).
+- **Bake the always-play (no reduced-motion gate) behavior into the git branch itself** — rejected:
+  would ship a real accessibility regression to production if this branch is ever adopted and
+  merged without someone remembering to revert it. Kept as a VPS-only, uncommitted patch instead.
+
+### Consequences
+- Any future redeploy of either review subdomain from its branch will silently restore the
+  reduced-motion gate (since it's not in git) — the uncommitted patch must be reapplied after every
+  redeploy. Tracked in vault `SESSION_LOG.md` for this project so it isn't forgotten.
+- `programs/coding-with-robots.html` is back to its original, unmodified state on this branch — no
+  net diff against `main` for that file.
+- Neither branch is merged; this ADR documents exploratory work pending an owner adoption decision,
+  not a shipped change.
+
+### See Also
+- `plans/2026-07-24-hero-video-background.md`
+- `docs/ACCESSIBILITY.md` §6, `docs/PERFORMANCE.md` §6
+- Vault `SESSION_LOG.md`/`DECISION_LOG.md` (Smart Learning Solutions project), 2026-07-24 entries

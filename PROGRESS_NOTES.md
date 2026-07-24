@@ -5,6 +5,44 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-07-24 — Design Exploration: Video Hero Component
+
+**Branch:** `feat/hero-video-coding-with-robots` (not `main` — exploratory, not merged)
+
+### Summary
+Built a reusable full-bleed video-hero component and iterated its placement per owner review:
+first on the Coding with Robots program page, then moved to the Workshops page instead per
+explicit owner direction (Coding with Robots reverted to its original design). Deployed live to a
+review-only subdomain on the shared VPS for side-by-side comparison against a sibling branch that
+puts the same video on the homepage instead.
+
+### Files/Areas Changed
+`src/css/main.css` (new `.hero-video-bg` component, mirrors the existing `.hero-photo-bg` scrim
+pattern), `src/js/animations.js` (new `initHeroVideo()`, independent of GSAP), `src/videos/
+edison-robot-promo.mp4` + `src/images/edison-robot-promo-poster.jpg` (new assets), `workshops.html`
+(video hero added), `programs/coding-with-robots.html` (reverted to original — video moved off
+this page), `docs/ACCESSIBILITY.md` / `docs/PERFORMANCE.md` (new video rules), `plans/
+2026-07-24-hero-video-background.md` (new plan doc).
+
+### Validation Performed
+Headless-browser (Playwright) checks confirming actual video playback — not just markup — at
+multiple breakpoints; `prefers-reduced-motion` and <768px both correctly fall back to a static
+poster with zero video bytes fetched; GSAP hero entrance animation still fires; in-page nav
+unaffected. Live deploy verified via `curl` (200s, correct security + noindex headers, internal-doc
+paths 404, HTTP→HTTPS redirect) and zero regression to the other 8+ tenants on the shared VPS,
+re-checked after every change made to the live deployment.
+
+### Notes for Next Agent
+Not merged, not adopted — pending an owner decision between this branch and sibling
+`feat/hero-video-homepage`. See vault `SESSION_LOG.md`/`DECISION_LOG.md` for this project
+(2026-07-24 entries) for the full record, including a directory-permissions bug hit and fixed
+during the first deploy. The two live review subdomains carry a deploy-only patch to
+`animations.js` (never committed to either branch) that disables the reduced-motion/viewport gate
+so the video always plays for reviewers regardless of local settings — reapply that patch if
+either subdomain is ever redeployed from its branch again.
+
+---
+
 ## 2026-07-24 — Staging Deploy: v2.27.0 + v2.26.1 (no version bump)
 
 **Branch:** `main`
