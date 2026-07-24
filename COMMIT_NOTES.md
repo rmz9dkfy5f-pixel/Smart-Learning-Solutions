@@ -8,7 +8,7 @@ commit hash, date, summary, and description.
 ## 2026-07-24 — Staging Deploy: v2.27.0 + v2.26.1 (no version bump)
 **Tag:** — (none; deploy-only, no code change, no new version — follows this repo's established
 precedent for operational-deploy commits, e.g. SR-009, SR-011)
-**Commit:** `TBD` · branch `main` · 2026-07-24
+**Commit:** `bff2a99` · branch `main` · 2026-07-24
 **Type:** `chore` (deploy) + `docs`
 
 **Summary:** Deploy the already-shipped v2.27.0 (logo watermark) and the previously-undeployed
