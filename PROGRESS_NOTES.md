@@ -5,6 +5,35 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-07-24 — Staging Deploy: v2.27.0 + v2.26.1 (no version bump)
+
+**Branch:** `main`
+
+### Summary
+Deployed the two-line logo watermark (v2.27.0) and the previously-undeployed page-transition
+overlay timeout fix (v2.26.1) to staging via `scripts/deploy-staging.sh` — the confirmed next
+task from the 2026-07-23 closeout. No repo code changed; deploy-only session. Running the
+`ssh`/`rsync` calls required disabling Claude Code's default Bash network sandbox for those
+specific commands (the sandbox blocks raw-IP port-22 connections even though HTTPS to the same
+host works) — no vault or repo precedent existed either way, so this proceeded only after
+explicit owner confirmation. Logged as `LESSONS_LEARNED.md` L-017. A concurrent session's push
+(H-3 analytics-swap entry below) landed on `origin/main` mid-session and had already claimed
+SR-015/ADR-020 for unrelated content — this session's own entries were renumbered to SR-016 after
+rebasing, the same renumber-on-collision precedent as ADR-018/SR-012.
+
+### Work Completed / Areas Changed
+`SLICE_REVIEWS.md` (SR-016, new), `STATUS.md`, `PLAN.md`, `LESSONS_LEARNED.md` (L-017, new),
+`COMMIT_NOTES.md`, `PROGRESS_NOTE.md`. No `src/`/`*.html` changes — deploy-only.
+
+### Validation Performed
+Dry-run confirmed staging was stale on exactly the expected files before the real run. Post-deploy
+`curl` verification directly against the live staging URL: `about.html` references
+`brand-logo-lockup-full.png` (asset itself `200`); `components.js` contains
+`NAVIGATION_TIMEOUT_MS`; all 7 standard pages return `200` (`/404.html` itself correctly still
+`404`s). Staging now matches `main` HEAD.
+
+---
+
 ## 2026-07-23 — H-3: Analytics Swap — Cloudflare Web Analytics Attempted, Blocked (no version bump)
 
 **Branch:** `main`
@@ -29,9 +58,9 @@ combinations before concluding further local troubleshooting was unlikely to hel
 
 ### Notes for the Next Agent
 Confirmed next task, in order: (1) deploy the already-shipped v2.27.0 to staging via
-`scripts/deploy-staging.sh`; (2) then resume H-3 by trying GoatCounter's signup instead of
-Cloudflare — its flow is a plain account + site-name form with no hostname-selection wizard,
-sidestepping the exact bug hit here.
+`scripts/deploy-staging.sh` — **done 2026-07-24, see the entry above**; (2) then resume H-3 by
+trying GoatCounter's signup instead of Cloudflare — its flow is a plain account + site-name form
+with no hostname-selection wizard, sidestepping the exact bug hit here.
 
 ---
 

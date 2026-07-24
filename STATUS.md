@@ -41,6 +41,18 @@ staging deploy is a deliberate, separate follow-up. See `SLICE_REVIEWS.md` SR-01
 
 ---
 
+## Staging Deploy — v2.27.0 + v2.26.1 — 2026-07-24 (no version bump)
+
+Deployed the two-line logo watermark (v2.27.0, `about.html`) and the previously-undeployed H-4
+page-transition timeout fix (v2.26.1, `components.js`) to staging via `scripts/deploy-staging.sh`
+— the confirmed next task from the 2026-07-23 closeout. Followed the standard dry-run → real-run →
+curl-verify sequence (SR-009's proven runbook). Verified directly (not assumed): `about.html` now
+references `brand-logo-lockup-full.png` (asset itself `200`), `components.js` now contains
+`NAVIGATION_TIMEOUT_MS`, and all 7 standard pages return `200` (`/404.html` itself correctly still
+`404`s). Staging now matches `main` HEAD. See `SLICE_REVIEWS.md` SR-016.
+
+---
+
 ## Page-Transition Overlay Timeout Fallback — 2026-07-22 (v2.26.1)
 
 `BACKLOG.md` H-4 — the shared `.is-navigating` page-transition overlay (used by all 10 pages via
@@ -247,6 +259,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 - Nginx security headers (X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-Frame-Options, CSP-Report-Only) applied to the staging vhost per `docs/DEPLOYMENT.md` §7 — server-side only, no repo code change (2026-07-19)
 - Staging redeployed to current `main` via new `scripts/deploy-staging.sh` (explicit path allowlist, replacing an untracked, four-week-stale manual deploy) — fixed live forms that were still POSTing to the dead Formspree endpoint and a stale OG image reference; R-004 mitigated for staging (v2.25.0)
 - M-7 (`_next` redirect field in `book.html`) closed as not applicable — both forms submit via JS `fetch()` with `e.preventDefault()`, never performing a native POST/redirect, so the field would be inert; it no longer exists in the form at all, removed during the Web3Forms/AJAX migration (v2.23.0); see `DECISION_LOG.md` ADR-018, `SLICE_REVIEWS.md` SR-012 (2026-07-22, no version bump)
+- Staging redeployed to current `main` — v2.27.0 logo watermark and v2.26.1 H-4 fix both confirmed live via direct `curl` checks (2026-07-24, no version bump). See `SLICE_REVIEWS.md` SR-016.
 
 ---
 
@@ -275,7 +288,8 @@ See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H
 | 3 | ~~Convert `og-image.svg` to PNG/JPEG 1200×630~~ — done: `src/images/og-image.png` generated and referenced on all 9 pages, 2026-07-18 | M-1 |
 | 4 | Reconcile V3.4 stub docs (`docs/project/`, `docs/governance/`) with existing root-level equivalents | V3.4 follow-up |
 | 5 | Review V3.4 candidate AGENTS.md/CLAUDE.md in `.v34_migration_review/` and merge any useful additions | V3.4 follow-up |
-| 6 | Run `scripts/deploy-staging.sh` after merging future changes to `main` — there is no automatic trigger; staging silently drifted 4 weeks behind before this session caught it (L-016) | SR-009 follow-up |
+| 6 | ~~Run `scripts/deploy-staging.sh` after merging future changes to `main`~~ — done 2026-07-24 (v2.27.0 + v2.26.1 now live on staging, SR-016); no automatic trigger exists, so repeat manually after future merges (L-016) | SR-016 |
+| 7 | Resume the confirmed H-3/M-9/M-4/... backlog queue, starting at H-3 (pin/document the Plausible analytics URL) | `PLAN.md` |
 
 ---
 

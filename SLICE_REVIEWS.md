@@ -4,6 +4,39 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-016 — Deploy v2.27.0 + v2.26.1 to Staging (server-side, no version bump)
+**Date:** 2026-07-24
+**Version:** v2.27.0 (already tagged; deploy-only, no repo code change)
+**Commit:** `TBD`
+
+**Slice:** Deploy the already-tagged v2.27.0 (two-line logo watermark, SR-014) and the
+previously-undeployed v2.26.1 (H-4 overlay-timeout fix, SR-013) to staging via
+`scripts/deploy-staging.sh` — the confirmed next task from the 2026-07-23 closeout.
+
+**Pre-review finding:** `--dry-run` confirmed staging was stale on exactly the expected files —
+`about.html` (watermark markup), the new `src/images/brand-logo-lockup-full.png`, and
+`src/js/components.js` (H-4 timeout fix) — matching the prior session's note that staging still
+reflected pre-v2.26.1/pre-v2.27.0 `main`.
+
+**Change:** Ran `scripts/deploy-staging.sh` (dry-run, then real run) — the SR-009 allowlist rsync
+runbook. No repo files changed. Note: running `ssh`/`rsync` to the VPS's raw IP required
+disabling Claude Code's default Bash network sandbox for those specific commands — the sandbox
+otherwise times out raw-IP port-22 connections even though HTTPS to the same host works fine. See
+`LESSONS_LEARNED.md` L-017.
+
+**Findings:** Post-deploy `curl` verification against the live staging URL: `about.html`
+references `brand-logo-lockup-full.png`; the asset itself returns `200`; `components.js` contains
+`NAVIGATION_TIMEOUT_MS`; all 7 standard pages return `200` (`/404.html` itself correctly still
+`404`s, matching SR-011 precedent).
+
+**Post-review result:** Staging now matches `main` HEAD. Both the H-4 fix and the logo watermark
+are confirmed live on staging, not just shipped in the repo.
+
+**Risk:** None — deploy-only, no repo code changed; verified live via direct HTTP checks per
+`LESSONS_LEARNED.md` L-016 ("don't assume — verify directly").
+
+---
+
 ## SR-015 — H-3 Analytics Swap: Cloudflare Web Analytics Attempted, Blocked (no version bump)
 **Date:** 2026-07-23
 **Version:** none

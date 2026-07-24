@@ -20,16 +20,16 @@ the Plausible analytics URL; (3) M-9 — noindex meta on non-public pages; (4) M
 style blocks; (5) reconcile V3.4 stub docs; (6) M-8 — email casing (held pending OD-003). OD-003
 itself remains owner/client-gated throughout.
 
-**Confirmed next task (2026-07-23 closeout, `REPO_SESSION_END_CLOSEOUT.md` Step 4a):** Deploy
-v2.27.0 (About page logo watermark) to staging via `scripts/deploy-staging.sh` — the owner's
-explicit pick over resuming the H-3/M-9/M-4/... queue above, which remains next in line after
-that deploy.
-
 **H-3 update (2026-07-23, same day):** Owner chose to replace Plausible with a free
 privacy-friendly analytics provider rather than just pin its URL. Google Analytics rejected;
 Cloudflare Web Analytics attempted but blocked by a reproducible onboarding-wizard bug (see
-`DECISION_LOG.md` ADR-020, `SLICE_REVIEWS.md` SR-015). **Confirmed next task, after the v2.27.0
-deploy above: try GoatCounter's signup for H-3** before troubleshooting Cloudflare further.
+`DECISION_LOG.md` ADR-020, `SLICE_REVIEWS.md` SR-015). Confirmed next task at that point: (1)
+deploy the already-shipped v2.27.0 to staging, then (2) try GoatCounter's signup for H-3.
+
+**Staging deploy complete (2026-07-24, no version bump, `SLICE_REVIEWS.md` SR-016):** v2.27.0
+(About page logo watermark) and the previously-undeployed v2.26.1 (H-4 fix) are both now live on
+staging, verified via direct `curl` checks. The confirmed-queue order above resumes next, starting
+at H-3 — try GoatCounter's signup per the note above.
 
 See `BACKLOG.md` for the full prioritised work queue.
 See `PHASE_GATES.md` for Gate 1 criteria.
