@@ -4,7 +4,7 @@
 
 ## v2.27.0 — 2026-07-23 — About Page Logo Watermark
 
-**Tag:** `v2.27.0__about-page-logo-watermark__commit-1160a69`
+**Tag:** `v2.27.0__about-page-logo-watermark__commit-9caee7e`
 
 ### Summary
 Closed the non-blocking open item from the v2.26.0 logo session: the full two-line lockup
@@ -24,7 +24,7 @@ this site's existing decorative-background convention, since the mission paragra
 
 ## v2.26.1 — 2026-07-22 — Page-Transition Overlay Timeout Fallback
 
-**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862`
+**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-e1950fb`
 
 ### Summary
 `BACKLOG.md` H-4: the shared `.is-navigating` page-transition overlay used by all 10 pages had no
@@ -42,7 +42,7 @@ edge case) would leave the overlay stuck indefinitely, covering the page with sc
 
 ## v2.26.0 — 2026-07-22 — Client Logo Implementation
 
-**Tag:** `v2.26.0__client-logo-implementation__commit-7594701`
+**Tag:** `v2.26.0__client-logo-implementation__commit-dd36fe6`
 
 ### Summary
 Replaced the placeholder inline-SVG-badge + text wordmark in the header and footer with the
@@ -63,7 +63,7 @@ real alpha transparency and its colors track the site's existing accent/cyan tok
 
 ## v2.25.0 — 2026-07-19 — Staging Redeploy + Deploy-Allowlist Hardening
 
-**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-b0e0371`
+**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-25cc2e2`
 
 ### Summary
 Staging was found running a stale deploy from ~2026-06-19/23 — predating the Web3Forms migration
@@ -88,7 +88,7 @@ that gap and hardening against future internal-doc exposure (R-004).
 
 ## v2.24.0 — 2026-07-18 — OG Image PNG Conversion
 
-**Tag:** `v2.24.0__og-image-png-conversion__commit-d7f48fd`
+**Tag:** `v2.24.0__og-image-png-conversion__commit-45fa82e`
 
 ### Summary
 Resolved M-1 (`AUDIT.md`): `og-image.svg` rendered to a 1200×630 PNG via headless Chromium and
@@ -109,7 +109,7 @@ wired into all 9 pages' `og:image` tags, restoring social-share preview images a
 
 ## v2.23.0 — 2026-07-18 — Web3Forms Merge + Hosting Decision
 
-**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-7031e21`
+**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-c34a72e`
 
 ### Summary
 Merged the Web3Forms migration (Formspree → Web3Forms) into `main`, confirmed inbox delivery,
@@ -141,7 +141,7 @@ the client (OD-003). Resolves the C-1/OD-001 launch blocker.
 
 ## v2.22.0 — 2026-07-10 — Model Selection Gate
 
-**Tag:** `v2.22.0__model-selection-gate__commit-51cdd56`
+**Tag:** `v2.22.0__model-selection-gate__commit-8f6cde7`
 
 ### Summary
 Adopted the AntBrainOS vault-wide Model Selection Gate for this repo: a mandatory brief shown
@@ -171,7 +171,7 @@ fast-forwarded `main` to the previously unmerged `audit/production-readiness` br
 
 ## v2.21.0 — 2026-06-27 — Second Production-Readiness Audit
 
-**Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-639159d`
+**Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-2d30ad0`
 
 ### Summary
 Second V3.4 production-readiness audit pass. Result: BLOCKED for client launch — same two hard
@@ -190,7 +190,7 @@ describing it was stale.
 
 ### Confirmed Fixed
 - C-2 cursor CSS gate (`src/css/main.css:135-142`) — `cursor: none` correctly gated by
-  `body.custom-cursor-enabled`; prior `AUDIT.md` entry was stale (fixed in `43ee9f4`, v2.15.3)
+  `body.custom-cursor-enabled`; prior `AUDIT.md` entry was stale (fixed in `9ea4936`, v2.15.3)
 
 ### Held (deferred until hosting platform confirmed per ADR-013)
 - Formspree endpoint (`REPLACE_ME` in `book.html`, `contact.html`)
@@ -203,7 +203,7 @@ describing it was stale.
 
 ## v2.20.0 — 2026-06-25 — Audit + Portable Fixes
 
-**Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-ed9b0bb`
+**Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-97ad30c`
 
 ### Summary
 V3.4 production-readiness audit (result: BLOCKED). Privacy policy draft added. Governance
@@ -246,7 +246,7 @@ Add project starter kit v3.3 reference library and push workflow prompts. No sit
 Correct v2.15.0 commit hash in three release-record files after amend changed the hash.
 
 ### Changed
-- `COMMIT_NOTES.md`, `PROGRESS_NOTE.md`, `PROGRESS_NOTES.md` — hash updated to `b192aff`
+- `COMMIT_NOTES.md`, `PROGRESS_NOTE.md`, `PROGRESS_NOTES.md` — hash updated to `bb0bcfa`
 
 ---
 
@@ -268,7 +268,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.14.8 - 2026-05-16 - Prompt List
 
-**Tag:** `v2.14.8__prompts-update-file-list__commit-cc88cfd`
+**Tag:** `v2.14.8__prompts-update-file-list__commit-56be1ea`
 
 ### Changed
 - `prompts/Update.md` — update workflow file list expanded to include both `PROGRESS_NOTE.md` and `PROGRESS_NOTES.md`, aligning the prompt with the intended current-session and cumulative progress records
@@ -277,7 +277,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.14.7 - 2026-05-16 - Docs Sync
 
-**Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72`
+**Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-0715806`
 
 ### Changed
 - `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `CHANGELOG.md` — synced to v2.14.7
@@ -288,7 +288,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.14.6 - 2026-05-16 - Session Progress Note
 
-**Tag:** `v2.14.6__session-progress-note__commit-431f540`
+**Tag:** `v2.14.6__session-progress-note__commit-d72e671`
 
 ### Changed
 - `PROGRESS_NOTE.md` — full session log for v2.14.3–v2.14.5 work
@@ -297,7 +297,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.14.5 - 2026-05-15 - Reference Docs
 
-**Tag:** `v2.14.5__context-and-status-docs__commit-c4a7d9d`
+**Tag:** `v2.14.5__context-and-status-docs__commit-7ea223c`
 
 ### Added
 - `CONTEXT.md` — stable project background: identity, programs, audiences,
@@ -309,7 +309,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.14.4 - 2026-05-15 - Gitignore
 
-**Tag:** `v2.14.4__ignore-claude-local-settings__commit-1055fd7`
+**Tag:** `v2.14.4__ignore-claude-local-settings__commit-7269da5`
 
 ### Changed
 - `.gitignore` — added `.claude/` to prevent Claude Code local settings from
@@ -319,7 +319,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.14.3 - 2026-05-15 - Audit
 
-**Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028`
+**Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-46fcf2a`
 
 ### Added
 - `AUDIT.md` — full diagnostic audit of the static site covering all 10 pages,
@@ -336,7 +336,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.14.2 - 2026-05-15 - Sync
 
-**Tag:** `v2.14.2__docs-current-to-v2-14-1__commit-179f16a`
+**Tag:** `v2.14.2__docs-current-to-v2-14-1__commit-53e752e`
 
 ### Changed
 - `RELEASE_NOTES.md`, `COMMIT_NOTES.md`, `CHANGELOG.md` — synced with full
@@ -349,7 +349,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.14.1 - 2026-05-15 - Templates
 
-**Tag:** `v2.14.1__prompts-workflow-templates__commit-9457ab9`
+**Tag:** `v2.14.1__prompts-workflow-templates__commit-2416a94`
 
 ### Added
 - `prompts/` directory with three saved workflow instruction files:
@@ -359,7 +359,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.14.0 - 2026-05-15 - Anchor
 
-**Tag:** `v2.14.0__programs-launch-site-hardening__commit-fcdfda6`
+**Tag:** `v2.14.0__programs-launch-site-hardening__commit-c47d388`
 
 ### Added
 - `programs/index.html` — Programs landing page as a proper `/programs/` route
@@ -377,7 +377,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.13.7 - 2026-05-07 - Archive
 
-**Tag:** `v2.13.7__changelog-backfill__commit-aaa3399`
+**Tag:** `v2.13.7__changelog-backfill__commit-5d3b69f`
 
 ### Changed
 - `CHANGELOG.md` — backfilled all missing entries v2.1.0–v2.13.6
@@ -386,7 +386,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.13.6 - 2026-05-07 - Record
 
-**Tag:** `v2.13.6__release-notes-v2-13__commit-aded593`
+**Tag:** `v2.13.6__release-notes-v2-13__commit-7969d14`
 
 ### Changed
 - `RELEASE_NOTES.md` — added v2.13.0–v2.13.5 entries with canonical tag hashes and photography-themed code names
@@ -395,7 +395,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.13.5 - 2026-05-07 - Frame
 
-**Tag:** `v2.13.5__workshops-photo-cards__commit-b5fa45e`
+**Tag:** `v2.13.5__workshops-photo-cards__commit-699c1af`
 
 ### Changed
 - Format cards now use `.format-card-photo-bg` at 9% opacity, lifting to 15% on hover:
@@ -409,7 +409,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.13.4 - 2026-05-07 - Depth
 
-**Tag:** `v2.13.4__program-pages-photography__commit-d19873c`
+**Tag:** `v2.13.4__program-pages-photography__commit-e3dc18c`
 
 ### Changed
 - **Coding with Robots** (`programs/coding-with-robots.html`): hero media column now stacks a student proof photo below the Edison robot product shot; full-width photo section break added above the levels grid; CTA band gains photo background
@@ -419,7 +419,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.13.3 - 2026-05-07 - Portrait
 
-**Tag:** `v2.13.3__about-photo-redesign__commit-56fc29d`
+**Tag:** `v2.13.3__about-photo-redesign__commit-f5e9f05`
 
 ### Added
 - New three-column "What We Bring" visual proof strip before the CTA band — Real Engineers & Educators / Industry-Recognised Equipment / Genuine STEM Confidence — each column a photo with overlay caption
@@ -433,7 +433,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.13.2 - 2026-05-07 - Exposure
 
-**Tag:** `v2.13.2__homepage-photo-redesign__commit-1f44b7f`
+**Tag:** `v2.13.2__homepage-photo-redesign__commit-ab0cd79`
 
 ### Added
 - New "Real Workshops. Real Students." four-photo mosaic section inserted before the activities grid — the site's primary social proof moment
@@ -450,7 +450,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.13.1 - 2026-05-07 - Overlay
 
-**Tag:** `v2.13.1__photo-css-utilities__commit-251e80e`
+**Tag:** `v2.13.1__photo-css-utilities__commit-03ca0c8`
 
 ### Added
 - `src/css/main.css` — 14 new layout and overlay utility classes supporting the photo-driven redesign:
@@ -474,7 +474,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.13.0 - 2026-05-07 - Gallery
 
-**Tag:** `v2.13.0__webp-photo-library__commit-7754187`
+**Tag:** `v2.13.0__webp-photo-library__commit-5509929`
 
 ### Added
 - 11 optimised WebP images to `src/images/` for the photo-driven redesign:
@@ -487,7 +487,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.12.6 - 2026-05-06 - Spotlight
 
-**Tag:** `v2.12.6__program-prominence-visuals__commit-7edcdfc`
+**Tag:** `v2.12.6__program-prominence-visuals__commit-2995955`
 
 ### Added
 - `src/images/program-coding-edison.jpg` and `src/images/program-pstem-whybricks.avif` added as live site assets for the two flagship programs
@@ -503,7 +503,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.12.5 - 2026-05-06 - Prism
 
-**Tag:** `v2.12.5__source-image-library__commit-3e445a0`
+**Tag:** `v2.12.5__source-image-library__commit-8f36957`
 
 ### Added
 - `pics/Edison/` — 10 Edison robotics platform reference images
@@ -515,7 +515,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.12.4 - 2026-05-05 - Meridian
 
-**Tag:** `v2.12.4__release-notes-v2-12-3__commit-b8c246a`
+**Tag:** `v2.12.4__release-notes-v2-12-3__commit-722471a`
 
 ### Added
 - `RELEASE_NOTES.md` — v2.12.3 entry added using the real tag and commit hash so the release log matches the current tagged history
@@ -524,7 +524,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.12.3 - 2026-05-05 - Meridian
 
-**Tag:** `v2.12.3__version-narrative-alignment__commit-860c1df`
+**Tag:** `v2.12.3__version-narrative-alignment__commit-deab715`
 
 ### Changed
 - `README.md` version line updated from `v2.3.0` to `v2.12.2`
@@ -539,10 +539,10 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.12.2 - 2026-05-05 - Chronicle
 
-**Tag:** `v2.12.2__commit-history-backfill__commit-545016b`
+**Tag:** `v2.12.2__commit-history-backfill__commit-ba8316a`
 
 ### Added
-- Missing commit-log entries for `v2.12.1` and the untagged `619becc` history-maintenance commit added to `COMMIT_NOTES.md`
+- Missing commit-log entries for `v2.12.1` and the untagged `4c77245` history-maintenance commit added to `COMMIT_NOTES.md`
 
 ### Changed
 - `COMMIT_NOTES.md` tag reference table refreshed through `v2.12.2`
@@ -554,7 +554,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.12.1 - 2026-05-05 - Compass
 
-**Tag:** `v2.12.1__release-record-sync__commit-541f575`
+**Tag:** `v2.12.1__release-record-sync__commit-aabc664`
 
 ### Added
 - `RELEASE_NOTES.md` entry for the `v2.12.0` Beacon release
@@ -570,7 +570,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.12.0 - 2026-05-05 - Beacon
 
-**Tag:** `v2.12.0__polish-seo-analytics__commit-6c9a427`
+**Tag:** `v2.12.0__polish-seo-analytics__commit-7701534`
 
 ### Added
 - Sitewide Plausible analytics injected from `src/js/components.js`, tracking both `smartlearningsolutions.org` and `www.smartlearningsolutions.org`
@@ -590,7 +590,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.11.0 - 2026-05-05 - Current
 
-**Tag:** `v2.11.0__release-notes-current__commit-ecb25ab`
+**Tag:** `v2.11.0__release-notes-current__commit-928a381`
 
 ### Added
 - `RELEASE_NOTES.md` entries for v2.7.0 through v2.10.0 so the release log matches the current tagged history
@@ -602,7 +602,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.10.0 - 2026-05-05 - Index
 
-**Tag:** `v2.10.0__commit-notes-current__commit-3977f77`
+**Tag:** `v2.10.0__commit-notes-current__commit-45c2c73`
 
 ### Added
 - `COMMIT_NOTES.md` — v2.7.0, v2.8.0, and v2.9.0 entries backlogged with full summary, description, and stats
@@ -614,7 +614,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.9.0 - 2026-05-05 - Anchor
 
-**Tag:** `v2.9.0__docs-scaffold-aligned__commit-b0a13f2`
+**Tag:** `v2.9.0__docs-scaffold-aligned__commit-83e2ce4`
 
 ### Changed
 - `CHANGELOG.md` — fixed broken versioning link (`docs/strategy/version-number-system.md` → `docs/VERSIONING.md`); added [2.8.0] entry covering all 19 scaffold files and alignment findings
@@ -628,7 +628,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.8.0 - 2026-05-05 - Atlas
 
-**Tag:** `v2.8.0__docs-scaffold-complete__commit-cb62d55`
+**Tag:** `v2.8.0__docs-scaffold-complete__commit-a540d23`
 
 ### Added
 - `docs/STRATEGY.md` — structured business strategy: goals, audiences, value proposition, CTA rules, claims policy, brand direction, constraints, non-negotiables, open questions
@@ -655,7 +655,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.7.0 - 2026-05-05 - Reform
 
-**Tag:** `v2.7.0__release-notes-reform__commit-2600d9d`
+**Tag:** `v2.7.0__release-notes-reform__commit-837bd5b`
 
 ### Changed
 - `RELEASE_NOTES.md` — all version headers rewritten to `vX.Y.Z - YYYY-MM-DD - CodeName` format; slug-style code names replaced with single proper-word names across all 9 versions; v2.5.0 (Ledger) and v2.6.0 (Chronicle) entries added; redundant bold sub-headers removed
@@ -664,7 +664,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.6.0 - 2026-05-05 - Chronicle
 
-**Tag:** `v2.6.0__release-notes-codenames__commit-b3f3bf3`
+**Tag:** `v2.6.0__release-notes-codenames__commit-a8c6428`
 
 ### Added
 - Code name and canonical tag line to every version header in `RELEASE_NOTES.md`
@@ -677,7 +677,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.5.0 - 2026-05-05 - Ledger
 
-**Tag:** `v2.5.0__commit-notes-baseline__commit-d19389d`
+**Tag:** `v2.5.0__commit-notes-baseline__commit-4428f41`
 
 ### Added
 - `COMMIT_NOTES.md` — structured commit log documenting all commits on `main`: summary, description, file stats, and canonical tag per entry
@@ -687,7 +687,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.4.0 - 2026-05-05 - Archive
 
-**Tag:** `v2.4.0__project-docs-baseline__commit-9e87d2b`
+**Tag:** `v2.4.0__project-docs-baseline__commit-2cfe46a`
 
 ### Added
 - `Documents/00 Core Documents/` — 11 Claude Code prompt files: run-first, repo planning, scaffolding, strategy, architecture, CLAUDE.md spec, workflow, plan template, versioning, first task, and Codex bridge
@@ -700,7 +700,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.3.0 - 2026-04-28 - Signal
 
-**Tag:** `v2.3.0__build-version-sync__commit-c9c9c4e`
+**Tag:** `v2.3.0__build-version-sync__commit-2ed79ce`
 
 ### Added
 - `plans/2026-04-28-site-audit-remediation.md` — focused remediation record for the external launch audit
@@ -725,7 +725,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.2.0 - 2026-04-27 - Orbit
 
-**Tag:** `v2.2.0__hero-polish-cursor__commit-d650ed2`
+**Tag:** `v2.2.0__hero-polish-cursor__commit-7c36aa2`
 
 ### Added
 - `workshops.html` — full page replacing placeholder stub: session formats, audience selector, program cards, 3-step process, CTA band
@@ -749,7 +749,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.1.0 - 2026-04-25 - Pulse
 
-**Tag:** `v2.1.0__animation-richness__commit-01cd06d`
+**Tag:** `v2.1.0__animation-richness__commit-ac03343`
 
 ### Added
 - Extended GSAP stagger sequences and scroll-triggered reveal coverage to all interior pages
@@ -763,7 +763,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v2.0.0 - 2026-04-24 - Obsidian
 
-**Tag:** `v2.0.0__dark-redesign-gsap__commit-e8ea95f`
+**Tag:** `v2.0.0__dark-redesign-gsap__commit-3b7eecd`
 
 ### Added
 - `src/js/animations.js` — GSAP animation module: lerp cursor, hero word-split stagger, ScrollTrigger reveals, card batch staggers, orb parallax scrub, magnetic buttons, CTA pulse
@@ -782,7 +782,7 @@ Tag format simplified from verbose slug style to clean semver.
 
 ## v1.1.0 - 2026-04-24 - Blueprint
 
-**Tag:** `v1.1.0__project-docs-infra__commit-e8b2634`
+**Tag:** `v1.1.0__project-docs-infra__commit-5c495d7`
 
 ### Added
 - `CLAUDE.md`, `ARCHITECTURE.md`, `ROADMAP.md`, `DECISIONS.md`, `README.md`

@@ -13,7 +13,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.27.0] — 2026-07-23
 
-**Tag:** `v2.27.0__about-page-logo-watermark__commit-1160a69`
+**Tag:** `v2.27.0__about-page-logo-watermark__commit-9caee7e`
 
 ### Added
 - `about.html` — the client's full two-line logo lockup
@@ -26,7 +26,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.26.1] — 2026-07-22
 
-**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862`
+**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-e1950fb`
 
 ### Fixed
 - `BACKLOG.md` H-4 — the `.is-navigating` page-transition overlay (`src/js/components.js`,
@@ -42,7 +42,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.26.0] — 2026-07-22
 
-**Tag:** `v2.26.0__client-logo-implementation__commit-7594701`
+**Tag:** `v2.26.0__client-logo-implementation__commit-dd36fe6`
 
 ### Changed
 - Replaced the placeholder inline-SVG-badge + text wordmark ("Smart**Learning**") in the header
@@ -62,7 +62,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.25.0] — 2026-07-19
 
-**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-b0e0371`
+**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-25cc2e2`
 
 ### Fixed
 - Staging (`smart-learning-solutions.craftandconscious.com`) was serving a stale deploy from
@@ -91,7 +91,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.24.0] — 2026-07-18
 
-**Tag:** `v2.24.0__og-image-png-conversion__commit-d7f48fd`
+**Tag:** `v2.24.0__og-image-png-conversion__commit-45fa82e`
 
 ### Fixed
 - Converted `src/images/og-image.svg` to a 1200×630 PNG (`src/images/og-image.png`), rendered
@@ -117,7 +117,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.23.0] — 2026-07-18
 
-**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-7031e21`
+**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-c34a72e`
 
 ### Changed
 - Migrated `book.html` and `contact.html` from Formspree to Web3Forms, resolving the C-1 /
@@ -147,7 +147,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.22.0] — 2026-07-10
 
-**Tag:** `v2.22.0__model-selection-gate__commit-51cdd56`
+**Tag:** `v2.22.0__model-selection-gate__commit-8f6cde7`
 
 ### Added
 - `MODEL_SELECTION_GATE.md` — mandatory Model Selection Brief template (task classification,
@@ -178,7 +178,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.21.0] — 2026-06-27
 
-**Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-639159d`
+**Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-2d30ad0`
 
 ### Changed
 - `STATUS.md` — second production-readiness audit section added (2026-06-27 scorecard); version bumped to v2.21.0
@@ -188,7 +188,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 - `PROGRESS_NOTES.md` — v2.21.0 entry appended
 
 ### Confirmed Fixed
-- C-2 cursor CSS gate (`src/css/main.css:135-142`) — `cursor: none` correctly gated by `body.custom-cursor-enabled`; prior AUDIT.md entry was stale (fixed in `43ee9f4`, v2.15.3)
+- C-2 cursor CSS gate (`src/css/main.css:135-142`) — `cursor: none` correctly gated by `body.custom-cursor-enabled`; prior AUDIT.md entry was stale (fixed in `9ea4936`, v2.15.3)
 
 ### Held (unchanged — deferred until hosting platform confirmed per ADR-013)
 - Formspree endpoint (`REPLACE_ME` in `book.html`, `contact.html`)
@@ -201,7 +201,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.20.0] — 2026-06-25
 
-**Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-ed9b0bb`
+**Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-97ad30c`
 
 ### Added
 - `legal/privacy-policy.md` — portable privacy policy draft; covers form data (name, email, phone, org, program, group size, age range, dates, location, message), Plausible cookieless analytics, and third-party processors (Formspree, Plausible, Google Fonts, Cloudflare cdnjs); owner placeholders marked for legal details
@@ -224,7 +224,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.19.0] — 2026-06-21
 
-**Tag:** `v2.19.0__v34-starter-kit-migration__commit-2100943`
+**Tag:** `v2.19.0__v34-starter-kit-migration__commit-25c54ec`
 
 ### Added
 - Project Starter Kit V3.4 migrated into repo in MIGRATE_EXISTING_PROJECT mode — 40 new files, no existing files overwritten
@@ -240,7 +240,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.18.1] — 2026-06-19
 
-**Tag:** `v2.18.1__mobile-nav-cta-center-fix__commit-e0127b0`
+**Tag:** `v2.18.1__mobile-nav-cta-center-fix__commit-599bed0`
 
 ### Fixed
 - Mobile-nav **Request a Workshop** CTA label rendered left-aligned instead of centered. `.mobile-nav a { display: block }` (specificity 0,1,1) was overriding `.btn { display: inline-flex }` (0,1,0), so the full-width CTA became a block box and the existing `.mobile-nav .btn { justify-content: center }` was inert (the label fell back to start/left alignment). Added `display: flex` to `.mobile-nav .btn` (0,2,0) to restore flex centering.
@@ -252,7 +252,7 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ## [2.18.0] — 2026-06-19
 
-**Tag:** `v2.18.0__mobile-responsive-fixes__commit-4c92cd2`
+**Tag:** `v2.18.0__mobile-responsive-fixes__commit-19144b6`
 
 ### Summary
 Four-slice mobile responsive fix pass across all 10 pages. Full-screen nav overlay, hamburger breakpoint raised to ≤1100px, program hero photo crop and radius fixes, eyebrow font-size specificity fix, and CTA button colour fix inside the mobile nav.
@@ -326,9 +326,9 @@ Add project starter kit v3.3 reference library and push workflow prompt files. N
 Correct v2.15.0 commit hash reference in release records after amend shifted the hash.
 
 ### Changed
-- `COMMIT_NOTES.md` — updated v2.15.0 commit hash to `b192aff`
-- `PROGRESS_NOTE.md` — updated v2.15.0 commit hash to `b192aff`
-- `PROGRESS_NOTES.md` — updated v2.15.0 commit hash to `b192aff`
+- `COMMIT_NOTES.md` — updated v2.15.0 commit hash to `bb0bcfa`
+- `PROGRESS_NOTE.md` — updated v2.15.0 commit hash to `bb0bcfa`
+- `PROGRESS_NOTES.md` — updated v2.15.0 commit hash to `bb0bcfa`
 
 ---
 
@@ -352,7 +352,7 @@ style to clean semver (`vX.Y.Z`).
 
 ## [2.14.8] — 2026-05-16
 
-**Tag:** `v2.14.8__prompts-update-file-list__commit-cc88cfd`
+**Tag:** `v2.14.8__prompts-update-file-list__commit-56be1ea`
 
 ### Summary
 Update the release-documentation workflow prompt so it names both progress-note files expected by the documentation sync process.
@@ -364,7 +364,7 @@ Update the release-documentation workflow prompt so it names both progress-note 
 
 ## [2.14.7] — 2026-05-16
 
-**Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72`
+**Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-0715806`
 
 ### Summary
 Sync all release documentation with entries for v2.14.4 through v2.14.7.
@@ -378,7 +378,7 @@ Sync all release documentation with entries for v2.14.4 through v2.14.7.
 
 ## [2.14.6] — 2026-05-16
 
-**Tag:** `v2.14.6__session-progress-note__commit-431f540`
+**Tag:** `v2.14.6__session-progress-note__commit-d72e671`
 
 ### Summary
 Session log for the v2.14.3–v2.14.5 work block.
@@ -390,7 +390,7 @@ Session log for the v2.14.3–v2.14.5 work block.
 
 ## [2.14.5] — 2026-05-15
 
-**Tag:** `v2.14.5__context-and-status-docs__commit-c4a7d9d`
+**Tag:** `v2.14.5__context-and-status-docs__commit-7ea223c`
 
 ### Summary
 Add root-level reference files: stable background (CONTEXT.md) and present state (STATUS.md).
@@ -403,7 +403,7 @@ Add root-level reference files: stable background (CONTEXT.md) and present state
 
 ## [2.14.4] — 2026-05-15
 
-**Tag:** `v2.14.4__ignore-claude-local-settings__commit-1055fd7`
+**Tag:** `v2.14.4__ignore-claude-local-settings__commit-7269da5`
 
 ### Summary
 Stop tracking Claude Code local settings in git.
@@ -415,7 +415,7 @@ Stop tracking Claude Code local settings in git.
 
 ## [2.14.3] — 2026-05-15
 
-**Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028`
+**Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-46fcf2a`
 
 ### Summary
 Add full site audit document and sync all release docs to v2.14.3.
@@ -434,7 +434,7 @@ Add full site audit document and sync all release docs to v2.14.3.
 
 ## [2.14.2] — 2026-05-15
 
-**Tag:** `v2.14.2__docs-current-to-v2-14-1__commit-179f16a`
+**Tag:** `v2.14.2__docs-current-to-v2-14-1__commit-53e752e`
 
 ### Summary
 Sync all release documentation with the full tagged history through v2.14.1.
@@ -450,7 +450,7 @@ Sync all release documentation with the full tagged history through v2.14.1.
 
 ## [2.14.1] — 2026-05-15
 
-**Tag:** `v2.14.1__prompts-workflow-templates__commit-9457ab9`
+**Tag:** `v2.14.1__prompts-workflow-templates__commit-2416a94`
 
 ### Summary
 Add `prompts/` directory with three saved workflow instruction files for
@@ -465,7 +465,7 @@ commit, update, and snapshot tasks.
 
 ## [2.14.0] — 2026-05-15
 
-**Tag:** `v2.14.0__programs-launch-site-hardening__commit-fcdfda6`
+**Tag:** `v2.14.0__programs-launch-site-hardening__commit-c47d388`
 
 ### Summary
 Launch `/programs/` as a proper landing page, harden both booking forms,
@@ -487,7 +487,7 @@ fix custom cursor for non-mouse devices, and fix same-page hash navigation overl
 
 ## [2.13.7] — 2026-05-07
 
-**Tag:** `v2.13.7__changelog-backfill__commit-aaa3399`
+**Tag:** `v2.13.7__changelog-backfill__commit-5d3b69f`
 
 ### Summary
 Changelog backfill — all missing entries v2.1.0–v2.13.6 added.
@@ -499,7 +499,7 @@ Changelog backfill — all missing entries v2.1.0–v2.13.6 added.
 
 ## [2.13.6] — 2026-05-07
 
-**Tag:** `v2.13.6__release-notes-v2-13__commit-ca9beb7`
+**Tag:** `v2.13.6__release-notes-v2-13__commit-786c82c`
 
 ### Summary
 Release notes documentation for the full v2.13.x photo-driven redesign block. Adds six entries (Gallery → Overlay → Exposure → Portrait → Depth → Frame) to RELEASE_NOTES.md so the release log matches the tagged history.
@@ -511,7 +511,7 @@ Release notes documentation for the full v2.13.x photo-driven redesign block. Ad
 
 ## [2.13.5] — 2026-05-07
 
-**Tag:** `v2.13.5__workshops-photo-cards__commit-b5fa45e`
+**Tag:** `v2.13.5__workshops-photo-cards__commit-699c1af`
 
 ### Summary
 Photo-layered format and audience cards on the Workshops page, completing the sitewide photo-driven redesign.
@@ -525,7 +525,7 @@ Photo-layered format and audience cards on the Workshops page, completing the si
 
 ## [2.13.4] — 2026-05-07
 
-**Tag:** `v2.13.4__program-pages-photography__commit-d19873c`
+**Tag:** `v2.13.4__program-pages-photography__commit-e3dc18c`
 
 ### Summary
 Student proof photography on both program detail pages, which previously showed only a single product shot each.
@@ -538,7 +538,7 @@ Student proof photography on both program detail pages, which previously showed 
 
 ## [2.13.3] — 2026-05-07
 
-**Tag:** `v2.13.3__about-photo-redesign__commit-56fc29d`
+**Tag:** `v2.13.3__about-photo-redesign__commit-f5e9f05`
 
 ### Summary
 About page redesigned from a text-only page to a visually credible split-panel layout with photographic credential cards.
@@ -555,7 +555,7 @@ About page redesigned from a text-only page to a visually credible split-panel l
 
 ## [2.13.2] — 2026-05-07
 
-**Tag:** `v2.13.2__homepage-photo-redesign__commit-1f44b7f`
+**Tag:** `v2.13.2__homepage-photo-redesign__commit-ab0cd79`
 
 ### Summary
 Homepage hero and supporting sections redesigned around photography — replacing the CSS illustration with a full-bleed classroom photo and adding social proof throughout.
@@ -575,7 +575,7 @@ Homepage hero and supporting sections redesigned around photography — replacin
 
 ## [2.13.1] — 2026-05-07
 
-**Tag:** `v2.13.1__photo-css-utilities__commit-251e80e`
+**Tag:** `v2.13.1__photo-css-utilities__commit-03ca0c8`
 
 ### Summary
 Design system extended with new photo composition utility classes required by the photo-driven redesign across all pages.
@@ -588,7 +588,7 @@ Design system extended with new photo composition utility classes required by th
 
 ## [2.13.0] — 2026-05-07
 
-**Tag:** `v2.13.0__webp-photo-library__commit-7754187`
+**Tag:** `v2.13.0__webp-photo-library__commit-5509929`
 
 ### Summary
 Optimised WebP photo library added to `src/images/` — 11 images sourced from Pexels and one Edison product shot, forming the asset layer for the entire photo-driven redesign.
@@ -604,7 +604,7 @@ Optimised WebP photo library added to `src/images/` — 11 images sourced from P
 
 ## [2.12.9] — 2026-05-07
 
-**Tag:** `v2.12.9__planning-doc-extensions__commit-e4b9855`
+**Tag:** `v2.12.9__planning-doc-extensions__commit-14301c7`
 
 ### Summary
 Planning document filenames normalised from stray `.txt` extensions to clean `.md` Markdown extensions.
@@ -616,7 +616,7 @@ Planning document filenames normalised from stray `.txt` extensions to clean `.m
 
 ## [2.12.8] — 2026-05-07
 
-**Tag:** `v2.12.8__reference-doc-filename__commit-3bc8887`
+**Tag:** `v2.12.8__reference-doc-filename__commit-ece23dd`
 
 ### Changed
 - `Planning Documents/` — "Recommended minimal docs and where to place them" reference file renamed to remove stray colon and extra spacing from filename (content unchanged)
@@ -625,7 +625,7 @@ Planning document filenames normalised from stray `.txt` extensions to clean `.m
 
 ## [2.12.7] — 2026-05-06
 
-**Tag:** `v2.12.7__release-record-sync__commit-67cad9f`
+**Tag:** `v2.12.7__release-record-sync__commit-761b35e`
 
 ### Changed
 - `RELEASE_NOTES.md` — v2.12.6 tag reference updated from provisional to real annotated tag hash
@@ -638,7 +638,7 @@ Planning document filenames normalised from stray `.txt` extensions to clean `.m
 
 ## [2.12.6] — 2026-05-06
 
-**Tag:** `v2.12.6__program-prominence-visuals__commit-7edcdfc`
+**Tag:** `v2.12.6__program-prominence-visuals__commit-2995955`
 
 ### Summary
 Program prominence and live asset placement pass for the two flagship offerings. Makes Coding with Robots and PSTEM easier to find across the site, adds selected Edison and Whybricks visuals to live site assets, and points shared Programs navigation to a neutral program selector.
@@ -657,7 +657,7 @@ Program prominence and live asset placement pass for the two flagship offerings.
 
 ## [2.12.5] — 2026-05-05
 
-**Tag:** `v2.12.5__source-image-library__commit-3e445a0`
+**Tag:** `v2.12.5__source-image-library__commit-8f36957`
 
 ### Summary
 Curated source image library added to `pics/` — Edison, Whybricks, Logo, and 20 Pexels workshop photography references staged for future site imagery work.
@@ -672,7 +672,7 @@ Curated source image library added to `pics/` — Edison, Whybricks, Logo, and 2
 
 ## [2.12.4] — 2026-05-05
 
-**Tag:** `v2.12.4__release-notes-v2-12-3__commit-b8c246a`
+**Tag:** `v2.12.4__release-notes-v2-12-3__commit-722471a`
 
 ### Added
 - `RELEASE_NOTES.md` — v2.12.3 entry added using the real tag and commit hash
@@ -681,7 +681,7 @@ Curated source image library added to `pics/` — Edison, Whybricks, Logo, and 2
 
 ## [2.12.3] — 2026-05-05
 
-**Tag:** `v2.12.3__version-narrative-alignment__commit-860c1df`
+**Tag:** `v2.12.3__version-narrative-alignment__commit-deab715`
 
 ### Changed
 - `README.md` — version line updated from `v2.3.0` to `v2.12.2`
@@ -696,10 +696,10 @@ Curated source image library added to `pics/` — Edison, Whybricks, Logo, and 2
 
 ## [2.12.2] — 2026-05-05
 
-**Tag:** `v2.12.2__commit-history-backfill__commit-545016b`
+**Tag:** `v2.12.2__commit-history-backfill__commit-ba8316a`
 
 ### Added
-- `COMMIT_NOTES.md` — missing entries for v2.12.1 and untagged commit `619becc`
+- `COMMIT_NOTES.md` — missing entries for v2.12.1 and untagged commit `4c77245`
 
 ### Changed
 - `COMMIT_NOTES.md` — tag reference table refreshed through v2.12.2
@@ -711,7 +711,7 @@ Curated source image library added to `pics/` — Edison, Whybricks, Logo, and 2
 
 ## [2.12.1] — 2026-05-05
 
-**Tag:** `v2.12.1__release-record-sync__commit-541f575`
+**Tag:** `v2.12.1__release-record-sync__commit-aabc664`
 
 ### Added
 - `RELEASE_NOTES.md` — entries for v2.12.0 (Beacon) and v2.11.0 (Current)
@@ -726,7 +726,7 @@ Curated source image library added to `pics/` — Edison, Whybricks, Logo, and 2
 
 ## [2.12.0] — 2026-05-06
 
-**Tag:** `v2.12.0__polish-seo-analytics__commit-6c9a427`
+**Tag:** `v2.12.0__polish-seo-analytics__commit-7701534`
 
 ### Summary
 Final polish, SEO, and analytics pass for the static marketing site. Adds sitewide Plausible analytics, completes social card metadata coverage, refreshes sitemap metadata, tightens the 404 recovery path, and records the analytics decision in project planning docs.
@@ -745,7 +745,7 @@ Final polish, SEO, and analytics pass for the static marketing site. Adds sitewi
 
 ## [2.11.0] — 2026-05-05
 
-**Tag:** `v2.11.0__release-notes-current__commit-ecb25ab`
+**Tag:** `v2.11.0__release-notes-current__commit-928a381`
 
 ### Added
 - `RELEASE_NOTES.md` — entries for v2.7.0 through v2.10.0
@@ -757,7 +757,7 @@ Final polish, SEO, and analytics pass for the static marketing site. Adds sitewi
 
 ## [2.10.0] — 2026-05-05
 
-**Tag:** `v2.10.0__commit-notes-current__commit-3977f77`
+**Tag:** `v2.10.0__commit-notes-current__commit-45c2c73`
 
 ### Added
 - `COMMIT_NOTES.md` — v2.7.0, v2.8.0, and v2.9.0 entries backlogged with full summary, description, and stats
@@ -769,7 +769,7 @@ Final polish, SEO, and analytics pass for the static marketing site. Adds sitewi
 
 ## [2.9.0] — 2026-05-05
 
-**Tag:** `v2.9.0__docs-scaffold-aligned__commit-b0a13f2`
+**Tag:** `v2.9.0__docs-scaffold-aligned__commit-83e2ce4`
 
 ### Changed
 - `CHANGELOG.md` — fixed broken versioning link (`docs/strategy/version-number-system.md` → `docs/VERSIONING.md`); added [2.8.0] entry
@@ -783,7 +783,7 @@ Final polish, SEO, and analytics pass for the static marketing site. Adds sitewi
 
 ## [2.8.0] — 2026-05-05
 
-**Tag:** `v2.8.0__docs-scaffold-complete__commit-cb62d55`
+**Tag:** `v2.8.0__docs-scaffold-complete__commit-a540d23`
 
 ### Summary
 Full project documentation library scaffolded via `Documents/00 Core Documents/00_RUN_FIRST.md`. Establishes authoritative reference docs for strategy, design, content, accessibility, performance, testing, deployment, and versioning so agents have complete source material before making content or code changes.
@@ -824,7 +824,7 @@ Full project documentation library scaffolded via `Documents/00 Core Documents/0
 
 ## [2.7.0] — 2026-05-05
 
-**Tag:** `v2.7.0__release-notes-reform__commit-2600d9d`
+**Tag:** `v2.7.0__release-notes-reform__commit-837bd5b`
 
 ### Changed
 - `RELEASE_NOTES.md` — all version headers rewritten to `vX.Y.Z - YYYY-MM-DD - CodeName` format; proper-word code names applied across all versions; v2.5.0 (Ledger) and v2.6.0 (Chronicle) entries added; redundant bold sub-headers removed
@@ -833,7 +833,7 @@ Full project documentation library scaffolded via `Documents/00 Core Documents/0
 
 ## [2.6.0] — 2026-05-05
 
-**Tag:** `v2.6.0__release-notes-codenames__commit-b3f3bf3`
+**Tag:** `v2.6.0__release-notes-codenames__commit-a8c6428`
 
 ### Added
 - `RELEASE_NOTES.md` — code name and canonical tag line added to every version header; backfilled v2.1.0 (Pulse) and v2.4.0 (Archive) entries which were missing from the release log
@@ -845,7 +845,7 @@ Full project documentation library scaffolded via `Documents/00 Core Documents/0
 
 ## [2.5.0] — 2026-05-05
 
-**Tag:** `v2.5.0__commit-notes-baseline__commit-d19389d`
+**Tag:** `v2.5.0__commit-notes-baseline__commit-4428f41`
 
 ### Added
 - `COMMIT_NOTES.md` — structured commit log documenting all commits on `main`: summary, description, file stats, and canonical tag per entry
@@ -855,7 +855,7 @@ Full project documentation library scaffolded via `Documents/00 Core Documents/0
 
 ## [2.4.0] — 2026-05-05
 
-**Tag:** `v2.4.0__project-docs-baseline__commit-9e87d2b`
+**Tag:** `v2.4.0__project-docs-baseline__commit-2cfe46a`
 
 ### Added
 - `Documents/00 Core Documents/` — 11 Claude Code prompt files: run-first, repo planning, scaffolding, strategy, architecture, CLAUDE.md spec, workflow, plan template, versioning, first task, and Codex bridge
@@ -938,7 +938,7 @@ Pre-launch polish pass. Fixes broken CSS tokens on interior pages, wires GSAP an
 
 ## [2.1.0] — 2026-04-25
 
-**Tag:** `v2.1.0__animation-richness__commit-01cd06d`
+**Tag:** `v2.1.0__animation-richness__commit-ac03343`
 
 ### Summary
 Animation system enriched with extended stagger sequences and scroll-triggered reveals across all interior pages.

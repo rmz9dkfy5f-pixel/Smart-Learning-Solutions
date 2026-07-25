@@ -119,7 +119,7 @@ mobile (header, nav-open, footer). Resolves `AUDIT.md` L-2 as a side effect. See
 Staging (`smart-learning-solutions.craftandconscious.com`) was found serving a stale deploy from
 ~2026-06-19/23 — predating the Web3Forms migration and OG-image PNG conversion. Both forms were
 live-POSTing to the dead `formspree.io/f/REPLACE_ME` endpoint. Redeployed current `main`
-(`2b39333`) via a new `scripts/deploy-staging.sh`, which uses an explicit path allowlist (not a
+(`cebdea8`) via a new `scripts/deploy-staging.sh`, which uses an explicit path allowlist (not a
 denylist) so internal docs structurally cannot be shipped regardless of what new internal files
 land in the repo later. Verified via `curl`: forms now hit Web3Forms, OG image is the PNG, all
 pages are live and current, security headers and internal-path 404s (from SR-008) unaffected. See

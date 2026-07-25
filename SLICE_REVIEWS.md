@@ -7,7 +7,7 @@ Record of significant work slices reviewed before and after implementation.
 ## SR-016 — Deploy v2.27.0 + v2.26.1 to Staging (server-side, no version bump)
 **Date:** 2026-07-24
 **Version:** v2.27.0 (already tagged; deploy-only, no repo code change)
-**Commit:** `9ecd5da`
+**Commit:** `9f78945`
 
 **Slice:** Deploy the already-tagged v2.27.0 (two-line logo watermark, SR-014) and the
 previously-undeployed v2.26.1 (H-4 overlay-timeout fix, SR-013) to staging via
@@ -72,7 +72,7 @@ mode hit here.
 ## SR-014 — Two-Line Logo Lockup Watermark on About Page (v2.27.0)
 **Date:** 2026-07-23
 **Version:** v2.27.0
-**Commit:** `1160a69`
+**Commit:** `bb2d500`
 
 **Slice:** Close the non-blocking open item flagged at the end of the v2.26.0 logo session
 (SR-010): place the full two-line lockup, including the "solutions" script swoosh deliberately
@@ -183,7 +183,7 @@ closed), and `DECISION_LOG.md` (new ADR-018).
 ## SR-011 — Deploy v2.26.0 to Staging + Reference-File Hygiene (server-side + housekeeping, no version bump)
 **Date:** 2026-07-22
 **Version:** v2.26.0 (deployed, not newly released)
-**Commit:** `ad4e224` (docs/housekeeping only — the logo code itself already shipped in `7594701`/`3ae77b9`)
+**Commit:** `cd75f69` (docs/housekeeping only — the logo code itself already shipped in `dd36fe6`/`a3efcf8`)
 
 **Slice:** Close out two loose ends explicitly flagged (not silently done) at the end of the
 SR-010 logo session: (1) staging still served the pre-logo placeholder wordmark, since deploying
@@ -215,7 +215,7 @@ itself correctly still `404`s, ADR-009 `internal`); both forms reference
 headers present (CSP still report-only); internal paths (`/AUDIT.md`, `/.git/config`,
 `/.claude/settings.json`, `/scripts/deploy-staging.sh`) all still `404`.
 
-**Post-review result:** Staging now reflects `main` @ `3ae77b9` (v2.26.0) — the real client logo
+**Post-review result:** Staging now reflects `main` @ `a3efcf8` (v2.26.0) — the real client logo
 is live, not just shipped to the repo. The black-line-art reference asset is now a properly
 named, tracked file instead of an untracked leftover with no decision behind it.
 
@@ -229,7 +229,7 @@ path in the SR-010 session).
 ## SR-010 — Client Logo Implementation (v2.26.0)
 **Date:** 2026-07-22
 **Version:** v2.26.0
-**Commit:** `7594701`
+**Commit:** `dd36fe6`
 
 **Slice:** Replace the placeholder inline-SVG-badge + text wordmark in `components.js`'s
 `buildHeader()`/`buildFooter()` with the client's actual logo image, owner-confirmed as the
@@ -271,9 +271,9 @@ live across all pages and the documented regression zone before shipping.
 ## SR-009 — Staging Redeploy + Deploy-Allowlist Hardening (v2.25.0)
 **Date:** 2026-07-19
 **Version:** v2.25.0
-**Commit:** `b0e0371`
+**Commit:** `25cc2e2`
 
-**Slice:** Redeploy current `main` (HEAD `2b39333`) to the staging VPS, replacing a stale
+**Slice:** Redeploy current `main` (HEAD `cebdea8`) to the staging VPS, replacing a stale
 deployment last touched ~2026-06-19/23, and add a durable, allowlist-based deploy mechanism so
 internal-only files can never be shipped by a future careless deploy (R-004).
 
@@ -363,7 +363,7 @@ touched (confirmed via diff).
 ## SR-007 — OG Image PNG Conversion (v2.24.0)
 **Date:** 2026-07-18
 **Version:** v2.24.0
-**Commit:** `d7f48fd`
+**Commit:** `45fa82e`
 
 **Slice:** Resolve M-1 (`AUDIT.md`) — convert `og-image.svg` to a 1200×630 PNG and repoint all
 `og:image` references; reconcile tracking docs.
@@ -400,7 +400,7 @@ and left in place.
 ## SR-006 — Web3Forms Merge + Hosting Decision (v2.23.0)
 **Date:** 2026-07-18
 **Version:** v2.23.0
-**Commit:** `7031e21`
+**Commit:** `c34a72e`
 
 **Slice:** Review and merge `feat/web3forms-integration` into `main`; confirm the two items that ADR-015 explicitly left open.
 
@@ -422,7 +422,7 @@ and left in place.
 ## SR-005 — Second Production-Readiness Audit (v2.21.0)
 **Date:** 2026-06-27
 **Version:** v2.21.0
-**Commit:** `639159d`
+**Commit:** `2d30ad0`
 
 **Slice:** Full read-only production-readiness audit — multi-agent pass across all 10 HTML pages, `src/js/`, `src/css/main.css`, `src/images/`, deployment config, security posture, SEO, accessibility, performance, and all governance docs.
 
@@ -433,7 +433,7 @@ and left in place.
 **Findings:**
 - **P0 Launch Blockers (unchanged):** (1) Both forms POST to `REPLACE_ME` Formspree endpoint — zero conversion possible; (2) hosting platform unconfirmed — Wix incompatibility unresolved (ADR-013)
 - **P1 High Risk (unchanged):** Internal docs exposed on deploy (R-004); OG image is SVG (M-1); privacy policy unpublished; security headers not applied at server level
-- **Notable confirmation:** C-2 (cursor CSS gate) is **verified fixed** in current code — `cursor: none` gated by `body.custom-cursor-enabled` at `src/css/main.css:135-142`; the finding in AUDIT.md was stale (fixed in `43ee9f4`, v2.15.3)
+- **Notable confirmation:** C-2 (cursor CSS gate) is **verified fixed** in current code — `cursor: none` gated by `body.custom-cursor-enabled` at `src/css/main.css:135-142`; the finding in AUDIT.md was stale (fixed in `9ea4936`, v2.15.3)
 
 **Post-review result:** No code changes executed. 5 governance/status docs updated to reflect 2026-06-27 audit result. Overall result: BLOCKED (unchanged from v2.20.0). Full audit report archived in `~/.claude/plans/encapsulated-sauteeing-mist.md`.
 
@@ -444,7 +444,7 @@ and left in place.
 ## SR-004 — V3.4 Project Starter Kit Migration (v2.19.0)
 **Date:** 2026-06-21
 **Version:** v2.19.0
-**Commit:** `2100943`
+**Commit:** `25c54ec`
 
 **Slice:** Install Project Starter Kit V3.4 in MIGRATE_EXISTING_PROJECT mode — governance docs, dual-agent skills, AI ops infrastructure.
 
@@ -467,7 +467,7 @@ and left in place.
 ## SR-003 — Mobile Responsive Fixes (v2.18.0)
 **Date:** 2026-06-19
 **Version:** v2.18.0
-**Commit:** `ca43fb2`
+**Commit:** `d853f03`
 
 **Slice:** Four-slice mobile responsive fix pass — nav overlay, photo crop, eyebrow specificity, hamburger breakpoint.
 

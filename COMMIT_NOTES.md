@@ -8,7 +8,7 @@ commit hash, date, summary, and description.
 ## 2026-07-24 — Staging Deploy: v2.27.0 + v2.26.1 (no version bump)
 **Tag:** — (none; deploy-only, no code change, no new version — follows this repo's established
 precedent for operational-deploy commits, e.g. SR-009, SR-011)
-**Commit:** `9ecd5da` · branch `main` · 2026-07-24
+**Commit:** `9f78945` · branch `main` · 2026-07-24
 **Type:** `chore` (deploy) + `docs`
 
 **Summary:** Deploy the already-shipped v2.27.0 (logo watermark) and the previously-undeployed
@@ -37,7 +37,7 @@ from the 2026-07-23 closeout.
 
 ## 2026-07-23 — H-3 Analytics Swap: Cloudflare Web Analytics Attempted, Blocked (no version bump)
 **Tag:** — (none; no code change, no new version)
-**Commit:** `b91f802` · branch `main` · 2026-07-23
+**Commit:** `7e2af1c` · branch `main` · 2026-07-23
 **Type:** `docs`
 
 **Summary:** Document the decision to replace Plausible with a free analytics provider, and the
@@ -67,8 +67,8 @@ flow, with the owner sharing screenshots at each step — the bug was found this
 ---
 
 ## 2026-07-23 — About Page Logo Watermark (v2.27.0)
-**Tag:** `v2.27.0__about-page-logo-watermark__commit-1160a69`
-**Commit:** `1160a69` · branch `main` · 2026-07-23
+**Tag:** `v2.27.0__about-page-logo-watermark__commit-9caee7e`
+**Commit:** `bb2d500` · branch `main` · 2026-07-23
 **Type:** `feat`
 
 **Summary:** Place the full two-line logo lockup (with the "solutions" swoosh) as a subtle
@@ -102,8 +102,8 @@ unaffected.
 ---
 
 ## v2.26.1 — Page-Transition Overlay Timeout Fallback
-**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862`
-**Commit:** `c8ac862` · branch `main` · 2026-07-22
+**Tag:** `v2.26.1__page-transition-overlay-timeout-fallback__commit-e1950fb`
+**Commit:** `9a3e13e` · branch `main` · 2026-07-22
 **Type:** `fix`
 
 **Summary:** Add a safety timeout to the shared `.is-navigating` page-transition overlay so an
@@ -139,7 +139,7 @@ rather than staying stuck.
 ## 2026-07-22 — M-7 Closed as Not Applicable (no version bump)
 **Tag:** — (none; docs-only, no code change, no new version — follows this repo's established
 precedent for housekeeping/tracking-only commits, e.g. SR-008, SR-011)
-**Commit:** `f4e3053` · branch `main` · 2026-07-22
+**Commit:** `b2778f0` · branch `main` · 2026-07-22
 **Type:** `docs`
 
 **Summary:** Close `BACKLOG.md` M-7 (`book.html`'s `_next` redirect field) as not applicable — the
@@ -171,7 +171,7 @@ confirmed no `_next`/redirect field present in either file, and confirmed the
 **Tag:** — (none; docs/housekeeping-only, no code change, no new version — follows this repo's
 established precedent for small governance/tracking-only and operational-deploy commits, e.g.
 SR-008)
-**Commit:** `ad4e224` · branch `main` · 2026-07-22
+**Commit:** `cd75f69` · branch `main` · 2026-07-22
 **Type:** `chore` (deploy) + `docs`
 
 **Summary:** Deploy the already-shipped v2.26.0 client logo to staging; resolve the other loose
@@ -179,7 +179,7 @@ end flagged at that session's close by tracking the unused black-line-art refere
 real name
 
 **Description:**
-- The client-logo session (v2.26.0, commit `7594701`) had ended with two loose ends explicitly
+- The client-logo session (v2.26.0, commit `dd36fe6`) had ended with two loose ends explicitly
   flagged rather than silently left: staging hadn't been redeployed, and an unused reference
   file sat untracked. User asked directly to close both out.
 - Verified staging was genuinely stale before touching anything, per `LESSONS_LEARNED.md` L-016
@@ -208,8 +208,8 @@ resolves, all 5 SR-008 security headers present, internal paths (`/AUDIT.md`, `/
 ---
 
 ## v2.26.0 — Client Logo Implementation
-**Tag:** `v2.26.0__client-logo-implementation__commit-7594701`
-**Commit:** `7594701` · branch `main` · 2026-07-22
+**Tag:** `v2.26.0__client-logo-implementation__commit-dd36fe6`
+**Commit:** `dd36fe6` · branch `main` · 2026-07-22
 **Type:** `feat` (brand asset) + `fix` (AUDIT.md L-2) + `docs`
 
 **Summary:** Replace the placeholder inline-SVG-badge + text wordmark with the client's actual
@@ -252,8 +252,8 @@ and the mobile footer.
 ---
 
 ## v2.25.0 — Staging Redeploy + Deploy-Allowlist Hardening
-**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-b0e0371`
-**Commit:** `b0e0371` · branch `main` · 2026-07-19
+**Tag:** `v2.25.0__staging-redeploy-deploy-allowlist__commit-25cc2e2`
+**Commit:** `25cc2e2` · branch `main` · 2026-07-19
 **Type:** `fix` (staging content) + `feat` (deploy tooling) + `docs`
 
 **Summary:** Redeploy stale staging content to current `main`; add an allowlist-based deploy
@@ -272,7 +272,7 @@ script so internal docs can never be shipped again (2026-07-19)
   the dry-run-flag handling, caught by the dry run itself before any real transfer occurred
 - Took a timestamped `cp -a` backup of the live directory before the real deploy
   (`smart-learning-solutions.bak-20260720-034206`)
-- Redeployed current `main` (`2b39333`) to staging via the new script
+- Redeployed current `main` (`cebdea8`) to staging via the new script
 - Updated `docs/DEPLOYMENT.md` (§1, new §11, corrected §9 rollback),
   `docs/governance/PROJECT_RISK_REGISTER.md` (R-004: mitigated for staging, open for
   production), `LESSONS_LEARNED.md` (resolved L-013, new L-016), `DECISION_LOG.md` (new ADR-016
@@ -290,7 +290,7 @@ security headers unaffected; internal paths (`/AUDIT.md`, `/.git/config`, `/.cla
 
 ## 2026-07-19 — Nginx Security Headers on Staging (docs-only, no version bump)
 **Tag:** — (none; docs-only, no code diff, no version bump — follows this repo's established precedent for small governance/tracking-only commits)
-**Commit:** `198ac4f` · branch `main` · 2026-07-19
+**Commit:** `46fa228` · branch `main` · 2026-07-19
 **Type:** `docs` (records a server-side infrastructure change made outside this repo)
 
 **Summary:** Apply nginx security headers to the staging VPS per `docs/DEPLOYMENT.md` §7; document the rollout and a corrected SSH-access detail across tracking files
@@ -322,8 +322,8 @@ the pre-change backup showed exactly one added line, nothing else touched.
 ---
 
 ## v2.24.0 — OG Image PNG Conversion
-**Tag:** `v2.24.0__og-image-png-conversion__commit-d7f48fd`
-**Commit:** `d7f48fd` · branch `main` · 2026-07-18
+**Tag:** `v2.24.0__og-image-png-conversion__commit-45fa82e`
+**Commit:** `45fa82e` · branch `main` · 2026-07-18
 **Type:** `fix` (SEO/social-share) + `docs`
 
 **Summary:** Convert og-image.svg to PNG 1200×630 for social share compatibility, resolving M-1 (v2.24.0)
@@ -349,8 +349,8 @@ to skip).
 ---
 
 ## v2.23.0 — Web3Forms Merge + Hosting Decision
-**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-7031e21`
-**Commit:** `7031e21` · branch `main` · 2026-07-18
+**Tag:** `v2.23.0__web3forms-merge-hosting-proposal__commit-c34a72e`
+**Commit:** `c34a72e` · branch `main` · 2026-07-18
 **Type:** `docs` (merge of prior `feat` work)
 
 **Summary:** Merge Web3Forms migration into main; log confirmed inbox delivery and self-host proposal (v2.23.0)
@@ -367,8 +367,8 @@ to skip).
 ---
 
 ## v2.22.0 — Model Selection Gate
-**Tag:** `v2.22.0__model-selection-gate__commit-51cdd56`
-**Commit:** `51cdd56` · branch `main` · 2026-07-10
+**Tag:** `v2.22.0__model-selection-gate__commit-8f6cde7`
+**Commit:** `8f6cde7` · branch `main` · 2026-07-10
 **Type:** `docs`
 
 **Summary:** Adopt Model Selection Gate (v2.22.0)
@@ -393,8 +393,8 @@ other nine AntBrainOS-tracked repos; no build/lint/test tooling exists for this 
 ---
 
 ## v2.21.0 — Second Production-Readiness Audit + Documentation Update
-**Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-639159d`
-**Commit:** `639159d` · branch `audit/production-readiness` · 2026-06-27
+**Tag:** `v2.21.0__second-production-readiness-audit-docs__commit-2d30ad0`
+**Commit:** `2d30ad0` · branch `audit/production-readiness` · 2026-06-27
 **Type:** `docs`
 
 **Summary:** docs(audit): second production-readiness audit + doc update (v2.21.0)
@@ -408,13 +408,13 @@ other nine AntBrainOS-tracked repos; no build/lint/test tooling exists for this 
 - `docs/governance/REPO_HEALTH_CHECK.md` — Last Health Check updated to 2026-06-27; prior entry preserved as Previous
 - `docs/governance/RELEASE_GATE.md` — Release Decision date re-confirmed 2026-06-27; C-2 fix noted; held items clarified
 
-**Verified:** All 5 files staged explicitly; `git diff` reviewed; commits `639159d` + `fb0d52e` confirmed on remote.
+**Verified:** All 5 files staged explicitly; `git diff` reviewed; commits `2d30ad0` + `dae9ff9` confirmed on remote.
 
 ---
 
 ## v2.20.0 — V3.4 Production-Readiness Audit + Portable Doc/Governance Fixes
-**Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-ed9b0bb`
-**Commit:** `ed9b0bb` · branch `main` · 2026-06-25
+**Tag:** `v2.20.0__audit-privacy-policy-doc-fixes__commit-97ad30c`
+**Commit:** `97ad30c` · branch `main` · 2026-06-25
 **Type:** `docs`
 
 **Summary:** docs: V3.4 production-readiness audit + portable governance fixes (v2.20.0)
@@ -438,8 +438,8 @@ other nine AntBrainOS-tracked repos; no build/lint/test tooling exists for this 
 ---
 
 ## v2.19.0 — V3.4 Project Starter Kit Migration
-**Tag:** `v2.19.0__v34-starter-kit-migration__commit-2100943`
-**Commit:** `2100943` · branch `main` · 2026-06-21
+**Tag:** `v2.19.0__v34-starter-kit-migration__commit-25c54ec`
+**Commit:** `25c54ec` · branch `main` · 2026-06-21
 **Type:** `chore`
 
 **Summary:** chore(tooling): migrate Project Starter Kit V3.4 into repo
@@ -457,8 +457,8 @@ other nine AntBrainOS-tracked repos; no build/lint/test tooling exists for this 
 ---
 
 ## v2.18.1 — Mobile-Nav CTA Label Centering
-**Tag:** `v2.18.1__mobile-nav-cta-center-fix__commit-e0127b0`
-**Commit:** `e0127b0` · branch `fix/mobile-responsive-20260619` · 2026-06-19
+**Tag:** `v2.18.1__mobile-nav-cta-center-fix__commit-599bed0`
+**Commit:** `599bed0` · branch `fix/mobile-responsive-20260619` · 2026-06-19
 **Type:** `fix`
 
 **Summary:** fix(mobile): center Request a Workshop CTA label in mobile nav
@@ -475,8 +475,8 @@ other nine AntBrainOS-tracked repos; no build/lint/test tooling exists for this 
 ---
 
 ## v2.18.0 — Mobile Responsive Fixes
-**Tag:** `v2.18.0__mobile-responsive-fixes__commit-4c92cd2`
-**Code commit:** `ca43fb2` · docs commit `4c92cd2` · 2026-06-19
+**Tag:** `v2.18.0__mobile-responsive-fixes__commit-19144b6`
+**Code commit:** `d853f03` · docs commit `19144b6` · 2026-06-19
 **Type:** `fix`
 
 **Summary:** fix(mobile): full-screen nav overlay, hero crop fixes, tablet breakpoint
@@ -498,7 +498,7 @@ other nine AntBrainOS-tracked repos; no build/lint/test tooling exists for this 
 
 ## v2.17.0 — Full Production-Readiness Audit
 **Tag:** `v2.17.0`
-**Commit:** `c002cd2` · 2026-06-17
+**Commit:** `9ad4410` · 2026-06-17
 **Type:** `docs`
 
 **Summary:** docs(audit): add full production-readiness audit to plans/
@@ -515,7 +515,7 @@ other nine AntBrainOS-tracked repos; no build/lint/test tooling exists for this 
 
 ## v2.16.1 — VPS nginx Routing Fix and SSH Access
 **Tag:** `v2.16.1`
-**Commit:** `d920627` · 2026-06-17
+**Commit:** `995228e` · 2026-06-17
 **Type:** `fix`
 
 **Summary:** fix(vps): nginx clean URL routing and custom 404 for smart-learning-solutions
@@ -534,7 +534,7 @@ other nine AntBrainOS-tracked repos; no build/lint/test tooling exists for this 
 
 ## v2.16.0 — Add Project Starter Kit v3.3 and Push Workflow Prompts
 **Tag:** `v2.16.0`
-**Commit:** `8dc05d7` · 2026-06-16
+**Commit:** `b85af1b` · 2026-06-16
 **Type:** `chore`
 
 **Summary:** chore(tooling): add project starter kit v3.3 and push workflow prompts
@@ -663,14 +663,14 @@ No application code changed. No existing content deleted. No files renamed.
 
 ## v2.15.1 — Hash Correction
 **Tag:** `v2.15.1`
-**Commit:** `04875a3` · 2026-05-22
+**Commit:** `7df18e5` · 2026-05-22
 **Type:** `chore`
 
-**Summary:** chore(docs): set v2.15.0 commit hash to b192aff in release records
+**Summary:** chore(docs): set v2.15.0 commit hash to bb0bcfa in release records
 
 **Description:**
 After amending the v2.15.0 docs-sync commit, the commit hash shifted. This
-follow-up corrects the hash reference to `b192aff` in COMMIT_NOTES.md,
+follow-up corrects the hash reference to `bb0bcfa` in COMMIT_NOTES.md,
 PROGRESS_NOTE.md, and PROGRESS_NOTES.md.
 
 **Files changed:**
@@ -682,7 +682,7 @@ PROGRESS_NOTE.md, and PROGRESS_NOTES.md.
 
 ## v2.15.0 — Docs Sync
 **Tag:** `v2.15.0`
-**Commit:** `b192aff` · 2026-05-22
+**Commit:** `bb0bcfa` · 2026-05-22
 **Type:** `docs`
 
 **Summary:** docs(release): sync all docs to v2.15.0
@@ -703,8 +703,8 @@ format from verbose slug style (`vX.Y.Z__slug__commit-hash`) to clean semver
 ---
 
 ## v2.14.8 — Prompts Update File List
-**Tag:** `v2.14.8__prompts-update-file-list__commit-cc88cfd`
-**Commit:** `cc88cfd` · 2026-05-16
+**Tag:** `v2.14.8__prompts-update-file-list__commit-56be1ea`
+**Commit:** `56be1ea` · 2026-05-16
 **Type:** `chore`
 
 **Summary:** chore(prompts): add PROGRESS_NOTES.md to Update.md file list
@@ -719,7 +719,7 @@ record and `PROGRESS_NOTES.md` for the cumulative progress log.
 ---
 
 ## v2.14.7 — Docs Sync v2.14.4–v2.14.7
-**Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72`
+**Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-0715806`
 **Commit:** `894bc72` · 2026-05-16
 **Type:** `docs`
 
@@ -735,8 +735,8 @@ Add CONTEXT.md and STATUS.md creation to ROADMAP.md Completed section.
 ---
 
 ## v2.14.6 — Session Progress Note
-**Tag:** `v2.14.6__session-progress-note__commit-431f540`
-**Commit:** `431f540` · 2026-05-16
+**Tag:** `v2.14.6__session-progress-note__commit-d72e671`
+**Commit:** `d72e671` · 2026-05-16
 **Type:** `docs`
 
 **Summary:** docs(session): progress note for v2.14.3–v2.14.5 session
@@ -751,8 +751,8 @@ table, and next milestone.
 ---
 
 ## v2.14.5 — Context and Status Docs
-**Tag:** `v2.14.5__context-and-status-docs__commit-c4a7d9d`
-**Commit:** `c4a7d9d` · 2026-05-15
+**Tag:** `v2.14.5__context-and-status-docs__commit-7ea223c`
+**Commit:** `7ea223c` · 2026-05-15
 **Type:** `docs`
 
 **Summary:** docs: add CONTEXT.md and STATUS.md root reference files
@@ -769,8 +769,8 @@ table, audit findings summary, next actions table, and deferred items.
 ---
 
 ## v2.14.4 — Ignore .claude/ Local Settings
-**Tag:** `v2.14.4__ignore-claude-local-settings__commit-1055fd7`
-**Commit:** `1055fd7` · 2026-05-15
+**Tag:** `v2.14.4__ignore-claude-local-settings__commit-7269da5`
+**Commit:** `7269da5` · 2026-05-15
 **Type:** `chore`
 
 **Summary:** chore(git): ignore .claude/ local settings directory
@@ -785,7 +785,7 @@ the directory from appearing as untracked in GitHub Desktop.
 ---
 
 ## v2.14.3 — Audit Doc and Docs Sync
-**Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028`
+**Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-46fcf2a`
 **Commit:** `f8f8028` · 2026-05-15
 **Type:** `docs`
 
@@ -809,8 +809,8 @@ completion to ROADMAP.md Completed section.
 ---
 
 ## v2.14.2 — Docs Current to v2.14.1
-**Tag:** `v2.14.2__docs-current-to-v2-14-1__commit-179f16a`
-**Commit:** `179f16a` · 2026-05-15
+**Tag:** `v2.14.2__docs-current-to-v2-14-1__commit-53e752e`
+**Commit:** `53e752e` · 2026-05-15
 **Type:** `docs`
 
 **Summary:** docs(release): bring all docs current to v2.14.1
@@ -829,8 +829,8 @@ Create PROGRESS_NOTE.md as current-state snapshot.
 ---
 
 ## v2.14.1 — Prompts Workflow Templates
-**Tag:** `v2.14.1__prompts-workflow-templates__commit-9457ab9`
-**Commit:** `9457ab9` · 2026-05-15
+**Tag:** `v2.14.1__prompts-workflow-templates__commit-2416a94`
+**Commit:** `2416a94` · 2026-05-15
 **Type:** `chore`
 
 **Summary:** chore(prompts): add saved prompt templates for commit and update workflows
@@ -845,8 +845,8 @@ project's standard workflows: "Commit notes" for GitHub commit-style notes,
 ---
 
 ## v2.14.0 — Programs Launch & Site Hardening
-**Tag:** `v2.14.0__programs-launch-site-hardening__commit-fcdfda6`
-**Commit:** `fcdfda6` · 2026-05-15
+**Tag:** `v2.14.0__programs-launch-site-hardening__commit-c47d388`
+**Commit:** `c47d388` · 2026-05-15
 **Type:** `feat`
 
 **Summary:** feat(site): programs page, form hardening, cursor and nav fixes
@@ -870,8 +870,8 @@ validation, and staging header checks.
 ---
 
 ## v2.13.7 — Changelog Backfill
-**Tag:** `v2.13.7__changelog-backfill__commit-aaa3399`
-**Commit:** `aaa3399` · 2026-05-07
+**Tag:** `v2.13.7__changelog-backfill__commit-5d3b69f`
+**Commit:** `5d3b69f` · 2026-05-07
 **Type:** `docs`
 
 **Summary:** docs(changelog): backfill all missing entries v2.1.0–v2.13.6
@@ -883,8 +883,8 @@ human-readable history matches the full tagged history on main.
 ---
 
 ## v2.13.6 — Release Notes v2.13
-**Tag:** `v2.13.6__release-notes-v2-13__commit-aded593`
-**Commit:** `aded593` · 2026-05-07
+**Tag:** `v2.13.6__release-notes-v2-13__commit-7969d14`
+**Commit:** `7969d14` · 2026-05-07
 **Type:** `docs`
 
 **Summary:** docs(release): add v2.13.0–v2.13.5 release notes
@@ -896,8 +896,8 @@ Depth → Frame) to `RELEASE_NOTES.md` so the release log matches the tagged his
 ---
 
 ## v2.13.5 — Workshops Photo Cards
-**Tag:** `v2.13.5__workshops-photo-cards__commit-e75b131`
-**Commit:** `e75b131` · 2026-05-07
+**Tag:** `v2.13.5__workshops-photo-cards__commit-f9445a6`
+**Commit:** `f9445a6` · 2026-05-07
 **Type:** `feat`
 
 **Summary:** feat(workshops): photo-layered format cards and audience section
@@ -910,8 +910,8 @@ gains a photo background consistent with all other pages.
 ---
 
 ## v2.13.4 — Program Pages Photography
-**Tag:** `v2.13.4__program-pages-photography__commit-8693b15`
-**Commit:** `8693b15` · 2026-05-07
+**Tag:** `v2.13.4__program-pages-photography__commit-8c2cb8b`
+**Commit:** `8c2cb8b` · 2026-05-07
 **Type:** `feat`
 
 **Summary:** feat(programs): student proof photography on program detail pages
@@ -926,8 +926,8 @@ children-thinking photo; CTA band gains photo background.
 ---
 
 ## v2.13.3 — About Photo Redesign
-**Tag:** `v2.13.3__about-photo-redesign__commit-962def2`
-**Commit:** `962def2` · 2026-05-07
+**Tag:** `v2.13.3__about-photo-redesign__commit-7507c11`
+**Commit:** `7507c11` · 2026-05-07
 **Type:** `feat`
 
 **Summary:** feat(about): split-panel hero and photographic credential cards
@@ -941,8 +941,8 @@ added before the CTA band. CTA band gains photo background.
 ---
 
 ## v2.13.2 — Homepage Photo Redesign
-**Tag:** `v2.13.2__homepage-photo-redesign__commit-9b478f5`
-**Commit:** `9b478f5` · 2026-05-07
+**Tag:** `v2.13.2__homepage-photo-redesign__commit-45e24a1`
+**Commit:** `45e24a1` · 2026-05-07
 **Type:** `feat`
 
 **Summary:** feat(homepage): photo-driven hero, mosaic proof strip, visual credentialing
@@ -957,8 +957,8 @@ CTA band gains photo background.
 ---
 
 ## v2.13.1 — Photo CSS Utilities
-**Tag:** `v2.13.1__photo-css-utilities__commit-fbbd35b`
-**Commit:** `fbbd35b` · 2026-05-07
+**Tag:** `v2.13.1__photo-css-utilities__commit-84e3470`
+**Commit:** `84e3470` · 2026-05-07
 **Type:** `feat`
 
 **Summary:** feat(css): add photo composition utilities to design system
@@ -970,8 +970,8 @@ Adds photo background, overlay, mosaic grid, and proof-strip utility classes to
 ---
 
 ## v2.13.0 — WebP Photo Library
-**Tag:** `v2.13.0__webp-photo-library__commit-1a0c2d5`
-**Commit:** `1a0c2d5` · 2026-05-07
+**Tag:** `v2.13.0__webp-photo-library__commit-618f9ea`
+**Commit:** `618f9ea` · 2026-05-07
 **Type:** `feat`
 
 **Summary:** feat(assets): add optimised WebP photo library for visual redesign
@@ -983,8 +983,8 @@ sections, program pages, audience cards, format cards, and proof strips.
 ---
 
 ## v2.12.9 — Planning Doc Extensions
-**Tag:** `v2.12.9__planning-doc-extensions__commit-e4b9855`
-**Commit:** `e4b9855` · 2026-05-07
+**Tag:** `v2.12.9__planning-doc-extensions__commit-14301c7`
+**Commit:** `14301c7` · 2026-05-07
 **Type:** `docs`
 
 **Summary:** docs(planning): normalize planning document extensions
@@ -996,8 +996,8 @@ the project.
 ---
 
 ## v2.12.8 — Reference Doc Filename
-**Tag:** `v2.12.8__reference-doc-filename__commit-3bc8887`
-**Commit:** `3bc8887` · 2026-05-07
+**Tag:** `v2.12.8__reference-doc-filename__commit-ece23dd`
+**Commit:** `ece23dd` · 2026-05-07
 **Type:** `docs`
 
 **Summary:** docs(reference): normalize minimal docs filename
@@ -1009,8 +1009,8 @@ rest of the docs directory.
 ---
 
 ## v2.12.7 — Release Record Sync
-**Tag:** `v2.12.7__release-record-sync__commit-67cad9f`
-**Commit:** `67cad9f` · 2026-05-06
+**Tag:** `v2.12.7__release-record-sync__commit-761b35e`
+**Commit:** `761b35e` · 2026-05-06
 **Type:** `docs`
 
 **Summary:** docs(release): sync v2.12.6 records with real tag
@@ -1022,8 +1022,8 @@ created so the human-readable history references the real tagged hash.
 ---
 
 ## v2.12.6 — Program Prominence Visuals
-**Tag:** `v2.12.6__program-prominence-visuals__commit-7edcdfc`
-**Commit:** `7edcdfc` · 2026-05-06
+**Tag:** `v2.12.6__program-prominence-visuals__commit-2995955`
+**Commit:** `2995955` · 2026-05-06
 **Type:** `feat`
 
 **Summary:** feat(programs): spotlight flagship offerings with visuals
@@ -1050,8 +1050,8 @@ implementation in release notes, changelog, and planning docs.
 ---
 
 ## v2.12.1 — Release Record Sync
-**Tag:** `v2.12.1__release-record-sync__commit-541f575`
-**Commit:** `541f575` · 2026-05-05
+**Tag:** `v2.12.1__release-record-sync__commit-aabc664`
+**Commit:** `aabc664` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs(release): sync v2.12.0 notes with real commit hash
@@ -1071,8 +1071,8 @@ the tagged history on `main`.
 ---
 
 ## v2.12.0 — Polish, SEO & Analytics Completion
-**Tag:** `v2.12.0__polish-seo-analytics__commit-6c9a427`
-**Commit:** `6c9a427` · 2026-05-05
+**Tag:** `v2.12.0__polish-seo-analytics__commit-7701534`
+**Commit:** `7701534` · 2026-05-05
 **Type:** `feat`
 
 **Summary:** feat(seo): complete polish, analytics, and metadata pass
@@ -1097,8 +1097,8 @@ decision in planning docs.
 ---
 
 ## v2.11.0 — Release Notes Current
-**Tag:** `v2.11.0__release-notes-current__commit-ecb25ab`
-**Commit:** `ecb25ab` · 2026-05-05
+**Tag:** `v2.11.0__release-notes-current__commit-928a381`
+**Commit:** `928a381` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: update RELEASE_NOTES with v2.7.0–v2.10.0 and fix stale hashes
@@ -1117,8 +1117,8 @@ pre-rewrite hashes on older tag lines.
 ---
 
 ## v2.10.0 — Commit Notes Current
-**Tag:** `v2.10.0__commit-notes-current__commit-3977f77`
-**Commit:** `3977f77` · 2026-05-05
+**Tag:** `v2.10.0__commit-notes-current__commit-45c2c73`
+**Commit:** `45c2c73` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: backlog v2.7.0–v2.9.0 into COMMIT_NOTES and fix stale hashes
@@ -1137,8 +1137,8 @@ references match the actual tagged history.
 ---
 
 ## v2.9.0 — Doc Scaffold Alignment + Open Decisions + Changelog
-**Tag:** `v2.9.0__docs-scaffold-aligned__commit-b0a13f2`
-**Commit:** `b0a13f2` · 2026-05-05
+**Tag:** `v2.9.0__docs-scaffold-aligned__commit-83e2ce4`
+**Commit:** `83e2ce4` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: complete doc scaffold alignment check, open decisions, and changelog
@@ -1160,8 +1160,8 @@ to open decisions. Added the v2.8.0 changelog entry.
 ---
 
 ## v2.8.0 — Full Documentation Scaffold
-**Tag:** `v2.8.0__docs-scaffold-complete__commit-cb62d55`
-**Commit:** `cb62d55` · 2026-05-05
+**Tag:** `v2.8.0__docs-scaffold-complete__commit-a540d23`
+**Commit:** `a540d23` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: scaffold full project documentation library from 00_RUN_FIRST.md
@@ -1206,8 +1206,8 @@ authoritative source material before making content or code changes.
 ---
 
 ## v2.7.0 — Release Notes Reform
-**Tag:** `v2.7.0__release-notes-reform__commit-2600d9d`
-**Commit:** `2600d9d` · 2026-05-05
+**Tag:** `v2.7.0__release-notes-reform__commit-837bd5b`
+**Commit:** `837bd5b` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: reformat RELEASE_NOTES to GitHub style with proper code names
@@ -1229,7 +1229,7 @@ Remove redundant bold sub-headers — sections use ### only.
 
 ## Untagged — Commit Notes Backfill for v2.5.0 and v2.6.0
 **Tag:** _(none)_
-**Commit:** `619becc` · 2026-05-05
+**Commit:** `4c77245` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: backlog v2.5.0 and v2.6.0 entries into COMMIT_NOTES
@@ -1249,8 +1249,8 @@ release snapshots in the repo.
 ---
 
 ## v2.6.0 — Release Notes Code Names + Backfill
-**Tag:** `v2.6.0__release-notes-codenames__commit-b3f3bf3`
-**Commit:** `b3f3bf3` · 2026-05-05
+**Tag:** `v2.6.0__release-notes-codenames__commit-a8c6428`
+**Commit:** `a8c6428` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: update RELEASE_NOTES with code names and backfill v2.1.0 + v2.4.0
@@ -1270,8 +1270,8 @@ v2.1.0 (animation-richness) and v2.4.0 (project-docs-baseline).
 ---
 
 ## v2.5.0 — Commit Notes Baseline
-**Tag:** `v2.5.0__commit-notes-baseline__commit-d19389d`
-**Commit:** `d19389d` · 2026-05-05
+**Tag:** `v2.5.0__commit-notes-baseline__commit-4428f41`
+**Commit:** `4428f41` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: add COMMIT_NOTES.md with full commit history and tag reference
@@ -1291,8 +1291,8 @@ v1.0.0 through v2.4.0 in the new snapshot-naming standard.
 ---
 
 ## v2.4.0 — Project Documents Library + Polish/SEO Task Plan
-**Tag:** `v2.4.0__project-docs-baseline__commit-9e87d2b`
-**Commit:** `9e87d2b` · 2026-05-05
+**Tag:** `v2.4.0__project-docs-baseline__commit-2cfe46a`
+**Commit:** `2cfe46a` · 2026-05-05
 **Type:** `docs`
 
 **Summary:** docs: add project Documents library and polish/SEO task plan
@@ -1317,8 +1317,8 @@ next site improvement pass.
 ---
 
 ## v2.3.0 — Build Version Sync
-**Tag:** `v2.3.0__build-version-sync__commit-c9c9c4e`
-**Commit:** `c9c9c4e` · 2026-04-27
+**Tag:** `v2.3.0__build-version-sync__commit-2ed79ce`
+**Commit:** `2ed79ce` · 2026-04-27
 **Type:** `chore`
 
 **Summary:** chore(sync): copy Build Version updates into GitHub repo
@@ -1333,8 +1333,8 @@ across both locations.
 ---
 
 ## v2.2.0 — Hero Polish + Custom Cursor
-**Tag:** `v2.2.0__hero-polish-cursor__commit-d650ed2`
-**Commit:** `d650ed2` · 2026-04-26
+**Tag:** `v2.2.0__hero-polish-cursor__commit-7c36aa2`
+**Commit:** `7c36aa2` · 2026-04-26
 **Type:** `feat`
 
 **Summary:** feat(home): polish hero visual system and restore custom cursor
@@ -1349,8 +1349,8 @@ during the GSAP redesign. Scoped to the home page and shared animation layer.
 ---
 
 ## v2.1.0 — Animation Richness Pass
-**Tag:** `v2.1.0__animation-richness__commit-01cd06d`
-**Commit:** `01cd06d` · 2026-04-25
+**Tag:** `v2.1.0__animation-richness__commit-ac03343`
+**Commit:** `ac03343` · 2026-04-25
 **Type:** `feat`
 
 **Summary:** feat: enhance animation richness across site
@@ -1366,8 +1366,8 @@ new structured content sections.
 ---
 
 ## v2.0.0 — Dark Dramatic Redesign + GSAP Motion System
-**Tag:** `v2.0.0__dark-redesign-gsap__commit-e8ea95f`
-**Commit:** `e8ea95f` · 2026-04-24
+**Tag:** `v2.0.0__dark-redesign-gsap__commit-3b7eecd`
+**Commit:** `3b7eecd` · 2026-04-24
 **Type:** `feat`
 
 **Summary:** feat: dark dramatic redesign with full GSAP motion system
@@ -1384,8 +1384,8 @@ all pages.
 ---
 
 ## v1.1.0 — Project Documentation Infrastructure
-**Tag:** `v1.1.0__project-docs-infra__commit-e8b2634`
-**Commit:** `e8b2634` · 2026-04-24
+**Tag:** `v1.1.0__project-docs-infra__commit-5c495d7`
+**Commit:** `5c495d7` · 2026-04-24
 **Type:** `feat`
 
 **Summary:** feat: implement project documentation infrastructure
@@ -1440,42 +1440,42 @@ Repository initialisation commit. Empty baseline before site work began.
 | `v2.15.4` | `28a8ae6` | 2026-06-04 |
 | `v2.15.3` | `b378f03` | 2026-06-04 |
 | `v2.15.2` | `505a500` | 2026-06-04 |
-| `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72` | `894bc72` | 2026-05-16 |
-| `v2.14.6__session-progress-note__commit-431f540` | `431f540` | 2026-05-16 |
-| `v2.14.5__context-and-status-docs__commit-c4a7d9d` | `c4a7d9d` | 2026-05-15 |
-| `v2.14.4__ignore-claude-local-settings__commit-1055fd7` | `1055fd7` | 2026-05-15 |
-| `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028` | `f8f8028` | 2026-05-15 |
-| `v2.14.2__docs-current-to-v2-14-1__commit-179f16a` | `179f16a` | 2026-05-15 |
-| `v2.14.1__prompts-workflow-templates__commit-9457ab9` | `9457ab9` | 2026-05-15 |
-| `v2.14.0__programs-launch-site-hardening__commit-fcdfda6` | `fcdfda6` | 2026-05-15 |
-| `v2.13.7__changelog-backfill__commit-aaa3399` | `aaa3399` | 2026-05-07 |
-| `v2.13.6__release-notes-v2-13__commit-aded593` | `aded593` | 2026-05-07 |
-| `v2.13.5__workshops-photo-cards__commit-e75b131` | `e75b131` | 2026-05-07 |
-| `v2.13.4__program-pages-photography__commit-8693b15` | `8693b15` | 2026-05-07 |
-| `v2.13.3__about-photo-redesign__commit-962def2` | `962def2` | 2026-05-07 |
-| `v2.13.2__homepage-photo-redesign__commit-9b478f5` | `9b478f5` | 2026-05-07 |
-| `v2.13.1__photo-css-utilities__commit-fbbd35b` | `fbbd35b` | 2026-05-07 |
-| `v2.13.0__webp-photo-library__commit-1a0c2d5` | `1a0c2d5` | 2026-05-07 |
-| `v2.12.9__planning-doc-extensions__commit-e4b9855` | `e4b9855` | 2026-05-07 |
-| `v2.12.8__reference-doc-filename__commit-3bc8887` | `3bc8887` | 2026-05-07 |
-| `v2.12.7__release-record-sync__commit-67cad9f` | `67cad9f` | 2026-05-06 |
-| `v2.12.6__program-prominence-visuals__commit-7edcdfc` | `7edcdfc` | 2026-05-06 |
-| `v2.12.4__release-notes-v2-12-3__commit-b8c246a` | `b8c246a` | 2026-05-05 |
-| `v2.12.3__version-narrative-alignment__commit-860c1df` | `860c1df` | 2026-05-05 |
-| `v2.12.2__commit-history-backfill__commit-545016b` | `545016b` | 2026-05-05 |
-| `v2.12.1__release-record-sync__commit-541f575` | `541f575` | 2026-05-05 |
-| `v2.12.0__polish-seo-analytics__commit-6c9a427` | `6c9a427` | 2026-05-05 |
-| `v2.11.0__release-notes-current__commit-ecb25ab` | `ecb25ab` | 2026-05-05 |
-| `v2.10.0__commit-notes-current__commit-3977f77` | `3977f77` | 2026-05-05 |
-| `v2.9.0__docs-scaffold-aligned__commit-b0a13f2` | `b0a13f2` | 2026-05-05 |
-| `v2.8.0__docs-scaffold-complete__commit-cb62d55` | `cb62d55` | 2026-05-05 |
-| `v2.7.0__release-notes-reform__commit-2600d9d` | `2600d9d` | 2026-05-05 |
-| `v2.6.0__release-notes-codenames__commit-b3f3bf3` | `b3f3bf3` | 2026-05-05 |
-| `v2.5.0__commit-notes-baseline__commit-d19389d` | `d19389d` | 2026-05-05 |
-| `v2.4.0__project-docs-baseline__commit-9e87d2b` | `9e87d2b` | 2026-05-05 |
-| `v2.3.0__build-version-sync__commit-c9c9c4e` | `c9c9c4e` | 2026-04-27 |
-| `v2.2.0__hero-polish-cursor__commit-d650ed2` | `d650ed2` | 2026-04-26 |
-| `v2.1.0__animation-richness__commit-01cd06d` | `01cd06d` | 2026-04-25 |
-| `v2.0.0__dark-redesign-gsap__commit-e8ea95f` | `e8ea95f` | 2026-04-24 |
-| `v1.1.0__project-docs-infra__commit-e8b2634` | `e8b2634` | 2026-04-24 |
+| `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-0715806` | `894bc72` | 2026-05-16 |
+| `v2.14.6__session-progress-note__commit-d72e671` | `d72e671` | 2026-05-16 |
+| `v2.14.5__context-and-status-docs__commit-7ea223c` | `7ea223c` | 2026-05-15 |
+| `v2.14.4__ignore-claude-local-settings__commit-7269da5` | `7269da5` | 2026-05-15 |
+| `v2.14.3__audit-doc-and-docs-sync__commit-46fcf2a` | `f8f8028` | 2026-05-15 |
+| `v2.14.2__docs-current-to-v2-14-1__commit-53e752e` | `53e752e` | 2026-05-15 |
+| `v2.14.1__prompts-workflow-templates__commit-2416a94` | `2416a94` | 2026-05-15 |
+| `v2.14.0__programs-launch-site-hardening__commit-c47d388` | `c47d388` | 2026-05-15 |
+| `v2.13.7__changelog-backfill__commit-5d3b69f` | `5d3b69f` | 2026-05-07 |
+| `v2.13.6__release-notes-v2-13__commit-7969d14` | `7969d14` | 2026-05-07 |
+| `v2.13.5__workshops-photo-cards__commit-f9445a6` | `f9445a6` | 2026-05-07 |
+| `v2.13.4__program-pages-photography__commit-8c2cb8b` | `8c2cb8b` | 2026-05-07 |
+| `v2.13.3__about-photo-redesign__commit-7507c11` | `7507c11` | 2026-05-07 |
+| `v2.13.2__homepage-photo-redesign__commit-45e24a1` | `45e24a1` | 2026-05-07 |
+| `v2.13.1__photo-css-utilities__commit-84e3470` | `84e3470` | 2026-05-07 |
+| `v2.13.0__webp-photo-library__commit-618f9ea` | `618f9ea` | 2026-05-07 |
+| `v2.12.9__planning-doc-extensions__commit-14301c7` | `14301c7` | 2026-05-07 |
+| `v2.12.8__reference-doc-filename__commit-ece23dd` | `ece23dd` | 2026-05-07 |
+| `v2.12.7__release-record-sync__commit-761b35e` | `761b35e` | 2026-05-06 |
+| `v2.12.6__program-prominence-visuals__commit-2995955` | `2995955` | 2026-05-06 |
+| `v2.12.4__release-notes-v2-12-3__commit-722471a` | `722471a` | 2026-05-05 |
+| `v2.12.3__version-narrative-alignment__commit-deab715` | `deab715` | 2026-05-05 |
+| `v2.12.2__commit-history-backfill__commit-ba8316a` | `ba8316a` | 2026-05-05 |
+| `v2.12.1__release-record-sync__commit-aabc664` | `aabc664` | 2026-05-05 |
+| `v2.12.0__polish-seo-analytics__commit-7701534` | `7701534` | 2026-05-05 |
+| `v2.11.0__release-notes-current__commit-928a381` | `928a381` | 2026-05-05 |
+| `v2.10.0__commit-notes-current__commit-45c2c73` | `45c2c73` | 2026-05-05 |
+| `v2.9.0__docs-scaffold-aligned__commit-83e2ce4` | `83e2ce4` | 2026-05-05 |
+| `v2.8.0__docs-scaffold-complete__commit-a540d23` | `a540d23` | 2026-05-05 |
+| `v2.7.0__release-notes-reform__commit-837bd5b` | `837bd5b` | 2026-05-05 |
+| `v2.6.0__release-notes-codenames__commit-a8c6428` | `a8c6428` | 2026-05-05 |
+| `v2.5.0__commit-notes-baseline__commit-4428f41` | `4428f41` | 2026-05-05 |
+| `v2.4.0__project-docs-baseline__commit-2cfe46a` | `2cfe46a` | 2026-05-05 |
+| `v2.3.0__build-version-sync__commit-2ed79ce` | `2ed79ce` | 2026-04-27 |
+| `v2.2.0__hero-polish-cursor__commit-7c36aa2` | `7c36aa2` | 2026-04-26 |
+| `v2.1.0__animation-richness__commit-ac03343` | `ac03343` | 2026-04-25 |
+| `v2.0.0__dark-redesign-gsap__commit-3b7eecd` | `3b7eecd` | 2026-04-24 |
+| `v1.1.0__project-docs-infra__commit-5c495d7` | `5c495d7` | 2026-04-24 |
 | `v1.0.0__initial-site-rebuild__commit-633602f` | `633602f` | 2026-04-24 |

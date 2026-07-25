@@ -101,7 +101,7 @@ unaffected.
 Staging deploy of this change is a likely near-term follow-up (matching how the original logo
 work split code (SR-010) from deploy (SR-011)) — not yet done, by the owner's explicit choice of
 scope for this pass. Production hosting remains gated on OD-003. A RepoBackups snapshot folder
-(`v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862`) initially appeared to
+(`v2.26.1__page-transition-overlay-timeout-fallback__commit-e1950fb`) initially appeared to
 reference a commit absent from local git history — later explained: it was the concurrent
 session's real, pushed commit, fetched only after this session ran `git fetch` (see this entry's
 Summary). Not a stale/orphaned artifact after all.
@@ -335,7 +335,7 @@ accepted, point the domain at the VPS and complete the Gate 1 checklist in `PHAS
 
 ## v2.21.0 — 2026-06-27 — Second Production-Readiness Audit + Documentation
 
-**Commit:** `639159d` · branch `audit/production-readiness`
+**Commit:** `2d30ad0` · branch `audit/production-readiness`
 
 ### Summary
 Second V3.4 production-readiness audit. Result: **BLOCKED** — same two hard blockers (Formspree
@@ -354,7 +354,7 @@ changes; docs updated. Full audit report in plan file.
 
 ## v2.20.0 — 2026-06-25 — V3.4 Production-Readiness Audit + Portable Fixes
 
-**Commit:** `ed9b0bb` · branch `main`
+**Commit:** `97ad30c` · branch `main`
 
 ### Summary
 V3.4 production-readiness audit run across all 10 pages, shared JS/CSS, forms, SEO,
@@ -386,7 +386,7 @@ placeholders and publish on chosen platform.
 
 ## v2.19.0 — 2026-06-21 — V3.4 Project Starter Kit Migration
 
-**Commit:** `2100943` · branch `main`
+**Commit:** `25c54ec` · branch `main`
 
 ### Summary
 Project Starter Kit V3.4 migrated into the repo in MIGRATE_EXISTING_PROJECT mode. Non-destructive install: 40 new files added across `docs/governance/`, `docs/project/`, `ai/`, `.agents/skills/`. Existing AGENTS.md and CLAUDE.md preserved; V3.4 template versions quarantined in `.v34_migration_review/`. V3.4 validator: PASS.
@@ -417,7 +417,7 @@ V3.4 is installed and validated. `.claude/skills/` was already gitignored — re
 
 ## v2.18.1 — 2026-06-19 — Mobile-Nav CTA Label Centering
 
-**Commit:** `e0127b0` · branch `fix/mobile-responsive-20260619`
+**Commit:** `599bed0` · branch `fix/mobile-responsive-20260619`
 
 ### Summary
 Follow-up to the v2.18.0 mobile pass. The **Request a Workshop** CTA inside the open mobile nav rendered with its label hard against the left edge instead of centered. Fixed by restoring flex centering on the button, then bumped the `main.css` cache token so the fix is fetched on all 10 pages.
@@ -444,7 +444,7 @@ Branch `fix/mobile-responsive-20260619` — merge to `main` when owner approves.
 
 ## v2.18.0 — 2026-06-19 — Mobile Responsive Fixes
 
-**Code commit:** `ca43fb2` · branch `fix/mobile-responsive-20260619`
+**Code commit:** `d853f03` · branch `fix/mobile-responsive-20260619`
 
 ### Summary
 Four-slice mobile responsive fix pass. Diagnosed defects from on-device iPhone screenshots and fixed them across all 10 pages: full-screen nav overlay (no page content bleed-through), hamburger breakpoint raised to ≤1100px (iPad CTA clipping fixed), hero proof-photo crop and radius normalised, eyebrow font-size specificity bug fixed, and mobile nav CTA button colour fixed.
@@ -483,7 +483,7 @@ Branch `fix/mobile-responsive-20260619` is pushed. Merge to `main` when owner ap
 ## v2.17.0 — 2026-06-17 — Full Production-Readiness Audit
 
 **Tag:** `v2.17.0`
-**Commit:** `c002cd2`
+**Commit:** `9ad4410`
 
 ### Summary
 Read-only production-readiness audit of the full site. Audit confirms the site is content-complete and Gate 0 passed. Gate 1 (Launch Readiness) remains blocked on two owner-gated decisions: Formspree endpoint and production domain DNS. All dev work is otherwise done. Audit documented in `plans/2026-06-17-website-status-audit.md` for cross-machine access.
@@ -514,7 +514,7 @@ See `plans/2026-06-17-website-status-audit.md` §5 for the 5-step Gate 1 → Pro
 ## v2.16.1 — 2026-06-17 — VPS nginx Routing Fix and SSH Access
 
 **Tag:** `v2.16.1`
-**Commit:** `d920627`
+**Commit:** `995228e`
 
 ### Summary
 Diagnosed and fixed nginx 404 on `smart-learning-solutions.craftandconscious.com`. Root cause
@@ -555,7 +555,7 @@ entry above for the corrected access path and additional context.)_
 ## v2.16.0 — 2026-06-16 — Add Project Starter Kit v3.3 and Push Workflow Prompts
 
 **Tag:** `v2.16.0`
-**Commit:** `8dc05d7`
+**Commit:** `b85af1b`
 
 ### Summary
 Added project-starter-kit-v3.3/ reference library and two push workflow prompt files
@@ -706,10 +706,10 @@ stashed changes onto the synced remote and updating version references to v2.15.
 ## v2.15.1 — 2026-05-22 — Hash Correction and Docs Sync
 
 **Tag:** `v2.15.1`
-**Commit:** `04875a3` (tagged) + `967ba07` (docs update)
+**Commit:** `7df18e5` (tagged) + `19c0cef` (docs update)
 
 ### Summary
-Tagged the untagged hash-correction commit `04875a3` as `v2.15.1` and synced
+Tagged the untagged hash-correction commit `7df18e5` as `v2.15.1` and synced
 all six release-tracking files to document it.
 
 ### Files
@@ -725,7 +725,7 @@ all six release-tracking files to document it.
 ## v2.15.0 — 2026-05-22 — Docs Sync and Tag Format Cleanup
 
 **Tag:** `v2.15.0`
-**Commit:** `b192aff`
+**Commit:** `bb0bcfa`
 
 ### Summary
 All six release-tracking documentation files synced to v2.15.0. Tag format
@@ -743,8 +743,8 @@ switched from verbose slug style to clean semver (`vX.Y.Z`) going forward.
 
 ## v2.14.8 — 2026-05-16 — Update Workflow File List
 
-**Tag:** `v2.14.8__prompts-update-file-list__commit-cc88cfd`
-**Commit:** `cc88cfd`
+**Tag:** `v2.14.8__prompts-update-file-list__commit-56be1ea`
+**Commit:** `56be1ea`
 
 ### Summary
 The update workflow prompt was adjusted so future documentation sync sessions name
@@ -758,8 +758,8 @@ both progress-note files: `PROGRESS_NOTE.md` for the current focused session and
 
 ## v2.14.7 — 2026-05-16 — Documentation Sync
 
-**Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72`
-**Commit:** `95727b6`
+**Tag:** `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-0715806`
+**Commit:** `0715806`
 
 ### Summary
 Release tracking documents were synced through v2.14.7, and the roadmap was
@@ -776,8 +776,8 @@ updated to show the creation of root reference docs as completed work.
 
 ## v2.14.6 — 2026-05-16 — Session Progress Note
 
-**Tag:** `v2.14.6__session-progress-note__commit-431f540`
-**Commit:** `431f540`
+**Tag:** `v2.14.6__session-progress-note__commit-d72e671`
+**Commit:** `d72e671`
 
 ### Summary
 `PROGRESS_NOTE.md` was rewritten as a structured session log for the v2.14.3
@@ -790,8 +790,8 @@ through v2.14.5 work block.
 
 ## v2.14.5 — 2026-05-15 — Context and Status Docs
 
-**Tag:** `v2.14.5__context-and-status-docs__commit-c4a7d9d`
-**Commit:** `c4a7d9d`
+**Tag:** `v2.14.5__context-and-status-docs__commit-7ea223c`
+**Commit:** `7ea223c`
 
 ### Summary
 Root-level `CONTEXT.md` and `STATUS.md` were created so future sessions can
@@ -806,8 +806,8 @@ through the full documentation set.
 
 ## v2.14.4 — 2026-05-15 — Local Settings Hygiene
 
-**Tag:** `v2.14.4__ignore-claude-local-settings__commit-1055fd7`
-**Commit:** `1055fd7`
+**Tag:** `v2.14.4__ignore-claude-local-settings__commit-7269da5`
+**Commit:** `7269da5`
 
 ### Summary
 `.claude/` was added to `.gitignore` so local Claude Code settings do not appear
@@ -820,8 +820,8 @@ as untracked files or accidentally enter version control.
 
 ## v2.14.3 — 2026-05-15 — Audit Publication and Docs Sync
 
-**Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028`
-**Commit:** `3dfc603`
+**Tag:** `v2.14.3__audit-doc-and-docs-sync__commit-46fcf2a`
+**Commit:** `46fcf2a`
 
 ### Summary
 The full site audit was published and the release-tracking docs were brought
