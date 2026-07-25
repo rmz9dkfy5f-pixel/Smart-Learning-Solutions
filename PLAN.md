@@ -42,7 +42,11 @@ renamed 64 tags (fixing 4 pre-existing drifted ones found along the way), backfi
 references, force-pushed. (2) Fixed the two hero-video review subdomains showing "Prompt Vault" —
 root cause was a URL typo plus a real shared-VPS nginx `default_server` hygiene gap; fixed both.
 See `DECISION_LOG.md` ADR-021/ADR-022, `SLICE_REVIEWS.md` SR-017/SR-018. This work did **not**
-touch the standing H-3/M-9/M-4/... queue above, which remains the next dev task whenever picked up.
+touch the standing H-3/M-9/M-4/... queue above, which remains queued.
+
+**Confirmed next task (2026-07-24, this closeout's Step 4a gate):** add favicons for browser tabs
+across the site — the owner stated this directly mid-session, before closeout ran, and confirmed
+it again explicitly when presented the ranked candidate list, ahead of resuming H-3.
 
 See `BACKLOG.md` for the full prioritised work queue.
 See `PHASE_GATES.md` for Gate 1 criteria.

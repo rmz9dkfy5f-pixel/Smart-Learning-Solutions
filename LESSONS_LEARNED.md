@@ -194,3 +194,39 @@ suspecting the VPS, SSH key, or script. No repo or vault precedent documented th
 session (checked and confirmed absent). The workaround used here was enabling
 `dangerouslyDisableSandbox` for just the `ssh`/`rsync` calls, after explicit owner confirmation
 since it was undocumented, sandbox-bypass territory.
+
+### L-018 — Piping a command through `tail`/`grep`/etc. masks its real exit code
+**Context:** 2026-07-24 — ran `brew install git-filter-repo 2>&1 | tail -20` in the background; it
+reported "completed (exit code 0)" and the tool appeared installed, but `git filter-repo` then
+failed with "not a git command." The pipe's reported exit code was `tail`'s, not `brew install`'s —
+the actual install had silently failed partway (a slow `portable-ruby` dependency download).
+**Rule:** When backgrounding or checking the exit status of a command piped through another command
+(`| tail`, `| grep`, `| head`), the exit code reflects the last command in the pipe, not the one
+that matters. Either check the real command's exit code directly (no pipe, or `set -o pipefail`),
+or verify success some other way (e.g. `which <tool>`) before trusting a "completed successfully"
+signal on a piped command.
+
+### L-019 — `git filter-repo --commit-callback`/`--message-callback` code must act on `commit`/`metadata` directly, not define an unused nested function
+**Context:** 2026-07-24 — a `--commit-callback` script that defined `def commit_callback(commit,
+metadata): ...` (mirroring a normal Python function signature) ran with no errors and reported
+"New history written," but every commit message was completely unchanged — the rewrite silently
+no-op'd. filter-repo injects the passed code as the literal body of its own internal callback
+function; defining a same-named nested function inside that body does nothing unless it's also
+called.
+**Rule:** `git filter-repo` callback scripts must contain top-level statements that read/write
+`commit`/`metadata` (or the relevant object for the callback type) directly — never wrap the logic
+in a `def` and forget to invoke it. Always verify a rewrite actually took effect on a known sample
+commit (e.g. `git show -s --format='%B' <hash>`) before trusting "New history written" as proof of
+anything.
+
+### L-020 — Git tags can silently drift from their name-embedded hash over time; audit before trusting the name
+**Context:** 2026-07-24 — during a git history rewrite's tag-rename pass, 4 of 74 tags (v2.14.3,
+v2.14.7, v2.26.1, v2.27.0) turned out to already point at a *different* commit than the one their
+own name claimed (e.g. `v2.27.0__...__commit-1160a69` actually resolved to commit `49d5e43`, not
+`1160a69`) — predating this session entirely, most likely from an untracked `git tag -f` at some
+point during real development that moved the tag without renaming it.
+**Rule:** Never trust a hash-suffixed tag's *name* as proof of its target — always resolve
+`<tag>^{commit}` and compare against the name-embedded hash before relying on either for anything
+consequential (a rewrite, a rollback point, a doc reference). This project's `<version>__<slug>__
+commit-<hash>` tagging convention makes drift easy to *notice* (a mismatch is directly checkable)
+but does nothing to *prevent* it — `git tag -f` remains a standing risk for this convention.
