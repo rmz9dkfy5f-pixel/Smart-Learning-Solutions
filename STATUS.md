@@ -11,6 +11,39 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 
 ---
 
+## Git History AI-Attribution Scrub + VPS default_server Hygiene Fix — 2026-07-24 (no version bump)
+
+Two unrelated fixes in one session, both infrastructure/hygiene — no application code changed.
+
+**Git history:** Owner asked to remove all "Claude" mentions from git history. Verification found
+only 13 of 113 commits on `main` (24 across all 6 branches) actually carried a
+`Co-Authored-By: Claude Sonnet 5` trailer — not every commit, as GitHub Desktop's mixed
+co-author-avatar display confirmed. Rewrote all 6 branches via `git filter-repo`: stripped 24
+trailers and reworded narrative AI-attribution text in 5 more commits, while preserving every
+literal `CLAUDE.md`/`.claude/` filename reference verbatim. Renamed all 64 hash-suffixed tags to
+their new hashes — discovering and correcting 4 tags with a **pre-existing** name/target drift
+predating this rewrite entirely (e.g. `v2.27.0`'s tag name said `commit-1160a69` but actually
+pointed at a different, later commit — most likely an untracked `git tag -f` during real
+development). Backfilled 329 stale hash references across `CHANGELOG.md`, `RELEASE_NOTES.md`,
+`COMMIT_NOTES.md`, `SLICE_REVIEWS.md`, and `PROGRESS_NOTES.md`. Verified byte-identical file trees
+before/after (zero content change, only commit metadata) before force-pushing. Also found and
+cleaned up an unrelated, pre-existing orphaned `refs/original/refs/heads/main` backup ref (from
+some earlier, unrelated rewrite before this session) that was locally retaining old commits — not
+on GitHub, deleted and garbage-collected. See `DECISION_LOG.md` ADR-021, `SLICE_REVIEWS.md` SR-018.
+
+**VPS routing bug:** Owner reported the two hero-video review subdomains showing "Prompt Vault"
+instead of the intended site. Root-caused to the owner visiting shortened hostnames (missing the
+`smart-learning-solutions-` prefix) that were never configured with their own vhost — the fully
+correct URLs were working the whole time. Found the underlying hygiene gap anyway: the
+`prompt-vault` vhost on the shared VPS had `listen 80 default_server`, making it the literal
+catch-all for the entire multi-tenant box, so *any* unmatched subdomain (for any of the ~15 client
+sites on that VPS) would have hit the same failure mode. Fixed by removing `default_server` from
+`prompt-vault` and adding an explicit minimal catch-all (`return 444` / `ssl_reject_handshake`).
+Verified: unmatched hostnames now close, the real hero-video URLs and all sibling tenants
+unaffected. Server-side only — no repo files changed. See `DECISION_LOG.md` ADR-022.
+
+---
+
 ## H-3 Analytics Swap: Cloudflare Web Analytics Attempted, Blocked — 2026-07-23 (no version bump)
 
 Owner decided to replace Plausible ($9/mo) with a free, privacy-friendly analytics provider.

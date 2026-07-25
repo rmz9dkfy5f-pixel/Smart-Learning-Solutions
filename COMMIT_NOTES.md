@@ -5,6 +5,41 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-07-24, continued — Git History AI-Attribution Scrub + VPS default_server Hygiene Fix (no version bump)
+**Tag:** — (none; hygiene/infra-only, no application code change, no new version)
+**Commit:** `a3a291a` (backfill) · `pending sync commit` · branch `main` · 2026-07-24
+**Type:** `chore` (git history) + `fix` (infra)
+
+**Summary:** Removed all AI-attribution mentions from git history across all 6 branches (owner
+request), and fixed a shared-VPS nginx `default_server` hygiene gap that caused unmatched
+`craftandconscious.com` subdomains to silently serve a different client's app.
+
+**Description:**
+- **Git history:** Verified only 13/113 commits on `main` (24 across all 6 branches) carried a
+  `Co-Authored-By: Claude Sonnet 5` trailer. Ran `git filter-repo --commit-callback` across all 6
+  branches (`main`, `feat/hero-video-coding-with-robots`, `feat/web3forms-integration`,
+  `audit/production-readiness`, `fix/mobile-responsive-20260619`, `debug/nginx-404-mac-mini-pull`)
+  in one pass: stripped 24 trailers, hand-reworded narrative AI-attribution text in 5 more commits,
+  preserved every literal `CLAUDE.md`/`.claude/` reference verbatim. Renamed all 64 hash-suffixed
+  tags to their new hashes, discovering and correcting 4 tags with a pre-existing name/target drift
+  unrelated to this rewrite (likely an untracked `git tag -f` during real development — e.g.
+  `v2.27.0`'s tag name said `commit-1160a69` but actually pointed at a different, later commit).
+  Backfilled 329 stale hash references across `CHANGELOG.md`, `RELEASE_NOTES.md`,
+  `COMMIT_NOTES.md`, `SLICE_REVIEWS.md`, `PROGRESS_NOTES.md`. Verified byte-identical file trees
+  before/after, then force-pushed. Found and removed an unrelated, pre-existing orphaned
+  `refs/original/refs/heads/main` backup ref (from some earlier, unrelated rewrite predating this
+  session) that was locally retaining old commits — never on GitHub.
+- **VPS routing bug:** Root-caused the owner's "Prompt Vault showing instead of our site" report
+  to a URL missing the `smart-learning-solutions-` prefix, plus a real underlying hygiene gap: the
+  `prompt-vault` vhost had `listen 80 default_server`, making it the HTTP catch-all for the entire
+  ~15-site shared VPS. Removed `default_server` from it; added an explicit minimal catch-all
+  (`return 444` / `ssl_reject_handshake on`, no cert required). Server-side only, no repo files
+  changed.
+- See `DECISION_LOG.md` ADR-021 (git history scope/method) and ADR-022 (VPS fix),
+  `SLICE_REVIEWS.md` SR-017 (VPS) and SR-018 (git rewrite).
+
+---
+
 ## 2026-07-24 — Staging Deploy: v2.27.0 + v2.26.1 (no version bump)
 **Tag:** — (none; deploy-only, no code change, no new version — follows this repo's established
 precedent for operational-deploy commits, e.g. SR-009, SR-011)

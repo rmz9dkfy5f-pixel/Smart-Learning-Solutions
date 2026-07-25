@@ -30,10 +30,19 @@ deploy the already-shipped v2.27.0 to staging, then (2) try GoatCounter's signup
 (About page logo watermark) and the previously-undeployed v2.26.1 (H-4 fix) are both now live on
 staging, verified via direct `curl` checks.
 
-**No next task confirmed at this session's closeout (2026-07-24):** presented the confirmed-queue
+**No next task confirmed at that earlier closeout (2026-07-24):** presented the confirmed-queue
 order above (starting at H-3) as the top candidate, but the owner explicitly chose not to pick a
-next task this session ("None — end session here"). The queue order above remains the standing
-plan for whenever work resumes; nothing is actively confirmed as in-progress.
+next task at that point ("None — end session here"). The queue order above remained the standing
+plan.
+
+**Git history AI-attribution scrub + VPS default_server hygiene fix (2026-07-24, continued, later
+same day):** Two unrelated owner requests, both infra/hygiene, no application code changed. (1)
+Removed every "Claude" mention from git history — rewrote all 6 branches via `git filter-repo`,
+renamed 64 tags (fixing 4 pre-existing drifted ones found along the way), backfilled 329 doc hash
+references, force-pushed. (2) Fixed the two hero-video review subdomains showing "Prompt Vault" —
+root cause was a URL typo plus a real shared-VPS nginx `default_server` hygiene gap; fixed both.
+See `DECISION_LOG.md` ADR-021/ADR-022, `SLICE_REVIEWS.md` SR-017/SR-018. This work did **not**
+touch the standing H-3/M-9/M-4/... queue above, which remains the next dev task whenever picked up.
 
 See `BACKLOG.md` for the full prioritised work queue.
 See `PHASE_GATES.md` for Gate 1 criteria.

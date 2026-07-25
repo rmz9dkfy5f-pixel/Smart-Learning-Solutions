@@ -550,3 +550,153 @@ screenshots at each step; the wizard bug above was found this way, not assumed.
 - `BACKLOG.md` H-3
 - `PLAN.md` Current State
 - `SLICE_REVIEWS.md` SR-015
+
+---
+
+## ADR-021 — Scope and Method for Removing AI-Attribution From Git History
+
+**Date:** 2026-07-24
+**Version:** none (no code change, no version bump)
+
+### Decision
+Owner asked to remove every mention of "Claude" from this repo's git history. Scoped and executed
+as: rewrite all 6 branches (`main`, `feat/hero-video-coding-with-robots`,
+`feat/web3forms-integration`, `audit/production-readiness`, `fix/mobile-responsive-20260619`,
+`debug/nginx-404-mac-mini-pull`); strip `Co-Authored-By: Claude...` trailers and reword narrative
+AI-attribution text; preserve every literal `CLAUDE.md`/`.claude/` filename reference verbatim;
+rename affected tags to match new hashes; backfill all downstream doc hash references; force-push
+once fully verified. Used `git filter-repo` (not `filter-branch`, upstream-deprecated).
+
+### Reason
+- Initial framing ("every commit mentions Claude") was corrected mid-session after direct
+  verification: only 13/113 commits on `main` (24 across all 6 branches) carried the formal
+  `Co-Authored-By` trailer — confirmed by both `git log --grep` and the owner's own GitHub Desktop
+  screenshot showing the dual-avatar co-author badge on only some commits, not all.
+- The AntBrainOS vault already documents a standing policy *against* adding these trailers (4
+  prompt files under `09_PROMPTS/Claude_Code_Prompts/04_Prompts/` say "do not add
+  Co-Authored-By: Claude... ever") — this rewrite is a correction back to established policy, not a
+  new one; the trailers should never have been added in the first place.
+- `git filter-repo` chosen over `filter-branch` (upstream docs explicitly warn against
+  `filter-branch`'s speed/correctness issues on multi-branch, multi-tag repos) and over interactive
+  rebase (rebase cannot cleanly rewrite 6 branches with a consistent shared-ancestry commit mapping
+  in one pass — would risk two divergent rewrites of the same original commit on different
+  branches).
+- `CLAUDE.md`/`.claude/` literal references preserved deliberately: those name real repo artifacts
+  (the file and directory actually exist and are described accurately in those commits), not
+  AI-attribution language — scrubbing them would make several commit messages factually wrong.
+
+### Context
+Requested directly by the owner mid-session, after a `REPO_SESSION_START_RECOVERY_AUDIT.md` run.
+Scope, branch list, filename-preservation rule, doc-backfill approach, and force-push authorization
+were each explicitly confirmed with the owner via targeted questions before any history was
+touched, given the operation's size (touches every descendant commit hash) and irreversibility once
+pushed (mitigated by a bare-mirror + bundle backup taken first, per this project's own
+`~/Projects/GitHub/_backups/` convention — see Consequences).
+
+### Alternatives Considered
+- **Leave trailers in place, only change convention going forward** — rejected; owner explicitly
+  asked for the existing history to be cleaned, not just future commits.
+- **Squash/re-author entire history into fewer commits** — rejected as unnecessarily destructive to
+  the commit-by-commit narrative this repo's own docs (`COMMIT_NOTES.md`, `SLICE_REVIEWS.md`) are
+  built around; a targeted message-only rewrite preserves that narrative exactly.
+- **Blind regex-strip "Claude" everywhere, including `CLAUDE.md`/`.claude/` references** — owner
+  explicitly declined this option when asked; would have broken several commits' factual accuracy
+  about real files they describe.
+- **Rewrite only `main`, leave the other 5 branches untouched** — owner explicitly chose the
+  broader "all pushed branches, including the local-only one" scope when asked directly.
+
+### Consequences
+- Every commit hash on all 6 branches changed (only for commits whose message actually changed —
+  verified via tree-identity diff that file *contents* are byte-identical, only commit metadata
+  differs).
+- All 74 git tags recreated pointing at new hashes; 64 tag names embedding the old short hash
+  renamed to match.
+- Discovered, as a byproduct of the tag-rename audit (not caused by this rewrite): 4 tags had a
+  **pre-existing** name/target drift predating this operation entirely (their name's embedded hash
+  didn't match what they actually pointed to — most likely an untracked `git tag -f` at some point
+  during real development). Corrected during the same rename pass; see `SLICE_REVIEWS.md` SR-018
+  for the full list.
+- 329 stale hash references backfilled across `CHANGELOG.md`, `RELEASE_NOTES.md`,
+  `COMMIT_NOTES.md`, `SLICE_REVIEWS.md`, `PROGRESS_NOTES.md`. 4 doc entries (v2.14.3, v2.14.7,
+  v2.26.1, v2.27.0) now intentionally show a different hash on their `Tag:` line than their
+  `Commit:` line in the same entry — this is accurate, reflecting the drift correction above, not a
+  formatting error.
+- Discovered and cleaned up, unrelated to this rewrite: an orphaned `refs/original/refs/heads/main`
+  backup ref left over from some earlier, unrelated history operation predating this session
+  entirely — never reachable from any real branch or tag, never on GitHub, purely local debris.
+  Deleted and garbage-collected.
+- Full pre-rewrite state preserved as a bare-mirror clone and a `git bundle`, both outside the repo
+  (`~/Projects/GitHub/_backups/`), for rollback if ever needed — not itself part of this repo's
+  tracked state.
+
+### See Also
+- `SLICE_REVIEWS.md` SR-018
+- `LESSONS_LEARNED.md` (candidate follow-up: document this as a repeatable runbook if ever needed
+  again)
+
+---
+
+## ADR-022 — Shared VPS Gets an Explicit default_server Instead of an Implicit Catch-All Vhost
+
+**Date:** 2026-07-24
+**Version:** none (server-side only, no repo code change)
+
+### Decision
+Removed `default_server` from the `prompt-vault` nginx vhost on the shared VPS (74.208.9.49) and
+added a new, minimal, explicit catch-all vhost (`return 444` for HTTP, `ssl_reject_handshake on`
+for HTTPS) so an unmatched hostname on the shared box closes the connection instead of silently
+serving whichever vhost happened to hold `default_server` (or whichever SSL vhost nginx loaded
+first for an unmatched SNI).
+
+### Reason
+Owner reported the two hero-video review subdomains
+(`smart-learning-solutions-hero-video-{homepage,coding-with-robots}.craftandconscious.com`)
+showing "Prompt Vault" instead of the intended site. Root cause was actually a URL typo — the
+owner was visiting the *shortened* hostnames (missing the `smart-learning-solutions-` prefix),
+which were never configured with their own vhost; the fully-prefixed URLs were serving correctly
+the entire time. But investigating it surfaced a real, separate hygiene gap worth fixing
+regardless: `craftandconscious.com` has wildcard DNS (any subdomain resolves to the shared VPS),
+and the `prompt-vault` vhost had `listen 80 default_server` — making it the literal HTTP catch-all
+for *every* one of the ~15 client sites on that box, not just this project. Any mistyped or
+unclaimed subdomain for any client would have silently exposed Prompt Vault's app instead of a
+plain 404, and the HTTPS side had no explicit default at all, so an unmatched SNI got whichever
+SSL vhost nginx happened to load first (confirmed via `openssl s_client`: a cert belonging to
+`admin.jones-barber-shop.craftandconscious.com`, an unrelated client's site).
+
+### Context
+Diagnosed live via direct `curl`/`dig`/`openssl s_client` checks against both the URL the owner
+was actually using and the correctly-configured one, then via SSH into the VPS to read the actual
+nginx config (`prompt-vault`'s `sites-available` file). Confirmed the exact root cause
+(`listen 80 default_server` on an unrelated site's vhost) before proposing or making any change.
+
+### Alternatives Considered
+- **Just tell the owner to use the correct URL, leave the VPS config as-is** — would have resolved
+  the immediate report but left the underlying cross-tenant information-disclosure-adjacent gap in
+  place for all ~15 sites on the box; owner explicitly asked for the default_server issue fixed
+  too, not just confirmation of the correct URL.
+- **Point `default_server` at this project's own vhost instead of removing it from `prompt-vault`**
+  — rejected; this project has no more claim to being the "default" for a shared multi-tenant box
+  than any other client. A neutral, explicit catch-all that serves no one is the correct fix.
+- **Self-signed cert for the HTTPS catch-all instead of `ssl_reject_handshake`** — rejected;
+  `ssl_reject_handshake on` (nginx ≥1.19.4, confirmed running 1.24.0) refuses the TLS handshake
+  outright for unmatched SNI, which is cleaner than presenting any cert (real or self-signed) for a
+  hostname that shouldn't resolve to anything at all.
+
+### Consequences
+- `prompt-vault`'s own real domain (`vault.anthonygoins.com`) is unaffected — confirmed it resolves
+  to a *different* IP entirely, not even hosted on this shared VPS, so this vhost's own intended
+  traffic was never dependent on holding `default_server` in the first place.
+- One sibling tenant (`hair-by-alexy.craftandconscious.com`) has no HTTPS vhost of its own
+  (HTTP-only, confirmed pre-existing via the nginx config captured *before* this change) — its
+  HTTPS behavior changed from "silently served by an unrelated site's mismatched cert" to
+  "explicit TLS handshake rejection," which is more correct, not a regression; its actual (HTTP)
+  traffic is unaffected.
+- Change is additive-only: one new vhost file, a 2-line removal from `prompt-vault`'s existing
+  config. Validated with `nginx -t` before reload; verified via curl against 2 sibling tenants
+  (`old-fashion-care`, `swarm-defense`) post-reload — zero regression.
+- Server-side only; no repo commit corresponds to this change (matches this repo's own precedent
+  for infra-only work with no code change).
+
+### See Also
+- `SLICE_REVIEWS.md` SR-017
+- `docs/DEPLOYMENT.md` §11 (shared-VPS deploy conventions)

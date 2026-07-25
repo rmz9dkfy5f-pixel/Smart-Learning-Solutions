@@ -4,6 +4,99 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-018 — Git History AI-Attribution Scrub (all 6 branches)
+**Date:** 2026-07-24
+**Version:** none (no code change, no version bump)
+
+**Slice:** Owner asked to remove every mention of "Claude" from git history. Rewrote all 6
+branches via `git filter-repo`, renamed affected tags, backfilled doc hash references, force-pushed.
+
+**Pre-review finding:** Initial framing was "every commit mentions Claude" — corrected mid-session
+after direct `git log --grep` verification found only 13/113 commits on `main` (24 across all 6
+branches) actually carry the `Co-Authored-By: Claude Sonnet 5` trailer, confirmed independently by
+the owner's own GitHub Desktop screenshot showing the dual co-author avatar on only some commits.
+
+**Change:** Classified all 34 Claude-mentioning commits individually: 22 mechanical
+`Co-Authored-By` trailer strips, 5 hand-reworded (narrative AI-attribution text removed, literal
+`CLAUDE.md`/`.claude/` references preserved verbatim), 6 left untouched (filename-only mentions), 1
+borderline commit judged filename-only. Ran `git filter-repo --commit-callback` once across all 6
+branches (no `--refs` restriction, so shared ancestry gets one consistent new hash, not divergent
+rewrites). Renamed all 64 hash-suffixed tags using the emitted commit-map.
+
+**Findings (tag-rename audit):** 4 of the 64 tags had a **pre-existing** name/target drift
+predating this rewrite entirely — the tag's name embedded one commit hash, but the tag actually
+pointed at a different, later commit (most likely an untracked `git tag -f` during real
+development, unrelated to this session):
+- `v2.14.3__audit-doc-and-docs-sync__commit-f8f8028` → actually pointed at `3dfc603` (now `46fcf2a`)
+- `v2.14.7__docs-sync-v2-14-4-to-v2-14-7__commit-894bc72` → actually pointed at `95727b6` (now `0715806`)
+- `v2.26.1__page-transition-overlay-timeout-fallback__commit-c8ac862` → actually pointed at `81d160e` (now `e1950fb`)
+- `v2.27.0__about-page-logo-watermark__commit-1160a69` → actually pointed at `49d5e43` (now `9caee7e`)
+
+All 4 corrected to accurately name their real target's new hash during the same rename pass.
+
+**Doc backfill:** 329 stale hash references backfilled across `CHANGELOG.md`, `RELEASE_NOTES.md`,
+`COMMIT_NOTES.md`, `SLICE_REVIEWS.md`, `PROGRESS_NOTES.md` via targeted literal old-hash-string
+substitution (never a generic hex regex — confirmed `STATUS.md`/`DECISION_LOG.md`'s
+`?v=mobile-20260619d`-style cache-bust tokens were correctly left untouched). 4 doc entries now
+intentionally show a different hash on their `Tag:` line than their `Commit:` line, reflecting the
+drift correction above — documented inline in each entry, not a formatting error.
+
+**Post-review result:** Tree-identity check (`git diff <old-tree> <new-tree>`) empty for all 6
+branches — file contents byte-identical before/after, only commit metadata changed. Commit-count
+parity confirmed per branch. Zero remaining `Claude` mentions except intentional `CLAUDE.md`/
+`.claude/` literal references (verified by re-grep). All 74 tags resolve; all 64 hash-suffixed
+names verified to match their actual target on final pass. Force-pushed; local vs. origin hash
+comparison confirmed an exact match for all 6 branches and all 74 tags (`git ls-remote` diff, zero
+differences). Local working directory (which retained old history) reset to match; an unrelated,
+pre-existing orphaned `refs/original/refs/heads/main` ref (from some earlier, unrelated rewrite
+predating this session) was found and removed during that sync — never on GitHub.
+
+**Risk:** History rewrite + force-push is inherently high-blast-radius; mitigated by a full
+bare-mirror + `git bundle` backup taken before any change (`~/Projects/GitHub/_backups/`), byte-
+identical tree verification before pushing, and confirming (via `gh auth status` / `gh pr list`)
+there are no open PRs, no CI, and no other known clones of this repo.
+
+---
+
+## SR-017 — Shared VPS default_server Hygiene Fix (server-side, no version bump)
+**Date:** 2026-07-24
+**Version:** none (server-side only, no repo code change)
+
+**Slice:** Owner reported the two hero-video review subdomains showing "Prompt Vault" instead of
+the intended site. Diagnosed and fixed a shared-VPS nginx `default_server` hygiene gap.
+
+**Pre-review finding:** `curl`/`dig` against the URL the owner actually visited
+(`hero-video-homepage.craftandconscious.com`, missing the `smart-learning-solutions-` prefix)
+showed it resolving via wildcard DNS and returning Prompt Vault's app over plain HTTP, while the
+fully-prefixed correct URL returned the right content, cert, and headers the whole time. SSH into
+the VPS confirmed the root cause: `prompt-vault`'s vhost had `listen 80 default_server` — the
+literal HTTP catch-all for the entire ~15-site shared box, plus no explicit `default_server` at
+all on port 443 (confirmed via `openssl s_client`: an unrelated client's cert,
+`admin.jones-barber-shop.craftandconscious.com`, served for any unmatched SNI).
+
+**Change:** Removed `default_server` from `prompt-vault`'s two `listen 80` lines. Added a new,
+minimal, explicit catch-all vhost (`/etc/nginx/sites-available/_default-catchall`):
+`return 444` for HTTP, `ssl_reject_handshake on` for HTTPS (nginx ≥1.19.4, confirmed running
+1.24.0 — no cert needed). Validated with `nginx -t` before `nginx -s reload`.
+
+**Findings:** Post-fix `curl` verification: unmatched hostnames (both HTTP and HTTPS) now close
+instead of serving Prompt Vault or a mismatched cert. The real hero-video URLs still return 200
+with correct content, cert, and `X-Robots-Tag: noindex`. `prompt-vault`'s own real domain
+(`vault.anthonygoins.com`) confirmed hosted on a completely different IP, so unaffected by this
+change entirely. Two sibling tenants (`old-fashion-care`, `swarm-defense`) spot-checked at 200,
+confirming zero regression; `hair-by-alexy` (HTTP-only, confirmed pre-existing, no HTTPS vhost of
+its own) now gets a clean TLS handshake rejection for its unmatched HTTPS SNI instead of a silently
+wrong cert — more correct, not a regression, since it never had working HTTPS to begin with.
+
+**Post-review result:** Fix verified live; no repo commit corresponds to this change (server-side
+only, matches this repo's own precedent for infra-only work with no code change).
+
+**Risk:** Change affects nginx routing for every client site on the shared VPS, not just this
+project — kept strictly additive (new file + a 2-line removal from one existing file) and gated on
+`nginx -t` passing cleanly before reload, with a config backup taken first.
+
+---
+
 ## SR-016 — Deploy v2.27.0 + v2.26.1 to Staging (server-side, no version bump)
 **Date:** 2026-07-24
 **Version:** v2.27.0 (already tagged; deploy-only, no repo code change)

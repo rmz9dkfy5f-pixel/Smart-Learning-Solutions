@@ -5,6 +5,74 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-07-24, continued — Git History AI-Attribution Scrub + VPS default_server Hygiene Fix (no version bump)
+
+**Branch:** `main`
+
+### Summary
+Two unrelated fixes, both infrastructure/hygiene, no application code changed. (1) Owner asked to
+remove all "Claude" mentions from git history; rewrote all 6 branches via `git filter-repo`,
+renamed 64 tags (fixing 4 pre-existing drifted tags found along the way), backfilled 329 doc hash
+references, force-pushed. (2) Owner reported the two hero-video review subdomains showing "Prompt
+Vault" — root-caused to a URL typo (missing prefix) plus a real underlying VPS hygiene gap
+(`prompt-vault`'s vhost was the shared box's HTTP `default_server`); fixed both.
+
+### Work Completed
+- **Git history:** Verified via direct git commands (not assumed) that only 13/113 commits on
+  `main` carried the `Co-Authored-By: Claude` trailer. Classified all 34 Claude-mentioning commits
+  by hand: 22 mechanical trailer-strips, 5 hand-reworded (narrative text removed, literal
+  `CLAUDE.md`/`.claude/` references preserved), 6 left untouched (filename-only mentions), 1
+  borderline commit judged as filename-only. Ran `git filter-repo --commit-callback` across all 6
+  branches in one pass (consistent old→new SHA mapping for shared ancestry). Renamed all 64
+  hash-suffixed tags; found and fixed 4 tags whose name-embedded hash didn't match their actual
+  target — a pre-existing bug (likely an untracked `git tag -f`) unrelated to this rewrite. Backfilled
+  329 hash references across 5 doc files via targeted literal-string substitution (never a generic
+  hex regex — confirmed this correctly skipped unrelated hex-looking tokens like
+  `?v=mobile-20260619d`). Force-pushed all 6 branches and 74 tags; re-synced the local working
+  directory (which still had old history) to match. Found and removed an unrelated, pre-existing
+  orphaned `refs/original/refs/heads/main` ref (from some earlier, unrelated rewrite predating this
+  session) that was locally retaining old commits, invisible on GitHub.
+- **VPS routing bug:** Diagnosed via direct `curl`/`dig`/`openssl s_client` checks against both the
+  URLs the owner was actually visiting and the correctly-configured ones. Confirmed via SSH that
+  `prompt-vault`'s nginx vhost had `listen 80 default_server` — the literal HTTP catch-all for the
+  entire ~15-site shared VPS. Removed `default_server` from it; added a new minimal catch-all vhost
+  (`return 444` for HTTP, `ssl_reject_handshake on` for HTTPS — no cert needed). Validated with
+  `nginx -t` before reload.
+- `DECISION_LOG.md` ADR-021 (git history scrub scope/method) and ADR-022 (VPS default_server fix)
+  added. `SLICE_REVIEWS.md` SR-017 (VPS fix) and SR-018 (git rewrite) added. `STATUS.md`, `PLAN.md`,
+  `COMMIT_NOTES.md` updated.
+
+### Validation Performed
+- Tree-identity check: `git diff <old-tree> <new-tree>` empty for all 6 branches — file contents
+  byte-identical before/after the rewrite, only commit metadata changed.
+- Commit-count parity per branch confirmed unchanged.
+- Zero remaining `Claude` mentions (case-insensitive, all branches/tags) except intentional
+  `CLAUDE.md`/`.claude/` literal references — verified by direct re-grep after the rewrite.
+- All 74 tags resolve; all 64 hash-suffixed tag names verified to match their actual target's
+  short hash (0 mismatches on final pass).
+- Local vs. origin: every branch hash and all 74 tag hashes verified to match exactly
+  (`git ls-remote` diff, zero differences).
+- Nginx fix: `curl` confirmed unmatched hostnames now return connection-closed/444, the real
+  hero-video URLs still return 200 with correct content/cert/`X-Robots-Tag`, and 2 sibling tenants
+  (`old-fashion-care`, `swarm-defense`) still return 200 — zero regression.
+
+### Not Yet Verified / Open
+- Confirmed-queue backlog (H-3 GoatCounter signup, then M-9/M-4/...) is unaffected by this session
+  and remains the standing next dev task — see `PLAN.md`.
+- Rewrite-workspace clone and pre-rewrite backups (`~/Projects/GitHub/_backups/`,
+  `~/Projects/GitHub/_rewrite-workspace/`) left in place outside the repo for rollback safety; not
+  part of this repo's own tracked state.
+- This repo still has no `REPOSITORY_HANDOFF_CONFIG.md` — the canonical snapshot step in this
+  session's own closeout will stop rather than guess a destination, same gap noted 2026-07-24
+  earlier this same day.
+
+### Launch Blockers (unchanged)
+1. ~~Formspree `REPLACE_ME`~~ — resolved, merged to `main` (v2.23.0), confirmed live on staging.
+2. Production domain not yet pointed to the VPS — unchanged; pending client acceptance of the
+   self-host proposal (OD-003).
+
+---
+
 ## 2026-07-24 — Staging Deploy: v2.27.0 + v2.26.1 (no version bump)
 
 **Branch:** `main`
