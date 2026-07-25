@@ -7,7 +7,7 @@ commit hash, date, summary, and description.
 
 ## 2026-07-24, continued — Git History AI-Attribution Scrub + VPS default_server Hygiene Fix (no version bump)
 **Tag:** — (none; hygiene/infra-only, no application code change, no new version)
-**Commit:** `a3a291a` (backfill) · `pending sync commit` · branch `main` · 2026-07-24
+**Commit:** `a3a291a` (backfill) · `037523c` (this closeout's doc-record commit) · branch `main` · 2026-07-24
 **Type:** `chore` (git history) + `fix` (infra)
 
 **Summary:** Removed all AI-attribution mentions from git history across all 6 branches (owner
