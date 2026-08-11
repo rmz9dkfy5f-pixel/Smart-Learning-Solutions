@@ -89,5 +89,5 @@ Store wireframes, screenshots, and design references in:
 | Question | Impact | Owner |
 |---|---|---|
 | Photography assets available? | Hero and program sections need real imagery | Business owner |
-| Favicon final? | SVG favicon added; confirm it matches brand | Business owner |
+| ~~Favicon final?~~ | ~~SVG favicon added; confirm it matches brand~~ — **Resolved 2026-08-11**: replaced with a real PNG favicon + apple-touch-icon derived directly from the client logo (v2.28.0) | Business owner |
 | Open Graph image approved? | `og-image.svg` exists — confirm it is correct | Business owner |

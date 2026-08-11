@@ -4,6 +4,36 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-019 — Real Favicon From Client Logo (v2.28.0)
+**Date:** 2026-08-11
+**Version:** v2.28.0
+
+**Slice:** Owner-confirmed next task (2026-07-24 closeout): add favicons for browser tabs. Owner
+further confirmed this session: source from the real logo (not a recolor of the placeholder), and
+include an apple-touch-icon alongside the tab favicon.
+
+**Change:** Cropped the icon (running figure + kite) out of `src/images/brand-logo-mark.png`
+using pixel-level connected-component analysis — a simple rectangular crop could not cleanly
+separate the icon from the "Learning" wordmark's flourish, so components were classified by
+color/position and the letter fragments (T, L, E) excluded, keeping only the real icon pixels.
+Exported `src/images/favicon.png` (32×32) and `src/images/apple-touch-icon.png` (180×180).
+Replaced the placeholder `<link rel="icon">` tag in all 10 HTML pages with the new favicon +
+apple-touch-icon links.
+
+**Post-review result:** All 10 pages verified via local server (`python3 -m http.server`) —
+favicon/apple-touch-icon both return `200`/`image/png`; index, `404.html`, and the
+one-directory-down `programs/coding-with-robots.html` all render with no regressions in a real
+headless-browser screenshot check. `git diff --stat` confirmed only the 10 HTML files + 2 new
+PNGs changed — no CSS/JS touched. Zero remaining references to the old placeholder color
+(`E85D1A`) anywhere in live code.
+
+**Risk:** Source art is native 277×120 (164px max from any source) — no higher-resolution logo
+exists, so both crops are near/past the detail ceiling. Accepted: legibility was checked visually
+at true render size (not just an oversized preview) and is acceptable for favicon use, consistent
+with how small logos typically degrade at 16×16.
+
+---
+
 ## SR-018 — Git History AI-Attribution Scrub (all 6 branches)
 **Date:** 2026-07-24
 **Version:** none (no code change, no version bump)

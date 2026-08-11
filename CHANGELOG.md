@@ -11,6 +11,28 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.28.0] — 2026-08-11
+
+**Tag:** `v2.28.0__favicon-brand-icon__commit-784d1fc`
+
+### Added
+- `src/images/favicon.png` (new) — 32×32 PNG favicon cropped directly from the client logo's icon
+  mark (`src/images/brand-logo-mark.png`). The running-figure-and-kite glyph was isolated from the
+  surrounding "Smart"/"Learning" wordmark via pixel-level connected-component analysis, since a
+  plain rectangular crop bled into the "Learning" flourish — no letter fragments in the final crop.
+- `src/images/apple-touch-icon.png` (new) — 180×180 PNG, same source crop, for iOS home-screen
+  bookmarks.
+
+### Changed
+- All 10 HTML pages (`index.html`, `about.html`, `book.html`, `contact.html`, `resources.html`,
+  `workshops.html`, `404.html`, `programs/index.html`, `programs/coding-with-robots.html`,
+  `programs/pstem.html`) — replaced the stale placeholder `<link rel="icon">` (a hand-drawn orange
+  badge SVG data-URI, `#E85D1A`, that predated the real client logo and never matched the current
+  `--accent: #FF5C24`) with the new PNG favicon, and added a new `<link rel="apple-touch-icon">`
+  tag. Resolves the long-open `docs/DESIGN.md` "Favicon final?" item.
+
+---
+
 ## [2.27.0] — 2026-07-23
 
 **Tag:** `v2.27.0__about-page-logo-watermark__commit-9caee7e`

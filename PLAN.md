@@ -48,6 +48,13 @@ touch the standing H-3/M-9/M-4/... queue above, which remains queued.
 across the site — the owner stated this directly mid-session, before closeout ran, and confirmed
 it again explicitly when presented the ranked candidate list, ahead of resuming H-3.
 
+**Favicon task complete (2026-08-11, v2.28.0):** The confirmed next task above is done. The
+placeholder favicon was replaced with a real favicon + apple-touch-icon derived directly from the
+client logo (owner-confirmed sourcing approach and icon scope this session) — see
+`CHANGELOG.md`/`RELEASE_NOTES.md`/`SLICE_REVIEWS.md` SR-019 for detail. **No next task confirmed
+this session** — the standing queue remains as above, starting at H-3 (GoatCounter analytics
+signup), then M-9, M-4, V3.4 stub-doc reconciliation, and M-8 (held pending OD-003).
+
 See `BACKLOG.md` for the full prioritised work queue.
 See `PHASE_GATES.md` for Gate 1 criteria.
 See `plans/open-decisions.md` for all pending owner decisions.

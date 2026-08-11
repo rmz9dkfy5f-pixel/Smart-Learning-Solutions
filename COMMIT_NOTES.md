@@ -5,6 +5,27 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-08-11 — Real Favicon From Client Logo (v2.28.0)
+**Tag:** `v2.28.0__favicon-brand-icon__commit-784d1fc`
+**Commit:** `784d1fc` · branch `main` · 2026-08-11
+**Type:** `feat`
+
+**Summary:** feat(brand): replace placeholder favicon with real icon from client logo
+
+**Description:**
+Replaced the stale placeholder SVG favicon (predates the real logo, color mismatch vs.
+`--accent`) across all 10 HTML pages with a real favicon (`src/images/favicon.png`, 32×32) and
+apple-touch-icon (`src/images/apple-touch-icon.png`, 180×180), both derived directly from
+`src/images/brand-logo-mark.png`. Used pixel-level connected-component analysis to isolate the
+kite+figure icon from the surrounding wordmark — a plain rectangular crop bled into the
+"Learning" flourish, so components were classified by color/position and reassembled into a
+clean, letter-free icon using only real brand pixels. Resolves `docs/DESIGN.md`'s open "Favicon
+final? — confirm it matches brand" item.
+
+**Stats:** 12 files changed · 2 files added
+
+---
+
 ## 2026-07-24, continued — Git History AI-Attribution Scrub + VPS default_server Hygiene Fix (no version bump)
 **Tag:** — (none; hygiene/infra-only, no application code change, no new version)
 **Commit:** `a3a291a` (backfill) · `037523c` (this closeout's doc-record commit) · branch `main` · 2026-07-24

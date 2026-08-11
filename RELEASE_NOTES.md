@@ -2,6 +2,30 @@
 
 ---
 
+## v2.28.0 — 2026-08-11 — Real Favicon From Client Logo
+
+**Tag:** `v2.28.0__favicon-brand-icon__commit-784d1fc`
+
+### Summary
+Replaced the placeholder SVG favicon (a hand-drawn orange badge unrelated to the real client
+logo, carried over from before the real logo was implemented in v2.26.0) with a real favicon
+derived directly from the brand mark. The icon+kite glyph was isolated from the surrounding
+"Smart"/"Learning" wordmark using pixel-level connected-component analysis — a simple rectangular
+crop wasn't possible, since the "Learning" flourish runs directly through that region — producing
+a clean 32×32 favicon and 180×180 apple-touch-icon with no letter fragments and no invented or
+redrawn art, just the real logo's own pixels. Resolves the long-open `docs/DESIGN.md` "Favicon
+final? — confirm it matches brand" item.
+
+### Added
+- `src/images/favicon.png` (new) — 32×32 PNG
+- `src/images/apple-touch-icon.png` (new) — 180×180 PNG
+
+### Changed
+- All 10 HTML pages — swapped the placeholder `<link rel="icon">` for the new PNG favicon and
+  added `<link rel="apple-touch-icon">`
+
+---
+
 ## v2.27.0 — 2026-07-23 — About Page Logo Watermark
 
 **Tag:** `v2.27.0__about-page-logo-watermark__commit-9caee7e`

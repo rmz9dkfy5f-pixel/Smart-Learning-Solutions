@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.27.0 · 2026-07-23
+**Current Version:** v2.28.0 · 2026-08-11
 **Branch:** `main`
 
 ---
@@ -8,6 +8,15 @@
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Real Favicon From Client Logo — 2026-08-11 (v2.28.0)
+
+The placeholder SVG favicon (an unrelated hand-drawn orange badge that predated the real client
+logo and no longer matched the current accent color) has been replaced across all 10 pages with a
+real favicon and apple-touch-icon derived directly from the client's logo mark. Resolves the
+long-open `docs/DESIGN.md` "Favicon final?" item. See `SLICE_REVIEWS.md` SR-019.
 
 ---
 
@@ -293,6 +302,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 - Staging redeployed to current `main` via new `scripts/deploy-staging.sh` (explicit path allowlist, replacing an untracked, four-week-stale manual deploy) — fixed live forms that were still POSTing to the dead Formspree endpoint and a stale OG image reference; R-004 mitigated for staging (v2.25.0)
 - M-7 (`_next` redirect field in `book.html`) closed as not applicable — both forms submit via JS `fetch()` with `e.preventDefault()`, never performing a native POST/redirect, so the field would be inert; it no longer exists in the form at all, removed during the Web3Forms/AJAX migration (v2.23.0); see `DECISION_LOG.md` ADR-018, `SLICE_REVIEWS.md` SR-012 (2026-07-22, no version bump)
 - Staging redeployed to current `main` — v2.27.0 logo watermark and v2.26.1 H-4 fix both confirmed live via direct `curl` checks (2026-07-24, no version bump). See `SLICE_REVIEWS.md` SR-016.
+- Placeholder favicon replaced with a real PNG favicon + apple-touch-icon derived from the client logo across all 10 pages, resolving the open `docs/DESIGN.md` brand-match question (v2.28.0). See `SLICE_REVIEWS.md` SR-019.
 
 ---
 
