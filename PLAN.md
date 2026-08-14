@@ -26,6 +26,13 @@ Cloudflare Web Analytics attempted but blocked by a reproducible onboarding-wiza
 `DECISION_LOG.md` ADR-020, `SLICE_REVIEWS.md` SR-015). Confirmed next task at that point: (1)
 deploy the already-shipped v2.27.0 to staging, then (2) try GoatCounter's signup for H-3.
 
+**H-3 retry paused (2026-08-13):** Owner retried Cloudflare per the 2026-08-11 closeout's
+confirmed next task. Dashboard wizard still blocked (same bug as above); the documented API
+bypass hit a second, independent blocker — no findable scoped API-token permission for Web
+Analytics/RUM write access, and the Global API Key fallback needs `info@SmartLearningSolutions.org`
+inbox access the owner doesn't currently have. Paused pending that credential access, not
+abandoned; GoatCounter remains the fallback. No code changed. See `DECISION_LOG.md` ADR-023.
+
 **Staging deploy complete (2026-07-24, no version bump, `SLICE_REVIEWS.md` SR-016):** v2.27.0
 (About page logo watermark) and the previously-undeployed v2.26.1 (H-4 fix) are both now live on
 staging, verified via direct `curl` checks.

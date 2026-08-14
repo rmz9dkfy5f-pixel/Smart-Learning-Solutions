@@ -5,6 +5,28 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-08-13 — H-3 Cloudflare Retry Paused (no version bump)
+**Tag:** — (none; this push will not be tagged — docs/decision-log only, no release impact per
+`docs/VERSIONING.md`)
+**Commit:** applied in this same push, branch `main` · 2026-08-13
+**Type:** `docs`
+
+**Summary:** docs: record second Cloudflare Web Analytics blocker, pause H-3 pending client email access
+
+**Description:**
+Owner retried Cloudflare Web Analytics onboarding for H-3 (ADR-020's chosen analytics-provider
+swap). The dashboard wizard is still blocked by the same reproducible bug as before. The
+documented API bypass (`POST .../rum/site_info`) hit a second, independent blocker: no Web
+Analytics/RUM write permission was found in Cloudflare's scoped custom-token picker, and the
+Global API Key fallback needs `info@SmartLearningSolutions.org` inbox access the owner doesn't
+currently have. Recorded in `DECISION_LOG.md` ADR-023; `BACKLOG.md` H-3 and `PLAN.md` updated to
+**paused, not abandoned**. No code changed — Plausible remains the live analytics provider.
+
+**Stats:** 3 files changed (`BACKLOG.md`, `DECISION_LOG.md`, `PLAN.md`) + this push's own doc
+records (`STATUS.md`, `PROGRESS_NOTES.md`, `COMMIT_NOTES.md`, `PROGRESS_NOTE.md`)
+
+---
+
 ## 2026-08-11 — Real Favicon From Client Logo (v2.28.0)
 **Tag:** `v2.28.0__favicon-brand-icon__commit-784d1fc`
 **Commit:** `784d1fc` · branch `main` · 2026-08-11

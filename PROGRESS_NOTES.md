@@ -5,6 +5,39 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-08-13 — H-3 Cloudflare Retry Paused (no version bump)
+
+**Branch:** `main`
+
+### Summary
+Owner asked to retry Cloudflare Web Analytics onboarding for H-3 (analytics provider swap). The
+dashboard "Add a site" wizard is still blocked by the same reproducible bug recorded in
+`DECISION_LOG.md` ADR-020. A full implementation plan for the documented API bypass
+(`POST /accounts/{account_id}/rum/site_info`) was written and approved before any owner action —
+see the local plan file referenced in ADR-023. Attempting that path surfaced a second, independent
+blocker: no Web Analytics/RUM write permission could be found in Cloudflare's scoped
+custom-token picker, and the Global API Key fallback requires access to the
+`info@SmartLearningSolutions.org` inbox that the owner doesn't currently have.
+
+### Work Completed
+- Recorded the second blocker and its resolution path in `DECISION_LOG.md` ADR-023.
+- Updated `BACKLOG.md` H-3 and `PLAN.md` to reflect **paused, not abandoned** status, with the
+  resume condition stated explicitly (either credential becoming available).
+- No code changed. Plausible remains the live, unaffected analytics provider.
+
+### Validation Performed
+- Confirmed via `git status` that the working tree was clean before and only the intended
+  docs/decision-log files changed.
+
+### Notes for the Next Agent
+- To resume H-3: check whether the owner has `info@SmartLearningSolutions.org` inbox access (for
+  the Global API Key) or has found a Web Analytics/RUM **Edit** permission in the Cloudflare
+  custom-token picker that wasn't found this session — either unblocks Slice 1 of the plan
+  referenced in ADR-023. If Cloudflare keeps blocking after that, GoatCounter is the standing
+  fallback per ADR-020.
+
+---
+
 ## 2026-08-11 — Real Favicon From Client Logo (v2.28.0)
 
 **Branch:** `main`

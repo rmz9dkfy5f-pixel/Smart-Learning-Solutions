@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.28.0 · 2026-08-11
+**Current Version:** v2.28.0 · 2026-08-11 (no version bump this push — docs/decision-log only)
 **Branch:** `main`
 
 ---
@@ -8,6 +8,20 @@
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## H-3 Cloudflare Retry Paused — 2026-08-13 (no version bump)
+
+Owner retried the Cloudflare Web Analytics dashboard onboarding (still blocked by the same wizard
+bug as ADR-020) and then attempted the documented API bypass (`POST .../rum/site_info`, which
+accepts a `host` field specifically to route around that wizard). The API path hit a second,
+independent blocker: no findable scoped API-token permission for Web Analytics/RUM write access
+in the Cloudflare custom-token picker, and the Global API Key fallback needs
+`info@SmartLearningSolutions.org` inbox access the owner does not currently have. **Paused, not
+abandoned** — H-3 resumes once either credential is available; GoatCounter remains the fallback.
+No code changed; Plausible remains the live, unaffected analytics provider. See `DECISION_LOG.md`
+ADR-023.
 
 ---
 

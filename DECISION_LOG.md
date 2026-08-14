@@ -700,3 +700,85 @@ nginx config (`prompt-vault`'s `sites-available` file). Confirmed the exact root
 ### See Also
 - `SLICE_REVIEWS.md` SR-017
 - `docs/DEPLOYMENT.md` §11 (shared-VPS deploy conventions)
+
+---
+
+## ADR-023 — H-3 Cloudflare Retry Blocked a Second Way (API Path); Paused Pending Client Email Access
+
+**Date:** 2026-08-13
+**Version:** none (no code change — investigation only, nothing shipped)
+
+### Decision
+Paused the H-3 Cloudflare Web Analytics onboarding retry. The owner re-attempted the dashboard
+"Add a site" wizard (still blocked by the same bug recorded in ADR-020) and then attempted the
+documented API bypass (`POST /accounts/{account_id}/rum/site_info`, which accepts a `host` field
+for non-proxied sites specifically to route around that wizard). The API path is blocked by a
+different obstacle: no scoped API token permission for Web Analytics/RUM write access could be
+found in the Cloudflare dashboard's custom-token permission picker (searched `analytics` under
+"Entire Account" — only **Account Analytics** [Read-only], Account Logs, Intel, and Radar
+appeared; `rum`/`web` were not separately checked before pausing). The fallback — the account's
+Global API Key, which needs no scoped permission — requires the Cloudflare account holder email
+(`info@SmartLearningSolutions.org`) to view, and the owner does not currently have access to that
+inbox. Work is paused here rather than continued with a workaround, since the correct unblock is
+credential access, not further troubleshooting.
+
+### Reason
+Three independent Cloudflare surfaces have now individually blocked this same task across two
+sessions:
+1. **Dashboard wizard** (ADR-020, 2026-07-23; reproduced again 2026-08-12) — typed hostname
+   rejected as an invalid selection; the field's own "No active websites found" dropdown clears
+   the typed value, an unbreakable loop. Reproduced in Chrome, Brave, and incognito.
+2. **Account ID lookup** (2026-08-12) — the dashboard's documented per-domain "API" panel doesn't
+   exist for this account because it has zero zones/domains added; resolved via dashboard search
+   (Cmd/Ctrl+K → "Copy account ID").
+3. **Scoped token permissions** (2026-08-12/13) — no Web Analytics/RUM **Edit** permission surfaced
+   in the custom-token picker under "Analytics & Logs"; Account Analytics is Read-only and would
+   not authorize creating a site.
+
+Given (1)-(3), the working assumption from ADR-020 — that this account's zero-zones state is an
+edge case the platform simply handles worse — looks understated; each surface it touches
+independently breaks along the same line. Not yet proven load-bearing, but worth naming since it
+affects whether continuing to fight Cloudflare is still the right call at all (see Alternatives).
+
+### Context
+Session continued directly from the `REPO_SESSION_START_RECOVERY_AUDIT.md` run earlier this
+session (2026-08-12→13), which surfaced H-3 as the owner-confirmed next task ("i want to try
+cloudflair anaylticas again before moving on," recorded 2026-08-11). A full implementation plan
+for the API path was written and approved (Plan Mode) before any owner action was taken — see
+`/Users/ant/.claude/plans/i-tried-a-again-fluttering-nautilus.md` (local plan file, not in the
+repo) for the six-slice plan (API creation → code swap → privacy-policy update → nginx CSP/
+X-Robots-Tag → validation → release records). Only Slice 1 (obtain the beacon token) was
+attempted; it did not complete. No file in this repo was touched before this pause — `git status`
+confirms a clean tree throughout.
+
+### Alternatives Considered
+- **Global API Key via a different route** (e.g., owner's own personal Cloudflare login if they
+  have separate access) — not available this session; the account is specifically
+  `info@SmartLearningSolutions.org`, matching the Web3Forms account convention (client-owned
+  inbox, not the developer's).
+- **Broader custom-token scope** (e.g., grant more of "Entire Account" than Web Analytics alone)
+  — not attempted; deferred until it's confirmed no narrower permission exists, since granting
+  more than needed to a client-owned account token is worth avoiding if a narrower option is
+  still findable.
+- **Fall through to GoatCounter now**, per ADR-020's own stated fallback — considered, but not
+  taken this session. The owner asked specifically to retry Cloudflare rather than pivot, and the
+  actual blocker (credential access) is unrelated to whether Cloudflare's platform is the right
+  choice, so switching providers wouldn't address it. Remains the standing fallback if Cloudflare
+  continues to block after email access is restored.
+
+### Consequences
+- H-3 remains open and unresolved; Plausible remains the live, unchanged analytics provider —
+  no functional regression, no interruption (see ADR-020: Plausible is scoped to the
+  not-yet-live production domain, so it is not currently collecting meaningful data regardless).
+- No code, config, or documentation other than this entry and `BACKLOG.md`'s H-3 row changed.
+- **To resume:** owner needs either (a) access to the `info@SmartLearningSolutions.org` inbox to
+  retrieve the Global API Key (My Profile → API Tokens → API Keys section → Global API Key →
+  View, password-gated), or (b) to locate a Web Analytics/RUM-scoped **Edit** permission in the
+  custom-token picker that wasn't found this session (worth a fresh look — dashboard permission
+  lists do change). Once either credential is in hand, resume at Slice 1 of the plan referenced
+  above.
+
+### See Also
+- `BACKLOG.md` H-3
+- `DECISION_LOG.md` ADR-020 (original blocker + GoatCounter fallback)
+- `PLAN.md` Current State

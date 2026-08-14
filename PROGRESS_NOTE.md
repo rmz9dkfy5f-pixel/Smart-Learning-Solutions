@@ -1,43 +1,34 @@
-**Updated:** 2026-08-11 (real favicon from client logo, v2.28.0)
+**Updated:** 2026-08-13 (H-3 Cloudflare retry paused, no version bump)
 
 # Progress Note — Current Session
 
-## Real Favicon From Client Logo (2026-08-11, v2.28.0)
+## H-3 Cloudflare Retry Paused (2026-08-13, no version bump)
 
 ### Summary
 
-Replaced the stale placeholder favicon (predates the real logo, color-mismatched) with a real
-favicon + apple-touch-icon derived directly from the client's brand mark, across all 10 HTML
-pages. Resolves the long-open `docs/DESIGN.md` "Favicon final?" item and completes the task
-confirmed as next at the 2026-07-24 closeout.
+Owner retried Cloudflare Web Analytics onboarding for H-3. The dashboard "Add a site" wizard is
+still blocked by the same reproducible bug as ADR-020. The documented API bypass
+(`POST /accounts/{account_id}/rum/site_info`) was planned (Plan Mode, approved) and attempted, but
+hit a second, independent blocker: no findable Web Analytics/RUM write permission in Cloudflare's
+scoped custom-token picker, and the Global API Key fallback needs
+`info@SmartLearningSolutions.org` inbox access the owner doesn't currently have.
 
 ### Work Completed
 
-- Cropped the icon (running figure + kite) out of `src/images/brand-logo-mark.png` using
-  pixel-level connected-component analysis, since a simple rectangular crop bled into the
-  "Learning" wordmark's flourish. Exported `src/images/favicon.png` (32×32, new) and
-  `src/images/apple-touch-icon.png` (180×180, new).
-- Replaced the placeholder `<link rel="icon">` tag in all 10 HTML pages with the new favicon,
-  and added a new `<link rel="apple-touch-icon">` tag to each.
-- Updated `docs/DESIGN.md`, `CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md`,
-  `SLICE_REVIEWS.md` (SR-019), `STATUS.md`, `PLAN.md`.
+- Recorded the blocker and resume conditions in `DECISION_LOG.md` ADR-023.
+- Updated `BACKLOG.md` H-3 and `PLAN.md` to **paused, not abandoned**.
+- No code changed — Plausible remains the live, unaffected analytics provider.
 
 ### Validation Performed
 
-- All 10 pages loaded via local server (`python3 -m http.server`); `favicon.png`/
-  `apple-touch-icon.png` both confirmed `200`/`image/png`.
-- Real headless-browser screenshot check on `index.html`, `404.html`, and the one-directory-down
-  `programs/coding-with-robots.html` — no visual regressions, real logo unaffected.
-- `git diff --stat` confirmed scope: only the 10 HTML files + 2 new PNGs, nothing in
-  `main.css`/`components.js`.
-- `grep -rn "E85D1A"` across live code — zero remaining references to the old placeholder.
+- `git status` confirmed a clean tree before this session's edits; only the intended
+  docs/decision-log files changed.
 
 ### Not Yet Verified / Open
 
-- Push/tag held for explicit owner go-ahead, per this repo's standing norm — commits are local
-  only as of this entry (code: `784d1fc`, docs: pending).
-- Confirmed-queue backlog (H-3 GoatCounter, then M-9/M-4/...) unaffected, remains standing next
-  task — no next task confirmed this session.
+- H-3 itself remains unresolved. Resume once either (a) `info@SmartLearningSolutions.org` inbox
+  access is available for the Global API Key, or (b) a Web Analytics/RUM **Edit** permission is
+  found in the Cloudflare custom-token picker. GoatCounter remains the fallback per ADR-020.
 
 ### Launch Blockers (unchanged)
 
