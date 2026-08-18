@@ -11,6 +11,20 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.29.0] — 2026-08-17
+
+**Tag:** `v2.29.0__robots-meta-tags__commit-5b757b4`
+
+### Added
+- `<meta name="robots" content="index, follow">` added to all 9 public pages (`index.html`,
+  `about.html`, `workshops.html`, `resources.html`, `book.html`, `contact.html`,
+  `programs/index.html`, `programs/coding-with-robots.html`, `programs/pstem.html`) — an explicit
+  directive where the site previously relied on default crawler behavior only.
+- `<meta name="robots" content="noindex, nofollow">` added to `404.html`.
+- Closes `AUDIT.md`/`BACKLOG.md` M-9. See `SLICE_REVIEWS.md` SR-020.
+
+---
+
 ## [2.28.0] — 2026-08-11
 
 **Tag:** `v2.28.0__favicon-brand-icon__commit-784d1fc`

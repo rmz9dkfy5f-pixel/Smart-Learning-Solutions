@@ -5,6 +5,31 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-08-17 — Robots Meta Tags (v2.29.0)
+**Tag:** `v2.29.0__robots-meta-tags__commit-5b757b4`
+**Commit:** `5b757b4` · branch `main` · 2026-08-17
+**Type:** `feat`
+
+**Summary:** feat(seo): add explicit robots meta tag to all pages
+
+**Description:**
+Confirmed next task from the 2026-08-14 closeout (`HANDOFF_TO_CLAUDE.md`/`BACKLOG.md`/`PLAN.md`
+Step 4a). `BACKLOG.md`'s M-9 scope note ("staging/thank-you pages") did not correspond to any real
+page in this repo — no thank-you page exists (forms show success via an inline `#form-success`
+div, never a redirect; a redirect page was explicitly considered and rejected, `DECISION_LOG.md`
+2026-07-22) and staging-noindex is a server-header concern (`docs/DEPLOYMENT.md` §8), not an HTML
+one. Owner confirmed (via `AskUserQuestion`) the real scope: follow `AUDIT.md`'s own M-9 finding
+verbatim — add `<meta name="robots" content="index, follow">` to all 9 public pages and
+`<meta name="robots" content="noindex, nofollow">` to `404.html`. Inserted as a new line
+immediately after each page's `<meta name="description">` tag, before `<title>`, matching house
+`<head>` conventions exactly. No JS/CSS/nav touched.
+
+**Stats:** 10 HTML files changed (1 line added each) + `BACKLOG.md`, `AUDIT.md`, `CHANGELOG.md`,
+`RELEASE_NOTES.md`, `SLICE_REVIEWS.md`, `STATUS.md`, `PLAN.md`, `PROGRESS_NOTE.md`,
+`PROGRESS_NOTES.md`
+
+---
+
 ## 2026-08-13 — H-3 Cloudflare Retry Paused (no version bump)
 **Tag:** — (none; this push will not be tagged — docs/decision-log only, no release impact per
 `docs/VERSIONING.md`)

@@ -267,7 +267,7 @@ The `programs/index.html` file itself is structurally clean. The page is well-fo
 
 ---
 
-**M-9: No `<meta name="robots">` Tag on Any Page**
+~~**M-9: No `<meta name="robots">` Tag on Any Page**~~ — **Resolved 2026-08-17 (v2.29.0)**
 - **Severity:** Medium (low end)
 - **Affected:** All 10 pages
 - **What is happening:** No page has an explicit `<meta name="robots">` tag. The behavior defaults to `index, follow` which is correct for a public marketing site. However, the absence means there is no explicit directive, and if the site was temporarily staged as `noindex` (e.g., via server header) there is no page-level override capability in place.
@@ -276,6 +276,7 @@ The `programs/index.html` file itself is structurally clean. The page is well-fo
 - **User impact:** No current impact. Risk is that without explicit page-level control, search behavior relies entirely on server headers.
 - **Confidence:** Confirmed
 - **Recommended next step:** Add `<meta name="robots" content="index, follow">` to all public pages; consider `noindex` on 404.html.
+- **Resolution:** Added `<meta name="robots" content="index, follow">` to all 9 public pages and `<meta name="robots" content="noindex, nofollow">` to `404.html`, exactly per this finding's recommendation. See `SLICE_REVIEWS.md` SR-020, `BACKLOG.md` M-9.
 
 ---
 
@@ -419,7 +420,7 @@ No JavaScript errors are detectable from source alone. All image references reso
 - CTA button group uses inline style for centering (L-4)
 
 **Structural Weaknesses**
-- No `<meta name="robots">` tag (shared with all pages — M-9)
+- ~~No `<meta name="robots">` tag~~ — **resolved v2.29.0** (shared with all pages — M-9)
 - The page is a relatively thin "choose a program" landing page — limited content depth could reduce its SEO value relative to its priority 0.9 sitemap placement
 
 **Security Concerns**

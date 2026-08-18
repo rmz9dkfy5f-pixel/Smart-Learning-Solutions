@@ -4,6 +4,34 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-020 — Robots Meta Tags (v2.29.0)
+**Date:** 2026-08-17
+**Version:** v2.29.0
+
+**Slice:** Owner-confirmed next task (2026-08-14 closeout): `BACKLOG.md` M-9. `BACKLOG.md`'s own
+scope note ("staging/thank-you pages") didn't correspond to any real page in this repo — no
+thank-you page exists (forms show success via an inline `#form-success` div, never a redirect) and
+staging-noindex is a server-header concern (`docs/DEPLOYMENT.md` §8), not an HTML one. Owner
+confirmed (via `AskUserQuestion`) the real scope: follow `AUDIT.md`'s own M-9 finding verbatim.
+
+**Change:** Added `<meta name="robots" content="index, follow">` to all 9 public pages
+(`index.html`, `about.html`, `workshops.html`, `resources.html`, `book.html`, `contact.html`,
+`programs/index.html`, `programs/coding-with-robots.html`, `programs/pstem.html`) and
+`<meta name="robots" content="noindex, nofollow">` to `404.html`. Inserted as a new line
+immediately after each page's `<meta name="description">` tag and before `<title>`, matching
+existing 2-space-indent `<head>` conventions exactly — no other lines touched.
+
+**Post-review result:** All 10 pages verified via local server (`python3 -m http.server`) —
+`grep -c 'name="robots"'` returned exactly 1 per file; `curl` confirmed correct tag content and
+position on every page; all 10 returned HTTP `200`. Repo-wide
+`grep -rn 'name="robots"' --include="*.html" .` returned exactly 10 matches (9× `index, follow`,
+1× `noindex, nofollow`). `git diff --stat` confirmed only the 10 HTML files changed, 1 line added
+each — no CSS/JS/nav touched.
+
+**Risk:** None — additive, non-rendering `<head>`-only change with no JS/CSS dependency.
+
+---
+
 ## SR-019 — Real Favicon From Client Logo (v2.28.0)
 **Date:** 2026-08-11
 **Version:** v2.28.0

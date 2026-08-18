@@ -12,13 +12,21 @@ owner/client-gated and cannot advance without external input:
 |---|---|
 | H-1 / OD-003 — Deployment host | Client to accept/reject the self-host proposal (existing staging VPS); once accepted, point production DNS and verify `/programs/` routing end-to-end |
 
+**M-9 resolved (2026-08-17, v2.29.0):** Confirmed next task from the 2026-08-14 closeout. Added
+`<meta name="robots" content="index, follow">` to all 9 public pages and
+`<meta name="robots" content="noindex, nofollow">` to `404.html`. `BACKLOG.md`'s original scope
+note ("staging/thank-you pages") didn't correspond to any real page in this repo — owner confirmed
+(via `AskUserQuestion`) the real scope should follow `AUDIT.md`'s own M-9 finding instead. See
+`SLICE_REVIEWS.md` SR-020. Remaining queue: H-3 (paused, `DECISION_LOG.md` ADR-023), M-4 (remove
+inline style blocks), then V3.4 doc reconciliation, then M-8 (email casing, held pending OD-003).
+
 **Confirmed queue (2026-07-22):** M-7 (`_next` redirect field) was scoped and closed as not
 applicable (see `DECISION_LOG.md` ADR-018). Owner confirmed working the remaining Medium-priority
 Gate-1/Gate-2 backlog in order of importance: (1) ~~H-4~~ — page-transition overlay timeout
 fallback, **resolved 2026-07-22 (v2.26.1, `SLICE_REVIEWS.md` SR-013)**; (2) H-3 — pin/document
-the Plausible analytics URL; (3) M-9 — noindex meta on non-public pages; (4) M-4 — remove inline
-style blocks; (5) reconcile V3.4 stub docs; (6) M-8 — email casing (held pending OD-003). OD-003
-itself remains owner/client-gated throughout.
+the Plausible analytics URL; (3) ~~M-9~~ — noindex meta, **resolved 2026-08-17 (v2.29.0)**; (4)
+M-4 — remove inline style blocks; (5) reconcile V3.4 stub docs; (6) M-8 — email casing (held
+pending OD-003). OD-003 itself remains owner/client-gated throughout.
 
 **H-3 update (2026-07-23, same day):** Owner chose to replace Plausible with a free
 privacy-friendly analytics provider rather than just pin its URL. Google Analytics rejected;

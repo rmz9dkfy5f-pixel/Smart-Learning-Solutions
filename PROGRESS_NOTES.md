@@ -5,6 +5,37 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-08-17 — Robots Meta Tags (v2.29.0)
+
+**Branch:** `main`
+
+### Summary
+Confirmed next task from the 2026-08-14 closeout. `BACKLOG.md`'s M-9 scope note ("staging/
+thank-you pages") didn't correspond to any real page in this repo — no thank-you page exists and
+staging-noindex is a server-header concern (`docs/DEPLOYMENT.md` §8). Owner confirmed (via
+`AskUserQuestion`) the real scope: follow `AUDIT.md`'s own M-9 finding instead — explicit
+`index, follow` on all 9 public pages, `noindex, nofollow` on `404.html`.
+
+### Work Completed
+- Added the robots meta tag to all 10 HTML pages (9× `index, follow`, 1× `noindex, nofollow` on
+  `404.html`), matching existing `<head>` conventions exactly.
+- Closed `BACKLOG.md` M-9 and the `AUDIT.md` M-9 finding.
+- Ran the full release ceremony (`CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md`,
+  `SLICE_REVIEWS.md` SR-020, `STATUS.md`, `PLAN.md`); version bumped v2.28.0 → v2.29.0 per
+  `docs/VERSIONING.md` §4.
+
+### Validation Performed
+- `grep`/`curl` against a local server confirmed exactly one correctly-valued robots tag per
+  page, all 10 pages `200`. `git diff --stat` confirmed only the intended files changed.
+
+### Notes for the Next Agent
+- Commit/tag/push for this work is pending owner confirmation as of this entry — check
+  `HANDOFF_TO_CLAUDE.md`/git state before assuming it landed.
+- Standing queue after M-9: H-3 (paused, `DECISION_LOG.md` ADR-023), M-4 (inline style cleanup),
+  V3.4 doc reconciliation, M-8 (email casing, held on OD-003).
+
+---
+
 ## 2026-08-13 — H-3 Cloudflare Retry Paused (no version bump)
 
 **Branch:** `main`

@@ -40,7 +40,7 @@ These must be resolved before the site can go live.
 | ~~M-5~~ | ~~Update CSS cache-busting query string~~ | Resolved v2.18.0: token updated to `?v=mobile-20260619c` across all 10 files |
 | ~~M-7~~ | ~~Populate `_next` redirect field in `book.html`~~ — **Closed 2026-07-22, not applicable**: both forms submit via JS `fetch()` with `e.preventDefault()`, never performing a native POST/redirect, so a `_next`/redirect field would be inert. The field itself no longer exists — removed during the Web3Forms/AJAX migration (v2.23.0). See `DECISION_LOG.md` ADR-018 | Superseded by the Web3Forms AJAX implementation |
 | M-8 | Normalise email casing — `info@smartlearningsolutions.org` | `info@SmartLearningSolutions.org` inconsistent — **hold until hosting platform confirmed** |
-| M-9 | Add `<meta name="robots">` to pages that should not be indexed | Staging / thank-you pages |
+| ~~M-9~~ | ~~Add `<meta name="robots">` to pages that should not be indexed~~ — **Resolved 2026-08-17 (v2.29.0)**: added `<meta name="robots" content="index, follow">` to all 9 public pages and `<meta name="robots" content="noindex, nofollow">` to `404.html`. Owner confirmed real scope — the original "staging/thank-you pages" note did not correspond to any actual page in this site (no thank-you page exists; staging noindex is a server-header concern, `docs/DEPLOYMENT.md` §8). See `SLICE_REVIEWS.md` SR-020 | Corrected: no staging/thank-you page exists in this repo; scope was all-pages index/follow + 404 noindex per `AUDIT.md`'s original finding |
 
 ---
 

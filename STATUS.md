@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.28.0 · 2026-08-11 (no version bump this push — docs/decision-log only)
+**Current Version:** v2.29.0 · 2026-08-17
 **Branch:** `main`
 
 ---
@@ -8,6 +8,12 @@
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Robots Meta Tags — 2026-08-17 (v2.29.0)
+
+Added an explicit `<meta name="robots">` directive to every page, closing `AUDIT.md`/`BACKLOG.md` M-9. The 9 public pages get `content="index, follow"`; `404.html` gets `content="noindex, nofollow"`. `BACKLOG.md`'s original scope note ("staging/thank-you pages") didn't correspond to any real page in this repo — no thank-you page exists and staging-noindex is a server-header concern (`docs/DEPLOYMENT.md` §8) — so scope followed the audit finding's own recommendation instead, confirmed with the owner. See `SLICE_REVIEWS.md` SR-020.
 
 ---
 

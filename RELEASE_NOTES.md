@@ -2,6 +2,26 @@
 
 ---
 
+## v2.29.0 — 2026-08-17 — Robots Meta Tags
+
+**Tag:** `v2.29.0__robots-meta-tags__commit-5b757b4`
+
+### Summary
+Added an explicit `<meta name="robots">` directive to every page, closing the one open
+Medium-severity `AUDIT.md` gap (M-9) where the site had no page-level SEO control and relied
+entirely on default crawler behavior. The 9 public pages get `content="index, follow"`; `404.html`
+gets `content="noindex, nofollow"`. `BACKLOG.md`'s original M-9 scope note ("staging/thank-you
+pages") did not correspond to any real page in this site — no thank-you page exists (forms use an
+inline success state, not a redirect) and staging-noindex is a server-header concern
+(`docs/DEPLOYMENT.md` §8), not an HTML one — so scope followed the audit finding's own literal
+recommendation instead, confirmed with the owner before implementation.
+
+### Added
+- `<meta name="robots" content="index, follow">` on all 9 public pages
+- `<meta name="robots" content="noindex, nofollow">` on `404.html`
+
+---
+
 ## v2.28.0 — 2026-08-11 — Real Favicon From Client Logo
 
 **Tag:** `v2.28.0__favicon-brand-icon__commit-784d1fc`
