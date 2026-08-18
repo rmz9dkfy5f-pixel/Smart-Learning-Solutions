@@ -5,6 +5,55 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-08-17, continued — Staging Deploy + Snapshot/Config Housekeeping
+
+**Branch:** `main`
+
+### Summary
+Owner authorized deploying v2.29.0 (robots meta tags) to staging and asked to clean up the
+long-flagged stale vault `PROJECT.md` repo path (hyphenated, nonexistent — `Smart-Learning-
+Solutions` vs. the real space-named directory) and orphaned commit hash (`57c28ef`, predates the
+2026-07-24 `git filter-repo` rewrite). While closing this session out via the repo-push super
+prompt, also found and closed two related housekeeping gaps: the v2.29.0 canonical snapshot had
+been skipped when the tag was first pushed, and this repo still had no local
+`docs/governance/REPOSITORY_HANDOFF_CONFIG.md` (a gap first flagged 2026-08-11).
+
+### Work Completed
+- Deployed v2.29.0 to staging via `scripts/deploy-staging.sh` — live backup taken first
+  (`smart-learning-solutions.bak-20260818-005305`), dry-run reviewed, real run applied. Verified
+  via direct `curl`: robots meta tags live and correct on all 10 pages, forms still reference
+  `api.web3forms.com`, `og:image` 200, security headers intact, internal paths (`/AUDIT.md`,
+  `/.git/config`) still 404.
+- **SSH key correction:** the deploy script's documented default (`~/.ssh/jones_vps`) does not
+  exist on this machine — `~/.ssh/id_ed25519` is the key actually authorized on the VPS. Used via
+  `SLS_DEPLOY_SSH_KEY` override; now recorded in the new handoff config below so this doesn't need
+  rediscovering.
+- Created the missing v2.29.0 canonical snapshot at `/Users/ant/WorkSync/Projects/RepoBackups/
+  Smart Learning Solutions/v2.29.0__robots-meta-tags__commit-5b757b4` — 253/253 files matched,
+  `diff -rq` identical, all 10 changed-file SHA-256 checksums matched.
+- Created `docs/governance/REPOSITORY_HANDOFF_CONFIG.md`, filled with real confirmed values
+  (snapshot destination, SSH key, deploy contract, safety boundaries) — closes the gap flagged
+  2026-08-11.
+- Fixed the vault project folder's `PROJECT.md` `Repo:` line (space-named path, current
+  `v2.29.0`/`10fd1b5`) — vault-side, took a pre-edit snapshot first per that SOP
+  (`snapshot-20260817-210732-pre-project-md-stale-path-fix`, 7143/7143 files, 1 unrelated
+  concurrent-edit checksum drift disclosed in its manifest).
+
+### Validation Performed
+- Staging `curl` checks listed above, all passed.
+- Repo snapshot: file-count match + `diff -rq` + targeted checksums, all passed.
+- Vault snapshot: file-count match, checksum comparison (1 unrelated drift disclosed, not from
+  this session's work).
+
+### Notes for the Next Agent
+- This entry's own commit/push (recording the deploy + snapshot/config housekeeping above) is
+  captured in this same session's closeout — check `git log`/`COMMIT_NOTES.md` for the exact
+  final hash rather than assuming this note's own hash references are final.
+- Standing queue unchanged: H-3 (paused, `DECISION_LOG.md` ADR-023), M-4 (inline style cleanup),
+  V3.4 doc reconciliation, M-8 (email casing, held on OD-003).
+
+---
+
 ## 2026-08-17 — Robots Meta Tags (v2.29.0)
 
 **Branch:** `main`

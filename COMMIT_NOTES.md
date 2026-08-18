@@ -5,6 +5,29 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-08-17, continued — Staging Deploy + Snapshot/Config Housekeeping (no version bump)
+**Tag:** — (none; docs/deploy-record only, no code change, no release impact per `docs/VERSIONING.md`)
+**Commit:** applied in this same push, branch `main` · 2026-08-17
+**Type:** `docs`
+
+**Summary:** docs: record v2.29.0 staging deploy, backfill missing snapshot, add repository handoff config
+
+**Description:**
+Owner authorized deploying v2.29.0 to staging (`scripts/deploy-staging.sh`) and asked to clean up
+the stale vault `PROJECT.md` repo path/commit-hash (flagged 2026-08-14). Deploy verified via
+direct `curl` — robots tags live on all 10 pages, forms/`og:image`/security headers/internal-404s
+all unaffected. Two related housekeeping gaps closed while running the repo-push super prompt:
+the v2.29.0 canonical snapshot (missed when the tag was first pushed) was created and verified
+retroactively; `docs/governance/REPOSITORY_HANDOFF_CONFIG.md` (flagged missing 2026-08-11) was
+created with real confirmed values, including a correction that the deploy script's documented
+default SSH key (`~/.ssh/jones_vps`) does not exist on this machine — `~/.ssh/id_ed25519` is the
+key actually authorized. No application code changed.
+
+**Stats:** 3 files changed (`STATUS.md`, `PROGRESS_NOTES.md`, `COMMIT_NOTES.md`) + 1 new file
+(`docs/governance/REPOSITORY_HANDOFF_CONFIG.md`)
+
+---
+
 ## 2026-08-17 — Robots Meta Tags (v2.29.0)
 **Tag:** `v2.29.0__robots-meta-tags__commit-5b757b4`
 **Commit:** `5b757b4` · branch `main` · 2026-08-17
