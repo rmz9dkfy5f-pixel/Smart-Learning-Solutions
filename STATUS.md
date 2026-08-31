@@ -11,6 +11,23 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 
 ---
 
+## 5950X Workstation Diverged-Clone Remediation + Handoff Config Update — 2026-08-31 (no version bump)
+
+This machine's clone (`E:\Projects\GitHub\Smart-Learning-Solutions`, hostname `DESKTOP-8JF1MKA`)
+had never been audited or updated since 2026-06-17 — a `REPO_SESSION_START_RECOVERY_AUDIT.md` run
+found local `main` diverged from `origin/main` (`ahead 59, behind 121`), because this clone
+predated the 2026-07-24 `git filter-repo` rewrite entirely. Remediated (owner-approved plan): a
+backup branch preserved the old tip, an old superseded stash was exported then dropped, and
+`git fetch --tags --force --prune --prune-tags` + `git reset --hard origin/main` caught this
+clone up to `fb560c6` (v2.29.0) with no push required. No application code changed. The only
+repo-tracked file change from this session is a new row in
+`docs/governance/REPOSITORY_HANDOFF_CONFIG.md`'s Snapshot Destination table for this machine
+(owner-confirmed destination), closing the gap that file's own text had flagged for an unmatched
+machine. See `DECISION_LOG.md` (this repo) and the AntBrainOS vault project folder's
+`SESSION_LOG.md`/`DECISION_LOG.md` 2026-08-31 entries for full detail.
+
+---
+
 ## Robots Meta Tags — 2026-08-17 (v2.29.0)
 
 Added an explicit `<meta name="robots">` directive to every page, closing `AUDIT.md`/`BACKLOG.md` M-9. The 9 public pages get `content="index, follow"`; `404.html` gets `content="noindex, nofollow"`. `BACKLOG.md`'s original scope note ("staging/thank-you pages") didn't correspond to any real page in this repo — no thank-you page exists and staging-noindex is a server-header concern (`docs/DEPLOYMENT.md` §8) — so scope followed the audit finding's own recommendation instead, confirmed with the owner. See `SLICE_REVIEWS.md` SR-020.

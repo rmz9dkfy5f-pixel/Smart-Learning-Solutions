@@ -782,3 +782,63 @@ confirms a clean tree throughout.
 - `BACKLOG.md` H-3
 - `DECISION_LOG.md` ADR-020 (original blocker + GoatCounter fallback)
 - `PLAN.md` Current State
+
+---
+
+## ADR-024 — Reset the 5950X Workstation's Diverged `main` to `origin/main`, Not a Local Re-Rewrite
+
+**Date:** 2026-08-31
+**Version:** none (no code change, no version bump)
+
+### Decision
+On the Windows machine (`DESKTOP-8JF1MKA`, `E:\Projects\GitHub\Smart-Learning-Solutions`) — its
+first-ever audited session — created a backup branch for the stale `main` tip, exported and
+dropped an old superseded stash, then ran `git fetch origin --tags --force --prune --prune-tags`
+followed by `git reset --hard origin/main` to bring local `main` from `2e035bd` (2026-06-17) to
+`fb560c6` (v2.29.0, 2026-08-17), catching up 121 commits. Did not attempt to replay the clone's
+own 59 unique commits, and did not run `git filter-repo` locally.
+
+### Reason
+A `REPO_SESSION_START_RECOVERY_AUDIT.md` run found this clone's `main` diverged from
+`origin/main` (`ahead 59, behind 121`). Root cause: this clone predates ADR-021's 2026-07-24
+`git filter-repo` AI-attribution rewrite entirely. Its 59 "ahead" commits (`git log
+fb560c6..2e035bd`) all date 2026-04-24→2026-06-17 — this clone's own old, pre-rewrite lineage, not
+new work — and are structurally incompatible with the rewritten `origin/main` lineage (different
+SHAs for the same underlying content past the rewrite point). Replaying them would either fail or
+reintroduce commits from before the owner-authorized attribution scrub. A plain
+`git reset --hard` is the correct, much simpler fix once the old tip is safely preserved
+elsewhere.
+
+### Context
+This was the first session ever run against this Windows machine's clone — no vault continuity
+record had referenced this path or machine before. Planned with the owner in Plan Mode (Explore
+and Plan agents independently re-verified the git state and grounded the exact commands in prior
+AntBrainOS vault lessons about post-rewrite tag staleness); Model Selection Gate shown (Claude
+Code in VS Code, Sonnet 5, high effort — confirmed).
+
+### Alternatives Considered
+- **Replay the 59 local-only commits onto the new `origin/main` lineage** — rejected; they predate
+  the attribution scrub this repo's owner explicitly authorized (ADR-021), so replaying them would
+  partially undo that decision.
+- **Run `git filter-repo` locally to rewrite this clone into agreement** — rejected as unnecessary
+  complexity; `origin/main` is already the correct, owner-authorized rewritten history, so this
+  clone only needs to adopt it, not independently re-derive it.
+- **Leave the clone diverged and cherry-pick going forward** — rejected; every future push from
+  this machine would carry the same incompatibility risk.
+
+### Consequences
+- `backup/main-pre-catchup-20260831-2e035bd` exists locally on this machine only, preserving the
+  discarded pre-rewrite tip for as long as anyone wants to inspect it.
+- The one stash present (`stash@{0}`, a v2.15.0 planning-docs WIP already superseded per this
+  file's own v2.15.2-era changes) was exported to
+  `E:\Projects\GitHub\_backups\Smart-Learning-Solutions\stash-cc88cfd-20260831.patch` before being
+  dropped.
+- No push occurred — purely a local-ref catch-up against an already-correct, already
+  owner-authorized `origin/main`.
+- Added a new row to `docs/governance/REPOSITORY_HANDOFF_CONFIG.md`'s Snapshot Destination table
+  for this machine, closing the gap that file's own text had flagged for an unmatched machine.
+
+### See Also
+- ADR-021 (the 2026-07-24 git filter-repo rewrite this remediation responds to)
+- AntBrainOS vault: `03_PROJECTS/Active/Smart Learning Solutions/DECISION_LOG.md` 2026-08-31 entry
+  (mirrors this decision at the vault level)

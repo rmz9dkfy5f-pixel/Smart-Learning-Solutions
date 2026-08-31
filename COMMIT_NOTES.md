@@ -5,6 +5,27 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-08-31 — 5950X Workstation Diverged-Clone Remediation + Handoff Config Update (no version bump)
+**Tag:** — (none; docs-only, no code change, no release impact per `docs/VERSIONING.md`)
+**Commit:** applied in this same push, branch `main` · 2026-08-31
+**Type:** `docs`
+
+**Summary:** docs: add 5950X Workstation snapshot-destination row after diverged-clone remediation
+
+**Description:**
+This Windows machine's clone had never been audited or updated since 2026-06-17 and had diverged
+from `origin/main` (`ahead 59, behind 121`) following the 2026-07-24 `git filter-repo` rewrite.
+Remediated entirely via local git operations (backup branch, stash export+drop, forced tag
+re-sync, `git reset --hard origin/main`) — no push, no application code touched. The only
+repo-tracked file this session changes is `docs/governance/REPOSITORY_HANDOFF_CONFIG.md`: added a
+new row to its Snapshot Destination by Machine table for this machine (owner-confirmed
+destination), closing the gap that file's own text had flagged for an unmatched machine.
+
+**Stats:** 1 file changed (`docs/governance/REPOSITORY_HANDOFF_CONFIG.md`) + 3 doc files updated
+in this same push (`STATUS.md`, `PROGRESS_NOTES.md`, `COMMIT_NOTES.md`)
+
+---
+
 ## 2026-08-17, continued — Staging Deploy + Snapshot/Config Housekeeping (no version bump)
 **Tag:** — (none; docs/deploy-record only, no code change, no release impact per `docs/VERSIONING.md`)
 **Commit:** applied in this same push, branch `main` · 2026-08-17

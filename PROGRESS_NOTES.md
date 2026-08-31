@@ -5,6 +5,46 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-08-31 — 5950X Workstation Diverged-Clone Remediation
+
+**Branch:** `main`
+
+### Summary
+First-ever audited Claude Code session on this Windows machine's clone found `main` diverged from
+`origin/main` (`ahead 59, behind 121`) — the clone predated the 2026-07-24 `git filter-repo`
+rewrite entirely and had never been updated since 2026-06-17. Ran a session-start recovery audit,
+planned the remediation with the owner in Plan Mode (Model Selection Gate shown: Claude Code in
+VS Code, Sonnet 5, high effort), then executed and verified it.
+
+### Work Completed
+- Created backup branch `backup/main-pre-catchup-20260831-2e035bd` preserving the old, now-stale
+  `main` tip before touching anything.
+- Exported the one existing stash (`stash@{0}`, a superseded v2.15.0 planning-docs WIP) to
+  `E:\Projects\GitHub\_backups\Smart-Learning-Solutions\stash-cc88cfd-20260831.patch`, then dropped
+  it.
+- Ran `git fetch origin --tags --force --prune --prune-tags` (required — a plain fetch never
+  overwrites an existing local tag, and the 2026-07-24 rewrite recreated all 74 tags) then
+  `git reset --hard origin/main`, bringing local `main` from `2e035bd` (2026-06-17) to `fb560c6`
+  (v2.29.0, 2026-08-17).
+- Verified: branch in sync with `origin/main`, working tree clean, no `Co-authored-by` trailers
+  remain on any local ref, `docs/governance/REPOSITORY_HANDOFF_CONFIG.md` now present. **No push
+  occurred** — only local refs moved to match an already-correct, already-fetched `origin/main`.
+- Took a fresh AntBrainOS vault snapshot (concurrency-verified against 15 other live sessions on
+  this machine), then updated the vault project folder's `CURRENT_CONTEXT.md`/`SESSION_LOG.md`/
+  `DECISION_LOG.md` and this repo's `REPOSITORY_HANDOFF_CONFIG.md` (new snapshot-destination row
+  for this machine, owner-confirmed path).
+
+### Validation Performed
+`git status -sb`, `git rev-parse HEAD origin/main`, `git status --porcelain=v1
+--untracked-files=all`, `git log --branches --tags --grep="^Co-authored-by:" -i` — all matched
+expected post-reset state.
+
+### Notes For Next Agent
+No application work was done this session. The 2026-08-17 confirmed next task — **M-4** (remove
+inline `style=` blocks) — remains the standing pick, now unblocked by this catch-up.
+
+---
+
 ## 2026-08-17, continued — Staging Deploy + Snapshot/Config Housekeeping
 
 **Branch:** `main`
