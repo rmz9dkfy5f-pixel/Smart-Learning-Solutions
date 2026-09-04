@@ -80,6 +80,21 @@ If the current machine does not match any row above, or more than one row could 
   is always run manually and only on separate, explicit per-session authorization (never inferred
   from a git push alone)
 
+### Deploy Tooling by Machine
+
+`scripts/deploy-staging.sh` hard-codes `$HOME/.ssh/jones_vps` as its default SSH key (overridable
+via `SLS_DEPLOY_SSH_KEY`) and requires `rsync` on the local machine. Neither has held true
+unmodified on every machine this repo has been deployed from — check this table before assuming
+the script will run as documented.
+
+| Machine | `rsync` available? | Working SSH key | Notes |
+|---|---|---|---|
+| Ant's MacBook Air | Yes (native) | `~/.ssh/id_ed25519` (via `SLS_DEPLOY_SSH_KEY` override) | `~/.ssh/jones_vps` does not exist on this machine either — found 2026-08-17 (`SLICE_REVIEWS.md` SR-019/STATUS.md v2.29.0 entry). Script runs as documented once the key override is set. |
+| 5950X Workstation | **No** — Git Bash on this machine has no `rsync`, and WSL is not installed (only the `wsl.exe` launcher stub is present; running it prompts to install) | `~/.ssh/jones_vps_rsa` (via `SLS_DEPLOY_SSH_KEY` override) | Found 2026-09-04 (v2.29.1 deploy). `scripts/deploy-staging.sh` cannot run unmodified here — it fails at `rsync: command not found` on the first dry-run. **Workaround used:** confirmed server-side `programs/`/`src/`/`legal/` file sets exactly matched the repo (`find ... -printf` listing on both sides) so nothing needed deleting, then `scp`'d just the changed files directly, then verified with a SHA-256 checksum comparison of every deployed file against its local source. This is **only safe-equivalent to the script's `rsync --delete` behavior when no files were removed** from an allowlisted directory in that session's change — if a future deploy from this machine needs to remove a file from `programs/`, `src/`, or `legal/`, either install `rsync` first (e.g. via MSYS2's `pacman`, not yet done) or manually `ssh rm` the stale path after confirming with the owner, since plain `scp` will never delete anything server-side. |
+
+If the current machine does not match any row above, verify `rsync` and the SSH key fresh rather
+than assuming either — do not guess from another machine's row.
+
 ## Safety Boundaries
 
 - Protected paths: `.git/`, `.claude/`, `.agents/`, `docs/`, `plans/`, `prompts/`, all root
