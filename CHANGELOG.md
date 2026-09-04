@@ -11,6 +11,23 @@ Versioning follows [Semantic Versioning](docs/VERSIONING.md).
 
 ---
 
+## [2.29.1] — 2026-09-04
+
+**Tag:** `v2.29.1__inline-style-cleanup__commit-1ddcdfe`
+
+### Changed
+- Moved page-specific CSS out of inline `<style>` blocks in `404.html`, `about.html`, `book.html`,
+  `contact.html`, `workshops.html`, `programs/coding-with-robots.html`, and `programs/pstem.html`
+  into `src/css/main.css`, closing `AUDIT.md`/`BACKLOG.md` M-4 (scope corrected from 5 to 7
+  pages — `book.html`/`contact.html` gained inline blocks later, during the v2.23.0 Web3Forms
+  migration). De-duplicated an identical `.form-success`/`.form-success.visible` pair both pages
+  had defined independently. Each page's unrelated line-6 FOUC-prevention `<style>` snippet is
+  untouched. See `SLICE_REVIEWS.md` SR-021.
+- `main.css` cache-busting query string bumped `?v=mobile-20260619d` → `?v=20260904` across all 10
+  HTML pages so browsers fetch the updated CSS.
+
+---
+
 ## [2.29.0] — 2026-08-17
 
 **Tag:** `v2.29.0__robots-meta-tags__commit-5b757b4`

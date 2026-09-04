@@ -2,6 +2,27 @@
 
 ---
 
+## v2.29.1 — 2026-09-04 — Inline Style Cleanup
+
+**Tag:** `v2.29.1__inline-style-cleanup__commit-1ddcdfe`
+
+### Summary
+Closed `AUDIT.md`/`BACKLOG.md` M-4: page-specific layout CSS that had been scattered across 7
+pages' inline `<style>` blocks (the audit originally named 5 — `book.html`/`contact.html` had each
+picked up their own block later, during the v2.23.0 Web3Forms migration, after the audit was
+written) is now in `src/css/main.css` under labeled sections. Resolves two pre-existing
+base/modifier fragmentations along the way — `main.css` already had photo-variant modifiers
+(`.credential-item--photo`, `.format-card:hover ...`) whose base classes lived only inline — and
+de-duplicates an identical `.form-success`/`.form-success.visible` pair `book.html`/`contact.html`
+had each defined independently. No visual or behavioral change intended; verified via local server
+across all 10 pages at their relevant breakpoints.
+
+### Changed
+- Page-specific CSS relocated from inline `<style>` blocks into `src/css/main.css`
+- Cache-busting token refreshed on all 10 pages
+
+---
+
 ## v2.29.0 — 2026-08-17 — Robots Meta Tags
 
 **Tag:** `v2.29.0__robots-meta-tags__commit-5b757b4`

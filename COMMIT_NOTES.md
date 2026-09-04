@@ -5,6 +5,34 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-09-04 — Inline Style Cleanup (v2.29.1)
+**Tag:** `v2.29.1__inline-style-cleanup__commit-1ddcdfe`
+**Commit:** `1ddcdfe` · branch `main` · 2026-09-04
+**Type:** `refactor`
+
+**Summary:** refactor(css): move page-specific styles from inline blocks into main.css
+
+**Description:**
+Confirmed next task from the 2026-08-17 and 2026-08-31 closeouts (`BACKLOG.md` M-4). `AUDIT.md`'s
+finding named 5 affected pages; direct inspection during planning found 7 —
+`book.html`/`contact.html` also had inline `<style>` blocks, likely added during the later
+v2.23.0 Web3Forms migration, after the audit was written. Owner confirmed (via `AskUserQuestion`)
+to widen scope to all 7. Moved each page's page-specific `<style>` block into `src/css/main.css`,
+each inserted next to its most related existing section — resolving two pre-existing base/modifier
+fragmentations along the way (`.credential-item--photo`, `.format-card:hover ...` already existed
+in `main.css` but depended on base classes that lived only inline) — and de-duplicated an identical
+`.form-success`/`.form-success.visible` pair `book.html`/`contact.html` had each defined
+independently. Removed the resulting empty `<style>` block from all 7 pages; each page's line-6
+FOUC-prevention snippet untouched. Bumped the `main.css` cache-busting token
+(`?v=mobile-20260619d` → `?v=20260904`) across all 10 pages. Verified via a local Node HTTP server
+(`python3` unavailable on this machine) — all 10 pages `200`, moved CSS confirmed serving
+correctly; `main.css` brace-balanced (467/467) after growing 2342 → 2723 lines.
+
+**Stats:** 11 files changed (10 HTML files + `src/css/main.css`), 391 insertions(+), 396
+deletions(-)
+
+---
+
 ## 2026-08-31 — 5950X Workstation Diverged-Clone Remediation + Handoff Config Update (no version bump)
 **Tag:** — (none; docs-only, no code change, no release impact per `docs/VERSIONING.md`)
 **Commit:** applied in this same push, branch `main` · 2026-08-31

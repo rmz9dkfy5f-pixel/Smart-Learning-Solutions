@@ -12,6 +12,16 @@ owner/client-gated and cannot advance without external input:
 |---|---|
 | H-1 / OD-003 — Deployment host | Client to accept/reject the self-host proposal (existing staging VPS); once accepted, point production DNS and verify `/programs/` routing end-to-end |
 
+**M-4 resolved (2026-09-04, v2.29.1):** Confirmed next task from the 2026-08-17 and 2026-08-31
+closeouts. Moved page-specific CSS out of inline `<style>` blocks on 7 pages (corrected from the
+audit's original 5 — `book.html`/`contact.html` also had inline blocks, added later during the
+v2.23.0 Web3Forms migration) into `src/css/main.css`; de-duplicated a `.form-success` pair
+`book.html`/`contact.html` had each defined independently. See `SLICE_REVIEWS.md` SR-021. With
+M-4 done and H-3 still paused (`DECISION_LOG.md` ADR-023), the confirmed queue now points to V3.4
+doc reconciliation (`docs/project/`, `docs/governance/` vs. root-level equivalents) as the next
+standing candidate, then M-8 (email casing, held pending OD-003). Commit/tag/push for this work
+deferred to a separate, explicitly-requested step.
+
 **M-9 resolved (2026-08-17, v2.29.0):** Confirmed next task from the 2026-08-14 closeout. Added
 `<meta name="robots" content="index, follow">` to all 9 public pages and
 `<meta name="robots" content="noindex, nofollow">` to `404.html`. `BACKLOG.md`'s original scope

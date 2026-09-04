@@ -5,6 +5,42 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-09-04 — Inline Style Cleanup (M-4)
+
+**Branch:** `main`
+
+### Summary
+Confirmed next task from the 2026-08-17 and 2026-08-31 closeouts: `BACKLOG.md` M-4. `AUDIT.md`'s
+finding named 5 affected pages; direct inspection during planning found 7 —
+`book.html`/`contact.html` also had inline `<style>` blocks, likely added during the later
+v2.23.0 Web3Forms migration, after the audit was written. Owner confirmed (via `AskUserQuestion`)
+to widen scope to all 7.
+
+### Work Completed
+- Moved each of the 7 pages' page-specific `<style>` block into `src/css/main.css`, each inserted
+  next to its most related existing section — resolving two pre-existing base/modifier
+  fragmentations along the way (`.credential-item--photo`, `.format-card:hover ...`).
+- De-duplicated an identical `.form-success`/`.form-success.visible` pair `book.html` and
+  `contact.html` had each defined independently.
+- Removed the resulting empty `<style>` block from all 7 pages; each page's line-6
+  FOUC-prevention `<style>` snippet untouched.
+- Bumped the `main.css` cache-busting token (`?v=mobile-20260619d` → `?v=20260904`) across all 10
+  pages.
+- Ran the full release ceremony (`AUDIT.md`, `BACKLOG.md`, `CHANGELOG.md`, `RELEASE_NOTES.md`,
+  `SLICE_REVIEWS.md` SR-021, `STATUS.md`, `PLAN.md`); version bumped v2.29.0 → v2.29.1.
+
+### Validation
+`main.css` grew 2342 → 2723 lines, brace-balanced (467/467); each moved class resolved to exactly
+one base definition. All 10 pages verified `200` via a local Node HTTP server; `grep -c '<style'`
+returned 1 per changed file (was 2); zero remaining hits for the old cache-bust token;
+`git diff --stat` confirmed only the 10 HTML files + `main.css` changed in slices 1-2.
+
+### Not Yet Verified / Open
+Commit, tag, and push deliberately deferred to a separate, explicitly-requested step (owner chose
+"docs only, no commit" for the release-ceremony slice). `COMMIT_NOTES.md` has no entry yet.
+
+---
+
 ## 2026-08-31 — 5950X Workstation Diverged-Clone Remediation
 
 **Branch:** `main`

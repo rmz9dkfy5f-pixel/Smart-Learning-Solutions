@@ -193,16 +193,28 @@ The `programs/index.html` file itself is structurally clean. The page is well-fo
 
 ---
 
-**M-4: Inline `<style>` Blocks Scattered Across Multiple Pages**
+~~**M-4: Inline `<style>` Blocks Scattered Across Multiple Pages**~~ — **Resolved 2026-09-04 (v2.29.1)**
 - **Severity:** Medium
-- **Affected:** `workshops.html`, `about.html`, `programs/coding-with-robots.html`, `programs/pstem.html`, `404.html`
+- **Affected:** `workshops.html`, `about.html`, `programs/coding-with-robots.html`,
+  `programs/pstem.html`, `404.html`, `book.html`, `contact.html` — corrected from the original
+  5-page finding to 7; `book.html`/`contact.html` gained their own inline `<style>` block later,
+  during the v2.23.0 Web3Forms migration, after this finding was originally written
 - **What is happening:** Page-specific layout styles are defined in `<style>` blocks within `<head>` rather than in `main.css`. Examples: `.levels-grid`, `.level-card`, `.investigation-card`, `.not-found` layout, about-intro layout.
-- **Evidence:** Inline `<style>` blocks confirmed in five pages.
+- **Evidence:** Inline `<style>` blocks confirmed in seven pages (widened from the original five
+  during resolution — see below).
 - **Likely cause:** Incremental page development where page-specific styles were not migrated to main.css.
 - **User impact:** No direct user impact at runtime, but creates maintenance fragility — style conflicts could emerge, and styles cannot be cached separately from HTML.
 - **Business impact:** Low immediate impact. Higher technical debt risk over time.
 - **Confidence:** Confirmed
 - **Recommended next step:** Migrate page-specific styles to main.css under clear section comments.
+- **Resolution:** Moved all page-specific CSS into `src/css/main.css` under labeled sections (each
+  inserted next to its most related existing section, not appended at the end); removed the
+  inline `<style>` block from all 7 pages. Also resolved two pre-existing base/modifier
+  fragmentations this finding didn't originally call out — `.credential-item--photo` and
+  `.format-card:hover ...` in `main.css` depended on base classes (`.credential-item`,
+  `.format-card`) that lived only inline — and de-duplicated an identical
+  `.form-success`/`.form-success.visible` pair `book.html`/`contact.html` had each defined
+  independently. See `SLICE_REVIEWS.md` SR-021, `BACKLOG.md` M-4.
 
 ---
 
@@ -434,7 +446,7 @@ No JavaScript errors are detectable from source alone. All image references reso
 
 ### programs/coding-with-robots.html and programs/pstem.html
 
-Both detail pages have inline `<style>` blocks for page-specific grids (`.levels-grid`, `.investigations-grid`) — maintenance debt item (M-4).
+Both detail pages had inline `<style>` blocks for page-specific grids (`.levels-grid`, `.investigations-grid`) — maintenance debt item (M-4). **Resolved 2026-09-04 (v2.29.1)** — moved into `main.css`.
 
 Both pages are otherwise structurally clean. All image references resolve. All CTAs link to valid destinations. Both are compliant with CLAUDE.md confirmed decisions.
 

@@ -1,6 +1,6 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.29.0 · 2026-08-17
+**Current Version:** v2.29.1 · 2026-09-04
 **Branch:** `main`
 
 ---
@@ -8,6 +8,22 @@
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Inline Style Cleanup (M-4) — 2026-09-04 (v2.29.1)
+
+Closed `AUDIT.md`/`BACKLOG.md` M-4: page-specific layout CSS that had been scattered across 7
+pages' inline `<style>` blocks (the audit originally named 5 — `book.html`/`contact.html` had each
+picked up their own block later, during the v2.23.0 Web3Forms migration, after the audit was
+written) is now in `src/css/main.css` under labeled sections. Resolves two pre-existing
+base/modifier fragmentations along the way — `main.css` already had photo-variant modifiers
+(`.credential-item--photo`, `.format-card:hover ...`) whose base classes lived only inline — and
+de-duplicates an identical `.form-success`/`.form-success.visible` pair `book.html`/`contact.html`
+had each defined independently. No visual or behavioral change intended; verified via local server
+across all 10 pages at their relevant breakpoints. Cache-busting token bumped
+(`?v=mobile-20260619d` → `?v=20260904`) across all 10 pages. See `SLICE_REVIEWS.md` SR-021.
+Commit/tag/push deferred to a separate, explicitly-requested step — not yet done as of this entry.
 
 ---
 
@@ -357,7 +373,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 
 ## Open Audit Items
 
-See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H-3 (Plausible), H-4 (overlay timeout), M-4, M-8, M-9 (medium). H-1 staging routing resolved (v2.16.1). C-1 (Formspree) resolved 2026-07-16 — migrated to Web3Forms. M-1 (OG image) resolved 2026-07-18 — converted to PNG. M-6 (`tel:` prefix) resolved v2.15.3. M-7 (`_next` redirect) closed 2026-07-22 — not applicable.
+See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H-3 (Plausible), M-8 (medium). H-1 staging routing resolved (v2.16.1). C-1 (Formspree) resolved 2026-07-16 — migrated to Web3Forms. M-1 (OG image) resolved 2026-07-18 — converted to PNG. M-6 (`tel:` prefix) resolved v2.15.3. M-7 (`_next` redirect) closed 2026-07-22 — not applicable. H-4 (overlay timeout) resolved 2026-07-22 (v2.26.1). M-9 (robots meta) resolved 2026-08-17 (v2.29.0). M-4 (inline style blocks) resolved 2026-09-04 (v2.29.1) — this line was stale on all three counts before this correction.
 
 ---
 
@@ -371,7 +387,7 @@ See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H
 | 4 | Reconcile V3.4 stub docs (`docs/project/`, `docs/governance/`) with existing root-level equivalents | V3.4 follow-up |
 | 5 | Review V3.4 candidate AGENTS.md/CLAUDE.md in `.v34_migration_review/` and merge any useful additions | V3.4 follow-up |
 | 6 | ~~Run `scripts/deploy-staging.sh` after merging future changes to `main`~~ — done 2026-07-24 (v2.27.0 + v2.26.1 now live on staging, SR-016); no automatic trigger exists, so repeat manually after future merges (L-016) | SR-016 |
-| 7 | Resume the confirmed H-3/M-9/M-4/... backlog queue, starting at H-3 (pin/document the Plausible analytics URL) — presented as the top candidate at the 2026-07-24 closeout, but the owner explicitly chose not to confirm a next task that session | `PLAN.md` |
+| 7 | ~~Resume the confirmed H-3/M-9/M-4/... backlog queue~~ — M-9 done 2026-08-17 (v2.29.0), M-4 done 2026-09-04 (v2.29.1); H-3 remains paused pending client email access (`DECISION_LOG.md` ADR-023). Next queued item: V3.4 doc reconciliation (`docs/project/`, `docs/governance/` vs. root-level equivalents), then M-8 (email casing, held pending OD-003) | `PLAN.md` |
 
 ---
 

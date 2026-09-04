@@ -1,48 +1,58 @@
-**Updated:** 2026-08-17 (Robots meta tags shipped, v2.29.0)
+**Updated:** 2026-09-04 (Inline style cleanup shipped, v2.29.1)
 
 # Progress Note — Current Session
 
-## Robots Meta Tags (2026-08-17, v2.29.0)
+## Inline Style Cleanup (2026-09-04, v2.29.1)
 
 ### Summary
 
-Confirmed next task from the 2026-08-14 closeout (`HANDOFF_TO_CLAUDE.md`/`BACKLOG.md`/`PLAN.md`
-Step 4a): `BACKLOG.md` M-9. `BACKLOG.md`'s own scope note ("staging/thank-you pages") didn't
-correspond to any real page in this repo — no thank-you page exists (forms show success via an
-inline `#form-success` div, never a redirect; a redirect page was explicitly considered and
-rejected, `DECISION_LOG.md` 2026-07-22) and staging-noindex is a server-header concern
-(`docs/DEPLOYMENT.md` §8), not an HTML one. Owner confirmed (via `AskUserQuestion`) the real
-scope: follow `AUDIT.md`'s own M-9 finding verbatim instead.
+Confirmed next task from the 2026-08-17 and 2026-08-31 closeouts: `BACKLOG.md` M-4. `AUDIT.md`'s
+finding named 5 affected pages; direct inspection during planning found 7 — `book.html`/
+`contact.html` also had inline `<style>` blocks, likely added during the later v2.23.0 Web3Forms
+migration, after the audit was written. Owner confirmed (via `AskUserQuestion`) to widen scope to
+all 7.
 
 ### Work Completed
 
-- Added `<meta name="robots" content="index, follow">` to all 9 public pages (`index.html`,
-  `about.html`, `workshops.html`, `resources.html`, `book.html`, `contact.html`,
-  `programs/index.html`, `programs/coding-with-robots.html`, `programs/pstem.html`).
-- Added `<meta name="robots" content="noindex, nofollow">` to `404.html`.
-- Closed `BACKLOG.md` M-9 and `AUDIT.md`'s M-9 finding (and its `programs/index.html`
-  cross-reference).
-- Ran the full release ceremony: `CHANGELOG.md`, `RELEASE_NOTES.md`, `COMMIT_NOTES.md`,
-  `SLICE_REVIEWS.md` (SR-020), `STATUS.md`, `PLAN.md` updated. Version bumped v2.28.0 → v2.29.0
-  per `docs/VERSIONING.md` §4 ("SEO / metadata improvements" → MINOR).
+- Moved each of the 7 pages' page-specific `<style>` block into `src/css/main.css`, each inserted
+  next to its most related existing section (not appended at the end) — resolving two pre-existing
+  base/modifier fragmentations along the way (`.credential-item--photo` and
+  `.format-card:hover ...` already existed in `main.css` but depended on base classes that lived
+  only inline).
+- De-duplicated an identical `.form-success`/`.form-success.visible` pair that `book.html` and
+  `contact.html` had each defined independently, into one shared definition.
+- Removed the resulting empty `<style>` block from all 7 pages (`404.html`, `about.html`,
+  `workshops.html`, `book.html`, `contact.html`, `programs/coding-with-robots.html`,
+  `programs/pstem.html`); each page's unrelated line-6 FOUC-prevention `<style>` snippet untouched.
+- Bumped the `main.css` cache-busting token (`?v=mobile-20260619d` → `?v=20260904`) across all 10
+  pages.
+- Ran the full release ceremony: `AUDIT.md`, `BACKLOG.md`, `CHANGELOG.md`, `RELEASE_NOTES.md`,
+  `SLICE_REVIEWS.md` (SR-021), `STATUS.md`, `PLAN.md` updated. Version bumped v2.29.0 → v2.29.1
+  per `docs/VERSIONING.md` §5 ("CSS polish"). `COMMIT_NOTES.md` deliberately not yet updated (see
+  Not Yet Verified below).
 
 ### Validation Performed
 
-- `grep -c 'name="robots"'` → exactly 1 match per file, all 10 pages.
-- Local server (`python3 -m http.server`) + `curl` confirmed correct tag content/position and
-  HTTP `200` on all 10 pages.
-- Repo-wide `grep -rn 'name="robots"' --include="*.html" .` → exactly 10 matches (9× `index,
-  follow`, 1× `noindex, nofollow`).
-- `git diff --stat` confirmed only the 10 HTML files changed (1 line each) before the doc
-  ceremony — no CSS/JS/nav touched.
+- `main.css` grew 2342 → 2723 lines, brace-balanced (467 open / 467 close); each moved class
+  resolved to exactly one base definition.
+- All 10 pages verified via a local Node HTTP server (`python3` unavailable on this machine — no
+  Microsoft Store Python install) — all returned `200`; `main.css` served with the new token and
+  contained the moved rules; `about.html`'s head confirmed clean.
+- `grep -c '<style'` returned exactly 1 per changed file (was 2).
+- `grep -rl 'mobile-20260619d'` returned zero hits after the token bump; the new token appeared on
+  all 10 pages.
+- `git diff --stat` confirmed exactly the 10 HTML files + `main.css` changed in slices 1-2 (net -5
+  lines) — nothing unrelated touched.
 
 ### Not Yet Verified / Open
 
-- Commit/tag/push for this work — pending owner confirmation before proceeding (see session
-  handoff).
+- Commit, tag, and push for this work — deliberately deferred to a separate, explicitly-requested
+  step this session (owner chose "docs only, no commit" for this slice). `CHANGELOG.md`/
+  `RELEASE_NOTES.md`'s `**Tag:**` lines are placeholders (`pending — assigned at commit`) until
+  then; `COMMIT_NOTES.md` has no entry yet since no commit exists.
 - H-3 (Cloudflare Web Analytics) remains paused — unchanged, unrelated to this session's work.
-- Vault `PROJECT.md`'s stale `Repo:` path/commit-hash drift (flagged 2026-08-14, still open) —
-  not addressed this session, out of scope.
+- Next standing task once this is committed: V3.4 doc reconciliation (`docs/project/`,
+  `docs/governance/` vs. root-level equivalents).
 
 ### Launch Blockers (unchanged)
 

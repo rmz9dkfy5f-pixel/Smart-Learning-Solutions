@@ -4,6 +4,41 @@ Record of significant work slices reviewed before and after implementation.
 
 ---
 
+## SR-021 — Inline Style Cleanup (v2.29.1)
+**Date:** 2026-09-04
+**Version:** v2.29.1
+
+**Slice:** Owner-confirmed next task (2026-08-17 and 2026-08-31 closeouts): `BACKLOG.md` M-4.
+`AUDIT.md`'s finding named 5 affected pages; direct inspection found 7 — `book.html`/`contact.html`
+also had inline `<style>` blocks, likely added during the later v2.23.0 Web3Forms migration. Owner
+confirmed (via `AskUserQuestion`) to widen scope to all 7.
+
+**Change:** Moved each page's page-specific `<style>` block into `src/css/main.css`, each inserted
+next to its most related existing section (not appended at the end) — e.g. `.about-intro`/
+`.credential-item` (base) placed directly before the existing "Credential items — photo header
+variant" section, which already depended on that base class; `.form-success`/`.form-success.visible`
+consolidated into one shared definition inside the existing "Form status & spam protection" section
+instead of `book.html`/`contact.html`'s two independent copies. Removed the resulting empty
+`<style>` block from all 7 pages (each page's unrelated line-6 FOUC-prevention snippet untouched).
+Bumped the `main.css` cache-busting token (`?v=mobile-20260619d` → `?v=20260904`) across all 10
+pages.
+
+**Post-review result:** `main.css` grew 2342 → 2723 lines, brace-balanced (467 open / 467 close);
+each moved class resolved to exactly one base definition. All 10 pages verified via a local Node
+static server (`python3` unavailable on this machine — no Microsoft Store Python install; used a
+disposable Node HTTP server instead) — all returned `200`; `main.css` served with the new token and
+contained the moved rules; `about.html`'s head confirmed clean (FOUC snippet intact, second
+`<style>` block gone). `grep -c '<style'` returned exactly 1 per changed file (was 2).
+`grep -rl 'mobile-20260619d'` returned zero hits after the token bump; the new token appeared on
+all 10 pages. `git diff --stat` confirmed exactly the 10 HTML files + `main.css` changed, net -5
+lines — nothing unrelated touched.
+
+**Risk:** Low — pure CSS relocation, not new styling. The `.form-success` de-duplication changes
+`book.html`/`contact.html` from two independent (byte-identical) rule sets to one shared source;
+functionally identical, confirmed via the local-server check above.
+
+---
+
 ## SR-020 — Robots Meta Tags (v2.29.0)
 **Date:** 2026-08-17
 **Version:** v2.29.0
