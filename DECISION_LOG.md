@@ -842,3 +842,51 @@ Code in VS Code, Sonnet 5, high effort — confirmed).
 - ADR-021 (the 2026-07-24 git filter-repo rewrite this remediation responds to)
 - AntBrainOS vault: `03_PROJECTS/Active/Smart Learning Solutions/DECISION_LOG.md` 2026-08-31 entry
   (mirrors this decision at the vault level)
+
+---
+
+## ADR-025 — Deploy the v2.29.1 Staging Push via `scp`, Not `rsync`, on the 5950X Workstation
+
+**Date:** 2026-09-04
+**Version:** v2.29.1 (deploy only — no code change from this decision itself)
+
+### Decision
+Deployed the v2.29.1 changed files to the staging VPS with plain `scp` of the 10 changed files,
+instead of running `scripts/deploy-staging.sh` (which requires `rsync`), after confirming via
+`find`-based directory listings that the server-side `programs/`/`src/`/`legal/` file sets exactly
+matched the repo — meaning `rsync`'s `--delete` semantics had nothing to actually delete this
+round, so a plain `scp` copy was safe-equivalent for this specific deploy. Verified every deployed
+file's SHA-256 checksum against its local source afterward (all matched), then ran the full
+`docs/DEPLOYMENT.md` §11 verification checklist against the live site.
+
+### Reason
+`scripts/deploy-staging.sh`'s first dry-run failed with `rsync: command not found` — this Windows
+machine's Git Bash does not ship `rsync`, and WSL is not installed (only the `wsl.exe` launcher
+stub is present, which prompts to install rather than running anything). Installing `rsync` (via
+WSL install, or MSYS2's `pacman`) was judged out of scope for a single deploy — a real system
+change beyond what "push to VPS" authorized in-session — so a manual equivalent was used instead,
+gated on first confirming it would be safe (no orphaned server-side files this script's `--delete`
+would otherwise have caught).
+
+### Alternatives Considered
+- **Install `rsync` via `wsl.exe --install`** — rejected for this session: installing a Windows
+  subsystem is a significant, scope-expanding system change, not something to do implicitly under
+  a "push to VPS" instruction without separately asking.
+- **Install `rsync` via MSYS2's `pacman`** — same reasoning; deferred rather than done inline.
+- **Recursive `scp -r` of `programs/`, `src/`, `legal/` in full** — rejected as unnecessary; only
+  10 files actually changed, and a full recursive copy risked altering timestamps/permissions on
+  unchanged files for no benefit over targeting exactly the diff.
+
+### Consequences
+- Positive: v2.29.1 deployed and verified without installing new tooling mid-session.
+- Risk (documented, not fixed): this workaround is **only safe when no allowlisted file needs
+  deleting** in that session's change. A future deploy from this machine that removes a file from
+  `programs/`, `src/`, or `legal/` cannot rely on this same shortcut — either install `rsync` first,
+  or manually `ssh rm` the stale path after confirming with the owner. See
+  `docs/governance/REPOSITORY_HANDOFF_CONFIG.md`'s new "Deploy Tooling by Machine" table (added in
+  the same session, commit `86e32f1`) for the standing per-machine record.
+
+### See Also
+- `docs/governance/REPOSITORY_HANDOFF_CONFIG.md` — Deploy Tooling by Machine table
+- `SLICE_REVIEWS.md` SR-021, `COMMIT_NOTES.md` 2026-09-04 entry
+- AntBrainOS vault: `03_PROJECTS/Active/Smart Learning Solutions/SESSION_LOG.md` 2026-09-04 entry

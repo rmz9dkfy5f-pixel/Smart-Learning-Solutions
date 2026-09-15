@@ -44,14 +44,20 @@ all 7.
 - `git diff --stat` confirmed exactly the 10 HTML files + `main.css` changed in slices 1-2 (net -5
   lines) — nothing unrelated touched.
 
+### Confirmed Final State (2026-09-04)
+
+Committed `1ddcdfe` (functional) → `01b1d10` (docs, final HEAD at push time) → `86e32f1`
+(docs-only follow-up). Both pushed and remote-verified. Tagged
+`v2.29.1__inline-style-cleanup__commit-1ddcdfe` at `01b1d10`, pushed and remote-verified.
+Snapshot created and verified. Deployed to staging via a `scp` fallback (`DECISION_LOG.md`
+ADR-025) and verified live via `curl` — see `SESSION_LOG.md` (vault) 2026-09-04 entry for full
+detail. `CHANGELOG.md`/`RELEASE_NOTES.md`'s `**Tag:**` lines backfilled with the real hash;
+`COMMIT_NOTES.md` has its entry.
+
 ### Not Yet Verified / Open
 
-- Commit, tag, and push for this work — deliberately deferred to a separate, explicitly-requested
-  step this session (owner chose "docs only, no commit" for this slice). `CHANGELOG.md`/
-  `RELEASE_NOTES.md`'s `**Tag:**` lines are placeholders (`pending — assigned at commit`) until
-  then; `COMMIT_NOTES.md` has no entry yet since no commit exists.
 - H-3 (Cloudflare Web Analytics) remains paused — unchanged, unrelated to this session's work.
-- Next standing task once this is committed: V3.4 doc reconciliation (`docs/project/`,
+- Confirmed next task (2026-09-15 closeout): V3.4 doc reconciliation (`docs/project/`,
   `docs/governance/` vs. root-level equivalents).
 
 ### Launch Blockers (unchanged)

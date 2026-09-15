@@ -23,7 +23,15 @@ de-duplicates an identical `.form-success`/`.form-success.visible` pair `book.ht
 had each defined independently. No visual or behavioral change intended; verified via local server
 across all 10 pages at their relevant breakpoints. Cache-busting token bumped
 (`?v=mobile-20260619d` → `?v=20260904`) across all 10 pages. See `SLICE_REVIEWS.md` SR-021.
-Commit/tag/push deferred to a separate, explicitly-requested step — not yet done as of this entry.
+**Confirmed final state (2026-09-04):** committed as `1ddcdfe` (functional) → `01b1d10` (docs,
+final HEAD at push time) → `86e32f1` (docs-only follow-up recording this machine's `rsync`
+gap), all pushed and remote-verified. Tagged `v2.29.1__inline-style-cleanup__commit-1ddcdfe` at
+`01b1d10`, pushed and remote-verified. Canonical snapshot created and verified (434/434 files,
+21/21 changed-file checksums matched) at
+`E:\WorkSync\Projects\RepoBackups\Smart Learning Solutions\v2.29.1__inline-style-cleanup__commit-1ddcdfe`.
+**Deployed to staging** via a `scp` fallback (this machine has no `rsync`; see `DECISION_LOG.md`
+ADR-025) — all 10 deployed files' checksums matched local source, and the full
+`docs/DEPLOYMENT.md` §11 verification checklist passed live. Working tree: **CLEAN**.
 
 ---
 

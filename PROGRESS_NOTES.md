@@ -35,9 +35,12 @@ one base definition. All 10 pages verified `200` via a local Node HTTP server; `
 returned 1 per changed file (was 2); zero remaining hits for the old cache-bust token;
 `git diff --stat` confirmed only the 10 HTML files + `main.css` changed in slices 1-2.
 
-### Not Yet Verified / Open
-Commit, tag, and push deliberately deferred to a separate, explicitly-requested step (owner chose
-"docs only, no commit" for the release-ceremony slice). `COMMIT_NOTES.md` has no entry yet.
+### Confirmed Final State (2026-09-04)
+Committed `1ddcdfe` (functional) → `01b1d10` (docs) → `86e32f1` (docs-only follow-up), all pushed
+and remote-verified. Tagged `v2.29.1__inline-style-cleanup__commit-1ddcdfe`, pushed and
+remote-verified. Snapshot created and verified. Deployed to staging via a `scp` fallback
+(`DECISION_LOG.md` ADR-025, since this machine has no `rsync`) and verified live via `curl` in
+full. `COMMIT_NOTES.md` has its entry.
 
 ---
 
