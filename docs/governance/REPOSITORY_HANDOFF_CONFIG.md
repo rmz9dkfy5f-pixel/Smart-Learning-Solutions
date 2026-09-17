@@ -57,6 +57,7 @@ scutil --get ComputerName 2>/dev/null || hostname
 |---|---|---|---|
 | Ant's MacBook Air | `ComputerName` = "Ant's MacBook Air" | `/Users/ant/WorkSync/Projects/RepoBackups/Smart Learning Solutions/<tag>` | Confirmed in use since v2.16.0 (earliest snapshot present); owner explicitly re-supplied it 2026-08-11 when this config file was found missing |
 | 5950X Workstation | `hostname` = `DESKTOP-8JF1MKA` (Windows 11) | `E:\WorkSync\Projects\RepoBackups\Smart Learning Solutions\<tag>` | Added 2026-08-31 — first-ever audited session on this machine's clone found no row matched it (repo root here is `E:\Projects\GitHub\Smart-Learning-Solutions`, hyphenated, not the Mac's space-named path); owner-confirmed destination, matching this machine's existing `RepoBackups\AntBrainOS` convention |
+| Anthony's MacBook Pro | `ComputerName` = "Anthony's MacBook Pro" | `/Users/ant/WorkSync/Projects/RepoBackups/Smart Learning Solutions/<tag>` | Added 2026-09-17 — a session-end super-prompt run found this machine's `ComputerName` matched no existing row despite operating under the same `/Users/ant/` user account as the "Ant's MacBook Air" row all session; owner confirmed this is a genuinely distinct machine (not a stale label on the same one) and confirmed the same destination path, same user account |
 
 If the current machine does not match any row above, or more than one row could plausibly match,
 **stop and ask the user** for the correct destination — do not guess or infer a path pattern.
