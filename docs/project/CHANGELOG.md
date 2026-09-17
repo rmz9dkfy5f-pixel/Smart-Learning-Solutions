@@ -2,4 +2,4 @@
 
 ## Unreleased
 
-- Initialized Project Starter Kit V3.4 structure.
+- Initialized Project Starter Kit V3.5 structure.

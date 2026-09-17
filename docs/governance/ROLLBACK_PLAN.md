@@ -23,11 +23,13 @@ Use when a single file changed:
 
 - identify changed file
 - compare before/after
-- restore from Git, backup, or `.v34_migration_review/`
+- restore from Git or the transaction journal backup
 
 ### Migration Rollback
 
-V3.4 migration should be non-destructive. Rollback means removing newly added V3.4 files and leaving original project files untouched.
+V3.5 migration is journaled and non-destructive. Review the `rollback --run-id <id>` plan, then
+apply it with the matching plan ID. Created files are retired; prior files are restored from
+checksummed backups; post-migration edits are preserved as blockers.
 
 ## Required Before High-Risk Work
 

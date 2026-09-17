@@ -1,0 +1,60 @@
+{
+  "records": [
+    {
+      "authority_rank": "internal_governance",
+      "exception_id": null,
+      "export_public": false,
+      "release_critical": false,
+      "rights": "internal",
+      "source_id": "ESAR",
+      "stale_after": "2027-03-15",
+      "status": "candidate",
+      "title": "Engineering Source Authority Register"
+    },
+    {
+      "authority_rank": "internal_governance",
+      "exception_id": null,
+      "export_public": false,
+      "release_critical": false,
+      "rights": "internal",
+      "source_id": "GESAR",
+      "stale_after": "2027-03-15",
+      "status": "approval_candidate_with_exceptions",
+      "title": "Game Engineering Source Authority Register"
+    },
+    {
+      "authority_rank": "government_standard",
+      "exception_id": null,
+      "export_public": false,
+      "release_critical": true,
+      "rights": "link_and_paraphrase",
+      "source_id": "SEC-NIST-SSDF",
+      "stale_after": "2027-03-15",
+      "status": "admitted",
+      "title": "NIST Secure Software Development Framework"
+    },
+    {
+      "authority_rank": "security_standard",
+      "exception_id": null,
+      "export_public": false,
+      "release_critical": true,
+      "rights": "open_owasp",
+      "source_id": "SEC-OWASP-ASVS",
+      "stale_after": "2027-03-15",
+      "status": "admitted",
+      "title": "OWASP Application Security Verification Standard"
+    },
+    {
+      "authority_rank": "discovery",
+      "exception_id": null,
+      "export_public": false,
+      "release_critical": false,
+      "rights": "link_only_no_redistribution",
+      "source_id": "RSH-DEVSECOPS",
+      "stale_after": "2027-03-15",
+      "status": "discovery_only",
+      "title": "roadmap.sh DevSecOps discovery"
+    }
+  ],
+  "schema_version": "1.0"
+}

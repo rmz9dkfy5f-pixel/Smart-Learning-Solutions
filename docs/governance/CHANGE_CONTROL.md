@@ -39,4 +39,7 @@ For every substantial change, record:
 
 ## No-Overwrite Policy
 
-Existing files are user assets. If a template conflicts with an existing file, preserve the original and place the candidate file in `.v34_migration_review/`.
+Unknown or modified existing files are project assets. If a template conflicts, preserve the
+original and place the candidate in `.starter-kit/migrations/<run-id>/conflicts/`. An approved
+version migration may replace only files proven checksum-identical to its frozen prior-version
+template; the transaction journal retains the backup.

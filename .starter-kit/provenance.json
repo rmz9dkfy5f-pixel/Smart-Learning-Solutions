@@ -1,0 +1,12 @@
+{
+  "components": [],
+  "required_kinds": [
+    "package",
+    "plugin",
+    "sdk",
+    "asset",
+    "model",
+    "toolchain"
+  ],
+  "schema_version": "1.0"
+}

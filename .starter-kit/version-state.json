@@ -1,0 +1,8 @@
+{
+  "compatibility_floor": "3.4.3",
+  "kit_version": "3.10.0",
+  "migration_level": "3.10.0",
+  "schema_version": "1.0",
+  "template_revision": "1",
+  "validator_revision": "1"
+}

@@ -1,0 +1,12 @@
+{
+  "allowed_dispositions": [
+    "allowed",
+    "denied",
+    "unknown",
+    "restricted",
+    "exception"
+  ],
+  "default_disposition": "unknown",
+  "licenses": [],
+  "schema_version": "1.0"
+}

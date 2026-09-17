@@ -1,0 +1,157 @@
+{
+  "active_profile": "web_application",
+  "facts": {
+    "ai_use": {
+      "evidence": [
+        "source content",
+        "source content"
+      ],
+      "state": "derived",
+      "value": true
+    },
+    "authentication": {
+      "evidence": [],
+      "state": "unknown",
+      "value": null
+    },
+    "browser_ui": {
+      "evidence": [
+        "index.html"
+      ],
+      "state": "derived",
+      "value": true
+    },
+    "container_use": {
+      "evidence": [],
+      "state": "derived",
+      "value": false
+    },
+    "data_sensitivity": {
+      "evidence": [],
+      "state": "unknown",
+      "value": null
+    },
+    "database": {
+      "evidence": [],
+      "state": "derived",
+      "value": false
+    },
+    "deployment_state": {
+      "evidence": [],
+      "state": "derived",
+      "value": "not_detected"
+    },
+    "git_repository": {
+      "evidence": [
+        ".git present"
+      ],
+      "state": "derived",
+      "value": true
+    },
+    "languages": {
+      "evidence": [
+        "src/js/components.js"
+      ],
+      "state": "derived",
+      "value": [
+        "node"
+      ]
+    },
+    "package_manager": {
+      "evidence": [],
+      "state": "unknown",
+      "value": null
+    },
+    "project_category": {
+      "evidence": [
+        "explicit --profile selection in applied plan"
+      ],
+      "state": "confirmed",
+      "value": "web_application"
+    },
+    "public_exposure": {
+      "evidence": [],
+      "state": "unknown",
+      "value": null
+    },
+    "repository_hosting": {
+      "evidence": [
+        ".git/config"
+      ],
+      "state": "derived",
+      "value": "github"
+    },
+    "risk_level": {
+      "evidence": [],
+      "state": "unknown",
+      "value": null
+    },
+    "runtime": {
+      "evidence": [
+        "src/js/components.js"
+      ],
+      "state": "derived",
+      "value": [
+        "node"
+      ]
+    },
+    "signals": {
+      "evidence": [
+        ".agents/skills/starter-migration-loop/skill.md",
+        "ai/prompts/v34_agent_task_prompt.md",
+        "docs/project/changelog.md",
+        "docs/versioning.md",
+        "index.html",
+        "planning documents/constraints.md",
+        "programs/coding-with-robots.html",
+        "scripts/deploy-staging.sh",
+        "source content",
+        "src/js/animations.js",
+        "src/js/components.js",
+        "src/js/web3forms-config.js"
+      ],
+      "state": "derived",
+      "value": [
+        "ai",
+        "code",
+        "docs",
+        "html",
+        "local_ai",
+        "node",
+        "prompt",
+        "script",
+        "web"
+      ]
+    },
+    "supported_platforms": {
+      "evidence": [],
+      "state": "unknown",
+      "value": null
+    }
+  },
+  "recommendation": {
+    "ambiguous": false,
+    "confidence": "high",
+    "profile_id": "web_application",
+    "ranked": [
+      {
+        "matched_signals": [
+          "html",
+          "node",
+          "web"
+        ],
+        "profile_id": "web_application",
+        "score": 365
+      },
+      {
+        "matched_signals": [
+          "ai",
+          "local_ai"
+        ],
+        "profile_id": "local_ai_application",
+        "score": 278
+      }
+    ]
+  },
+  "schema_version": "1.0"
+}

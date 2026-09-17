@@ -34,5 +34,6 @@ For existing repos:
 
 - Existing instructions preserved
 - Existing docs preserved
-- Template conflicts sent to `.v34_migration_review/`
+- Unresolved legacy `.v34_migration_review/` content treated as a blocker
+- New template conflicts sent to `.starter-kit/migrations/<run-id>/conflicts/`
 - No forced merge without approval

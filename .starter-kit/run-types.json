@@ -1,0 +1,228 @@
+{
+  "run_types": [
+    {
+      "executor": "starter_kit.py inspect",
+      "expected_evidence": [
+        "inspection_report"
+      ],
+      "lifecycle_state": "supervised_default",
+      "mutation_boundary": [],
+      "required_approvals": [],
+      "run_type_id": "repository_intake",
+      "stop_conditions": [
+        "ambiguous_or_unauthorized_scope",
+        "missing_required_verification",
+        "dirty_or_unrelated_change_state",
+        "destructive_action_without_authorization",
+        "conflicting_or_ambiguous_configuration"
+      ],
+      "supported_modes": [
+        "read_only"
+      ]
+    },
+    {
+      "executor": "starter-session-start",
+      "expected_evidence": [
+        "session_start_report"
+      ],
+      "lifecycle_state": "supervised_default",
+      "mutation_boundary": [],
+      "required_approvals": [],
+      "run_type_id": "repository_session_start",
+      "stop_conditions": [
+        "ambiguous_or_unauthorized_scope",
+        "missing_required_verification",
+        "dirty_or_unrelated_change_state",
+        "destructive_action_without_authorization",
+        "conflicting_or_ambiguous_configuration"
+      ],
+      "supported_modes": [
+        "read_only"
+      ]
+    },
+    {
+      "executor": "starter-execution-loop",
+      "expected_evidence": [
+        "plan",
+        "changed_files",
+        "validation_results"
+      ],
+      "lifecycle_state": "supervised_default",
+      "mutation_boundary": [
+        "approved_task_files"
+      ],
+      "required_approvals": [
+        "explicit_task_authorization"
+      ],
+      "run_type_id": "scoped_change",
+      "stop_conditions": [
+        "ambiguous_or_unauthorized_scope",
+        "missing_required_verification",
+        "dirty_or_unrelated_change_state",
+        "destructive_action_without_authorization",
+        "conflicting_or_ambiguous_configuration"
+      ],
+      "supported_modes": [
+        "plan",
+        "apply"
+      ]
+    },
+    {
+      "executor": "starter-session-closeout",
+      "expected_evidence": [
+        "handoff",
+        "gate_result"
+      ],
+      "lifecycle_state": "supervised_default",
+      "mutation_boundary": [
+        "continuity_files",
+        ".starter-kit/evidence"
+      ],
+      "required_approvals": [
+        "--apply",
+        "matching_plan_id"
+      ],
+      "run_type_id": "repository_session_closeout",
+      "stop_conditions": [
+        "ambiguous_or_unauthorized_scope",
+        "missing_required_verification",
+        "dirty_or_unrelated_change_state",
+        "destructive_action_without_authorization",
+        "conflicting_or_ambiguous_configuration"
+      ],
+      "supported_modes": [
+        "plan",
+        "apply"
+      ]
+    },
+    {
+      "executor": "starter_kit.py adopt-audit",
+      "expected_evidence": [
+        "adoption_audit"
+      ],
+      "lifecycle_state": "supervised_default",
+      "mutation_boundary": [],
+      "required_approvals": [],
+      "run_type_id": "adoption_audit",
+      "stop_conditions": [
+        "ambiguous_or_unauthorized_scope",
+        "missing_required_verification",
+        "dirty_or_unrelated_change_state",
+        "destructive_action_without_authorization",
+        "conflicting_or_ambiguous_configuration"
+      ],
+      "supported_modes": [
+        "read_only"
+      ]
+    },
+    {
+      "executor": "starter-migration-loop",
+      "expected_evidence": [
+        "migration_plan",
+        "migration_journal",
+        "validation_results"
+      ],
+      "lifecycle_state": "supervised_default",
+      "mutation_boundary": [
+        "starter_kit_files",
+        "migration_conflict_area"
+      ],
+      "required_approvals": [
+        "--apply",
+        "matching_plan_id"
+      ],
+      "run_type_id": "starter_kit_migration",
+      "stop_conditions": [
+        "ambiguous_or_unauthorized_scope",
+        "missing_required_verification",
+        "dirty_or_unrelated_change_state",
+        "destructive_action_without_authorization",
+        "conflicting_or_ambiguous_configuration"
+      ],
+      "supported_modes": [
+        "plan",
+        "apply",
+        "rollback"
+      ]
+    },
+    {
+      "executor": "starter-production-readiness",
+      "expected_evidence": [
+        "readiness_report"
+      ],
+      "lifecycle_state": "supervised_default",
+      "mutation_boundary": [
+        ".starter-kit/reports"
+      ],
+      "required_approvals": [
+        "--apply_for_report_write"
+      ],
+      "run_type_id": "production_readiness_review",
+      "stop_conditions": [
+        "ambiguous_or_unauthorized_scope",
+        "missing_required_verification",
+        "dirty_or_unrelated_change_state",
+        "destructive_action_without_authorization",
+        "conflicting_or_ambiguous_configuration"
+      ],
+      "supported_modes": [
+        "read_only",
+        "report"
+      ]
+    },
+    {
+      "executor": "starter-release-evidence",
+      "expected_evidence": [
+        "release_evidence",
+        "gate_result"
+      ],
+      "lifecycle_state": "supervised_default",
+      "mutation_boundary": [
+        ".starter-kit/reports",
+        "release_metadata"
+      ],
+      "required_approvals": [
+        "--apply",
+        "matching_plan_id"
+      ],
+      "run_type_id": "release_candidate_review",
+      "stop_conditions": [
+        "ambiguous_or_unauthorized_scope",
+        "missing_required_verification",
+        "dirty_or_unrelated_change_state",
+        "destructive_action_without_authorization",
+        "conflicting_or_ambiguous_configuration"
+      ],
+      "supported_modes": [
+        "read_only",
+        "report"
+      ]
+    },
+    {
+      "executor": "starter-context-eval-loop",
+      "expected_evidence": [
+        "evaluation_results"
+      ],
+      "lifecycle_state": "supervised_default",
+      "mutation_boundary": [
+        "prompt_and_eval_artifacts"
+      ],
+      "required_approvals": [
+        "explicit_task_authorization"
+      ],
+      "run_type_id": "prompt_context_evaluation",
+      "stop_conditions": [
+        "ambiguous_or_unauthorized_scope",
+        "missing_required_verification",
+        "dirty_or_unrelated_change_state",
+        "destructive_action_without_authorization",
+        "conflicting_or_ambiguous_configuration"
+      ],
+      "supported_modes": [
+        "read_only",
+        "approved_artifact_write"
+      ]
+    }
+  ],
+  "schema_version": "1.0"
+}

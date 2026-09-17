@@ -1,0 +1,340 @@
+{
+  "capabilities": [
+    {
+      "id": "accessibility",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "adr_workflow",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "adversarial_ai_tests",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "agent_permissions",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "agent_trace",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "backup_restore",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "browser_matrix",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "build_provenance",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "ci_security",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "cloud_aws",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "cloud_azure",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "cloud_model_router",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "codeql",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "compose",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "container_security",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "context_budget_policy",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "context_cost_accounting",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "context_quality_evaluation",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "context_retrieval_plan",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "context_source_justification",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "context_source_registry",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "dast_api",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "database_migration_safety",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "dataset_registry",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "dependency_risk",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "devcontainer",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "disaster_recovery",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "docker",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "evaluation_harness",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "github_ci_core",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "github_delivery",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "human_approval",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "incident_response",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "infrastructure_as_code",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "kubernetes",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "license_policy",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "load_test",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "local_model_router",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "long_run_checkpointing",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "memory",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "midrun_complexity_rescoring",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "model_registry",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "observability",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "postgres_reliability",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "precommit_quality",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "progressive_context_retrieval",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "prompt_registry",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "prompt_vault_compatibility",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "prompt_vault_full",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "provider_neutral_cloud",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "release_metadata",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "resilience",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "retrieval",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "sast",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "sbom",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "secret_scan",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "security_exception",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "security_requirements",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "seo",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "slo",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "subagent_orchestration",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "task_complexity_classifier",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "threat_model",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "tool_registry",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "visual_regression",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "vulnerability_management",
+      "state": "not_applicable",
+      "waiver": null
+    },
+    {
+      "id": "web_performance",
+      "state": "not_applicable",
+      "waiver": null
+    }
+  ],
+  "schema_version": "1.0"
+}
