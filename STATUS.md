@@ -1,13 +1,28 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.29.1 · 2026-09-04
-**Branch:** `main`
+**Current Version:** v2.29.1 · 2026-09-04 (unchanged — the v3.10.0 kit install below is
+tooling/governance-only, no site content changed, no version bump)
+**Branch:** `main` (local `HEAD` `470f81d`, 2 commits ahead of `origin/main`, not pushed)
 
 ---
 
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Project Starter Kit v3.10.0 Installation — 2026-09-16 (no version bump)
+
+Resolved a stalled, never-reconciled **V3.4** Starter Kit scaffold (installed 2026-06-21, never
+finished) by discarding its 3 quarantined migration-review candidates (`ca44f3f`) and installing a
+real **v3.10.0** migration instead (`web_application` profile, `470f81d`), via the new
+`project-starter-kit-invoke` vault skill. 14 v3.4-owned templates upgraded; 28 new files created;
+9 pre-existing files (including `AGENTS.md` and the real `REPOSITORY_HANDOFF_CONFIG.md`) preserved
+untouched, with v3.10 template candidates journaled to
+`.starter-kit/migrations/18d9b002-.../conflicts/` for review, not merged. Post-apply `validate`:
+PASS, 0 findings. **Confirmed next task:** review those 9 conflict candidates. Both commits are
+local only — not pushed this session. Full detail: `PROGRESS_NOTE.md` same date.
 
 ---
 

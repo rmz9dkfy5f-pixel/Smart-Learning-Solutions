@@ -1,8 +1,80 @@
-**Updated:** 2026-09-04 (Inline style cleanup shipped, v2.29.1)
+**Updated:** 2026-09-16 (Project Starter Kit v3.10.0 installed, no version bump)
 
 # Progress Note — Current Session
 
-## Inline Style Cleanup (2026-09-04, v2.29.1)
+## Project Starter Kit v3.10.0 Installation (2026-09-16, no version bump)
+
+### Summary
+
+A `REPO_SESSION_START_RECOVERY_AUDIT.md` run this session found a stalled, never-reconciled
+**V3.4** Starter Kit scaffold (installed 2026-06-21, `V34_INSTALL_REPORT.json`) sitting untouched
+in this repo while the kit itself had since shipped **v3.10.0** — 3 quarantined
+`.v34_migration_review/` candidates (`AGENTS.md.v34-candidate`, `CLAUDE.md.v34-candidate`,
+`.DS_Store.v34-candidate`) were never dispositioned, and `docs/project/`/`docs/governance/`'s
+V3.4-era stubs were still mostly `TBD` placeholders. Rather than reconcile V3.4 in place, ran a
+real v3.10.0 migration via the new `project-starter-kit-invoke` skill (vault tooling built this
+same session) against the pinned `v3.10.0` release clone.
+
+### Work Completed
+
+- Discarded the 3 unresolved v3.4 candidates (commit `ca44f3f`) — both markdown candidates
+  carried generic V3.4 boilerplate with none of this repo's real business rules; root `AGENTS.md`
+  and `CLAUDE.md` were left untouched and remain authoritative.
+- Ran `inspect` (PASS — classified `git_backed_with_deployment`, `web_application` profile, high
+  confidence), `plan-migration --profile web_application` (`PASS_WITH_WARNINGS`, 0 shadowed
+  documents), then `migrate --apply` (`PASS_WITH_WARNINGS`, run `18d9b002-b07d-41f6-99f8-
+  f62c126387c8`), then `validate` (**PASS**, 0 findings across all 6 layers) — committed as
+  `470f81d`.
+- 14 v3.4-owned templates upgraded to v3.10 content (`MODEL_SELECTION_GATE.md`,
+  `PROMPT_MODEL_SELECTION_GATE.md`, `.agents/skills/v34-*`, `ai/agents/*`, `ai/prompts/*`, 3
+  `docs/governance/*.md`, `docs/project/CHANGELOG.md`). 28 new files created (8 `starter-*` skill
+  templates, `docs/governance/{AGENT_RUN_CONTRACT,FIRST_SESSION_REHEARSAL,
+  PROJECT_CLASSIFICATION}.md`, `ADOPTION_POLICY.md`, 16 `.starter-kit/*.json` state files).
+- 9 pre-existing files **preserved, not overwritten**: `AGENTS.md`, `ai/prompts/TASK_INTAKE.md`,
+  5 `docs/governance/*.md` (including the real, filled-in `REPOSITORY_HANDOFF_CONFIG.md`),
+  `00_MIGRATION_KICKOFF.md`, `MIGRATION_REPORT.md` — v3.10 candidate versions journaled to
+  `.starter-kit/migrations/18d9b002-.../conflicts/` for future review, matching the migration's
+  own "no existing content silently overwritten" guarantee.
+
+### Validation Performed
+
+- Every kit report's claim was independently checked against real repo state, not trusted as
+  written: `git diff --stat` on `AGENTS.md` and `docs/governance/REPOSITORY_HANDOFF_CONFIG.md`
+  confirmed empty (genuinely untouched) before and after apply; `git status --porcelain=v1` file
+  count matched the plan's 66 operations exactly.
+- Post-apply `validate` returned PASS with 0 findings across `package_integrity`,
+  `installation_structure`, `cross_file_consistency`, `configuration_completeness`,
+  `operational`, and `governance` layers.
+- A real invocation bug was found and fixed mid-session (not carried forward silently): the
+  `project-starter-kit-invoke` skill's originally-documented `python3 -m starter_kit.cli`
+  invocation silently exits 0 with no output (`cli.py` has no `__main__` guard) — corrected to
+  invoke `main()` directly; the skill's own `SKILL.md` was updated with this fix.
+
+### Not Yet Verified / Open
+
+- **9 preserved-conflict candidates need review** — `.starter-kit/migrations/18d9b002-.../
+  conflicts/` holds the v3.10 template version of each; no merge/keep/retire decision made yet.
+  **Confirmed next task, this closeout's Step 4a gate.**
+- `docs/project/` V3.4-era stub docs (still mostly `TBD`) were not touched by this migration —
+  the original "V3.4 doc reconciliation" open item is now a "V3.4-and-v3.10 doc reconciliation"
+  question instead.
+- `CLAUDE.md` was not part of the `web_application` profile's plan at all (only `AGENTS.md`) —
+  not yet understood why; flagged, not investigated.
+- Commits `ca44f3f` and `470f81d` are local only — not pushed. Push was not authorized this
+  session (Prepare-mode closeout, no explicit Git-publication request).
+- H-3 (Cloudflare Web Analytics) remains paused — unchanged, unrelated to this session's work.
+
+### Launch Blockers (unchanged)
+
+1. ~~Formspree `REPLACE_ME`~~ — resolved, merged to `main` (v2.23.0), confirmed live on staging.
+2. Production domain not yet pointed to the VPS — unchanged; pending client acceptance of the
+   self-host proposal (OD-003).
+
+---
+
+## Inline Style Cleanup (2026-09-04, v2.29.1) — superseded above, preserved for record
+
+### Summary
 
 ### Summary
 

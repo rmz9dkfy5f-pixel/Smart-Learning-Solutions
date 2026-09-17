@@ -5,6 +5,41 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-09-16 — Project Starter Kit v3.10.0 Installation
+**Tag:** none (docs/governance tooling only, no version bump, matches this repo's convention)
+**Commit:** `470f81d` · branch `main` · 2026-09-16 (local only, not pushed)
+**Type:** `docs`
+
+**Summary:** docs: install Project Starter Kit v3.10.0 web_application profile
+
+**Description:**
+Applied migration plan `cf9aad4a...` (run `18d9b002-b07d-41f6-99f8-f62c126387c8`) against the
+pinned v3.10.0 kit release, via the new `project-starter-kit-invoke` vault skill. 14 v3.4-owned
+templates upgraded to v3.10 content; 28 new files created (starter-* skill templates, 3 new
+governance docs, 16 `.starter-kit/*.json` state files); 9 pre-existing files (including `AGENTS.md`
+and the real `REPOSITORY_HANDOFF_CONFIG.md`) preserved untouched, with v3.10 candidates journaled
+for later review rather than merged. `CLAUDE.md` was not part of this profile's plan. Post-apply
+`validate`: PASS, 0 findings. Full detail: `PROGRESS_NOTE.md` same date.
+
+---
+
+## 2026-09-16 — Resolve Stalled v3.4 Migration-Review Candidates
+**Tag:** none (docs only, no version bump)
+**Commit:** `ca44f3f` · branch `main` · 2026-09-16 (local only, not pushed)
+**Type:** `docs`
+
+**Summary:** docs: resolve stalled v3.4 migration-review candidates
+
+**Description:**
+The `.v34_migration_review/` candidates (`AGENTS.md.v34-candidate`, `CLAUDE.md.v34-candidate`,
+`.DS_Store.v34-candidate`), quarantined during the 2026-06-21 V3.4 base-scaffold install and never
+dispositioned, were discarded. Both markdown candidates replaced this repo's real business rules
+with generic V3.4 boilerplate carrying none of them. Root `AGENTS.md`/`CLAUDE.md` unchanged.
+Unblocked the starter kit's `adopt-audit`/`plan-migration` gate for the v3.10.0 migration
+immediately following (see entry above).
+
+---
+
 ## 2026-09-04 — Inline Style Cleanup (v2.29.1)
 **Tag:** `v2.29.1__inline-style-cleanup__commit-1ddcdfe`
 **Commit:** `1ddcdfe` · branch `main` · 2026-09-04
