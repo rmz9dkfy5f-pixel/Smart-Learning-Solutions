@@ -5,6 +5,88 @@ remains the focused current-session note and may be overwritten as work advances
 
 ---
 
+## 2026-09-17 — Record Reconciliation + AI-Attribution Trailer Strip (no version bump)
+
+**Branch:** `main`
+
+### Summary
+
+Opened with a `REPO_SESSION_START_RECOVERY_AUDIT.md` run (verdict 🟡 PASS WITH CONDITIONS). Two
+findings drove the session: the 2026-09-16 records were materially wrong about their own
+publication state and cited hashes that no longer resolve, and four published commits carried
+`Co-Authored-By: Claude` trailers in breach of ADR-021.
+
+### Work Completed
+
+- Stripped the trailer from four published commits via a range-scoped `git rebase --exec`, then
+  force-pushed with `--force-with-lease` (ADR-026). Final hashes: `7a425df`, `a51bea6`, `5ea595b`,
+  `3b3dc11`.
+- Incorporated a concurrent push from Anthony's MacBook Pro (`8fb709c`, landed 52 minutes earlier
+  during its own session-end run, also trailered) rather than clobbering it — the lease rejection
+  is what surfaced it.
+- Corrected `STATUS.md`, `PROGRESS_NOTE.md`, `COMMIT_NOTES.md`; added ADR-026; recorded two commits
+  (`5ea595b`, `3b3dc11`) that no record had mentioned at all.
+- Reconciled the vault records in the same session.
+
+### Validation Performed
+
+- `git diff` pre-rewrite tip → rewritten tip: **empty**, both before and after incorporating
+  `8fb709c` — content provably unchanged, no machine's work lost.
+- Zero `Co-Authored-By` trailers reachable from `main`, checked via `%(trailers:key=...)` rather
+  than a text grep; `a3a291a`'s narrative mention verified intact outside the rewritten range.
+- Post-push: local `HEAD` == `git ls-remote origin refs/heads/main`, clean tree, 0 ahead / 0 behind.
+
+### Not Yet Verified / Open
+
+- Other clones must `git fetch origin && git reset --hard origin/main` before their next session.
+- Recurrence unresolved — the Macs' user-level config lacks the ban; not reachable from here.
+- Confirmed next task unchanged: review the 9 v3.10 migration conflict candidates.
+
+---
+
+## 2026-09-16 — Project Starter Kit v3.10.0 Installation (no version bump)
+
+**Branch:** `main`
+
+*(Backfilled 2026-09-17 — this session was never recorded in this cumulative log when it ran.)*
+
+### Summary
+
+Resolved a stalled, never-reconciled V3.4 Starter Kit scaffold (installed 2026-06-21, never
+finished) by discarding its 3 quarantined `.v34_migration_review/` candidates, then running a real
+v3.10.0 migration (`web_application` profile) via the new `project-starter-kit-invoke` vault skill.
+Run on a different machine from the 5950X.
+
+### Work Completed
+
+- Discarded the 3 unresolved v3.4 candidates (`7a425df`) — both markdown candidates carried generic
+  V3.4 boilerplate with none of this repo's real business rules; root `AGENTS.md`/`CLAUDE.md` left
+  untouched and authoritative.
+- Ran `inspect` → `plan-migration` → `migrate --apply` → `validate` (`a51bea6`). 14 v3.4-owned
+  templates upgraded to v3.10; 28 new files created; 9 pre-existing files preserved with v3.10
+  candidates journaled to `.starter-kit/migrations/18d9b002-.../conflicts/` rather than merged.
+- Post-apply `validate`: PASS, 0 findings across all 6 layers.
+- Session closeout records written (`5ea595b`).
+
+### Validation Performed
+
+- Kit report claims independently checked against real repo state (`git diff --stat`, file counts)
+  rather than trusted as written.
+- A real invocation bug in the new skill was found and fixed mid-session: its documented
+  `python3 -m starter_kit.cli` entry point silently exits 0 (`cli.py` has no `__main__` guard).
+
+### Not Yet Verified / Open
+
+- 9 preserved-conflict candidates still need a merge/keep/retire decision each — **the standing
+  confirmed next task.**
+- `docs/project/` V3.4-era stubs untouched; `CLAUDE.md` was not in the `web_application` profile's
+  plan at all, not investigated.
+- **Recorded incorrectly at the time:** this session's records described its commits as "local only
+  — not pushed" at `ca44f3f`/`470f81d`. Both were pushed afterwards, replayed onto `95015c4`, and
+  rewritten again by ADR-026. See the 2026-09-17 entry above.
+
+---
+
 ## 2026-09-04 — Inline Style Cleanup (M-4)
 
 **Branch:** `main`

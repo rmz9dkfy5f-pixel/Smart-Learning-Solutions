@@ -1,8 +1,71 @@
-**Updated:** 2026-09-16 (Project Starter Kit v3.10.0 installed, no version bump)
+**Updated:** 2026-09-17 (record reconciliation + AI-attribution trailer strip, no version bump)
 
 # Progress Note — Current Session
 
-## Project Starter Kit v3.10.0 Installation (2026-09-16, no version bump)
+## Record Reconciliation + Trailer Strip (2026-09-17, no version bump)
+
+### Summary
+
+A `REPO_SESSION_START_RECOVERY_AUDIT.md` run opened this session and produced a
+🟡 PASS WITH CONDITIONS verdict. Two findings drove the work: every record describing the
+2026-09-16 v3.10.0 session was wrong about its own publication state and cited commit hashes that
+no longer resolve, and four published commits carried `Co-Authored-By: Claude` trailers in breach
+of `DECISION_LOG.md` ADR-021.
+
+### Work Completed
+
+- **Trailer strip on published history (ADR-026).** Rewrote four commit messages via
+  `git rebase 95015c4 --exec`, scoped to the range. Force-pushed with `--force-with-lease`. Final
+  published hashes: `7a425df`, `a51bea6`, `5ea595b`, `3b3dc11`.
+- **Incorporated a concurrent push rather than clobbering it.** The first push attempt was
+  *rejected* by the lease: Anthony's MacBook Pro had pushed `8fb709c` 52 minutes earlier during its
+  own session-end run, adding its snapshot-destination row. That commit also carried a trailer. It
+  was fetched, cherry-picked onto the rewritten history, stripped, and republished as `3b3dc11`.
+- **Record corrections.** `STATUS.md` (branch line, v3.10.0 section hashes, new 2026-09-17 entry),
+  this file, `COMMIT_NOTES.md` (hashes, publication state, two previously-unrecorded commits),
+  `PROGRESS_NOTES.md` (backfilled the missing 2026-09-16 entry), `DECISION_LOG.md` (ADR-026).
+- **Vault records reconciled** in the same session — `HANDOFF_TO_CLAUDE.md` corrected;
+  `CURRENT_CONTEXT.md`, `SESSION_LOG.md` and vault-root `AGENT_HANDOFF.md` backfilled.
+
+### Validation Performed
+
+- **Content-identity gate before any push:** `git diff` between the pre-rewrite tip and the
+  rewritten tip returned **empty** — proving the rewrite changed messages only. Repeated against
+  `8fb709c` after incorporating the MacBook Pro's commit; also empty, proving no machine's work was
+  lost.
+- Zero `Co-Authored-By` trailers reachable from `main` (`%(trailers:key=...)`, not a text grep).
+- `a3a291a` — which *narrates* the 2026-07-24 scrub and would be corrupted by a repo-wide message
+  filter — verified intact; it sits outside the rewritten range.
+- Author dates preserved on all four commits; commit count in range = 4.
+- Post-push: local `HEAD` == `git ls-remote origin refs/heads/main`; working tree clean; 0 ahead,
+  0 behind.
+- `grep` for `470f81d`/`ca44f3f` across the repo returns **no stale claims** — every remaining
+  mention is a deliberate hash-lineage or history reference (`COMMIT_NOTES.md` lineage lines,
+  ADR-026's rejected-alternative note, the superseded bullet below, this section). Checked by
+  reading each hit in context, not by hit count.
+
+### Not Yet Verified / Open
+
+- **Other clones have diverged and must hard-reset** (`git fetch origin && git reset --hard
+  origin/main`) before their next session — a merge or rebase there would reintroduce the trailered
+  commits.
+- **Recurrence is not fixed.** The trailer was reintroduced on 2026-09-17 by a session on another
+  machine. The ban is configured in this machine's user-level `~/.claude/CLAUDE.md`; the Macs
+  evidently lack it, and that config is not reachable from here. A repo-level `commit-msg` hook was
+  offered and deferred — see ADR-026 Consequences.
+- **Confirmed next task is unchanged:** review the 9 v3.10 migration conflict candidates in
+  `.starter-kit/migrations/18d9b002-.../conflicts/`.
+- H-3 (Cloudflare Web Analytics) remains paused — unrelated.
+
+### Launch Blockers (unchanged)
+
+1. ~~Formspree `REPLACE_ME`~~ — resolved, merged to `main` (v2.23.0), confirmed live on staging.
+2. Production domain not yet pointed to the VPS — unchanged; pending client acceptance of the
+   self-host proposal (OD-003).
+
+---
+
+## Project Starter Kit v3.10.0 Installation (2026-09-16, no version bump) — superseded above
 
 ### Summary
 
@@ -17,14 +80,14 @@ same session) against the pinned `v3.10.0` release clone.
 
 ### Work Completed
 
-- Discarded the 3 unresolved v3.4 candidates (commit `ca44f3f`) — both markdown candidates
+- Discarded the 3 unresolved v3.4 candidates (commit `7a425df`) — both markdown candidates
   carried generic V3.4 boilerplate with none of this repo's real business rules; root `AGENTS.md`
   and `CLAUDE.md` were left untouched and remain authoritative.
 - Ran `inspect` (PASS — classified `git_backed_with_deployment`, `web_application` profile, high
   confidence), `plan-migration --profile web_application` (`PASS_WITH_WARNINGS`, 0 shadowed
   documents), then `migrate --apply` (`PASS_WITH_WARNINGS`, run `18d9b002-b07d-41f6-99f8-
   f62c126387c8`), then `validate` (**PASS**, 0 findings across all 6 layers) — committed as
-  `470f81d`.
+  `a51bea6`.
 - 14 v3.4-owned templates upgraded to v3.10 content (`MODEL_SELECTION_GATE.md`,
   `PROMPT_MODEL_SELECTION_GATE.md`, `.agents/skills/v34-*`, `ai/agents/*`, `ai/prompts/*`, 3
   `docs/governance/*.md`, `docs/project/CHANGELOG.md`). 28 new files created (8 `starter-*` skill
@@ -60,8 +123,12 @@ same session) against the pinned `v3.10.0` release clone.
   question instead.
 - `CLAUDE.md` was not part of the `web_application` profile's plan at all (only `AGENTS.md`) —
   not yet understood why; flagged, not investigated.
-- Commits `ca44f3f` and `470f81d` are local only — not pushed. Push was not authorized this
-  session (Prepare-mode closeout, no explicit Git-publication request).
+- ~~Commits `ca44f3f` and `470f81d` are local only — not pushed.~~ **Superseded 2026-09-17.** Both
+  were pushed from another machine after this note was written, and were replayed onto `95015c4` in
+  the process, so neither recorded hash ever existed on `origin/main`. They were rewritten a second
+  time by the 2026-09-17 trailer strip (ADR-026). Final published hashes: `7a425df` (v3.4 candidate
+  cleanup) and `a51bea6` (v3.10.0 migration), plus `5ea595b` (this session's own closeout commit,
+  which no record mentioned at all). Full lineage in `COMMIT_NOTES.md`.
 - H-3 (Cloudflare Web Analytics) remains paused — unchanged, unrelated to this session's work.
 
 ### Launch Blockers (unchanged)

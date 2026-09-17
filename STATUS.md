@@ -2,7 +2,7 @@
 
 **Current Version:** v2.29.1 · 2026-09-04 (unchanged — the v3.10.0 kit install below is
 tooling/governance-only, no site content changed, no version bump)
-**Branch:** `main` (local `HEAD` `470f81d`, 2 commits ahead of `origin/main`, not pushed)
+**Branch:** `main` (`HEAD` `3b3dc11`, in sync with `origin/main`)
 
 ---
 
@@ -12,17 +12,56 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 
 ---
 
+## Record Reconciliation + AI-Attribution Trailer Strip — 2026-09-17 (no version bump)
+
+A `REPO_SESSION_START_RECOVERY_AUDIT.md` run found the 2026-09-16 records materially wrong about
+their own publication state, and found four published commits carrying `Co-Authored-By: Claude`
+trailers in breach of ADR-021.
+
+**Trailer strip (ADR-026).** `7a425df`, `a51bea6`, `5ea595b`, `3b3dc11` are the rewritten, published
+forms of the four commits that carried the trailer. Rewrite was message-only and verified content-
+identical (`git diff` between pre- and post-rewrite tips: empty); author dates preserved. Force-
+pushed with `--force-with-lease`. Pre-rewrite state is retained locally in two backup branches and
+two verified `git bundle` exports under
+`E:\WorkSync\Projects\RepoBackups\Smart Learning Solutions\`.
+
+> [!warning] **Other clones must hard-reset before their next session.** `main` was force-pushed on
+> 2026-09-17. Any clone still holding `c809946` or `8fb709c` has diverged. Run
+> `git fetch origin && git reset --hard origin/main` there — do **not** merge or rebase onto the new
+> history, which would reintroduce the trailered commits.
+
+**Concurrency caught mid-flight.** `--force-with-lease` rejected the first push attempt: Anthony's
+MacBook Pro had pushed `8fb709c` (its own snapshot-destination row) 52 minutes earlier, during a
+session-end run. That commit also carried a trailer. It was incorporated into the rewrite rather
+than clobbered — the final tree is byte-identical to what that machine published.
+
+**Record corrections.** `STATUS.md`, `PROGRESS_NOTE.md`, `COMMIT_NOTES.md` corrected; the missing
+2026-09-16 entry backfilled into `PROGRESS_NOTES.md`. Vault records reconciled in the same session.
+
+**Recurrence risk, unresolved.** The trailer was reintroduced on 2026-09-17 by a session on another
+machine, well after ADR-021. The ban is configured in this machine's user-level
+`~/.claude/CLAUDE.md`; the Macs evidently lack it. A history rewrite cannot prevent recurrence —
+see ADR-026's Consequences.
+
+---
+
 ## Project Starter Kit v3.10.0 Installation — 2026-09-16 (no version bump)
 
 Resolved a stalled, never-reconciled **V3.4** Starter Kit scaffold (installed 2026-06-21, never
-finished) by discarding its 3 quarantined migration-review candidates (`ca44f3f`) and installing a
-real **v3.10.0** migration instead (`web_application` profile, `470f81d`), via the new
+finished) by discarding its 3 quarantined migration-review candidates (`7a425df`) and installing a
+real **v3.10.0** migration instead (`web_application` profile, `a51bea6`), via the new
 `project-starter-kit-invoke` vault skill. 14 v3.4-owned templates upgraded; 28 new files created;
 9 pre-existing files (including `AGENTS.md` and the real `REPOSITORY_HANDOFF_CONFIG.md`) preserved
 untouched, with v3.10 template candidates journaled to
 `.starter-kit/migrations/18d9b002-.../conflicts/` for review, not merged. Post-apply `validate`:
-PASS, 0 findings. **Confirmed next task:** review those 9 conflict candidates. Both commits are
-local only — not pushed this session. Full detail: `PROGRESS_NOTE.md` same date.
+PASS, 0 findings. **Confirmed next task:** review those 9 conflict candidates. Full detail:
+`PROGRESS_NOTE.md` same date.
+
+> **Hashes corrected 2026-09-17.** This entry originally recorded `ca44f3f`/`470f81d` and described
+> both commits as "local only — not pushed." Neither hash ever existed on `origin/main`: the work
+> was pushed from another machine, replayed onto `95015c4` in the process, and then rewritten again
+> by the 2026-09-17 trailer strip (ADR-026). The hashes above are the final published ones. Full
+> lineage in `COMMIT_NOTES.md` and ADR-026.
 
 ---
 

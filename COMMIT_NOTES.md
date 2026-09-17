@@ -5,9 +5,52 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-09-17 — Add Anthony's MacBook Pro to Snapshot Destination Table
+**Tag:** none (docs only, no version bump)
+**Commit:** `3b3dc11` · branch `main` · 2026-09-17 · pushed
+**Hash lineage:** `8fb709c` (published from Anthony's MacBook Pro) → `3b3dc11` (final, after ADR-026 trailer strip)
+**Type:** `docs`
+
+**Summary:** docs: add Anthony's MacBook Pro to snapshot destination table
+
+**Description:**
+Authored on Anthony's MacBook Pro during its own session-end run and pushed at 01:30 EDT. A
+session-end super-prompt run there found that machine's `ComputerName` matched no row in
+`docs/governance/REPOSITORY_HANDOFF_CONFIG.md`'s Snapshot Destination table, despite operating
+under the same `/Users/ant/` account as the "Ant's MacBook Air" row; the owner confirmed it is a
+genuinely distinct machine and confirmed the same destination path.
+
+Recorded here by the 2026-09-17 reconciliation session on the 5950X, which encountered this commit
+when `--force-with-lease` correctly rejected its first push. Incorporated into that session's
+rewrite rather than clobbered — content preserved byte-for-byte.
+
+---
+
+## 2026-09-16 — Closeout Records for v3.10.0 Starter Kit Installation
+**Tag:** none (docs only, no version bump)
+**Commit:** `5ea595b` · branch `main` · 2026-09-16 · pushed
+**Hash lineage:** `c809946` (published) → `5ea595b` (final, after ADR-026 trailer strip)
+**Type:** `docs`
+
+**Summary:** docs: closeout records for v3.10.0 Starter Kit installation
+
+**Description:**
+`STATUS.md`, `PROGRESS_NOTE.md` and `COMMIT_NOTES.md` updated to reflect the v3.4 candidate cleanup
+and the v3.10.0 migration. No version bump — docs/governance tooling only, no site content changed.
+
+**Recorded retroactively on 2026-09-17.** No record mentioned this commit at all: it was written on
+another machine as that session's own closeout, then pushed, while every record it wrote still
+described the work as unpushed. Its message body cites `ca44f3f` and `470f81d`, which were never
+published — left as written rather than rewritten, matching the precedent of `a3a291a`
+("docs: backfill real commit hashes after history rewrite"), which corrected dead hashes in a
+follow-up commit rather than by editing history prose.
+
+---
+
 ## 2026-09-16 — Project Starter Kit v3.10.0 Installation
 **Tag:** none (docs/governance tooling only, no version bump, matches this repo's convention)
-**Commit:** `470f81d` · branch `main` · 2026-09-16 (local only, not pushed)
+**Commit:** `a51bea6` · branch `main` · 2026-09-16 · pushed
+**Hash lineage:** recorded as `470f81d` (never published) → `e9d349d` (published) → `a51bea6` (final, after ADR-026 trailer strip)
 **Type:** `docs`
 
 **Summary:** docs: install Project Starter Kit v3.10.0 web_application profile
@@ -25,7 +68,8 @@ for later review rather than merged. `CLAUDE.md` was not part of this profile's 
 
 ## 2026-09-16 — Resolve Stalled v3.4 Migration-Review Candidates
 **Tag:** none (docs only, no version bump)
-**Commit:** `ca44f3f` · branch `main` · 2026-09-16 (local only, not pushed)
+**Commit:** `7a425df` · branch `main` · 2026-09-16 · pushed
+**Hash lineage:** recorded as `ca44f3f` (never published) → `9e0f0c1` (published) → `7a425df` (final, after ADR-026 trailer strip)
 **Type:** `docs`
 
 **Summary:** docs: resolve stalled v3.4 migration-review candidates

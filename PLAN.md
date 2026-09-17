@@ -102,6 +102,8 @@ See `plans/open-decisions.md` for all pending owner decisions.
 | `plans/2026-07-22-implement-client-logo.md` | 2026-07-22 | Client logo image implemented in header/footer (v2.26.0) |
 | `plans/2026-07-22-page-transition-overlay-timeout.md` | 2026-07-22 | H-4: timeout fallback for `.is-navigating` page-transition overlay (v2.26.1) |
 | `plans/2026-07-22-two-line-logo-watermark.md` | 2026-07-22 | Two-line logo lockup placed as About page watermark (v2.27.0) |
+| `plans/2026-09-04-remove-inline-style-blocks.md` | 2026-09-04 | M-4: page-specific inline `<style>` blocks moved into `main.css` (v2.29.1) — index row backfilled 2026-09-17 |
+| `plans/2026-09-17-record-reconciliation.md` | 2026-09-17 | Record reconciliation + AI-attribution trailer strip on published history (ADR-026) |
 
 ---
 

@@ -890,3 +890,82 @@ would otherwise have caught).
 - `docs/governance/REPOSITORY_HANDOFF_CONFIG.md` — Deploy Tooling by Machine table
 - `SLICE_REVIEWS.md` SR-021, `COMMIT_NOTES.md` 2026-09-04 entry
 - AntBrainOS vault: `03_PROJECTS/Active/Smart Learning Solutions/SESSION_LOG.md` 2026-09-04 entry
+
+---
+
+## ADR-026 — Strip Reintroduced AI-Attribution Trailers From Published History via Scoped `rebase --exec`, Not `filter-repo`
+
+**Date:** 2026-09-17
+**Version:** none (docs/governance only — no site content changed, no version bump)
+
+### Decision
+Rewrote the commit messages of the four commits above `95015c4` to remove the
+`Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>` trailer each had acquired, and
+force-pushed the result to `origin/main`. Final published hashes: `7a425df`, `a51bea6`, `5ea595b`,
+`3b3dc11`.
+
+Method: `git rebase 95015c4 --exec 'git log -1 --format=%B | sed "/^Co-Authored-By: Claude/d" | git commit --amend --file=-'`,
+then `git push --force-with-lease`.
+
+### Reason
+ADR-021 (2026-07-24) established that these trailers "should never have been added in the first
+place" and scrubbed them from all six branches. They were reintroduced by sessions on other machines
+on 2026-09-16 and again on 2026-09-17, in breach of that ruling and of the owner's standing
+user-level ban. The owner explicitly directed a rewrite-first ordering this session, on the grounds
+that reconciling the records before the rewrite would write hashes the rewrite immediately
+invalidates — the exact failure being repaired.
+
+### Alternatives Considered
+- **`git filter-repo`** (ADR-021's tool) — rejected here despite being installed. ADR-021 chose it
+  for a 6-branch, multi-tag, full-history rewrite where `filter-branch` was genuinely unsafe. This
+  rewrite is four tip commits on one branch with no tags in range, where a scoped `rebase --exec`
+  cannot reach outside the range at all. `filter-repo` also strips the `origin` remote as a
+  deliberate safety measure, which would have had to be re-added before pushing.
+- **`git filter-branch --msg-filter`** — rejected: upstream-deprecated, and ADR-021's reasoning
+  against it stands even though its specific hazards (multi-branch, multi-tag) do not apply here.
+- **A repo-wide message filter** — rejected as actively dangerous. Commit `a3a291a`
+  ("docs: backfill real commit hashes after history rewrite") *narrates* the 2026-07-24 scrub and
+  contains the literal string `Co-Authored-By` in its body. A repo-wide filter would have silently
+  corrupted that record into nonsense. Range scoping is what prevents this, and the commit was
+  verified intact afterward.
+- **Leave the trailers, record an exception** — offered and declined by the owner this session.
+- **Rewriting `5ea595b`'s body** to replace its dead `ca44f3f`/`470f81d` references — rejected.
+  Corrected in the records instead, matching `a3a291a`'s own precedent of fixing dead hashes in a
+  follow-up commit rather than by editing history prose.
+
+### Consequences
+- Positive: `origin/main` carries no AI-attribution trailer on any commit. Verified with
+  `%(trailers:key=Co-Authored-By)`, not a text grep, so narrative mentions are not confused for
+  trailers.
+- **Verified non-destructive to content.** `git diff` between the pre-rewrite tip and the rewritten
+  tip returned empty, proving the rewrite changed messages only. Author dates preserved; committer
+  dates necessarily reset.
+- **Other clones have diverged.** Any clone still holding `c809946` or `8fb709c` must run
+  `git fetch origin && git reset --hard origin/main` before its next session. Merging or rebasing
+  onto the new history would reintroduce the trailered commits — this is ADR-024's situation in
+  reverse, and that ADR's reasoning applies directly.
+- **Recoverable.** Pre-rewrite state retained in two local backup branches
+  (`backup/main-pre-trailer-strip-20260917-c809946`,
+  `backup/origin-main-pre-trailer-strip-20260917-8fb709c`) and two verified `git bundle` exports
+  under `E:\WorkSync\Projects\RepoBackups\Smart Learning Solutions\`. Note that those artifacts
+  deliberately still contain the trailered commits; delete them only once confidence in the
+  rewrite is settled.
+- **A concurrent push was caught, not clobbered.** `--force-with-lease` rejected the first attempt
+  because Anthony's MacBook Pro had pushed `8fb709c` 52 minutes earlier during its own session-end
+  run. That commit was fetched, incorporated into the rewrite, stripped, and republished as
+  `3b3dc11`; the final tree is byte-identical to what that machine published. Had `--force` been
+  used instead of `--force-with-lease`, that machine's work would have been destroyed silently.
+- **Risk, documented and not fixed: this will recur.** The trailer was reintroduced *twice* after
+  ADR-021, most recently the same night as this rewrite. The ban is configured in the 5950X's
+  user-level `~/.claude/CLAUDE.md`; the Mac machines evidently do not carry it, and that config is
+  not reachable from this machine. A history rewrite treats the symptom only. Two unclaimed
+  remedies: add the ban to each Mac's own user-level config, or add a repo-level `commit-msg` hook
+  that rejects the trailer (offered this session and deferred — hooks are not version-controlled by
+  default and would need a `scripts/` install step plus an `AGENTS.md` note).
+
+### See Also
+- ADR-021 — the original 2026-07-24 scrub and the standing policy this restores
+- ADR-024 — the 2026-08-31 diverged-clone remediation; the same hazard, other direction
+- `COMMIT_NOTES.md` 2026-09-16/2026-09-17 entries — full hash lineage per commit
+- `STATUS.md`, `PROGRESS_NOTE.md` — 2026-09-17 entries
+- AntBrainOS vault: `03_PROJECTS/Active/Smart Learning Solutions/SESSION_LOG.md` 2026-09-17 entry
