@@ -5,6 +5,28 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-09-17 — Reconcile v3.10.0 Records, Record ADR-026 Trailer Strip
+**Tag:** none (docs/governance only, no version bump)
+**Commit:** `367bda8` · branch `main` · 2026-09-17 · pushed
+**Type:** `docs`
+
+**Summary:** docs: reconcile v3.10.0 records, record ADR-026 trailer strip
+
+**Description:**
+Corrected every record that described the 2026-09-16 v3.10.0 session as "local only — not pushed"
+at `ca44f3f`/`470f81d` — hashes that never existed on `origin/main`. Added entries for the two
+pushed commits (`5ea595b`, `3b3dc11`) that no record mentioned, backfilled the missing 2026-09-16
+entry into `PROGRESS_NOTES.md`, and recorded ADR-026 (the AI-attribution trailer strip and
+force-push that produced this session's final hashes).
+
+Files: `STATUS.md`, `PROGRESS_NOTE.md`, `PROGRESS_NOTES.md`, `COMMIT_NOTES.md`, `DECISION_LOG.md`,
+`PLAN.md`, `plans/2026-09-17-record-reconciliation.md`.
+
+*(Hash backfilled by the follow-up commit below, matching this repo's established pattern — see
+`a3a291a`, "docs: backfill real commit hashes after history rewrite", and `95015c4`.)*
+
+---
+
 ## 2026-09-17 — Add Anthony's MacBook Pro to Snapshot Destination Table
 **Tag:** none (docs only, no version bump)
 **Commit:** `3b3dc11` · branch `main` · 2026-09-17 · pushed

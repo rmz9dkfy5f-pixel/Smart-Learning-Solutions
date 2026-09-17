@@ -36,7 +36,15 @@ session-end run. That commit also carried a trailer. It was incorporated into th
 than clobbered — the final tree is byte-identical to what that machine published.
 
 **Record corrections.** `STATUS.md`, `PROGRESS_NOTE.md`, `COMMIT_NOTES.md` corrected; the missing
-2026-09-16 entry backfilled into `PROGRESS_NOTES.md`. Vault records reconciled in the same session.
+2026-09-16 entry backfilled into `PROGRESS_NOTES.md`. Committed as `367bda8`.
+
+**Vault reconciled in the same session.** `HANDOFF_TO_CLAUDE.md` corrected, and the 2026-09-16
+session backfilled into `CURRENT_CONTEXT.md`, `SESSION_LOG.md` and vault-root `AGENT_HANDOFF.md`,
+none of which had any entry for it (vault commit `8ee3225`). Vault snapshot taken first:
+`RepoBackups\AntBrainOS\snapshot-20260917-024543-pre-sls-record-reconciliation`, verified
+2272/2272 files, 0 genuine mismatches. Two gaps in the vault snapshot SOP were found and fixed in
+the same session (vault commit `f99d396`): it had no Windows copy branch, and it wrongly recorded
+this machine as having no vault git repository.
 
 **Recurrence risk, unresolved.** The trailer was reintroduced on 2026-09-17 by a session on another
 machine, well after ADR-021. The ban is configured in this machine's user-level
