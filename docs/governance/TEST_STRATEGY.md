@@ -18,20 +18,31 @@ Use the strongest available validation in this order:
 
 ## Project Commands
 
-Fill these in after inspection:
+Filled 2026-09-18, per the full project-readiness audit (`AUDIT.md`). This is a hand-coded static
+HTML/CSS/JS site with no build step and no package manager — most of these are genuinely "none,"
+not unfilled.
 
 ```bash
 # install
+# none — no package.json, no dependencies to install
 
 # test
+# none automated — see Failure Rule below; validation is manual
 
 # build
+# none — repo root is the deploy root, no compilation step
 
 # lint
+# none configured
 
 # typecheck
+# none — plain JavaScript, no TypeScript
 
 # smoke test
+python3 -m http.server   # local server (ES modules need it; file:// silently fails imports)
+# then manually check: nav links resolve, forms submit (Web3Forms), no console errors
+# staging verification: curl checks per docs/DEPLOYMENT.md section 11
+#   (forms endpoint, og:image, all-pages 200, security headers, internal-path 404s)
 ```
 
 ## Test Case Types

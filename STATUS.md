@@ -576,9 +576,17 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 
 ---
 
-## Open Audit Items
+## Open Audit Items (Archived 2026-05-15 Audit — IDs Below Do Not Match the Current `AUDIT.md`)
 
-See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H-3 (Plausible), M-8 (medium). H-1 staging routing resolved (v2.16.1). C-1 (Formspree) resolved 2026-07-16 — migrated to Web3Forms. M-1 (OG image) resolved 2026-07-18 — converted to PNG. M-6 (`tel:` prefix) resolved v2.15.3. M-7 (`_next` redirect) closed 2026-07-22 — not applicable. H-4 (overlay timeout) resolved 2026-07-22 (v2.26.1). M-9 (robots meta) resolved 2026-08-17 (v2.29.0). M-4 (inline style blocks) resolved 2026-09-04 (v2.29.1) — this line was stale on all three counts before this correction.
+**`AUDIT.md` was fully refreshed 2026-09-18** — the line below tracks resolution of the *old*,
+now-archived 2026-05-15 audit's findings (`AUDIT_2026-05-15_ARCHIVED.md`) and its finding IDs
+(H-1/H-3/H-4/M-1/M-4/M-6/M-7/M-8/M-9 here) **do not correspond** to the current `AUDIT.md`'s IDs —
+that file independently numbers its own findings starting from H-1 again. See the current
+`AUDIT.md` for today's real open items (H-1 privacy policy, H-2 HSTS, M-1 CSP enforcement, M-2
+video compression, M-3 server version disclosure) and `plans/2026-09-18-audit-remediation.md` for
+the remediation plan.
+
+**Old audit resolution history (kept for record):** Open items: H-1 (production domain routing), H-3 (Plausible), M-8 (medium). H-1 staging routing resolved (v2.16.1). C-1 (Formspree) resolved 2026-07-16 — migrated to Web3Forms. M-1 (OG image) resolved 2026-07-18 — converted to PNG. M-6 (`tel:` prefix) resolved v2.15.3. M-7 (`_next` redirect) closed 2026-07-22 — not applicable. H-4 (overlay timeout) resolved 2026-07-22 (v2.26.1). M-9 (robots meta) resolved 2026-08-17 (v2.29.0). M-4 (inline style blocks) resolved 2026-09-04 (v2.29.1) — this line was stale on all three counts before this correction.
 
 ---
 

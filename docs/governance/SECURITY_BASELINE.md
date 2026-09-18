@@ -26,7 +26,12 @@
 
 ## Security Status
 
-- Last review:
-- Result:
-- Risks:
-- Next action:
+- Last review: 2026-09-18 (full project-readiness audit, see `AUDIT.md`)
+- Result: No critical or actively-exploited findings. 2 High, 5 Medium, 1 Low — see `AUDIT.md` for
+  full detail.
+- Risks: No live privacy policy despite forms collecting PII (H-1, blocked on owner input); HSTS
+  not enforced (H-2); CSP is report-only, not enforced (M-1); 21MB unoptimized hero video (M-2,
+  performance not security); `Server` header discloses nginx version (M-3).
+- Next action: Work the plan in `plans/2026-09-18-audit-remediation.md` — enforce HSTS/CSP on the
+  VPS (scoped safely to this project's own vhosts only, confirmed via direct SSH read), compress
+  the video, then close H-1 once the owner supplies the four missing legal facts.

@@ -155,7 +155,7 @@
       "path": ".starter-kit/manifest.json",
       "profiles": [],
       "required": true,
-      "sha256": "22f6095ea8d5bc52d485ea80da73bf84f70234f2b717a80dbc07f048912a43f8"
+      "sha256": "a87b309e65793713b673a37cb4aef1cced8c95c4a602e71ac373ba0f4af0dc6a"
     },
     {
       "modules": [],
@@ -471,19 +471,19 @@
     },
     {
       "modules": [],
-      "ownership": "starter_kit",
+      "ownership": "project",
       "path": "docs/governance/SECURITY_BASELINE.md",
       "profiles": [],
       "required": true,
-      "sha256": "e1c0a9fc4f22996c51a1490053682719b76ee089942151dfc6e760d0fe5cbcc4"
+      "sha256": "68be841c02ff95da2e9c538345dcd21b2a296343ba90e1995af1652c9133589e"
     },
     {
       "modules": [],
-      "ownership": "starter_kit",
+      "ownership": "project",
       "path": "docs/governance/TEST_STRATEGY.md",
       "profiles": [],
       "required": true,
-      "sha256": "90756cbbd56d9f3e903ac581916ad62304f55e31d340e15e420a440f9504c42d"
+      "sha256": "deb61df77e9bd96b35d0295c709b8c8a923be506ad9a4f3698025ed78cd43a49"
     },
     {
       "modules": [],

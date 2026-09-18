@@ -30,6 +30,12 @@ function injectHeadAssets() {
   }
 }
 
+// SAFETY INVARIANT: buildHeader/buildFooter below render via innerHTML. This is safe only
+// because every value they interpolate (activePage, PHONE, EMAIL, NAV_LINKS) is a hardcoded
+// constant, never derived from a URL param, query string, or any other visitor-controlled input.
+// If that ever changes, switch to DOM construction (createElement/textContent) instead of
+// innerHTML for the new dynamic value — do not just escape it inline. See the 2026-09-18
+// project-readiness audit (STATUS.md) for the finding this comment closes.
 function buildHeader(activePage = '') {
   const navItems = NAV_LINKS.map(({ label, href, key }) =>
     `<a href="${href}" class="${key === activePage ? 'active' : ''}">${label}</a>`
@@ -64,6 +70,8 @@ function buildHeader(activePage = '') {
 </nav>`;
 }
 
+// SAFETY INVARIANT: same as buildHeader above — every interpolated value here is a hardcoded
+// constant, never visitor-controlled. See that comment for the rule to follow if this changes.
 function buildFooter() {
   return `
 <footer class="site-footer">
