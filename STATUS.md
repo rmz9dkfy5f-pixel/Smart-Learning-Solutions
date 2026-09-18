@@ -1,15 +1,37 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.30.0 · 2026-09-18 (video hero on the homepage only; the earlier `v2.30.0`
-tag was fully deleted, local and remote, during 2026-09-17's ADR-026 cleanup, so the number is
-free to reuse)
-**Branch:** `main` (`HEAD` `5ab108d`), in sync with `origin/main`, pushed
+**Current Version:** v2.30.0 · 2026-09-18 — tag `v2.30.0__hero-video-homepage__commit-a96292d`,
+pushed and remote-verified (video hero on the homepage only; the earlier `v2.30.0` tag was fully
+deleted, local and remote, during 2026-09-17's ADR-026 cleanup, so the number was free to reuse)
+**Branch:** `main` (`HEAD` `a96292d`), in sync with `origin/main`, pushed. Deployed to staging,
+verified (see this date's entry below).
 
 ---
 
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Tagged, Snapshotted, Deployed to Staging — 2026-09-18 (v2.30.0)
+
+**Final release state.** Commit `a96292d`. Tag `v2.30.0__hero-video-homepage__commit-a96292d`,
+pushed and remote-verified (dereferences to `a96292d`). Canonical snapshot at
+`/Users/ant/WorkSync/Projects/RepoBackups/Smart Learning Solutions/v2.30.0__hero-video-homepage__commit-a96292d`
+— verified 290/290 files, empty `diff -rq`, 61/61 changed-file checksums matched.
+
+**Deployed to staging** via `scripts/deploy-staging.sh` (target: `staging`, sole configured
+target). `SLS_DEPLOY_SSH_KEY=~/.ssh/ionis_vps` on this machine (the script's documented default,
+`~/.ssh/jones_vps`, does not exist here). `RELEASE.txt`: 🟡 unverifiable — this repo has no
+configured release-marker convention. Verified instead via this repo's own real health-check
+convention (`docs/DEPLOYMENT.md` §11), all 🟢: homepage video hero live (`hero-video-bg` present,
+video + poster assets both `200`), Workshops correctly has no video, all 9 pages `200`, forms
+reference Web3Forms, `og:image` resolves, internal paths (`/AUDIT.md`, `/.git/config`, `/.claude/`,
+`/STATUS.md`) still `404`.
+
+Working tree: **CLEAN**. Confirmed next task: no active task — standby until the client returns
+off Wix (ADR-027).
 
 ---
 
