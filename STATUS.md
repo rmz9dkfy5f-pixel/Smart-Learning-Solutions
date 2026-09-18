@@ -1,8 +1,10 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.29.1 · 2026-09-04 (unchanged — the v3.10.0 kit install below is
-tooling/governance-only, no site content changed, no version bump)
-**Branch:** `main` (`HEAD` `3b3dc11`, in sync with `origin/main`)
+**Current Version:** v2.30.0 · 2026-09-17 (hero-video branch merged into `main`; the earlier
+`v2.30.0` tag was fully deleted, local and remote, during today's ADR-026 cleanup, so the number
+is free to reuse)
+**Branch:** `main` (hash to be backfilled after commit — see `COMMIT_NOTES.md`), 2 commits ahead of
+`origin/main`, not yet pushed
 
 ---
 
@@ -11,6 +13,37 @@ tooling/governance-only, no site content changed, no version bump)
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
 
 ---
+
+## Hero-Video Branch Merged Into `main` — 2026-09-17 (v2.30.0)
+
+`feat/hero-video-coding-with-robots` (6 commits, explored to completion 2026-07-24, never merged)
+landed via a real merge commit (`--no-ff`, not a rebase — no existing hash rewritten, safe for
+this repo's other live clones). Adds a full-bleed, accessibility-gated video hero
+(`.hero-video-bg` in `main.css`, `initHeroVideo()` in `animations.js`) to `workshops.html`;
+`programs/coding-with-robots.html` — where the video was originally prototyped before the owner's
+2026-07-24 relocation decision — confirmed unchanged, no net diff. New assets:
+`src/videos/edison-robot-promo.mp4` (22MB), `src/images/edison-robot-promo-poster.jpg`. New
+accessibility/performance rules from that branch: `docs/ACCESSIBILITY.md` §6 (muted/looped/
+reduced-motion-aware background video now permitted), `docs/PERFORMANCE.md` §6 (Video Rules).
+
+Landed per explicit owner instruction, prompted by the Wix decision above: keep this repo at its
+best-available state for whenever the client returns off Wix. `feat/hero-video-homepage` (a
+sibling exploratory branch) remains unmerged — not part of this adoption.
+
+3 merge conflicts, all in append-only log docs (`DECISION_LOG.md`, `PROGRESS_NOTES.md`,
+`STATUS.md` itself) — resolved by keeping both sides' entries, none dropped. The branch's own
+`ADR-021` (a numbering collision with `main`'s unrelated AI-attribution-scrub ADR-021) renumbered
+to `ADR-028` on merge; see that entry for the full original decision record.
+
+**Verification:** local server (`python3 -m http.server`) — all 10 pages 200, video + poster
+assets 200, `workshops.html` confirmed rendering `.hero-video-bg` with `initHeroVideo()` wired,
+`coding-with-robots.html` confirmed clean of any video reference, no stray inline `<style>`
+reintroduced (the one `<style>` tag present is the pre-existing sitewide anti-FOUC snippet, matched
+on every other page). Cache-busting tokens bumped sitewide: `main.css?v=20260904` →
+`?v=20260917`, `animations.js?v=visual-20260426` → `?v=visual-20260917`.
+
+**Not yet pushed, tagged, or snapshotted** — held for explicit authorization, per this session's
+established pattern (merging what `main` is affects every other live clone of this repo).
 
 ## Client Moved to Wix (Temporary) — 2026-09-17 (no version bump)
 
@@ -194,6 +227,30 @@ sites on that VPS) would have hit the same failure mode. Fixed by removing `defa
 `prompt-vault` and adding an explicit minimal catch-all (`return 444` / `ssl_reject_handshake`).
 Verified: unmatched hostnames now close, the real hero-video URLs and all sibling tenants
 unaffected. Server-side only — no repo files changed. See `DECISION_LOG.md` ADR-022.
+
+---
+
+## Design Exploration: Video Hero (branch `feat/hero-video-coding-with-robots`) — 2026-07-24, adopted into `main` 2026-09-17
+
+Built a reusable full-bleed video-hero component (`.hero-video-bg` in `main.css`,
+`initHeroVideo()` in `animations.js`) and iterated its placement per owner review: first built on
+the Coding with Robots program page, then moved to the Workshops page instead per explicit owner
+direction, with Coding with Robots reverted to its original design. Deployed live for owner
+comparison at `smart-learning-solutions-hero-video-coding-with-robots.craftandconscious.com`
+(noindexed, individual Let's Encrypt cert, verified with zero regression to the 8+ other tenants
+on the shared VPS). A sibling branch, `feat/hero-video-homepage`, explores the same video on the
+homepage instead — also deployed for comparison at its own subdomain; **still not merged**, not
+part of this adoption. New accessibility/performance rules this introduced:
+`docs/ACCESSIBILITY.md` §6 (muted/looped/reduced-motion-aware background video is now permitted,
+replacing a prior blanket "no auto-playing video" line) and `docs/PERFORMANCE.md` §6 (new Video
+Rules section). Full build plan: `plans/2026-07-24-hero-video-background.md`.
+
+> **Adopted 2026-09-17.** Left unmerged for over 7 weeks with no owner decision recorded, while
+> `main` gained 23 more commits. Merged into `main` this session via a real merge commit (not a
+> rebase — no existing hash rewritten) per explicit owner instruction, following the client's
+> decision to move to Wix temporarily (`DECISION_LOG.md` ADR-027): this repo is now being kept at
+> its best-available state for whenever the client returns off Wix, and this was the most
+> complete pending improvement. Full merge record: same date, below.
 
 ---
 
@@ -476,7 +533,8 @@ See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H
 | 4 | ~~Reconcile V3.4 stub docs (`docs/project/`, `docs/governance/`) with existing root-level equivalents~~ — superseded: the V3.4 install itself was discarded 2026-09-16 in favor of a real v3.10.0 migration | V3.4 follow-up (obsolete) |
 | 5 | ~~Review V3.4 candidate AGENTS.md/CLAUDE.md in `.v34_migration_review/` and merge any useful additions~~ — done 2026-09-17: the v3.10.0 migration's own 8 conflict candidates (successor to `.v34_migration_review/`) reviewed and dispositioned — `AGENTS.md` merged, 3 files adopted from the kit, 4 kept as-is (live already held real data); see `docs/governance/AGENT_RUN_LOG.md` 2026-09-17 entry | V3.4 follow-up (done) |
 | 6 | ~~Run `scripts/deploy-staging.sh` after merging future changes to `main`~~ — done 2026-07-24 (v2.27.0 + v2.26.1 now live on staging, SR-016); no automatic trigger exists, so repeat manually after future merges (L-016) | SR-016 |
-| 7 | ~~Resume the confirmed H-3/M-9/M-4/... backlog queue~~ — M-9 done 2026-08-17 (v2.29.0), M-4 done 2026-09-04 (v2.29.1); H-3 remains paused pending client email access (`DECISION_LOG.md` ADR-023). V3.4 doc reconciliation superseded by the v3.10.0 install (2026-09-16) and its own conflict-candidate review (2026-09-17, see row 5 above) — both now done. Remaining queued item: M-8 (email casing, held pending OD-003) | `PLAN.md` |
+| 7 | ~~Confirmed next task (2026-07-24): resume H-3 — try GoatCounter as the free Plausible replacement~~ — carried out and paused per `DECISION_LOG.md` ADR-023 (client email access unavailable); superseded by row 8 below | `DECISION_LOG.md` ADR-020, ADR-023 |
+| 8 | Client moved to Wix, temporarily (2026-09-17, `DECISION_LOG.md` ADR-027) — no active next task in this repo until the client's subscription ends and they return; launch-readiness items (hosting, M-8, H-3) are on hold, not blocked | `DECISION_LOG.md` ADR-027 |
 
 ---
 
