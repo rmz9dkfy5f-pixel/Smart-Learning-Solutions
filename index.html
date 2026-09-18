@@ -29,21 +29,14 @@
     <!-- ====================================================
          1. Hero
          ==================================================== -->
-    <section class="hero hero--photo" aria-label="Introduction">
+    <section class="hero hero--video" aria-label="Introduction">
 
-      <!-- Photo background -->
-      <div class="hero-photo-bg" aria-hidden="true">
-        <picture>
-          <source
-            srcset="/src/images/people-classroom-teacher-children-1920.webp 1920w,
-                    /src/images/people-classroom-teacher-children-800.webp 800w"
-            sizes="100vw"
-            type="image/webp">
-          <img src="/src/images/people-classroom-teacher-children-1920.webp"
-               alt=""
-               width="1920" height="1280"
-               loading="eager" fetchpriority="high">
-        </picture>
+      <!-- Video background -->
+      <div class="hero-video-bg" aria-hidden="true">
+        <video muted loop playsinline
+               poster="/src/images/edison-robot-promo-poster.jpg"
+               data-src="/src/videos/edison-robot-promo.mp4"
+               width="1280" height="720"></video>
       </div>
 
       <div class="container hero-inner">
@@ -67,8 +60,6 @@
         <span class="scroll-line"></span>
         <span>Scroll</span>
       </div>
-
-      <p class="hero-photo-credit" aria-hidden="true">Photo: Pexels</p>
     </section>
 
     <!-- ====================================================
@@ -418,9 +409,10 @@
 
   <script type="module">
     import { initPage }       from '/src/js/components.js?v=mobile-20260619';
-    import { initAnimations } from '/src/js/animations.js?v=visual-20260426';
+    import { initAnimations, initHeroVideo } from '/src/js/animations.js?v=visual-20260426';
     initPage({ activePage: 'home' });
     initAnimations();
+    initHeroVideo();
   </script>
 </body>
 </html>
