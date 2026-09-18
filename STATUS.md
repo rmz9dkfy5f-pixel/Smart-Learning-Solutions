@@ -3,8 +3,9 @@
 **Current Version:** v2.30.0 · 2026-09-17 (hero-video branch merged into `main`; the earlier
 `v2.30.0` tag was fully deleted, local and remote, during today's ADR-026 cleanup, so the number
 is free to reuse)
-**Branch:** `main` (hash to be backfilled after commit — see `COMMIT_NOTES.md`), 2 commits ahead of
-`origin/main`, not yet pushed
+**Branch:** `main` (`HEAD` `1fb3647`), 8 commits ahead of `origin/main` (2 new docs commits + the
+merge commit + the 6 hero-video commits, which existed on `origin/feat/hero-video-coding-with-robots`
+but not on `origin/main` until now), not yet pushed
 
 ---
 

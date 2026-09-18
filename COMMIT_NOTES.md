@@ -5,6 +5,39 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-09-17 — Merge Hero-Video Branch Into `main` (v2.30.0)
+**Tag:** none yet — `v2.30.0` planned, not yet created (see `docs/VERSIONING.md`)
+**Commit:** `1fb3647` (merge, two parents) · branch `main` · 2026-09-17 · not yet pushed
+**Type:** `merge`
+
+**Summary:** merge: land hero-video branch into main (v2.30.0)
+
+**Description:**
+`feat/hero-video-coding-with-robots` (6 commits: `fe82292`, `ff67449`, `d53f911`, `c5cecba`,
+`ff0f5c7`, `2a32cc7`; explored to completion 2026-07-24, never merged) merged via a real
+`--no-ff` merge commit — no existing hash rewritten. Adds a full-bleed, accessibility-gated video
+hero to `workshops.html`. Landed per explicit owner instruction following the client's move to
+Wix (`DECISION_LOG.md` ADR-027). 3 conflicts (`DECISION_LOG.md`, `PROGRESS_NOTES.md`, `STATUS.md`)
+resolved by keeping both sides' entries. Full detail: `STATUS.md`/`DECISION_LOG.md` ADR-028, same
+date.
+
+---
+
+## 2026-09-17 — Record ADR-027, Client Moved to Wix (Temporary)
+**Tag:** none (docs-only, no version bump)
+**Commit:** `1796c1c` · branch `main` · 2026-09-17 · not yet pushed
+**Type:** `docs`
+
+**Summary:** docs: record ADR-027, client moved to Wix (temporary)
+
+**Description:**
+A real client decision (Wix, temporarily, until their subscription contract ends) had never been
+written into any durable record — found missing after a repo-wide and vault-wide search. Recorded
+as `DECISION_LOG.md` ADR-027, closing R-003 and resolving-for-now OD-003. Full detail: `STATUS.md`
+same date.
+
+---
+
 ## 2026-09-17 — Disposition v3.10.0 Migration Conflict Candidates
 **Tag:** none (docs/governance only, no version bump)
 **Commit:** `993bea3` · branch `main` · 2026-09-17 · not yet pushed
