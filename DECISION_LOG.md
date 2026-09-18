@@ -969,3 +969,65 @@ invalidates — the exact failure being repaired.
 - `COMMIT_NOTES.md` 2026-09-16/2026-09-17 entries — full hash lineage per commit
 - `STATUS.md`, `PROGRESS_NOTE.md` — 2026-09-17 entries
 - AntBrainOS vault: `03_PROJECTS/Active/Smart Learning Solutions/SESSION_LOG.md` 2026-09-17 entry
+
+## ADR-027 — Client Moved to Wix (Temporary, Pending Subscription End)
+
+**Date:** 2026-09-17
+**Version:** unchanged (docs-only, this entry)
+
+### Decision
+
+The client has decided to host on Wix, effective now, for the duration of their current Wix
+subscription/contract term (exact end date not currently known — record it here once confirmed).
+This repository is **not** being decommissioned or archived: it remains the intended target for
+when the client's Wix subscription ends and they return to a self-hosted, hand-coded static site.
+
+This supersedes two prior, now-incorrect records rather than deleting either:
+
+- **ADR-013** (2026-06-23) framed Wix as a possibility ("owner indicated it *may* go on Wix") and
+  held code-level fixes as a precaution. That precaution has now materialized — Wix is not a risk
+  anymore, it is the client's actual current platform.
+- **The AntBrainOS vault's project `DECISION_LOG.md`, 2026-06-25 entry** ("Hosting confirmed: IONOS
+  VPS; Wix risk resolved... Wix option is closed") was itself incorrect, or at minimum has not
+  held — R-003 in `docs/governance/PROJECT_RISK_REGISTER.md` was never actually closed in this
+  repo, and OD-003 (self-host-on-VPS proposal) was still open as recently as this session's own
+  closeout. That vault entry is corrected separately (see `See Also`).
+
+### Context
+
+This decision was communicated verbally in a prior conversation but was never written into any
+durable record — not this file, not `STATUS.md`, not `docs/governance/PROJECT_RISK_REGISTER.md`,
+not `plans/open-decisions.md`, not any vault file. A 2026-09-17 closeout session searched all of
+those and found nothing, which is why this ADR exists now rather than earlier: from any fresh
+session's point of view, a decision that is spoken but never recorded is indistinguishable from a
+decision that never happened.
+
+### Alternatives Considered
+
+- Treat this repo as effectively dead/archived while the client is on Wix — rejected; the client is
+  expected to return once the subscription ends, and this repo is the plan for that return, not a
+  historical artifact.
+- Leave R-003/OD-003 exactly as previously worded ("may go on Wix," "pending client acceptance")
+  — rejected; both are now factually wrong, not merely stale.
+
+### Consequences
+
+- Positive: the repo's real current state (client is elsewhere, this repo is the standby/return
+  version) is now discoverable from `DECISION_LOG.md`, `STATUS.md`, and the risk register, instead
+  of only existing in conversation.
+- Neutral: launch-readiness work (forms, hosting, production domain) has no active urgency while
+  the client is on Wix — the repo continues to accept improvement work (see the hero-video merge
+  landed the same session, ADR-028) so that it is the best-available version whenever the client
+  returns, per the owner's explicit instruction this session.
+- Risk: the subscription end date is unknown. Until it's confirmed, there's no way to schedule
+  return-readiness work against a real deadline. Record the date here as soon as it's known.
+- Follow-up: correct the vault's stale 2026-06-25 "Wix risk resolved" entry (superseding note, not
+  deletion) — tracked in the same session's vault write-back.
+
+### See Also
+
+- ADR-013 — the original "may go on Wix" precaution this entry supersedes
+- R-003 in `docs/governance/PROJECT_RISK_REGISTER.md` — updated alongside this entry
+- OD-003 in `plans/open-decisions.md` — updated alongside this entry
+- AntBrainOS vault: `03_PROJECTS/Active/Smart Learning Solutions/DECISION_LOG.md`, 2026-06-25 entry
+  — corrected with a superseding note in the same session

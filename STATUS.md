@@ -12,6 +12,25 @@ Feature-complete for pre-launch. All 10 pages are built, navigation is correct, 
 
 ---
 
+## Client Moved to Wix (Temporary) — 2026-09-17 (no version bump)
+
+The client has decided to host on Wix, effective now, for the duration of their current Wix
+subscription/contract term (end date not currently known). **This repo is not being
+decommissioned** — it remains the return-target for when the subscription ends and the client
+comes back to a self-hosted, hand-coded static site. This decision had been communicated verbally
+in an earlier conversation but was never written into any durable record until this session found
+the gap and closed it. See `DECISION_LOG.md` ADR-027 for full detail, including the correction of
+two prior records that no longer matched reality: ADR-013's "may go on Wix" framing (the risk has
+now materialized, it's not a possibility anymore) and the AntBrainOS vault's stale 2026-06-25
+"Wix risk resolved, option closed" claim (corrected, not deleted).
+
+**Practical effect:** the self-host-on-VPS proposal (OD-003) is not withdrawn, just moot until the
+client returns. Launch-readiness work (forms, production domain, host confirmation) has no active
+urgency. This repo continues to accept improvement work in the meantime — see the hero-video merge
+landed the same session, below — so it's the best-available version whenever the client returns.
+
+---
+
 ## Record Reconciliation + AI-Attribution Trailer Strip — 2026-09-17 (no version bump)
 
 A `REPO_SESSION_START_RECOVERY_AUDIT.md` run found the 2026-09-16 records materially wrong about
@@ -436,7 +455,7 @@ hard blockers as below (Formspree `REPLACE_ME`; host/domain unconfirmed). Result
 | # | Blocker | File(s) | Required? |
 |---|---|---|---|
 | 1 | ~~**Formspree endpoint** — `REPLACE_ME` still in form action; forms cannot submit~~ — **Resolved in code 2026-07-16**, migrated to Web3Forms; **actually deployed to staging 2026-07-19** — the code fix sat undeployed on staging for 3 weeks (staging was still serving the dead endpoint until this session's redeploy, SR-009) | `book.html`, `contact.html` | Yes |
-| 2 | **Deployment target** — staging VPS confirmed at `smart-learning-solutions.craftandconscious.com`; production domain not yet pointed | — | Yes |
+| 2 | **Deployment target** — **on hold, not blocked, 2026-09-17**: client is hosted on Wix temporarily (ADR-027); staging VPS still configured at `smart-learning-solutions.craftandconscious.com`, production domain not pointed, no active urgency while client is elsewhere | — | Yes, when client returns off Wix |
 | 3 | **Testimonials** — owner-supplied quotes pending | — | No (optional) |
 
 ---

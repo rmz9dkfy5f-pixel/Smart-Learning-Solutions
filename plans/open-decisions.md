@@ -21,11 +21,11 @@ Decisions pending owner input. Nothing in this list should be resolved by Claude
 ---
 
 ## OD-003 — Deployment Target
-**Status:** Open — direction proposed 2026-07-18, not yet accepted by the client
-**Blocking:** v1.4.0 (go live); deployed-domain verification for ADR-015/OD-001
-**Question:** Will the site be self-hosted, or deployed to Netlify/GitHub Pages?
-**Context:** A staging VPS is already configured (`74.208.9.49`, nginx `try_files` pattern documented in ADR-009 and `docs/DEPLOYMENT.md`). As of 2026-07-18, the owner is proposing self-hosting on this existing VPS to the client, superseding the earlier Netlify/GitHub Pages recommendation and the earlier "may go on Wix" consideration (R-003/ADR-013) — Wix remains a risk only if the client rejects the self-host proposal.
-**Action required:** Client to accept or reject the self-host proposal. Once accepted, confirm production domain/DNS and complete the Gate 1 deployed-domain checks.
+**Status:** Resolved-for-now, 2026-09-17 — client chose Wix, temporarily. Not a rejection of the self-host proposal; a decision made outside this proposal entirely. See `DECISION_LOG.md` ADR-027.
+**Blocking:** v1.4.0 (go live); deployed-domain verification for ADR-015/OD-001 — no longer urgent while the client is on Wix
+**Question (superseded):** ~~Will the site be self-hosted, or deployed to Netlify/GitHub Pages?~~ Answered: neither, for now — the client is hosted on Wix until their current subscription contract ends (end date unknown).
+**Context:** A staging VPS remains configured (`74.208.9.49`, nginx `try_files` pattern documented in ADR-009 and `docs/DEPLOYMENT.md`) and this repo remains the return-target for whenever the client comes off Wix — it is not being decommissioned. The self-host-on-VPS proposal from 2026-07-18 is not withdrawn, just moot until that return happens.
+**Action required:** None right now. Revisit when the subscription end date is known or the client returns off Wix — at that point, re-confirm whether self-host-on-VPS is still the plan.
 
 ---
 
