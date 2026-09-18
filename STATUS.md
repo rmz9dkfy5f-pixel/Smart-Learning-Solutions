@@ -1,15 +1,31 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.30.0 · 2026-09-18 (both hero-video branches now merged into `main`; the
-earlier `v2.30.0` tag was fully deleted, local and remote, during 2026-09-17's ADR-026 cleanup, so
-the number is free to reuse)
-**Branch:** `main` (`HEAD` `af55094`), in sync with `origin/main`, pushed
+**Current Version:** v2.30.0 · 2026-09-18 (video hero on the homepage only; the earlier `v2.30.0`
+tag was fully deleted, local and remote, during 2026-09-17's ADR-026 cleanup, so the number is
+free to reuse)
+**Branch:** `main` (`HEAD` `5ab108d`), in sync with `origin/main`, pushed
 
 ---
 
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Workshops Reverted to Non-Video; Video Hero Kept Homepage-Only — 2026-09-18 (v2.30.0, continued)
+
+**Correction to the two entries below.** The owner's actual instruction was that the video hero
+belongs on the **homepage only** — the earlier merge of `feat/hero-video-coding-with-robots` had
+added it to `workshops.html` too, which was not intended. Reverted `workshops.html` to its
+original, pre-merge layout (content taken from `archive/pre-video-hero-main-20260917`, cache-bust
+tokens kept current) — pushed as `5ab108d`. `index.html`'s video hero (from
+`feat/hero-video-homepage`, ADR-029) is unaffected. The `.hero-video-bg` CSS component and
+`initHeroVideo()` in `animations.js` stay in place — `index.html` still needs them.
+
+**Current real state:** video hero on the **homepage only**. `programs/coding-with-robots.html`
+was never affected by any of this (confirmed unchanged throughout, see the entry below).
+`starter_kit.cli validate`: PASS, 0 findings, after this correction too.
 
 ---
 

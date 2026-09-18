@@ -1157,3 +1157,38 @@ than the reviewer-only override.
 - Vault `SESSION_LOG.md` (Smart Learning Solutions project), 2026-07-24 entry — the original
   "both local-only, never pushed" deployment record
 - `STATUS.md` 2026-09-18 entry — commit hash and verification detail
+
+## ADR-030 — Revert Workshops to Non-Video; Video Hero Is Homepage-Only
+
+**Date:** 2026-09-18
+**Version:** v2.30.0, continued (no separate bump — same release as ADR-028/ADR-029)
+
+### Decision
+
+Corrects ADR-028: the owner's actual instruction was that the video hero belongs on the
+**homepage only**, not Workshops. `workshops.html` reverted to its original, pre-merge layout
+(`5ab108d`) — content taken from `archive/pre-video-hero-main-20260917`, with current sitewide
+cache-bust tokens applied. `index.html`'s video hero (ADR-029) is unaffected.
+
+### Context
+
+ADR-028 merged `feat/hero-video-coding-with-robots`, which places the video on Workshops, based on
+an earlier reading of "the version with video in the hero section should be main." ADR-029 then
+merged the homepage sibling branch too, landing video on both pages. The owner clarified this was
+wrong: only the homepage was ever meant to get it. This ADR is the correction, not a reversal of
+ADR-029 — the homepage video stays.
+
+### Consequences
+
+- `main` now matches the intended final state: video hero on the homepage, Workshops unchanged
+  from its long-standing original layout.
+- The `.hero-video-bg` CSS component (`main.css`) and `initHeroVideo()` (`animations.js`) remain
+  in the codebase — still required by `index.html`. Removing them was never in scope.
+- `feat/hero-video-coding-with-robots` remains a real, pushed branch on GitHub — its Workshops-page
+  variant is preserved there if ever wanted again, just not on `main`.
+
+### See Also
+
+- ADR-028 — the merge this corrects
+- ADR-029 — the homepage merge this does not affect
+- `STATUS.md` 2026-09-18 entry — commit hash and verification detail
