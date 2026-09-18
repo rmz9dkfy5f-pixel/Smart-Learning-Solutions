@@ -5,6 +5,28 @@ commit hash, date, summary, and description.
 
 ---
 
+## 2026-09-17 — Disposition v3.10.0 Migration Conflict Candidates
+**Tag:** none (docs/governance only, no version bump)
+**Commit:** `993bea3` · branch `main` · 2026-09-17 · not yet pushed
+**Type:** `docs`
+
+**Summary:** docs: disposition v3.10.0 migration conflict candidates
+
+**Description:**
+Resolved the one remaining unfinished piece of the v3.10.0 migration: all 8 files preserved under
+`.starter-kit/migrations/18d9b002-.../conflicts/`. `AGENTS.md` merged (kept SLS-specific content,
+added the kit's operating loop/safety rules/required references/output standard).
+`00_MIGRATION_KICKOFF.md`, `ai/prompts/TASK_INTAKE.md`, and `docs/governance/AGENT_RUN_LOG.md`
+adopted from the kit wholesale. `PROJECT_RISK_REGISTER.md`, `RELEASE_GATE.md`,
+`REPOSITORY_HANDOFF_CONFIG.md`, `REPO_HEALTH_CHECK.md` left untouched — kit candidates were blank
+templates with nothing to merge against live's real data. `conflicts/` directory deleted.
+
+Files: `AGENTS.md`, `00_MIGRATION_KICKOFF.md`, `ai/prompts/TASK_INTAKE.md`,
+`docs/governance/AGENT_RUN_LOG.md`, `PROGRESS_NOTE.md`, `STATUS.md`, plus deletion of the 8
+`conflicts/` files. `starter_kit.cli validate`: PASS, 0 findings, before and after.
+
+---
+
 ## 2026-09-17 — Reconcile v3.10.0 Records, Record ADR-026 Trailer Strip
 **Tag:** none (docs/governance only, no version bump)
 **Commit:** `367bda8` · branch `main` · 2026-09-17 · pushed
