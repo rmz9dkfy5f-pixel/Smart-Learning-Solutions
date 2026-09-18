@@ -1096,3 +1096,64 @@ rather than provisioning new DNS for a matching name).
 - Vault `SESSION_LOG.md`/`DECISION_LOG.md` (Smart Learning Solutions project), 2026-07-24 entries
 - `DECISION_LOG.md` ADR-027 — the Wix decision that prompted landing this branch now
 - `STATUS.md` 2026-09-17 merge entry — commit hash and verification detail
+
+## ADR-029 — Reconstruct and Merge `feat/hero-video-homepage` Into `main` (2026-09-18)
+
+**Date:** 2026-09-18
+**Version:** v2.30.0, continued (no separate bump — same release as ADR-028)
+
+### Decision
+
+`feat/hero-video-homepage` — the sibling exploratory branch to ADR-028's `feat/hero-video-coding-with-robots`,
+which puts the video hero on the **homepage** instead of Workshops — was reconstructed from its
+live VPS deployment and merged into `main` via a second real merge commit (`af55094`), so both
+pages that ever had a video-hero variant now have it on `main`.
+
+### Context
+
+This branch was never on GitHub at all — this repo's own 2026-07-24 session record
+(`SESSION_LOG.md`, vault) states explicitly that both `feat/hero-video-homepage` and
+`feat/hero-video-coding-with-robots` were "local-only, never pushed to `origin`" at deploy time,
+and were shipped to their review subdomains via `git archive` directly from a local checkout —
+never through GitHub. Only `feat/hero-video-coding-with-robots` was pushed later that same day
+(ADR-028's `2a32cc7`). The homepage variant's local branch was never preserved anywhere; the
+deployed files on the VPS (`smart-learning-solutions-hero-video-homepage.craftandconscious.com`,
+still live) became its only surviving copy.
+
+**Reconstruction method:** pulled the live deployed tree via `rsync`, diffed it against
+`fe82292` (the shared-foundation commit both sibling branches forked from — confirmed via `git
+show`, no page wired up yet at that commit) and against `feat/hero-video-coding-with-robots`'s
+own tip. Found the deployed tree differs from the shared foundation in exactly one file
+(`index.html`, wiring up the video hero) plus one file that must be **excluded**: the deployed
+`animations.js` carries an uncommitted, always-play review-deploy patch (removing the
+`prefers-reduced-motion`/viewport gate — documented in ADR-028) that was never meant to ship.
+Created `feat/hero-video-homepage` from `fe82292`, applied only the real `index.html` change, and
+pushed it — restoring the branch to git with the *correct*, accessibility-gated behavior rather
+than the reviewer-only override.
+
+### Alternatives Considered
+
+- Leave it deployed-only on the VPS — rejected: a single, unbacked-up copy on a shared host is a
+  real exposure, and the owner explicitly asked for it to be preserved in git.
+- Reconstruct it by diffing the deployed tree wholesale (including the always-play `animations.js`
+  patch) — rejected: would ship a real accessibility regression to `main`; the patch was
+  deliberately never committed for exactly this reason (see ADR-028).
+
+### Consequences
+
+- `main` now has the video hero on both pages it was ever built for: Workshops
+  (`feat/hero-video-coding-with-robots`, ADR-028) and the homepage (this branch).
+- The VPS review deployments themselves are untouched by this work — read-only `rsync` pull only,
+  no deploy or file changes made to either review subdomain.
+- `feat/hero-video-homepage`'s reconstructed history does not match whatever the original,
+  never-preserved local branch actually contained commit-for-commit — it matches the *content*
+  (verified byte-for-byte against the live deployed `index.html`, minus the debug patch), not the
+  original commit sequence, which is unrecoverable.
+
+### See Also
+
+- ADR-028 — the sibling Workshops-page branch and its own merge record
+- ADR-027 — the Wix decision that prompted keeping this repo at its best-available state
+- Vault `SESSION_LOG.md` (Smart Learning Solutions project), 2026-07-24 entry — the original
+  "both local-only, never pushed" deployment record
+- `STATUS.md` 2026-09-18 entry — commit hash and verification detail

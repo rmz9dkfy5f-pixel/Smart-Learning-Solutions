@@ -1,17 +1,37 @@
 # Smart Learning Solutions — Status
 
-**Current Version:** v2.30.0 · 2026-09-17 (hero-video branch merged into `main`; the earlier
-`v2.30.0` tag was fully deleted, local and remote, during today's ADR-026 cleanup, so the number
-is free to reuse)
-**Branch:** `main` (`HEAD` `1fb3647`), 8 commits ahead of `origin/main` (2 new docs commits + the
-merge commit + the 6 hero-video commits, which existed on `origin/feat/hero-video-coding-with-robots`
-but not on `origin/main` until now), not yet pushed
+**Current Version:** v2.30.0 · 2026-09-18 (both hero-video branches now merged into `main`; the
+earlier `v2.30.0` tag was fully deleted, local and remote, during 2026-09-17's ADR-026 cleanup, so
+the number is free to reuse)
+**Branch:** `main` (`HEAD` `af55094`), in sync with `origin/main`, pushed
 
 ---
 
 ## Site Health
 
 Feature-complete for pre-launch. All 10 pages are built, navigation is correct, and the design system is consistent sitewide. A full diagnostic audit has been completed and documented in `AUDIT.md`. The remaining blockers are operational and content decisions — not missing site structure.
+
+---
+
+## Hero-Video-Homepage Branch Reconstructed and Merged Into `main` — 2026-09-18 (v2.30.0, continued)
+
+The sibling exploratory branch to the Workshops-page video hero below,
+`feat/hero-video-homepage`, was never actually on GitHub — this repo's own 2026-07-24 record
+(vault `SESSION_LOG.md`) confirms it was "local-only, never pushed to `origin`," deployed to its
+review subdomain via `git archive` directly from a local checkout. That local branch is gone; the
+live VPS deployment (`smart-learning-solutions-hero-video-homepage.craftandconscious.com`, still
+serving) was its only surviving copy. Pulled that deployed tree via `rsync`, reconstructed the
+branch from `fe82292` (the shared-foundation commit both siblings forked from) plus the one real
+`index.html` change — deliberately excluding the deployed server's uncommitted, always-play
+`animations.js` patch (documented in ADR-028) so the reconstructed branch ships the real,
+accessibility-gated behavior instead. Pushed as `feat/hero-video-homepage` (`c58f4a7`), then
+merged into `main` (`af55094`) per explicit owner instruction: every page with a video-hero
+variant should be on `main`, not just Workshops. One conflict (`index.html`'s script-import line)
+resolved by keeping both sides. Full detail: `DECISION_LOG.md` ADR-029.
+
+**Verification:** local server — all 10 pages 200; both `index.html` and `workshops.html`
+confirmed containing `.hero-video-bg`. `starter_kit.cli validate`: PASS, 0 findings. Pushed and
+remote-verified (`main` == `origin/main` == `af55094`).
 
 ---
 
