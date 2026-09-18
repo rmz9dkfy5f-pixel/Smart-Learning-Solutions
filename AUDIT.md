@@ -61,13 +61,15 @@ beyond an intentionally-public form-relay identifier (documented as safe by its 
 
 ---
 
-**H-2: HSTS Header Not Enforced Live**
+**H-2: HSTS Header Not Enforced Live** — ✅ Resolved 2026-09-18
 - **Severity:** High
 - **Affected:** VPS nginx (`/etc/nginx/snippets/security-headers.conf`)
 - **What is happening:** `Strict-Transport-Security` is documented as baseline in `docs/DEPLOYMENT.md` §7 but absent from the live response.
 - **Evidence:** `curl -sI https://smart-learning-solutions.craftandconscious.com/` — header not present. Matches a known, intentional gap recorded 2026-07-19 in `STATUS.md`, never closed since.
 - **Confidence:** Confirmed (live header check)
 - **Recommended next step:** Add to the shared snippet (confirmed scoped only to this project's own three vhosts — no cross-tenant risk), `nginx -t`, reload, re-verify.
+- **Resolution:** Added to `security-headers.conf`, `nginx -t` passed, reloaded. Live-verified via
+  `curl -sI`: `Strict-Transport-Security: max-age=31536000; includeSubDomains` present.
 
 ---
 
@@ -75,7 +77,7 @@ beyond an intentionally-public form-relay identifier (documented as safe by its 
 
 ---
 
-**M-1: CSP Is Report-Only, Not Enforced**
+**M-1: CSP Is Report-Only, Not Enforced** — ✅ Resolved 2026-09-18 (same policy string; `unsafe-inline` removal remains a separate follow-up)
 - **Severity:** Medium
 - **Affected:** VPS nginx (`/etc/nginx/snippets/security-headers.conf`)
 - **What is happening:** Live header is `Content-Security-Policy-Report-Only`, not
@@ -89,10 +91,14 @@ beyond an intentionally-public form-relay identifier (documented as safe by its 
   improvement — still blocks any unlisted-origin script/style/frame). Removing `unsafe-inline`
   entirely is a larger follow-up (would need external script files or server-side nonce injection,
   neither of which this static site has today) — not resolved in this pass.
+- **Resolution:** Promoted `Content-Security-Policy-Report-Only` → `Content-Security-Policy`, same
+  policy string. `nginx -t` passed, reloaded. Live-verified via `curl -sI`; confirmed no regression
+  — all 9 pages still 200, forms still reference `api.web3forms.com`, homepage video hero intact.
+  `unsafe-inline` removal deliberately left open (see above).
 
 ---
 
-**M-2: 21MB Unoptimized Hero Video**
+**M-2: 21MB Unoptimized Hero Video** — ✅ Resolved 2026-09-18
 - **Severity:** Medium
 - **Affected:** `src/videos/edison-robot-promo.mp4`, `index.html`
 - **What is happening:** The homepage hero video is 21MB. It's correctly gated (skipped for
@@ -102,16 +108,22 @@ beyond an intentionally-public form-relay identifier (documented as safe by its 
 - **Confidence:** Confirmed
 - **Recommended next step:** Re-encode to a smaller H.264 target (lower resolution ceiling +
   moderate CRF), per `docs/PERFORMANCE.md` §6's existing "prefer 720p" guidance.
+- **Resolution:** Re-encoded (ffmpeg, CRF 28 preset slow, stripped the unused always-muted audio
+  track), same 1280×720 resolution per the doc's own guidance. 22.3MB → 11.2MB (50% reduction).
+  Verified: duration/resolution unchanged, frame-by-frame visual comparison shows no perceptible
+  quality loss, deployed and confirmed live at the new size via `curl`.
 
 ---
 
-**M-3: Server Version Disclosed**
+**M-3: Server Version Disclosed** — ✅ Resolved 2026-09-18
 - **Severity:** Medium (low individual risk, easy fix)
 - **Affected:** VPS nginx (global config)
 - **What is happening:** Live response includes `Server: nginx/1.24.0 (Ubuntu)`.
 - **Evidence:** `curl -sI` live header.
 - **Confidence:** Confirmed
 - **Recommended next step:** `server_tokens off;` in the shared `http {}` block.
+- **Resolution:** Added, `nginx -t` passed, reloaded. Live-verified via `curl -sI`: `Server: nginx`
+  (version string gone).
 
 ---
 
@@ -189,13 +201,16 @@ beyond an intentionally-public form-relay identifier (documented as safe by its 
 
 ## 6. Priority Order
 
-1. H-1 — Privacy policy (blocked on owner input)
-2. H-2 — Enforce HSTS
-3. M-1 — Enforce CSP
-4. M-2 — Compress hero video
-5. M-3 — Disable server version disclosure
+1. H-1 — Privacy policy (**still blocked** on owner input — see below)
+2. ~~H-2 — Enforce HSTS~~ — done 2026-09-18
+3. ~~M-1 — Enforce CSP~~ — done 2026-09-18
+4. ~~M-2 — Compress hero video~~ — done 2026-09-18
+5. ~~M-3 — Disable server version disclosure~~ — done 2026-09-18
 6. M-4, M-5 — done as part of this audit pass
 7. L-1 — done as part of this audit pass
+
+**Remaining open item: H-1 only.** Everything else in this audit is resolved and independently
+verified live. See `plans/2026-09-18-audit-remediation.md`.
 
 ## 7. Open Questions
 

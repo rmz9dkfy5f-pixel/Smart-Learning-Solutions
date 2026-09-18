@@ -3,8 +3,36 @@
 **Current Version:** v2.30.0 · 2026-09-18 — tag `v2.30.0__hero-video-homepage__commit-a96292d`,
 pushed and remote-verified (video hero on the homepage only; the earlier `v2.30.0` tag was fully
 deleted, local and remote, during 2026-09-17's ADR-026 cleanup, so the number was free to reuse)
-**Branch:** `main` (`HEAD` `a96292d`), in sync with `origin/main`, pushed. Deployed to staging,
-verified (see this date's entry below).
+**Branch:** `main` (`HEAD` `5ab235d`), in sync with `origin/main`, pushed. Audit-remediation work
+(below) deployed to staging, verified. No new version tag for this docs+chore+perf batch (PATCH-
+level per `docs/VERSIONING.md`, not worth a separate tag).
+
+---
+
+## Project-Readiness Audit + Remediation — 2026-09-18
+
+Full audit across structural integrity, refactoring necessity, performance, security (non-
+destructive), and production-readiness — see `AUDIT.md` (refreshed; old version archived as
+`AUDIT_2026-05-15_ARCHIVED.md`). Findings: 2 High, 5 Medium, 1 Low. Resolved same session: H-2
+(HSTS now enforced live), M-1 (CSP promoted from report-only to enforced), M-2 (hero video
+compressed 22.3MB → 11.2MB, 50% reduction, same 1280×720, no visible quality loss), M-3 (`Server`
+header no longer discloses nginx version), M-4 (this audit refresh itself), M-5 (governance
+templates filled), L-1 (safety-invariant comment added to `components.js`'s `innerHTML` usage).
+
+**Server-side changes** (VPS `security-headers.conf` + global `http {}` block, confirmed via
+direct SSH read to be scoped only to this project's own three vhosts, no cross-tenant risk):
+backed up first (`security-headers.conf.bak-20260918`, `nginx.conf.bak-20260918`), each change
+validated with `nginx -t` before reload, each reload independently re-verified via fresh `curl -sI`
+before moving to the next change.
+
+**Remaining open: H-1 (privacy policy) only** — blocked on real owner-supplied legal facts (legal
+entity name, registered address, data retention period, governing jurisdiction). Checked the
+client's live site (`smartlearningsolutions.org`) directly at the owner's request — none of this
+is published there either, so it can't be resolved without the owner directly. See
+`plans/2026-09-18-audit-remediation.md` Slice 5.
+
+**Verification:** all 9 pages 200 (local and live), homepage video hero intact, forms still
+reference `api.web3forms.com`, `starter_kit.cli validate`: PASS, 0 findings throughout.
 
 ---
 
