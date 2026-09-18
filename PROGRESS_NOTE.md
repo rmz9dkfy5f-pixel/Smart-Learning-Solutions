@@ -1,6 +1,40 @@
-**Updated:** 2026-09-17 (record reconciliation + AI-attribution trailer strip, no version bump)
+**Updated:** 2026-09-17 (v3.10.0 migration conflict-candidate disposition, no version bump)
 
 # Progress Note — Current Session
+
+## V3.10.0 Migration Conflict-Candidate Disposition (2026-09-17, no version bump)
+
+### Summary
+
+The v3.10.0 migration (run `18d9b002-b07d-41f6-99f8-f62c126387c8`) had one unfinished piece: 8
+files preserved under `.starter-kit/migrations/18d9b002-.../conflicts/` because each collided with
+a same-named live file. All 8 read side-by-side with their live counterparts; each had a clear,
+non-ambiguous disposition.
+
+### Work Completed
+
+- **`AGENTS.md` merged** — kept all SLS-specific sections (Project Identity, Confirmed Decisions,
+  Content Rules), added the kit's Agent Operating Rule loop, Safety Rules, Required References,
+  and Output Standard on top.
+- **Adopted the kit's version wholesale** for `00_MIGRATION_KICKOFF.md` (live was stale v3.4-era
+  text), `ai/prompts/TASK_INTAKE.md` (kit adds an explicit Model Selection section), and
+  `docs/governance/AGENT_RUN_LOG.md` (kit folds Model Usage Record into the per-run template).
+- **Kept the live version, discarded the kit's** for `docs/governance/PROJECT_RISK_REGISTER.md`,
+  `RELEASE_GATE.md`, `REPOSITORY_HANDOFF_CONFIG.md`, and `REPO_HEALTH_CHECK.md` — each already held
+  real, filled-in repo data; the kit's version was a blank fillable template with nothing to merge.
+- **Deleted the `conflicts/` directory** — all 8 dispositioned.
+- Run recorded in `docs/governance/AGENT_RUN_LOG.md`.
+
+### Validation Performed
+
+- `starter_kit.cli validate` (kit clone pinned at tag `v3.10.0`) — PASS, 0 findings, both before
+  and after the change.
+- Manual read confirmed no repo-specific fact (Confirmed Decisions, Risk Register entries, Release
+  Decision, Handoff Config values, Health Check history) was altered or lost.
+
+### Not Yet Done
+
+- Not committed — awaiting owner review of `git diff` and explicit commit authorization.
 
 ## Record Reconciliation + Trailer Strip (2026-09-17, no version bump)
 

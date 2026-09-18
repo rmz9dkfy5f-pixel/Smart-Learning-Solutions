@@ -454,10 +454,10 @@ See `AUDIT.md` for full findings. Open items: H-1 (production domain routing), H
 | 1 | ~~Create Formspree account → replace `REPLACE_ME`~~ — done via Web3Forms migration, merged to `main` (v2.23.0) | C-1 |
 | 2 | Client to accept/reject self-host proposal; once accepted, point production domain to VPS and verify routing end-to-end | H-1 / OD-003 |
 | 3 | ~~Convert `og-image.svg` to PNG/JPEG 1200×630~~ — done: `src/images/og-image.png` generated and referenced on all 9 pages, 2026-07-18 | M-1 |
-| 4 | Reconcile V3.4 stub docs (`docs/project/`, `docs/governance/`) with existing root-level equivalents | V3.4 follow-up |
-| 5 | Review V3.4 candidate AGENTS.md/CLAUDE.md in `.v34_migration_review/` and merge any useful additions | V3.4 follow-up |
+| 4 | ~~Reconcile V3.4 stub docs (`docs/project/`, `docs/governance/`) with existing root-level equivalents~~ — superseded: the V3.4 install itself was discarded 2026-09-16 in favor of a real v3.10.0 migration | V3.4 follow-up (obsolete) |
+| 5 | ~~Review V3.4 candidate AGENTS.md/CLAUDE.md in `.v34_migration_review/` and merge any useful additions~~ — done 2026-09-17: the v3.10.0 migration's own 8 conflict candidates (successor to `.v34_migration_review/`) reviewed and dispositioned — `AGENTS.md` merged, 3 files adopted from the kit, 4 kept as-is (live already held real data); see `docs/governance/AGENT_RUN_LOG.md` 2026-09-17 entry | V3.4 follow-up (done) |
 | 6 | ~~Run `scripts/deploy-staging.sh` after merging future changes to `main`~~ — done 2026-07-24 (v2.27.0 + v2.26.1 now live on staging, SR-016); no automatic trigger exists, so repeat manually after future merges (L-016) | SR-016 |
-| 7 | ~~Resume the confirmed H-3/M-9/M-4/... backlog queue~~ — M-9 done 2026-08-17 (v2.29.0), M-4 done 2026-09-04 (v2.29.1); H-3 remains paused pending client email access (`DECISION_LOG.md` ADR-023). Next queued item: V3.4 doc reconciliation (`docs/project/`, `docs/governance/` vs. root-level equivalents), then M-8 (email casing, held pending OD-003) | `PLAN.md` |
+| 7 | ~~Resume the confirmed H-3/M-9/M-4/... backlog queue~~ — M-9 done 2026-08-17 (v2.29.0), M-4 done 2026-09-04 (v2.29.1); H-3 remains paused pending client email access (`DECISION_LOG.md` ADR-023). V3.4 doc reconciliation superseded by the v3.10.0 install (2026-09-16) and its own conflict-candidate review (2026-09-17, see row 5 above) — both now done. Remaining queued item: M-8 (email casing, held pending OD-003) | `PLAN.md` |
 
 ---
 

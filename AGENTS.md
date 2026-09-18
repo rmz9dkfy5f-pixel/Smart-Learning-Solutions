@@ -1,5 +1,15 @@
 # AGENTS.md
 
+## Agent Operating Rule
+
+For any non-trivial task, use the V3.10.0 loop:
+
+```text
+Inspect → Plan → Change → Verify → Document → Gate → Decide
+```
+
+Do not jump directly into edits.
+
 ## Project Identity
 This repository is the static marketing website for **Smart Learning Solutions** — a STEM education company delivering hands-on, in-person robotics and physical science workshops for K–12 students.
 
@@ -63,6 +73,37 @@ File placement rules:
 - Keep strategy, content, and implementation work logically separated
 - Changing the nav requires updating `components.js` — not individual HTML files
 
+## Safety Rules
+- Preserve existing project files.
+- Do not overwrite user-authored files without explicit approval.
+- Do not delete files unless the task explicitly requires deletion.
+- Prefer small scoped changes over broad rewrites.
+- Quarantine conflicts instead of forcing merges.
+- If a command is destructive, explain the risk before running it.
+- Do not claim success unless verification has run or you clearly state why verification could not run.
+
+## Required References
+
+Before implementation, inspect relevant files from:
+
+- `MODEL_SELECTION_GATE.md`
+- `docs/governance/PROJECT_CLASSIFICATION.md`
+- `docs/governance/AGENT_RUN_CONTRACT.md`
+- `docs/governance/REPOSITORY_HANDOFF_CONFIG.md`
+- `docs/governance/DONE_CRITERIA.md`
+- `docs/governance/PHASE_GATES.md`
+- `docs/governance/CHANGE_CONTROL.md`
+- `docs/governance/ROLLBACK_PLAN.md`
+- `docs/governance/REPO_HEALTH_CHECK.md`
+- `docs/governance/TEST_STRATEGY.md`
+- `docs/governance/SECURITY_BASELINE.md`
+- `ai/agents/AGENT_REVIEW_GATES.md`
+
+When filling `docs/governance/REPOSITORY_HANDOFF_CONFIG.md`, use only real, confirmed values
+(discovered from the actual toolchain, Git remotes, and deployment config) — never a placeholder
+path or command presented as fact. Mark any inapplicable section `N/A — <reason>` per its own
+instructions.
+
 ## Planning Standard
 Every non-trivial plan in `plans/` should include:
 - Objective
@@ -115,3 +156,37 @@ Before substantial AI-assisted work, read `MODEL_SELECTION_GATE.md` and show its
 Selection Brief. Do not begin implementation until the brief has been shown. When VS Code is the
 current surface, compare both Codex in VS Code and Claude Code in VS Code, then select a primary
 and fallback executor. The visible picker overrides dated model examples.
+
+Also read `docs/governance/AGENT_RUN_CONTRACT.md` before implementation — it defines how any
+named, repeatable run type for this repository should be registered and governed.
+
+## Output Standard
+
+For substantial work, end with:
+
+```md
+## Status
+PASS / PARTIAL / BLOCKED / FAIL
+
+## What Changed
+[List]
+
+## Validation
+[Commands and results]
+
+## Risks
+[Remaining issues]
+
+## Next Action
+[Commit / continue / rollback / user decision]
+```
+
+## Git Discipline
+
+Use this sequence when changing the repo:
+
+```text
+check → fix → verify → document → commit suggestion
+```
+
+Do not commit unless the user asks you to commit.

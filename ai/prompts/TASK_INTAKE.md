@@ -2,6 +2,8 @@
 
 Use this before giving an agent a substantial task.
 
+Before execution, run `PROMPT_MODEL_SELECTION_GATE.md` and attach the resulting brief.
+
 ## Objective
 
 [What should change?]
@@ -26,8 +28,10 @@ Use this before giving an agent a substantial task.
 
 [Files changed / report / patch / docs / commit suggestion]
 
+## Model Selection
+
+[Best owner / visible model / effort / VS Code primary and fallback / execution mode]
+
 ## Stop Conditions
 
 [When should the agent stop instead of continuing?]
-
-Before execution, run `PROMPT_MODEL_SELECTION_GATE.md` and attach the resulting brief.
